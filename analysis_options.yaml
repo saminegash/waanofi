@@ -1,0 +1,38 @@
+# Analysis options for Waanofi Dairy
+#
+# Enforces strict linting and best-practice rules.
+# The `Colors.*` ban is enforced via `scripts/check_color_usage.sh` (CI grep).
+
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  errors:
+    # Treat these as errors to keep the codebase clean
+    unused_import: error
+    unused_local_variable: warning
+    dead_code: warning
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+
+linter:
+  rules:
+    # Style
+    prefer_single_quotes: true
+    prefer_const_constructors: true
+    prefer_const_declarations: true
+    prefer_final_locals: true
+    prefer_final_fields: true
+    sort_constructors_first: true
+    sort_unnamed_constructors_first: true
+
+    # Safety
+    avoid_print: true
+    avoid_dynamic_calls: true
+    avoid_type_to_string: true
+    cancel_subscriptions: true
+    close_sinks: true
+    unawaited_futures: true
+
+    # Documentation
+    public_member_api_docs: false  # enable when the API stabilises

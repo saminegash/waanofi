@@ -1,0 +1,31 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Waanofi Dairy (debug)",
+      "request": "launch",
+      "type": "dart",
+      "args": [
+        "--dart-define-from-file=.env"
+      ]
+    },
+    {
+      "name": "Waanofi Dairy (profile)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+      "args": [
+        "--dart-define-from-file=.env"
+      ]
+    },
+    {
+      "name": "Waanofi Dairy (release)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "args": [
+        "--dart-define-from-file=.env"
+      ]
+    }
+  ]
+}
