@@ -51,7 +51,7 @@ class HomePage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 textStyle: const TextStyle(fontSize: 18),
               ),
-              onPressed: () => context.go('/animals'),
+              onPressed: () => context.push('/animals'),
             ),
             const SizedBox(height: 16),
             ElevatedButton.icon(
@@ -61,7 +61,7 @@ class HomePage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 textStyle: const TextStyle(fontSize: 18),
               ),
-              onPressed: () => context.go('/record/milk'),
+              onPressed: () => context.push('/record/milk'),
             ),
           ],
         ),

@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/auth/permission.dart';
 import '../../../core/theme/waanofi_colors.dart';
@@ -112,7 +113,11 @@ class DailyMilkEntryPage extends ConsumerWidget {
                   backgroundColor: WaanofiColors.success,
                 ),
               );
-              Navigator.of(context).pop();
+              if (context.canPop()) {
+                context.pop();
+              } else {
+                context.go('/');
+              }
             }
           },
           icon: const Icon(Icons.save),
