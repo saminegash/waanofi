@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../data/admin_repository.dart';
-import '../domain/audit_log_model.dart';
-import '../domain/profile_model.dart';
+import '../../data/admin_repository.dart';
+import '../../domain/audit_log_model.dart';
+import '../../domain/profile_model.dart';
 
 final adminControllerProvider =
     StateNotifierProvider<AdminController, AdminState>((ref) {
