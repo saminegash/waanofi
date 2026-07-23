@@ -136,6 +136,7 @@ class MilkEntryController extends StateNotifier<MilkEntryState> {
             recordedAt: state.date,
             session: state.session,
             litres: entry.value!,
+            recordedBy: user!.id,
             createdAt: DateTime.now(),
           ),
         );
