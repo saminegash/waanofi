@@ -44,6 +44,9 @@ dependencies:
   csv: ^6.0.0
   pdf: ^3.12.0
   printing: ^5.14.3
+  sentry_flutter: ^9.25.0
+  shared_preferences: ^2.5.5
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -58,4 +61,5 @@ dev_dependencies:
   drift_dev: ^2.24.0
 
 flutter:
+  generate: true
   uses-material-design: true

@@ -1,0 +1,30 @@
+{
+    "appTitle": "Waanofi Dairy",
+    "@appTitle": {
+        "description": "The title of the application"
+    },
+    "login": "Login",
+    "email": "Email",
+    "password": "Password",
+    "dashboard": "Dashboard",
+    "herd": "Herd",
+    "reports": "Reports",
+    "more": "More",
+    "recordMilk": "Record Milk",
+    "recordFeed": "Record Feed",
+    "animals": "Animals",
+    "settings": "Settings",
+    "logout": "Logout",
+    "welcome": "Welcome to Waanofi Dairy",
+    "onboardingTitle1": "Track Herd",
+    "onboardingDesc1": "Easily manage and track every animal in your dairy farm.",
+    "onboardingTitle2": "Monitor Production",
+    "onboardingDesc2": "Log daily milk yields per session and monitor trends.",
+    "onboardingTitle3": "Analyze Profit",
+    "onboardingDesc3": "Track feed costs against milk revenue to maximize your profits.",
+    "getStarted": "Get Started",
+    "next": "Next",
+    "skip": "Skip",
+    "emptyAnimals": "No animals found.",
+    "addAnimal": "Add Animal"
+}

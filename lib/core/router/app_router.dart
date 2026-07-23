@@ -15,6 +15,9 @@ import '../../features/admin/presentation/manage_users_page.dart';
 import '../../features/feed/presentation/daily_feed_entry_page.dart';
 import '../../features/feed/presentation/manage_feed_types_page.dart';
 
+import '../../features/onboarding/presentation/splash_page.dart';
+import '../../features/onboarding/presentation/onboarding_page.dart';
+
 /// Routes that require admin privileges.
 const _adminRoutes = {'/admin', '/admin/users', '/admin/finance', '/admin/feed_types'};
 
@@ -22,20 +25,18 @@ const _adminRoutes = {'/admin', '/admin/users', '/admin/finance', '/admin/feed_t
 const _guestBlockedRoutes = {'/record', '/admin', '/admin/users', '/admin/finance', '/animals/new'};
 
 /// Application router with auth + role-based guards.
-///
-/// - Unauthenticated → `/login`
-/// - Authenticated + no farm → `/signup` (shouldn't happen normally)
-/// - Guest hitting an admin/write route → `/`
-/// - Admin route without admin role → `/`
 GoRouter appRouter(Ref ref) {
   return GoRouter(
-    initialLocation: '/',
+    initialLocation: '/splash',
     debugLogDiagnostics: true,
     redirect: (BuildContext context, GoRouterState state) {
       final authState = ref.read(authStateProvider);
       final session = Supabase.instance.client.auth.currentSession;
       final isLoggedIn = session != null;
       final location = state.matchedLocation;
+
+      // Allow splash and onboarding to handle themselves
+      if (location == '/splash' || location == '/onboarding') return null;
 
       // Auth pages
       final isAuthRoute = location == '/login' || location == '/signup';
@@ -50,7 +51,6 @@ GoRouter appRouter(Ref ref) {
       final appUser = authState.valueOrNull;
       if (appUser != null) {
         // Guest blocked from write/admin routes
-        // Check if route starts with blocked patterns or exact matches
         final isGuestBlocked = _guestBlockedRoutes.any((route) => 
             location == route || (location.startsWith('$route/') && route.length > 1) || location.endsWith('/edit'));
             
@@ -67,6 +67,16 @@ GoRouter appRouter(Ref ref) {
       return null; // no redirect
     },
     routes: [
+      GoRoute(
+        path: '/splash',
+        name: 'splash',
+        builder: (context, state) => const SplashPage(),
+      ),
+      GoRoute(
+        path: '/onboarding',
+        name: 'onboarding',
+        builder: (context, state) => const OnboardingPage(),
+      ),
       GoRoute(
         path: '/login',
         name: 'login',

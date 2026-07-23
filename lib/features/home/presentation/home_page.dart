@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../analytics/presentation/dashboard_view.dart';
 import '../../animals/presentation/animals_list_page.dart';
@@ -25,6 +26,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   ];
 
   void _onRecordAction(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     showModalBottomSheet(
       context: context,
       builder: (context) => SafeArea(
@@ -33,7 +35,7 @@ class _HomePageState extends ConsumerState<HomePage> {
           children: [
             ListTile(
               leading: const Icon(Icons.water_drop, color: Colors.blue),
-              title: const Text('Record Milk'),
+              title: Text(l10n.recordMilk),
               onTap: () {
                 Navigator.pop(context);
                 context.push('/record/milk');
@@ -41,7 +43,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             ),
             ListTile(
               leading: const Icon(Icons.grass, color: Colors.green),
-              title: const Text('Record Feed'),
+              title: Text(l10n.recordFeed),
               onTap: () {
                 Navigator.pop(context);
                 context.push('/record/feed');
@@ -55,11 +57,47 @@ class _HomePageState extends ConsumerState<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final isDesktop = width >= 600;
+    final l10n = AppLocalizations.of(context)!;
+
+    final body = IndexedStack(
+      index: _currentIndex,
+      children: _views,
+    );
+
+    if (isDesktop) {
+      return Scaffold(
+        body: Row(
+          children: [
+            NavigationRail(
+              selectedIndex: _currentIndex,
+              onDestinationSelected: (idx) => setState(() => _currentIndex = idx),
+              labelType: NavigationRailLabelType.all,
+              leading: Padding(
+                padding: const EdgeInsets.only(bottom: 24.0, top: 8.0),
+                child: FloatingActionButton(
+                  elevation: 0,
+                  onPressed: () => _onRecordAction(context),
+                  child: const Icon(Icons.add),
+                ),
+              ),
+              destinations: [
+                NavigationRailDestination(icon: const Icon(Icons.dashboard_outlined), selectedIcon: const Icon(Icons.dashboard), label: Text(l10n.dashboard)),
+                NavigationRailDestination(icon: const Icon(Icons.pets_outlined), selectedIcon: const Icon(Icons.pets), label: Text(l10n.herd)),
+                NavigationRailDestination(icon: const Icon(Icons.bar_chart_outlined), selectedIcon: const Icon(Icons.bar_chart), label: Text(l10n.reports)),
+                NavigationRailDestination(icon: const Icon(Icons.menu_outlined), selectedIcon: const Icon(Icons.menu), label: Text(l10n.more)),
+              ],
+            ),
+            const VerticalDivider(thickness: 1, width: 1),
+            Expanded(child: body),
+          ],
+        ),
+      );
+    }
+
     return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _views,
-      ),
+      body: body,
       floatingActionButton: FloatingActionButton(
         onPressed: () => _onRecordAction(context),
         child: const Icon(Icons.add),
@@ -68,11 +106,11 @@ class _HomePageState extends ConsumerState<HomePage> {
       bottomNavigationBar: NavigationBar(
         selectedIndex: _currentIndex,
         onDestinationSelected: (idx) => setState(() => _currentIndex = idx),
-        destinations: const [
-          NavigationDestination(icon: Icon(Icons.dashboard_outlined), selectedIcon: Icon(Icons.dashboard), label: 'Dashboard'),
-          NavigationDestination(icon: Icon(Icons.pets_outlined), selectedIcon: Icon(Icons.pets), label: 'Herd'),
-          NavigationDestination(icon: Icon(Icons.bar_chart_outlined), selectedIcon: Icon(Icons.bar_chart), label: 'Reports'),
-          NavigationDestination(icon: Icon(Icons.menu_outlined), selectedIcon: Icon(Icons.menu), label: 'More'),
+        destinations: [
+          NavigationDestination(icon: const Icon(Icons.dashboard_outlined), selectedIcon: const Icon(Icons.dashboard), label: l10n.dashboard),
+          NavigationDestination(icon: const Icon(Icons.pets_outlined), selectedIcon: const Icon(Icons.pets), label: l10n.herd),
+          NavigationDestination(icon: const Icon(Icons.bar_chart_outlined), selectedIcon: const Icon(Icons.bar_chart), label: l10n.reports),
+          NavigationDestination(icon: const Icon(Icons.menu_outlined), selectedIcon: const Icon(Icons.menu), label: l10n.more),
         ],
       ),
     );
