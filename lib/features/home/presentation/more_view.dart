@@ -1,3 +1,4 @@
+import 'package:waanofi/core/theme/waanofi_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -22,7 +23,7 @@ class MoreView extends ConsumerWidget {
       body: ListView(
         children: [
           const ListTile(
-            title: Text('Admin Tools', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey)),
+            title: Text('Admin Tools', style: TextStyle(fontWeight: FontWeight.bold, color: WaanofiColors.textSecondary)),
           ),
           RoleGuard(
             permission: Permission.manageUsers,
@@ -44,7 +45,7 @@ class MoreView extends ConsumerWidget {
           ),
           const Divider(),
           const ListTile(
-            title: Text('Preferences', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey)),
+            title: Text('Preferences', style: TextStyle(fontWeight: FontWeight.bold, color: WaanofiColors.textSecondary)),
           ),
           ListTile(
             leading: const Icon(Icons.language),
@@ -64,11 +65,11 @@ class MoreView extends ConsumerWidget {
           ),
           const Divider(),
           const ListTile(
-            title: Text('Account', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey)),
+            title: Text('Account', style: TextStyle(fontWeight: FontWeight.bold, color: WaanofiColors.textSecondary)),
           ),
           ListTile(
-            leading: const Icon(Icons.logout, color: Colors.red),
-            title: Text(l10n.logout, style: const TextStyle(color: Colors.red)),
+            leading: const Icon(Icons.logout, color: WaanofiColors.error),
+            title: Text(l10n.logout, style: const TextStyle(color: WaanofiColors.error)),
             onTap: () async {
               await Supabase.instance.client.auth.signOut();
             },

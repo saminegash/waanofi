@@ -10,7 +10,6 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
 import '../../../core/theme/waanofi_colors.dart';
-import '../../analytics/domain/dashboard_stats_model.dart';
 import 'controllers/reports_controller.dart';
 
 class ReportsPage extends ConsumerWidget {
@@ -93,7 +92,7 @@ class ReportsPage extends ConsumerWidget {
           // Controls
           Container(
             padding: const EdgeInsets.all(16),
-            color: Colors.white,
+            color: WaanofiColors.surface,
             child: Column(
               children: [
                 Row(

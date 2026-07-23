@@ -76,7 +76,7 @@ class AnimalsRepository {
       await _dao.insertOrUpdateAll(localAnimals);
     } catch (e) {
       // Offline or network error; fail silently and rely on local cache
-      print('Sync failed: $e');
+      debugPrint('Sync failed: $e');
     }
   }
 

@@ -166,7 +166,7 @@ class _AnimalFormPageState extends ConsumerState<AnimalFormPage> {
                     : 'DOB: ${_dob.toString().split(' ')[0]}'),
                 trailing: const Icon(Icons.calendar_today),
                 shape: RoundedRectangleBorder(
-                  side: const BorderSide(color: Colors.grey),
+                  side: const BorderSide(color: WaanofiColors.textSecondary),
                   borderRadius: BorderRadius.circular(4),
                 ),
                 onTap: () async {

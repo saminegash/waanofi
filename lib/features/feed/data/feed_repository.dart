@@ -98,7 +98,7 @@ class FeedRepository {
 
       await _feedDao.batchInsertFeedRecords(localRecords);
     } catch (e) {
-      print('Feed Sync failed: $e');
+      debugPrint('Feed Sync failed: $e');
     }
   }
 
@@ -152,8 +152,15 @@ class FeedRepository {
             await _client.from('feed_records').upsert(payload);
           }
           await _outboxDao.markProcessed(item.id);
+        } on PostgrestException catch (e) {
+          if (e.code == '23505') {
+            await _outboxDao.markProcessed(item.id);
+          } else {
+            debugPrint('Failed to sync outbox item ${item.id}: $e');
+            await _outboxDao.markFailed(item.id, e.message);
+          }
         } catch (e) {
-          print('Failed to sync outbox item ${item.id}: $e');
+          debugPrint('Failed to sync outbox item ${item.id}: $e');
           await _outboxDao.markFailed(item.id, e.toString());
         }
       }

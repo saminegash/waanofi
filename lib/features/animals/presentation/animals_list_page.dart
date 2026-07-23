@@ -34,7 +34,7 @@ class AnimalsListPage extends ConsumerWidget {
                   child: const Text(
                     'Offline mode - showing cached data',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                    style: TextStyle(color: WaanofiColors.textPrimary, fontWeight: FontWeight.bold),
                   ),
                 ),
               )
@@ -175,7 +175,7 @@ class _AnimalListItem extends StatelessWidget {
         trailing: Chip(
           label: Text(
             animal.status.toUpperCase(),
-            style: const TextStyle(fontSize: 10, color: Colors.white, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 10, color: WaanofiColors.surface, fontWeight: FontWeight.bold),
           ),
           backgroundColor: _getStatusColor(),
           padding: EdgeInsets.zero,

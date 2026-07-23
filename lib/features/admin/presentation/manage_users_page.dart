@@ -177,8 +177,8 @@ class _ManageUsersPageState extends ConsumerState<ManageUsersPage> with SingleTi
                 return Card(
                   child: ListTile(
                     leading: CircleAvatar(
-                      backgroundColor: w.active ? WaanofiColors.primary.withOpacity(0.1) : Colors.red.withOpacity(0.1),
-                      child: Icon(Icons.person, color: w.active ? WaanofiColors.primary : Colors.red),
+                      backgroundColor: w.active ? WaanofiColors.primary.withOpacity(0.1) : WaanofiColors.error.withOpacity(0.1),
+                      child: Icon(Icons.person, color: w.active ? WaanofiColors.primary : WaanofiColors.error),
                     ),
                     title: Text('${w.fullName} (${w.role})', style: TextStyle(decoration: w.active ? null : TextDecoration.lineThrough)),
                     subtitle: Text('Status: ${w.active ? 'Active' : 'Deactivated'}'),
@@ -228,7 +228,7 @@ class _ManageUsersPageState extends ConsumerState<ManageUsersPage> with SingleTi
           separatorBuilder: (_, __) => const Divider(),
           itemBuilder: (context, index) {
             final log = logs[index];
-            final color = log.action == 'DELETE' ? Colors.red : (log.action == 'INSERT' ? Colors.green : Colors.blue);
+            final color = log.action == 'DELETE' ? WaanofiColors.error : (log.action == 'INSERT' ? WaanofiColors.success : WaanofiColors.primary);
             final changedFields = _getChangedFields(log.oldData, log.newData);
 
             return Column(
@@ -237,7 +237,7 @@ class _ManageUsersPageState extends ConsumerState<ManageUsersPage> with SingleTi
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(DateFormat('MMM dd, HH:mm').format(log.changedAt), style: const TextStyle(color: Colors.grey)),
+                    Text(DateFormat('MMM dd, HH:mm').format(log.changedAt), style: const TextStyle(color: WaanofiColors.textSecondary)),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                       decoration: BoxDecoration(color: color.withOpacity(0.1), borderRadius: BorderRadius.circular(4)),

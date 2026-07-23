@@ -1,3 +1,4 @@
+import 'package:waanofi/core/theme/waanofi_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -46,7 +47,7 @@ class _ResponsiveScaffoldState extends ConsumerState<ResponsiveScaffold> {
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
-              leading: const Icon(Icons.water_drop, color: Colors.blue),
+              leading: const Icon(Icons.water_drop, color: WaanofiColors.primary),
               title: Text(l10n.recordMilk),
               onTap: () {
                 Navigator.pop(context);
@@ -54,7 +55,7 @@ class _ResponsiveScaffoldState extends ConsumerState<ResponsiveScaffold> {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.grass, color: Colors.green),
+              leading: const Icon(Icons.grass, color: WaanofiColors.success),
               title: Text(l10n.recordFeed),
               onTap: () {
                 Navigator.pop(context);

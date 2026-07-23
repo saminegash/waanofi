@@ -98,7 +98,7 @@ class MilkRepository {
 
       await _milkDao.insertOrUpdateAll(localRecords);
     } catch (e) {
-      print('Milk Sync failed: $e');
+      debugPrint('Milk Sync failed: $e');
     }
   }
 
@@ -153,8 +153,15 @@ class MilkRepository {
           }
           // Mark as processed (delete)
           await _outboxDao.markProcessed(item.id);
+        } on PostgrestException catch (e) {
+          if (e.code == '23505') {
+            await _outboxDao.markProcessed(item.id);
+          } else {
+            debugPrint('Failed to sync outbox item ${item.id}: $e');
+            await _outboxDao.markFailed(item.id, e.message);
+          }
         } catch (e) {
-          print('Failed to sync outbox item ${item.id}: $e');
+          debugPrint('Failed to sync outbox item ${item.id}: $e');
           await _outboxDao.markFailed(item.id, e.toString());
         }
       }

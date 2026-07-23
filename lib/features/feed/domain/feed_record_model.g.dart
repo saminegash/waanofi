@@ -15,7 +15,7 @@ _$FeedRecordModelImpl _$$FeedRecordModelImplFromJson(
   feedTypeId: json['feed_type'] as String,
   quantityKg: (json['quantity_kg'] as num).toDouble(),
   cost: (json['cost'] as num).toDouble(),
-  recordedAt: DateTime.parse(json['recorded_at'] as String),
+  recordedAt: dateFromJson(json['recorded_at']),
   recordedBy: json['recorded_by'] as String?,
   createdAt: DateTime.parse(json['created_at'] as String),
 );
@@ -29,7 +29,7 @@ Map<String, dynamic> _$$FeedRecordModelImplToJson(
   'feed_type': instance.feedTypeId,
   'quantity_kg': instance.quantityKg,
   'cost': instance.cost,
-  'recorded_at': instance.recordedAt.toIso8601String(),
+  'recorded_at': dateToJson(instance.recordedAt),
   'recorded_by': instance.recordedBy,
   'created_at': instance.createdAt.toIso8601String(),
 };

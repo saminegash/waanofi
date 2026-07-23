@@ -43,7 +43,7 @@ class DashboardView extends ConsumerWidget {
                         'Today\'s Milk',
                         '${stats.todayMilkLitres.toStringAsFixed(1)} L',
                         Icons.water_drop,
-                        Colors.blue,
+                        WaanofiColors.primary,
                       ),
                     ),
                     const SizedBox(width: 16),
@@ -60,7 +60,7 @@ class DashboardView extends ConsumerWidget {
                           '30D Profit',
                           '\$${(stats.milkRevenue30d - stats.feedCost30d).toStringAsFixed(2)}',
                           Icons.attach_money,
-                          (stats.milkRevenue30d - stats.feedCost30d) >= 0 ? Colors.green : Colors.red,
+                          (stats.milkRevenue30d - stats.feedCost30d) >= 0 ? WaanofiColors.success : WaanofiColors.error,
                         ),
                       ),
                     ),
@@ -129,24 +129,24 @@ class DashboardView extends ConsumerWidget {
                       Container(
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: WaanofiColors.surface,
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: Colors.grey.shade200),
+                          border: Border.all(color: WaanofiColors.outline),
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Column(
                               children: [
-                                const Text('Revenue', style: TextStyle(color: Colors.grey)),
-                                Text('\$${stats.milkRevenue30d.toStringAsFixed(2)}', style: const TextStyle(fontSize: 20, color: Colors.green, fontWeight: FontWeight.bold)),
+                                const Text('Revenue', style: TextStyle(color: WaanofiColors.textSecondary)),
+                                Text('\$${stats.milkRevenue30d.toStringAsFixed(2)}', style: const TextStyle(fontSize: 20, color: WaanofiColors.success, fontWeight: FontWeight.bold)),
                               ],
                             ),
-                            Container(width: 1, height: 40, color: Colors.grey.shade300),
+                            Container(width: 1, height: 40, color: WaanofiColors.outlineDark),
                             Column(
                               children: [
-                                const Text('Feed Cost', style: TextStyle(color: Colors.grey)),
-                                Text('\$${stats.feedCost30d.toStringAsFixed(2)}', style: const TextStyle(fontSize: 20, color: Colors.red, fontWeight: FontWeight.bold)),
+                                const Text('Feed Cost', style: TextStyle(color: WaanofiColors.textSecondary)),
+                                Text('\$${stats.feedCost30d.toStringAsFixed(2)}', style: const TextStyle(fontSize: 20, color: WaanofiColors.error, fontWeight: FontWeight.bold)),
                               ],
                             ),
                           ],
@@ -166,7 +166,7 @@ class DashboardView extends ConsumerWidget {
                   children: stats.statusCounts.map((s) {
                     return Chip(
                       label: Text('${s.count} ${s.status}', style: const TextStyle(fontWeight: FontWeight.bold)),
-                      backgroundColor: s.status == 'active' ? Colors.green.shade100 : Colors.grey.shade200,
+                      backgroundColor: s.status == 'active' ? WaanofiColors.success.shade100 : WaanofiColors.outline,
                     );
                   }).toList(),
                 ),
@@ -232,7 +232,7 @@ class DashboardView extends ConsumerWidget {
         children: [
           Icon(icon, color: color),
           const SizedBox(height: 12),
-          Text(title, style: TextStyle(color: Colors.grey.shade700, fontWeight: FontWeight.w600)),
+          Text(title, style: TextStyle(color: WaanofiColors.textSecondary.shade700, fontWeight: FontWeight.w600)),
           const SizedBox(height: 4),
           Text(value, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: color)),
         ],

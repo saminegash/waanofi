@@ -128,6 +128,9 @@ class MilkEntryController extends StateNotifier<MilkEntryState> {
     
     for (final entry in state.entries.entries) {
       if (entry.value != null) {
+        if (entry.value! < 0 || entry.value! > 60) {
+          throw Exception('Invalid amount: ${entry.value}L. Must be between 0 and 60L.');
+        }
         records.add(
           MilkRecordModel(
             id: '', // Empty ID means insert

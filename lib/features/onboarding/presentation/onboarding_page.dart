@@ -37,7 +37,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
         title: l10n.onboardingTitle2,
         description: l10n.onboardingDesc2,
         icon: Icons.water_drop,
-        color: Colors.blue,
+        color: WaanofiColors.primary,
       ),
       _OnboardingData(
         title: l10n.onboardingTitle3,
@@ -71,7 +71,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     const SizedBox(height: 16),
                     Text(
                       page.description,
-                      style: const TextStyle(fontSize: 16, color: Colors.grey),
+                      style: const TextStyle(fontSize: 16, color: WaanofiColors.textSecondary),
                       textAlign: TextAlign.center,
                     ),
                   ],
@@ -88,7 +88,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               children: [
                 TextButton(
                   onPressed: _completeOnboarding,
-                  child: Text(l10n.skip, style: const TextStyle(color: Colors.grey)),
+                  child: Text(l10n.skip, style: const TextStyle(color: WaanofiColors.textSecondary)),
                 ),
                 Row(
                   children: List.generate(pages.length, (index) => _buildDot(index)),
@@ -121,7 +121,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
       height: 8,
       width: _currentPage == index ? 24 : 8,
       decoration: BoxDecoration(
-        color: _currentPage == index ? WaanofiColors.primary : Colors.grey.shade300,
+        color: _currentPage == index ? WaanofiColors.primary : WaanofiColors.outlineDark,
         borderRadius: BorderRadius.circular(4),
       ),
     );

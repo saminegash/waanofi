@@ -26,7 +26,7 @@ mixin _$MilkRecordModel {
   String get farmId => throw _privateConstructorUsedError;
   @JsonKey(name: 'animal_id')
   String get animalId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'recorded_at')
+  @JsonKey(name: 'recorded_at', fromJson: dateFromJson, toJson: dateToJson)
   DateTime get recordedAt => throw _privateConstructorUsedError;
   MilkSession get session => throw _privateConstructorUsedError;
   double get litres => throw _privateConstructorUsedError;
@@ -56,7 +56,8 @@ abstract class $MilkRecordModelCopyWith<$Res> {
     String id,
     @JsonKey(name: 'farm_id') String farmId,
     @JsonKey(name: 'animal_id') String animalId,
-    @JsonKey(name: 'recorded_at') DateTime recordedAt,
+    @JsonKey(name: 'recorded_at', fromJson: dateFromJson, toJson: dateToJson)
+    DateTime recordedAt,
     MilkSession session,
     double litres,
     @JsonKey(name: 'recorded_by') String? recordedBy,
@@ -141,7 +142,8 @@ abstract class _$$MilkRecordModelImplCopyWith<$Res>
     String id,
     @JsonKey(name: 'farm_id') String farmId,
     @JsonKey(name: 'animal_id') String animalId,
-    @JsonKey(name: 'recorded_at') DateTime recordedAt,
+    @JsonKey(name: 'recorded_at', fromJson: dateFromJson, toJson: dateToJson)
+    DateTime recordedAt,
     MilkSession session,
     double litres,
     @JsonKey(name: 'recorded_by') String? recordedBy,
@@ -218,7 +220,8 @@ class _$MilkRecordModelImpl implements _MilkRecordModel {
     required this.id,
     @JsonKey(name: 'farm_id') required this.farmId,
     @JsonKey(name: 'animal_id') required this.animalId,
-    @JsonKey(name: 'recorded_at') required this.recordedAt,
+    @JsonKey(name: 'recorded_at', fromJson: dateFromJson, toJson: dateToJson)
+    required this.recordedAt,
     required this.session,
     required this.litres,
     @JsonKey(name: 'recorded_by') this.recordedBy,
@@ -237,7 +240,7 @@ class _$MilkRecordModelImpl implements _MilkRecordModel {
   @JsonKey(name: 'animal_id')
   final String animalId;
   @override
-  @JsonKey(name: 'recorded_at')
+  @JsonKey(name: 'recorded_at', fromJson: dateFromJson, toJson: dateToJson)
   final DateTime recordedAt;
   @override
   final MilkSession session;
@@ -310,7 +313,8 @@ abstract class _MilkRecordModel implements MilkRecordModel {
     required final String id,
     @JsonKey(name: 'farm_id') required final String farmId,
     @JsonKey(name: 'animal_id') required final String animalId,
-    @JsonKey(name: 'recorded_at') required final DateTime recordedAt,
+    @JsonKey(name: 'recorded_at', fromJson: dateFromJson, toJson: dateToJson)
+    required final DateTime recordedAt,
     required final MilkSession session,
     required final double litres,
     @JsonKey(name: 'recorded_by') final String? recordedBy,
@@ -329,7 +333,7 @@ abstract class _MilkRecordModel implements MilkRecordModel {
   @JsonKey(name: 'animal_id')
   String get animalId;
   @override
-  @JsonKey(name: 'recorded_at')
+  @JsonKey(name: 'recorded_at', fromJson: dateFromJson, toJson: dateToJson)
   DateTime get recordedAt;
   @override
   MilkSession get session;

@@ -105,18 +105,29 @@ class DailyMilkEntryPage extends ConsumerWidget {
         fallback: const SizedBox.shrink(),
         child: FloatingActionButton.extended(
           onPressed: () async {
-            await controller.saveBatch();
-            if (context.mounted) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Saved locally. Will sync when online.'),
-                  backgroundColor: WaanofiColors.success,
-                ),
-              );
-              if (context.canPop()) {
-                context.pop();
-              } else {
-                context.go('/');
+            try {
+              await controller.saveBatch();
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Saved locally. Will sync when online.'),
+                    backgroundColor: WaanofiColors.success,
+                  ),
+                );
+                if (context.canPop()) {
+                  context.pop();
+                } else {
+                  context.go('/');
+                }
+              }
+            } catch (e) {
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(e.toString()),
+                    backgroundColor: WaanofiColors.error,
+                  ),
+                );
               }
             }
           },
@@ -206,7 +217,7 @@ class _MilkEntryRowState extends State<_MilkEntryRow> {
                 children: [
                   Text(widget.animal.tagNumber, style: const TextStyle(fontWeight: FontWeight.bold)),
                   if (widget.animal.name != null)
-                    Text(widget.animal.name!, style: const TextStyle(fontSize: 12, color: Colors.grey)),
+                    Text(widget.animal.name!, style: const TextStyle(fontSize: 12, color: WaanofiColors.textSecondary)),
                   Text('Avg: ${widget.sevenDayAvg.toStringAsFixed(1)}L', style: const TextStyle(fontSize: 10, color: WaanofiColors.primaryDark)),
                 ],
               ),

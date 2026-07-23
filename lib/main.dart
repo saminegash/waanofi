@@ -1,3 +1,4 @@
+import 'package:waanofi/core/theme/waanofi_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -26,11 +27,11 @@ Future<void> main() async {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.error_outline, color: Colors.red, size: 64),
+              const Icon(Icons.error_outline, color: WaanofiColors.error, size: 64),
               const SizedBox(height: 16),
               const Text('Oops! Something went wrong.', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               const SizedBox(height: 8),
-              Text(details.exceptionAsString(), textAlign: TextAlign.center, style: const TextStyle(color: Colors.grey)),
+              Text(details.exceptionAsString(), textAlign: TextAlign.center, style: const TextStyle(color: WaanofiColors.textSecondary)),
             ],
           ),
         ),

@@ -1,3 +1,4 @@
+import 'package:waanofi/core/theme/waanofi_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -95,7 +96,7 @@ class _InfoTile extends StatelessWidget {
             width: 120,
             child: Text(
               label,
-              style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
+              style: const TextStyle(fontWeight: FontWeight.bold, color: WaanofiColors.textSecondary),
             ),
           ),
           Expanded(child: Text(value, style: const TextStyle(fontSize: 16))),

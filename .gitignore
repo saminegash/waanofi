@@ -46,3 +46,10 @@ app.*.map.json
 
 # Environment secrets
 .env
+key.properties
+
+# Android Keystore
+*.jks
+
+# Generated files
+*.g.dart

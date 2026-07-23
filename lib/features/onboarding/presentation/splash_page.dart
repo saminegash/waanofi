@@ -50,19 +50,19 @@ class _SplashPageState extends ConsumerState<SplashPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.agriculture_rounded, size: 100, color: Colors.white),
+            const Icon(Icons.agriculture_rounded, size: 100, color: WaanofiColors.surface),
             const SizedBox(height: 24),
             const Text(
               'Waanofi Dairy',
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: WaanofiColors.surface,
                 letterSpacing: 1.2,
               ),
             ),
             const SizedBox(height: 48),
-            const CircularProgressIndicator(color: Colors.white),
+            const CircularProgressIndicator(color: WaanofiColors.surface),
           ],
         ),
       ),

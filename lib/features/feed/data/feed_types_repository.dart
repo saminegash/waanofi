@@ -90,7 +90,7 @@ class FeedTypesRepository {
 
       await _feedTypesDao.batchInsertFeedTypes(localRecords);
     } catch (e) {
-      print('Feed Types Sync failed: $e');
+      debugPrint('Feed Types Sync failed: $e');
     }
   }
 
@@ -142,7 +142,7 @@ class FeedTypesRepository {
           }
           await _outboxDao.markProcessed(item.id);
         } catch (e) {
-          print('Failed to sync feed type outbox item ${item.id}: $e');
+          debugPrint('Failed to sync feed type outbox item ${item.id}: $e');
           await _outboxDao.markFailed(item.id, e.toString());
         }
       }

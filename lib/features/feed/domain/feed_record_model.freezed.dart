@@ -31,7 +31,7 @@ mixin _$FeedRecordModel {
   @JsonKey(name: 'quantity_kg')
   double get quantityKg => throw _privateConstructorUsedError;
   double get cost => throw _privateConstructorUsedError;
-  @JsonKey(name: 'recorded_at')
+  @JsonKey(name: 'recorded_at', fromJson: dateFromJson, toJson: dateToJson)
   DateTime get recordedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'recorded_by')
   String? get recordedBy => throw _privateConstructorUsedError;
@@ -62,7 +62,8 @@ abstract class $FeedRecordModelCopyWith<$Res> {
     @JsonKey(name: 'feed_type') String feedTypeId,
     @JsonKey(name: 'quantity_kg') double quantityKg,
     double cost,
-    @JsonKey(name: 'recorded_at') DateTime recordedAt,
+    @JsonKey(name: 'recorded_at', fromJson: dateFromJson, toJson: dateToJson)
+    DateTime recordedAt,
     @JsonKey(name: 'recorded_by') String? recordedBy,
     @JsonKey(name: 'created_at') DateTime createdAt,
   });
@@ -153,7 +154,8 @@ abstract class _$$FeedRecordModelImplCopyWith<$Res>
     @JsonKey(name: 'feed_type') String feedTypeId,
     @JsonKey(name: 'quantity_kg') double quantityKg,
     double cost,
-    @JsonKey(name: 'recorded_at') DateTime recordedAt,
+    @JsonKey(name: 'recorded_at', fromJson: dateFromJson, toJson: dateToJson)
+    DateTime recordedAt,
     @JsonKey(name: 'recorded_by') String? recordedBy,
     @JsonKey(name: 'created_at') DateTime createdAt,
   });
@@ -236,7 +238,8 @@ class _$FeedRecordModelImpl implements _FeedRecordModel {
     @JsonKey(name: 'feed_type') required this.feedTypeId,
     @JsonKey(name: 'quantity_kg') required this.quantityKg,
     required this.cost,
-    @JsonKey(name: 'recorded_at') required this.recordedAt,
+    @JsonKey(name: 'recorded_at', fromJson: dateFromJson, toJson: dateToJson)
+    required this.recordedAt,
     @JsonKey(name: 'recorded_by') this.recordedBy,
     @JsonKey(name: 'created_at') required this.createdAt,
   });
@@ -262,7 +265,7 @@ class _$FeedRecordModelImpl implements _FeedRecordModel {
   @override
   final double cost;
   @override
-  @JsonKey(name: 'recorded_at')
+  @JsonKey(name: 'recorded_at', fromJson: dateFromJson, toJson: dateToJson)
   final DateTime recordedAt;
   @override
   @JsonKey(name: 'recorded_by')
@@ -338,7 +341,8 @@ abstract class _FeedRecordModel implements FeedRecordModel {
     @JsonKey(name: 'feed_type') required final String feedTypeId,
     @JsonKey(name: 'quantity_kg') required final double quantityKg,
     required final double cost,
-    @JsonKey(name: 'recorded_at') required final DateTime recordedAt,
+    @JsonKey(name: 'recorded_at', fromJson: dateFromJson, toJson: dateToJson)
+    required final DateTime recordedAt,
     @JsonKey(name: 'recorded_by') final String? recordedBy,
     @JsonKey(name: 'created_at') required final DateTime createdAt,
   }) = _$FeedRecordModelImpl;
@@ -363,7 +367,7 @@ abstract class _FeedRecordModel implements FeedRecordModel {
   @override
   double get cost;
   @override
-  @JsonKey(name: 'recorded_at')
+  @JsonKey(name: 'recorded_at', fromJson: dateFromJson, toJson: dateToJson)
   DateTime get recordedAt;
   @override
   @JsonKey(name: 'recorded_by')

@@ -61,7 +61,7 @@ class DailyFeedEntryPage extends ConsumerWidget {
       FeedEntryController controller, AsyncValue feedTypesState) {
     return Container(
       padding: const EdgeInsets.all(16),
-      color: Colors.white,
+      color: WaanofiColors.surface,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -99,7 +99,7 @@ class DailyFeedEntryPage extends ConsumerWidget {
                 child: feedTypesState.when(
                   data: (feedTypes) {
                     if (feedTypes.isEmpty) {
-                      return const Text('No Feed Types (Ask Admin)', style: TextStyle(color: Colors.red));
+                      return const Text('No Feed Types (Ask Admin)', style: TextStyle(color: WaanofiColors.error));
                     }
                     return DropdownButtonFormField(
                       decoration: const InputDecoration(
@@ -149,13 +149,13 @@ class DailyFeedEntryPage extends ConsumerWidget {
             child: Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Colors.grey.shade100,
+                color: WaanofiColors.surfaceDark,
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Estimated Cost (Hidden from Workers):', style: TextStyle(color: Colors.grey)),
+                  const Text('Estimated Cost (Hidden from Workers):', style: TextStyle(color: WaanofiColors.textSecondary)),
                   Text('\$${state.totalCost.toStringAsFixed(2)}', 
                     style: const TextStyle(fontWeight: FontWeight.bold, color: WaanofiColors.primary)),
                 ],
@@ -171,7 +171,7 @@ class DailyFeedEntryPage extends ConsumerWidget {
       BuildContext context, FeedEntryState state, FeedEntryController controller) {
     if (state.selectedFeedType == null) {
       return const Center(
-        child: Text('Please select a Feed Type first.', style: TextStyle(fontSize: 16, color: Colors.grey)),
+        child: Text('Please select a Feed Type first.', style: TextStyle(fontSize: 16, color: WaanofiColors.textSecondary)),
       );
     }
 
@@ -182,7 +182,7 @@ class DailyFeedEntryPage extends ConsumerWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Icon(Icons.agriculture, size: 64, color: Colors.grey),
+              const Icon(Icons.agriculture, size: 64, color: WaanofiColors.textSecondary),
               const SizedBox(height: 24),
               const Text('Enter total quantity distributed to the herd:',
                   textAlign: TextAlign.center, style: TextStyle(fontSize: 16)),
