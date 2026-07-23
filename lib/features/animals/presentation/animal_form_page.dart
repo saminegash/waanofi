@@ -76,7 +76,7 @@ class _AnimalFormPageState extends ConsumerState<AnimalFormPage> {
       final repo = ref.read(animalsRepositoryProvider);
       
       final animal = AnimalModel(
-        id: _existing?.id ?? const Uuid().v4(), // Generate local UUID
+        id: _existing?.id ?? Uuid().v4(), // Generate local UUID
         farmId: _existing?.farmId ?? user!.farmId!,
         tagNumber: _tagController.text.trim(),
         name: _nameController.text.trim().isEmpty ? null : _nameController.text.trim(),

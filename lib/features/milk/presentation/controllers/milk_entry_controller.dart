@@ -133,7 +133,7 @@ class MilkEntryController extends StateNotifier<MilkEntryState> {
         }
         records.add(
           MilkRecordModel(
-            id: const Uuid().v4(), // Generate local UUID
+            id: Uuid().v4(), // Generate local UUID
             farmId: user!.farmId!,
             animalId: entry.key,
             recordedAt: state.date,
