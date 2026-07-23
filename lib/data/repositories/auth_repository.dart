@@ -44,8 +44,8 @@ class AuthRepository {
   /// Flow:
   /// 1. `auth.signUp` → triggers `handle_new_user()` which inserts
   ///    a profile row with role='user' and farm_id=null.
-  /// 2. We then create a farm owned by the new user.
-  /// 3. We update the profile to role='admin' and link to the new farm.
+  /// 2. Calls `create_farm_and_admin()` RPC (SECURITY DEFINER)
+  ///    which creates the farm and promotes the profile to admin.
   Future<AppUser> signUp({
     required String email,
     required String password,
@@ -64,21 +64,13 @@ class AuthRepository {
       throw const AuthException('Sign-up failed: no user ID returned.');
     }
 
-    // 2. Create the farm
-    final farmRow = await _client
-        .from('farms')
-        .insert({'name': farmName, 'owner_id': userId})
-        .select('id')
-        .single();
-
-    final farmId = farmRow['id'] as String;
-
-    // 3. Promote the auto-created profile to admin + assign farm
-    await _client.from('profiles').update({
-      'role': 'admin',
-      'farm_id': farmId,
+    // 2. Create farm + promote to admin via SECURITY DEFINER RPC
+    final result = await _client.rpc('create_farm_and_admin', params: {
+      'farm_name': farmName,
       'full_name': fullName,
-    }).eq('id', userId);
+    });
+
+    final farmId = result['farm_id'] as String;
 
     return AppUser(
       id: userId,
