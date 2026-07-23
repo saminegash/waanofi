@@ -42,43 +42,27 @@ class AuthRepository {
   /// Register a new user, create a farm, and assign the admin profile.
   ///
   /// Flow:
-  /// 1. `auth.signUp` → triggers `handle_new_user()` which inserts
-  ///    a profile row with role='user' and farm_id=null.
-  /// 2. Calls `create_farm_and_admin()` RPC (SECURITY DEFINER)
-  ///    which creates the farm and promotes the profile to admin.
-  Future<AppUser> signUp({
+  /// `auth.signUp` → passes `farm_name` in metadata.
+  /// The database trigger `handle_new_user()` atomically creates the profile,
+  /// creates the farm, and promotes the profile to admin.
+  Future<void> signUp({
     required String email,
     required String password,
     required String fullName,
     required String farmName,
   }) async {
-    // 1. Create auth user (profile auto-created by DB trigger)
     final authResponse = await _client.auth.signUp(
       email: email,
       password: password,
-      data: {'full_name': fullName},
+      data: {
+        'full_name': fullName,
+        'farm_name': farmName,
+      },
     );
 
-    final userId = authResponse.user?.id;
-    if (userId == null) {
+    if (authResponse.user?.id == null) {
       throw const AuthException('Sign-up failed: no user ID returned.');
     }
-
-    // 2. Create farm + promote to admin via SECURITY DEFINER RPC
-    final result = await _client.rpc('create_farm_and_admin', params: {
-      'farm_name': farmName,
-      'full_name': fullName,
-    });
-
-    final farmId = result['farm_id'] as String;
-
-    return AppUser(
-      id: userId,
-      role: UserRole.admin,
-      farmId: farmId,
-      fullName: fullName,
-      email: email,
-    );
   }
 
   // ───────────────── Sign Out ─────────────────
