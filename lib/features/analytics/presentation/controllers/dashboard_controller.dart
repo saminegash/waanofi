@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../data/analytics_repository.dart';
-import '../domain/dashboard_stats_model.dart';
+import '../../data/analytics_repository.dart';
+import '../../domain/dashboard_stats_model.dart';
 
 final dashboardControllerProvider =
     StateNotifierProvider<DashboardController, AsyncValue<DashboardStatsModel>>(

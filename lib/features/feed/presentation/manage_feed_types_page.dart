@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/theme/waanofi_colors.dart';
-import '../../domain/feed_type_model.dart';
+import '../domain/feed_type_model.dart';
 import 'controllers/feed_types_controller.dart';
 
 class ManageFeedTypesPage extends ConsumerStatefulWidget {

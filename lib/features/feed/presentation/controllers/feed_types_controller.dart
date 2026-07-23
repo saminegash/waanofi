@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../domain/feed_type_model.dart';
-import '../data/feed_types_repository.dart';
+import '../../data/feed_types_repository.dart';
 
 final feedTypesControllerProvider =
     StateNotifierProvider<FeedTypesController, AsyncValue<List<FeedTypeModel>>>(

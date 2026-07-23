@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../data/analytics_repository.dart';
-import '../../domain/dashboard_stats_model.dart';
+import '../../../analytics/data/analytics_repository.dart';
+import '../../../analytics/domain/dashboard_stats_model.dart';
 
 final reportsControllerProvider =
     StateNotifierProvider<ReportsController, ReportsState>((ref) {

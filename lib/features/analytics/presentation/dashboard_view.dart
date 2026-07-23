@@ -48,7 +48,7 @@ class DashboardView extends ConsumerWidget {
                     const SizedBox(width: 16),
                     Expanded(
                       child: RoleGuard(
-                        permission: Permission.manageFinance,
+                        permission: Permission.viewFinance,
                         fallback: _buildKpiCard(
                           '30D Trend',
                           '${stats.trend.fold(0.0, (sum, t) => sum + t.litres).toStringAsFixed(0)} L',
@@ -118,7 +118,7 @@ class DashboardView extends ConsumerWidget {
 
                 // Finance (Admin Only)
                 RoleGuard(
-                  permission: Permission.manageFinance,
+                  permission: Permission.viewFinance,
                   fallback: const SizedBox.shrink(),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

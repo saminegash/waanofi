@@ -10,6 +10,7 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
 import '../../../core/theme/waanofi_colors.dart';
+import '../../analytics/domain/dashboard_stats_model.dart';
 import 'controllers/reports_controller.dart';
 
 class ReportsPage extends ConsumerWidget {

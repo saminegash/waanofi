@@ -144,7 +144,7 @@ class DailyFeedEntryPage extends ConsumerWidget {
           // RoleGuard for displaying calculated cost
           const SizedBox(height: 16),
           RoleGuard(
-            permission: Permission.manageFinance, // Only admins/finance can see cost
+            permission: Permission.viewFinance, // Only admins/finance can see cost
             fallback: const SizedBox.shrink(),
             child: Container(
               padding: const EdgeInsets.all(12),
