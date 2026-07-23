@@ -65,6 +65,31 @@ class AuthRepository {
     }
   }
 
+  /// Create a worker account under the current admin's farm.
+  /// Bypasses email confirmation using a Supabase Edge Function.
+  Future<void> createWorker({
+    required String email,
+    required String password,
+    required String fullName,
+  }) async {
+    final session = currentSession;
+    if (session == null) throw const AuthException('Not authenticated');
+
+    final response = await _client.functions.invoke(
+      'create_worker',
+      body: {
+        'email': email,
+        'password': password,
+        'full_name': fullName,
+      },
+    );
+
+    if (response.status != 200) {
+      throw AuthException(
+          'Failed to create worker: ${response.data['error'] ?? response.data}');
+    }
+  }
+
   // ───────────────── Sign Out ─────────────────
 
   Future<void> signOut() async {

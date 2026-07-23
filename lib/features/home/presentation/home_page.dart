@@ -63,6 +63,20 @@ class HomePage extends StatelessWidget {
               ),
               onPressed: () => context.push('/record/milk'),
             ),
+            const SizedBox(height: 16),
+            RoleGuard(
+              permission: Permission.manageUsers,
+              fallback: const SizedBox.shrink(),
+              child: ElevatedButton.icon(
+                icon: const Icon(Icons.people),
+                label: const Text('Manage Workers'),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  textStyle: const TextStyle(fontSize: 18),
+                ),
+                onPressed: () => context.push('/admin/users'),
+              ),
+            ),
           ],
         ),
       ),
