@@ -8,6 +8,7 @@ import '../../../core/theme/waanofi_colors.dart';
 import '../../../shared/widgets/role_guard.dart';
 import 'controllers/feed_entry_controller.dart';
 import 'controllers/feed_types_controller.dart';
+import '../../analytics/presentation/controllers/dashboard_controller.dart';
 
 class DailyFeedEntryPage extends ConsumerWidget {
   const DailyFeedEntryPage({super.key});
@@ -37,6 +38,7 @@ class DailyFeedEntryPage extends ConsumerWidget {
                 ? null
                 : () async {
                     await controller.submit();
+                    ref.invalidate(dashboardControllerProvider);
                     if (context.mounted) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Feed recorded securely!')),

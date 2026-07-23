@@ -134,7 +134,7 @@ class MilkRepository {
     await _outboxDao.enqueueAll('milk_record', 'upsert', payloads);
 
     // 3. Trigger a sync attempt
-    syncOutbox();
+    await syncOutbox();
   }
 
   /// Process the outbox

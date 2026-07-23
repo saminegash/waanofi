@@ -125,7 +125,7 @@ class AnimalsRepository {
     await _outboxDao.enqueueAll('animal', 'upsert', [jsonEncode(json)]);
 
     // 3. Trigger sync
-    syncOutbox();
+    await syncOutbox();
   }
   
   Future<void> deleteAnimal(String id) async {
@@ -136,7 +136,7 @@ class AnimalsRepository {
     await _outboxDao.enqueueAll('animal', 'delete', [jsonEncode({'id': id})]);
 
     // 3. Trigger sync
-    syncOutbox();
+    await syncOutbox();
   }
 
   Future<void> syncOutbox() async {

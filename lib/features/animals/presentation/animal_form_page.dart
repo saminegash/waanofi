@@ -9,6 +9,7 @@ import '../../../core/auth/auth_providers.dart';
 import '../../../core/theme/waanofi_colors.dart';
 import '../data/animals_repository.dart';
 import '../domain/animal_model.dart';
+import '../../analytics/presentation/controllers/dashboard_controller.dart';
 import 'controllers/animals_controller.dart';
 
 class AnimalFormPage extends ConsumerStatefulWidget {
@@ -89,6 +90,7 @@ class _AnimalFormPageState extends ConsumerState<AnimalFormPage> {
       );
 
       await repo.saveAnimal(animal);
+      ref.invalidate(dashboardControllerProvider);
       
       if (mounted) {
         context.pop();

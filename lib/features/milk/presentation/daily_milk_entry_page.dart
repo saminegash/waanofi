@@ -8,6 +8,7 @@ import '../../../core/theme/waanofi_colors.dart';
 import '../../../shared/widgets/role_guard.dart';
 import '../../animals/domain/animal_model.dart';
 import '../domain/milk_record_model.dart';
+import '../../analytics/presentation/controllers/dashboard_controller.dart';
 import 'controllers/milk_entry_controller.dart';
 
 class DailyMilkEntryPage extends ConsumerWidget {
@@ -107,6 +108,7 @@ class DailyMilkEntryPage extends ConsumerWidget {
           onPressed: () async {
             try {
               await controller.saveBatch();
+              ref.invalidate(dashboardControllerProvider);
               if (context.mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(

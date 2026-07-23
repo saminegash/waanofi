@@ -134,7 +134,7 @@ class FeedRepository {
     await _outboxDao.enqueueAll('feed_record', 'upsert', payloads);
 
     // 3. Trigger a sync attempt
-    syncOutbox();
+    await syncOutbox();
   }
 
   /// Process the outbox
