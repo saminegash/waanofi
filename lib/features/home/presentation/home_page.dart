@@ -43,6 +43,16 @@ class HomePage extends StatelessWidget {
               'Your dairy management dashboard',
               style: theme.textTheme.bodyMedium,
             ),
+            const SizedBox(height: 32),
+            ElevatedButton.icon(
+              icon: const Icon(Icons.pets),
+              label: const Text('Manage Herd'),
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                textStyle: const TextStyle(fontSize: 18),
+              ),
+              onPressed: () => context.go('/animals'),
+            ),
           ],
         ),
       ),
