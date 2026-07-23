@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/auth/permission.dart';
+import '../../../shared/widgets/role_guard.dart';
+
 /// Placeholder home screen shown after successful authentication.
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
