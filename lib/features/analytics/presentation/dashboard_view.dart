@@ -166,7 +166,7 @@ class DashboardView extends ConsumerWidget {
                   children: stats.statusCounts.map((s) {
                     return Chip(
                       label: Text('${s.count} ${s.status}', style: const TextStyle(fontWeight: FontWeight.bold)),
-                      backgroundColor: s.status == 'active' ? WaanofiColors.success.shade100 : WaanofiColors.outline,
+                      backgroundColor: s.status == 'active' ? WaanofiColors.success.withOpacity(0.1) : WaanofiColors.outline,
                     );
                   }).toList(),
                 ),
@@ -232,7 +232,7 @@ class DashboardView extends ConsumerWidget {
         children: [
           Icon(icon, color: color),
           const SizedBox(height: 12),
-          Text(title, style: TextStyle(color: WaanofiColors.textSecondary.shade700, fontWeight: FontWeight.w600)),
+          Text(title, style: TextStyle(color: WaanofiColors.textSecondary, fontWeight: FontWeight.w600)),
           const SizedBox(height: 4),
           Text(value, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: color)),
         ],
