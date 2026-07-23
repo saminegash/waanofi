@@ -12,9 +12,11 @@ import '../../features/animals/presentation/animal_detail_page.dart';
 import '../../features/animals/presentation/animal_form_page.dart';
 import '../../features/milk/presentation/daily_milk_entry_page.dart';
 import '../../features/admin/presentation/manage_users_page.dart';
+import '../../features/feed/presentation/daily_feed_entry_page.dart';
+import '../../features/feed/presentation/manage_feed_types_page.dart';
 
 /// Routes that require admin privileges.
-const _adminRoutes = {'/admin', '/admin/users', '/admin/finance'};
+const _adminRoutes = {'/admin', '/admin/users', '/admin/finance', '/admin/feed_types'};
 
 /// Routes that guests are NOT allowed to access (everything except read-only).
 const _guestBlockedRoutes = {'/record', '/admin', '/admin/users', '/admin/finance', '/animals/new'};
@@ -111,6 +113,16 @@ GoRouter appRouter(Ref ref) {
         path: '/admin/users',
         name: 'manage_users',
         builder: (context, state) => const ManageUsersPage(),
+      ),
+      GoRoute(
+        path: '/record/feed',
+        name: 'record_feed',
+        builder: (context, state) => const DailyFeedEntryPage(),
+      ),
+      GoRoute(
+        path: '/admin/feed_types',
+        name: 'manage_feed_types',
+        builder: (context, state) => const ManageFeedTypesPage(),
       ),
     ],
   );

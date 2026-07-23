@@ -67,6 +67,16 @@ class HomePage extends StatelessWidget {
               onPressed: () => context.push('/record/milk'),
             ),
             const SizedBox(height: 16),
+            ElevatedButton.icon(
+              icon: const Icon(Icons.grass),
+              label: const Text('Record Feed'),
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                textStyle: const TextStyle(fontSize: 18),
+              ),
+              onPressed: () => context.push('/record/feed'),
+            ),
+            const SizedBox(height: 16),
             RoleGuard(
               permission: Permission.manageUsers,
               fallback: const SizedBox.shrink(),
@@ -78,6 +88,20 @@ class HomePage extends StatelessWidget {
                   textStyle: const TextStyle(fontSize: 18),
                 ),
                 onPressed: () => context.push('/admin/users'),
+              ),
+            ),
+            const SizedBox(height: 16),
+            RoleGuard(
+              permission: Permission.manageAnimals,
+              fallback: const SizedBox.shrink(),
+              child: ElevatedButton.icon(
+                icon: const Icon(Icons.settings_applications),
+                label: const Text('Manage Feed Types'),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  textStyle: const TextStyle(fontSize: 18),
+                ),
+                onPressed: () => context.push('/admin/feed_types'),
               ),
             ),
           ],

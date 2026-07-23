@@ -33,6 +33,36 @@ class MilkRecordsTable extends Table {
   Set<Column> get primaryKey => {id};
 }
 
+@DataClassName('LocalFeedType')
+class FeedTypesTable extends Table {
+  TextColumn get id => text()();
+  TextColumn get farmId => text()();
+  TextColumn get name => text()();
+  TextColumn get unit => text().withDefault(const Constant('kg'))();
+  RealColumn get unitCost => real().withDefault(const Constant(0.0))();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
+  DateTimeColumn get updatedAt => dateTime().withDefault(currentDateAndTime)();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+@DataClassName('LocalFeedRecord')
+class FeedRecordsTable extends Table {
+  TextColumn get id => text()();
+  TextColumn get farmId => text()();
+  TextColumn get animalId => text().nullable()(); // Null means farm-wide
+  TextColumn get feedTypeId => text()();
+  RealColumn get quantityKg => real()();
+  RealColumn get cost => real()();
+  DateTimeColumn get recordedAt => dateTime()();
+  TextColumn get recordedBy => text().nullable()();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
 @DataClassName('SyncOutboxItem')
 class SyncOutboxTable extends Table {
   IntColumn get id => integer().autoIncrement()();

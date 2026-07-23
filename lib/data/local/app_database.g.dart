@@ -1608,6 +1608,1016 @@ class SyncOutboxTableCompanion extends UpdateCompanion<SyncOutboxItem> {
   }
 }
 
+class $FeedTypesTableTable extends FeedTypesTable
+    with TableInfo<$FeedTypesTableTable, LocalFeedType> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $FeedTypesTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _farmIdMeta = const VerificationMeta('farmId');
+  @override
+  late final GeneratedColumn<String> farmId = GeneratedColumn<String>(
+    'farm_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _unitMeta = const VerificationMeta('unit');
+  @override
+  late final GeneratedColumn<String> unit = GeneratedColumn<String>(
+    'unit',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('kg'),
+  );
+  static const VerificationMeta _unitCostMeta = const VerificationMeta(
+    'unitCost',
+  );
+  @override
+  late final GeneratedColumn<double> unitCost = GeneratedColumn<double>(
+    'unit_cost',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0.0),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    farmId,
+    name,
+    unit,
+    unitCost,
+    createdAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'feed_types_table';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<LocalFeedType> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('farm_id')) {
+      context.handle(
+        _farmIdMeta,
+        farmId.isAcceptableOrUnknown(data['farm_id']!, _farmIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_farmIdMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('unit')) {
+      context.handle(
+        _unitMeta,
+        unit.isAcceptableOrUnknown(data['unit']!, _unitMeta),
+      );
+    }
+    if (data.containsKey('unit_cost')) {
+      context.handle(
+        _unitCostMeta,
+        unitCost.isAcceptableOrUnknown(data['unit_cost']!, _unitCostMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  LocalFeedType map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return LocalFeedType(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      farmId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}farm_id'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      unit: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}unit'],
+      )!,
+      unitCost: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}unit_cost'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+    );
+  }
+
+  @override
+  $FeedTypesTableTable createAlias(String alias) {
+    return $FeedTypesTableTable(attachedDatabase, alias);
+  }
+}
+
+class LocalFeedType extends DataClass implements Insertable<LocalFeedType> {
+  final String id;
+  final String farmId;
+  final String name;
+  final String unit;
+  final double unitCost;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  const LocalFeedType({
+    required this.id,
+    required this.farmId,
+    required this.name,
+    required this.unit,
+    required this.unitCost,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['farm_id'] = Variable<String>(farmId);
+    map['name'] = Variable<String>(name);
+    map['unit'] = Variable<String>(unit);
+    map['unit_cost'] = Variable<double>(unitCost);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    return map;
+  }
+
+  FeedTypesTableCompanion toCompanion(bool nullToAbsent) {
+    return FeedTypesTableCompanion(
+      id: Value(id),
+      farmId: Value(farmId),
+      name: Value(name),
+      unit: Value(unit),
+      unitCost: Value(unitCost),
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+    );
+  }
+
+  factory LocalFeedType.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return LocalFeedType(
+      id: serializer.fromJson<String>(json['id']),
+      farmId: serializer.fromJson<String>(json['farmId']),
+      name: serializer.fromJson<String>(json['name']),
+      unit: serializer.fromJson<String>(json['unit']),
+      unitCost: serializer.fromJson<double>(json['unitCost']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'farmId': serializer.toJson<String>(farmId),
+      'name': serializer.toJson<String>(name),
+      'unit': serializer.toJson<String>(unit),
+      'unitCost': serializer.toJson<double>(unitCost),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+    };
+  }
+
+  LocalFeedType copyWith({
+    String? id,
+    String? farmId,
+    String? name,
+    String? unit,
+    double? unitCost,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) => LocalFeedType(
+    id: id ?? this.id,
+    farmId: farmId ?? this.farmId,
+    name: name ?? this.name,
+    unit: unit ?? this.unit,
+    unitCost: unitCost ?? this.unitCost,
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+  );
+  LocalFeedType copyWithCompanion(FeedTypesTableCompanion data) {
+    return LocalFeedType(
+      id: data.id.present ? data.id.value : this.id,
+      farmId: data.farmId.present ? data.farmId.value : this.farmId,
+      name: data.name.present ? data.name.value : this.name,
+      unit: data.unit.present ? data.unit.value : this.unit,
+      unitCost: data.unitCost.present ? data.unitCost.value : this.unitCost,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LocalFeedType(')
+          ..write('id: $id, ')
+          ..write('farmId: $farmId, ')
+          ..write('name: $name, ')
+          ..write('unit: $unit, ')
+          ..write('unitCost: $unitCost, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(id, farmId, name, unit, unitCost, createdAt, updatedAt);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is LocalFeedType &&
+          other.id == this.id &&
+          other.farmId == this.farmId &&
+          other.name == this.name &&
+          other.unit == this.unit &&
+          other.unitCost == this.unitCost &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class FeedTypesTableCompanion extends UpdateCompanion<LocalFeedType> {
+  final Value<String> id;
+  final Value<String> farmId;
+  final Value<String> name;
+  final Value<String> unit;
+  final Value<double> unitCost;
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<int> rowid;
+  const FeedTypesTableCompanion({
+    this.id = const Value.absent(),
+    this.farmId = const Value.absent(),
+    this.name = const Value.absent(),
+    this.unit = const Value.absent(),
+    this.unitCost = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  FeedTypesTableCompanion.insert({
+    required String id,
+    required String farmId,
+    required String name,
+    this.unit = const Value.absent(),
+    this.unitCost = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       farmId = Value(farmId),
+       name = Value(name);
+  static Insertable<LocalFeedType> custom({
+    Expression<String>? id,
+    Expression<String>? farmId,
+    Expression<String>? name,
+    Expression<String>? unit,
+    Expression<double>? unitCost,
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (farmId != null) 'farm_id': farmId,
+      if (name != null) 'name': name,
+      if (unit != null) 'unit': unit,
+      if (unitCost != null) 'unit_cost': unitCost,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  FeedTypesTableCompanion copyWith({
+    Value<String>? id,
+    Value<String>? farmId,
+    Value<String>? name,
+    Value<String>? unit,
+    Value<double>? unitCost,
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return FeedTypesTableCompanion(
+      id: id ?? this.id,
+      farmId: farmId ?? this.farmId,
+      name: name ?? this.name,
+      unit: unit ?? this.unit,
+      unitCost: unitCost ?? this.unitCost,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (farmId.present) {
+      map['farm_id'] = Variable<String>(farmId.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (unit.present) {
+      map['unit'] = Variable<String>(unit.value);
+    }
+    if (unitCost.present) {
+      map['unit_cost'] = Variable<double>(unitCost.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('FeedTypesTableCompanion(')
+          ..write('id: $id, ')
+          ..write('farmId: $farmId, ')
+          ..write('name: $name, ')
+          ..write('unit: $unit, ')
+          ..write('unitCost: $unitCost, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $FeedRecordsTableTable extends FeedRecordsTable
+    with TableInfo<$FeedRecordsTableTable, LocalFeedRecord> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $FeedRecordsTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _farmIdMeta = const VerificationMeta('farmId');
+  @override
+  late final GeneratedColumn<String> farmId = GeneratedColumn<String>(
+    'farm_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _animalIdMeta = const VerificationMeta(
+    'animalId',
+  );
+  @override
+  late final GeneratedColumn<String> animalId = GeneratedColumn<String>(
+    'animal_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _feedTypeIdMeta = const VerificationMeta(
+    'feedTypeId',
+  );
+  @override
+  late final GeneratedColumn<String> feedTypeId = GeneratedColumn<String>(
+    'feed_type_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _quantityKgMeta = const VerificationMeta(
+    'quantityKg',
+  );
+  @override
+  late final GeneratedColumn<double> quantityKg = GeneratedColumn<double>(
+    'quantity_kg',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _costMeta = const VerificationMeta('cost');
+  @override
+  late final GeneratedColumn<double> cost = GeneratedColumn<double>(
+    'cost',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _recordedAtMeta = const VerificationMeta(
+    'recordedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> recordedAt = GeneratedColumn<DateTime>(
+    'recorded_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _recordedByMeta = const VerificationMeta(
+    'recordedBy',
+  );
+  @override
+  late final GeneratedColumn<String> recordedBy = GeneratedColumn<String>(
+    'recorded_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    farmId,
+    animalId,
+    feedTypeId,
+    quantityKg,
+    cost,
+    recordedAt,
+    recordedBy,
+    createdAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'feed_records_table';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<LocalFeedRecord> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('farm_id')) {
+      context.handle(
+        _farmIdMeta,
+        farmId.isAcceptableOrUnknown(data['farm_id']!, _farmIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_farmIdMeta);
+    }
+    if (data.containsKey('animal_id')) {
+      context.handle(
+        _animalIdMeta,
+        animalId.isAcceptableOrUnknown(data['animal_id']!, _animalIdMeta),
+      );
+    }
+    if (data.containsKey('feed_type_id')) {
+      context.handle(
+        _feedTypeIdMeta,
+        feedTypeId.isAcceptableOrUnknown(
+          data['feed_type_id']!,
+          _feedTypeIdMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_feedTypeIdMeta);
+    }
+    if (data.containsKey('quantity_kg')) {
+      context.handle(
+        _quantityKgMeta,
+        quantityKg.isAcceptableOrUnknown(data['quantity_kg']!, _quantityKgMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_quantityKgMeta);
+    }
+    if (data.containsKey('cost')) {
+      context.handle(
+        _costMeta,
+        cost.isAcceptableOrUnknown(data['cost']!, _costMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_costMeta);
+    }
+    if (data.containsKey('recorded_at')) {
+      context.handle(
+        _recordedAtMeta,
+        recordedAt.isAcceptableOrUnknown(data['recorded_at']!, _recordedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_recordedAtMeta);
+    }
+    if (data.containsKey('recorded_by')) {
+      context.handle(
+        _recordedByMeta,
+        recordedBy.isAcceptableOrUnknown(data['recorded_by']!, _recordedByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  LocalFeedRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return LocalFeedRecord(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      farmId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}farm_id'],
+      )!,
+      animalId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}animal_id'],
+      ),
+      feedTypeId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}feed_type_id'],
+      )!,
+      quantityKg: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}quantity_kg'],
+      )!,
+      cost: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}cost'],
+      )!,
+      recordedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}recorded_at'],
+      )!,
+      recordedBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}recorded_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+    );
+  }
+
+  @override
+  $FeedRecordsTableTable createAlias(String alias) {
+    return $FeedRecordsTableTable(attachedDatabase, alias);
+  }
+}
+
+class LocalFeedRecord extends DataClass implements Insertable<LocalFeedRecord> {
+  final String id;
+  final String farmId;
+  final String? animalId;
+  final String feedTypeId;
+  final double quantityKg;
+  final double cost;
+  final DateTime recordedAt;
+  final String? recordedBy;
+  final DateTime createdAt;
+  const LocalFeedRecord({
+    required this.id,
+    required this.farmId,
+    this.animalId,
+    required this.feedTypeId,
+    required this.quantityKg,
+    required this.cost,
+    required this.recordedAt,
+    this.recordedBy,
+    required this.createdAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['farm_id'] = Variable<String>(farmId);
+    if (!nullToAbsent || animalId != null) {
+      map['animal_id'] = Variable<String>(animalId);
+    }
+    map['feed_type_id'] = Variable<String>(feedTypeId);
+    map['quantity_kg'] = Variable<double>(quantityKg);
+    map['cost'] = Variable<double>(cost);
+    map['recorded_at'] = Variable<DateTime>(recordedAt);
+    if (!nullToAbsent || recordedBy != null) {
+      map['recorded_by'] = Variable<String>(recordedBy);
+    }
+    map['created_at'] = Variable<DateTime>(createdAt);
+    return map;
+  }
+
+  FeedRecordsTableCompanion toCompanion(bool nullToAbsent) {
+    return FeedRecordsTableCompanion(
+      id: Value(id),
+      farmId: Value(farmId),
+      animalId: animalId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(animalId),
+      feedTypeId: Value(feedTypeId),
+      quantityKg: Value(quantityKg),
+      cost: Value(cost),
+      recordedAt: Value(recordedAt),
+      recordedBy: recordedBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(recordedBy),
+      createdAt: Value(createdAt),
+    );
+  }
+
+  factory LocalFeedRecord.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return LocalFeedRecord(
+      id: serializer.fromJson<String>(json['id']),
+      farmId: serializer.fromJson<String>(json['farmId']),
+      animalId: serializer.fromJson<String?>(json['animalId']),
+      feedTypeId: serializer.fromJson<String>(json['feedTypeId']),
+      quantityKg: serializer.fromJson<double>(json['quantityKg']),
+      cost: serializer.fromJson<double>(json['cost']),
+      recordedAt: serializer.fromJson<DateTime>(json['recordedAt']),
+      recordedBy: serializer.fromJson<String?>(json['recordedBy']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'farmId': serializer.toJson<String>(farmId),
+      'animalId': serializer.toJson<String?>(animalId),
+      'feedTypeId': serializer.toJson<String>(feedTypeId),
+      'quantityKg': serializer.toJson<double>(quantityKg),
+      'cost': serializer.toJson<double>(cost),
+      'recordedAt': serializer.toJson<DateTime>(recordedAt),
+      'recordedBy': serializer.toJson<String?>(recordedBy),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+    };
+  }
+
+  LocalFeedRecord copyWith({
+    String? id,
+    String? farmId,
+    Value<String?> animalId = const Value.absent(),
+    String? feedTypeId,
+    double? quantityKg,
+    double? cost,
+    DateTime? recordedAt,
+    Value<String?> recordedBy = const Value.absent(),
+    DateTime? createdAt,
+  }) => LocalFeedRecord(
+    id: id ?? this.id,
+    farmId: farmId ?? this.farmId,
+    animalId: animalId.present ? animalId.value : this.animalId,
+    feedTypeId: feedTypeId ?? this.feedTypeId,
+    quantityKg: quantityKg ?? this.quantityKg,
+    cost: cost ?? this.cost,
+    recordedAt: recordedAt ?? this.recordedAt,
+    recordedBy: recordedBy.present ? recordedBy.value : this.recordedBy,
+    createdAt: createdAt ?? this.createdAt,
+  );
+  LocalFeedRecord copyWithCompanion(FeedRecordsTableCompanion data) {
+    return LocalFeedRecord(
+      id: data.id.present ? data.id.value : this.id,
+      farmId: data.farmId.present ? data.farmId.value : this.farmId,
+      animalId: data.animalId.present ? data.animalId.value : this.animalId,
+      feedTypeId: data.feedTypeId.present
+          ? data.feedTypeId.value
+          : this.feedTypeId,
+      quantityKg: data.quantityKg.present
+          ? data.quantityKg.value
+          : this.quantityKg,
+      cost: data.cost.present ? data.cost.value : this.cost,
+      recordedAt: data.recordedAt.present
+          ? data.recordedAt.value
+          : this.recordedAt,
+      recordedBy: data.recordedBy.present
+          ? data.recordedBy.value
+          : this.recordedBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LocalFeedRecord(')
+          ..write('id: $id, ')
+          ..write('farmId: $farmId, ')
+          ..write('animalId: $animalId, ')
+          ..write('feedTypeId: $feedTypeId, ')
+          ..write('quantityKg: $quantityKg, ')
+          ..write('cost: $cost, ')
+          ..write('recordedAt: $recordedAt, ')
+          ..write('recordedBy: $recordedBy, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    farmId,
+    animalId,
+    feedTypeId,
+    quantityKg,
+    cost,
+    recordedAt,
+    recordedBy,
+    createdAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is LocalFeedRecord &&
+          other.id == this.id &&
+          other.farmId == this.farmId &&
+          other.animalId == this.animalId &&
+          other.feedTypeId == this.feedTypeId &&
+          other.quantityKg == this.quantityKg &&
+          other.cost == this.cost &&
+          other.recordedAt == this.recordedAt &&
+          other.recordedBy == this.recordedBy &&
+          other.createdAt == this.createdAt);
+}
+
+class FeedRecordsTableCompanion extends UpdateCompanion<LocalFeedRecord> {
+  final Value<String> id;
+  final Value<String> farmId;
+  final Value<String?> animalId;
+  final Value<String> feedTypeId;
+  final Value<double> quantityKg;
+  final Value<double> cost;
+  final Value<DateTime> recordedAt;
+  final Value<String?> recordedBy;
+  final Value<DateTime> createdAt;
+  final Value<int> rowid;
+  const FeedRecordsTableCompanion({
+    this.id = const Value.absent(),
+    this.farmId = const Value.absent(),
+    this.animalId = const Value.absent(),
+    this.feedTypeId = const Value.absent(),
+    this.quantityKg = const Value.absent(),
+    this.cost = const Value.absent(),
+    this.recordedAt = const Value.absent(),
+    this.recordedBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  FeedRecordsTableCompanion.insert({
+    required String id,
+    required String farmId,
+    this.animalId = const Value.absent(),
+    required String feedTypeId,
+    required double quantityKg,
+    required double cost,
+    required DateTime recordedAt,
+    this.recordedBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       farmId = Value(farmId),
+       feedTypeId = Value(feedTypeId),
+       quantityKg = Value(quantityKg),
+       cost = Value(cost),
+       recordedAt = Value(recordedAt);
+  static Insertable<LocalFeedRecord> custom({
+    Expression<String>? id,
+    Expression<String>? farmId,
+    Expression<String>? animalId,
+    Expression<String>? feedTypeId,
+    Expression<double>? quantityKg,
+    Expression<double>? cost,
+    Expression<DateTime>? recordedAt,
+    Expression<String>? recordedBy,
+    Expression<DateTime>? createdAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (farmId != null) 'farm_id': farmId,
+      if (animalId != null) 'animal_id': animalId,
+      if (feedTypeId != null) 'feed_type_id': feedTypeId,
+      if (quantityKg != null) 'quantity_kg': quantityKg,
+      if (cost != null) 'cost': cost,
+      if (recordedAt != null) 'recorded_at': recordedAt,
+      if (recordedBy != null) 'recorded_by': recordedBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  FeedRecordsTableCompanion copyWith({
+    Value<String>? id,
+    Value<String>? farmId,
+    Value<String?>? animalId,
+    Value<String>? feedTypeId,
+    Value<double>? quantityKg,
+    Value<double>? cost,
+    Value<DateTime>? recordedAt,
+    Value<String?>? recordedBy,
+    Value<DateTime>? createdAt,
+    Value<int>? rowid,
+  }) {
+    return FeedRecordsTableCompanion(
+      id: id ?? this.id,
+      farmId: farmId ?? this.farmId,
+      animalId: animalId ?? this.animalId,
+      feedTypeId: feedTypeId ?? this.feedTypeId,
+      quantityKg: quantityKg ?? this.quantityKg,
+      cost: cost ?? this.cost,
+      recordedAt: recordedAt ?? this.recordedAt,
+      recordedBy: recordedBy ?? this.recordedBy,
+      createdAt: createdAt ?? this.createdAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (farmId.present) {
+      map['farm_id'] = Variable<String>(farmId.value);
+    }
+    if (animalId.present) {
+      map['animal_id'] = Variable<String>(animalId.value);
+    }
+    if (feedTypeId.present) {
+      map['feed_type_id'] = Variable<String>(feedTypeId.value);
+    }
+    if (quantityKg.present) {
+      map['quantity_kg'] = Variable<double>(quantityKg.value);
+    }
+    if (cost.present) {
+      map['cost'] = Variable<double>(cost.value);
+    }
+    if (recordedAt.present) {
+      map['recorded_at'] = Variable<DateTime>(recordedAt.value);
+    }
+    if (recordedBy.present) {
+      map['recorded_by'] = Variable<String>(recordedBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('FeedRecordsTableCompanion(')
+          ..write('id: $id, ')
+          ..write('farmId: $farmId, ')
+          ..write('animalId: $animalId, ')
+          ..write('feedTypeId: $feedTypeId, ')
+          ..write('quantityKg: $quantityKg, ')
+          ..write('cost: $cost, ')
+          ..write('recordedAt: $recordedAt, ')
+          ..write('recordedBy: $recordedBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -1618,9 +2628,17 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $SyncOutboxTableTable syncOutboxTable = $SyncOutboxTableTable(
     this,
   );
+  late final $FeedTypesTableTable feedTypesTable = $FeedTypesTableTable(this);
+  late final $FeedRecordsTableTable feedRecordsTable = $FeedRecordsTableTable(
+    this,
+  );
   late final AnimalsDao animalsDao = AnimalsDao(this as AppDatabase);
   late final MilkDao milkDao = MilkDao(this as AppDatabase);
   late final OutboxDao outboxDao = OutboxDao(this as AppDatabase);
+  late final FeedTypesDao feedTypesDao = FeedTypesDao(this as AppDatabase);
+  late final FeedRecordsDao feedRecordsDao = FeedRecordsDao(
+    this as AppDatabase,
+  );
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -1629,6 +2647,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     animalsTable,
     milkRecordsTable,
     syncOutboxTable,
+    feedTypesTable,
+    feedRecordsTable,
   ];
 }
 
@@ -2455,6 +3475,536 @@ typedef $$SyncOutboxTableTableProcessedTableManager =
       SyncOutboxItem,
       PrefetchHooks Function()
     >;
+typedef $$FeedTypesTableTableCreateCompanionBuilder =
+    FeedTypesTableCompanion Function({
+      required String id,
+      required String farmId,
+      required String name,
+      Value<String> unit,
+      Value<double> unitCost,
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<int> rowid,
+    });
+typedef $$FeedTypesTableTableUpdateCompanionBuilder =
+    FeedTypesTableCompanion Function({
+      Value<String> id,
+      Value<String> farmId,
+      Value<String> name,
+      Value<String> unit,
+      Value<double> unitCost,
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$FeedTypesTableTableFilterComposer
+    extends Composer<_$AppDatabase, $FeedTypesTableTable> {
+  $$FeedTypesTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get farmId => $composableBuilder(
+    column: $table.farmId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get unit => $composableBuilder(
+    column: $table.unit,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get unitCost => $composableBuilder(
+    column: $table.unitCost,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$FeedTypesTableTableOrderingComposer
+    extends Composer<_$AppDatabase, $FeedTypesTableTable> {
+  $$FeedTypesTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get farmId => $composableBuilder(
+    column: $table.farmId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get unit => $composableBuilder(
+    column: $table.unit,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get unitCost => $composableBuilder(
+    column: $table.unitCost,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$FeedTypesTableTableAnnotationComposer
+    extends Composer<_$AppDatabase, $FeedTypesTableTable> {
+  $$FeedTypesTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get farmId =>
+      $composableBuilder(column: $table.farmId, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get unit =>
+      $composableBuilder(column: $table.unit, builder: (column) => column);
+
+  GeneratedColumn<double> get unitCost =>
+      $composableBuilder(column: $table.unitCost, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$FeedTypesTableTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $FeedTypesTableTable,
+          LocalFeedType,
+          $$FeedTypesTableTableFilterComposer,
+          $$FeedTypesTableTableOrderingComposer,
+          $$FeedTypesTableTableAnnotationComposer,
+          $$FeedTypesTableTableCreateCompanionBuilder,
+          $$FeedTypesTableTableUpdateCompanionBuilder,
+          (
+            LocalFeedType,
+            BaseReferences<_$AppDatabase, $FeedTypesTableTable, LocalFeedType>,
+          ),
+          LocalFeedType,
+          PrefetchHooks Function()
+        > {
+  $$FeedTypesTableTableTableManager(
+    _$AppDatabase db,
+    $FeedTypesTableTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$FeedTypesTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$FeedTypesTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$FeedTypesTableTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> farmId = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<String> unit = const Value.absent(),
+                Value<double> unitCost = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => FeedTypesTableCompanion(
+                id: id,
+                farmId: farmId,
+                name: name,
+                unit: unit,
+                unitCost: unitCost,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String farmId,
+                required String name,
+                Value<String> unit = const Value.absent(),
+                Value<double> unitCost = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => FeedTypesTableCompanion.insert(
+                id: id,
+                farmId: farmId,
+                name: name,
+                unit: unit,
+                unitCost: unitCost,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$FeedTypesTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $FeedTypesTableTable,
+      LocalFeedType,
+      $$FeedTypesTableTableFilterComposer,
+      $$FeedTypesTableTableOrderingComposer,
+      $$FeedTypesTableTableAnnotationComposer,
+      $$FeedTypesTableTableCreateCompanionBuilder,
+      $$FeedTypesTableTableUpdateCompanionBuilder,
+      (
+        LocalFeedType,
+        BaseReferences<_$AppDatabase, $FeedTypesTableTable, LocalFeedType>,
+      ),
+      LocalFeedType,
+      PrefetchHooks Function()
+    >;
+typedef $$FeedRecordsTableTableCreateCompanionBuilder =
+    FeedRecordsTableCompanion Function({
+      required String id,
+      required String farmId,
+      Value<String?> animalId,
+      required String feedTypeId,
+      required double quantityKg,
+      required double cost,
+      required DateTime recordedAt,
+      Value<String?> recordedBy,
+      Value<DateTime> createdAt,
+      Value<int> rowid,
+    });
+typedef $$FeedRecordsTableTableUpdateCompanionBuilder =
+    FeedRecordsTableCompanion Function({
+      Value<String> id,
+      Value<String> farmId,
+      Value<String?> animalId,
+      Value<String> feedTypeId,
+      Value<double> quantityKg,
+      Value<double> cost,
+      Value<DateTime> recordedAt,
+      Value<String?> recordedBy,
+      Value<DateTime> createdAt,
+      Value<int> rowid,
+    });
+
+class $$FeedRecordsTableTableFilterComposer
+    extends Composer<_$AppDatabase, $FeedRecordsTableTable> {
+  $$FeedRecordsTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get farmId => $composableBuilder(
+    column: $table.farmId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get animalId => $composableBuilder(
+    column: $table.animalId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get feedTypeId => $composableBuilder(
+    column: $table.feedTypeId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get quantityKg => $composableBuilder(
+    column: $table.quantityKg,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get cost => $composableBuilder(
+    column: $table.cost,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get recordedAt => $composableBuilder(
+    column: $table.recordedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get recordedBy => $composableBuilder(
+    column: $table.recordedBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$FeedRecordsTableTableOrderingComposer
+    extends Composer<_$AppDatabase, $FeedRecordsTableTable> {
+  $$FeedRecordsTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get farmId => $composableBuilder(
+    column: $table.farmId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get animalId => $composableBuilder(
+    column: $table.animalId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get feedTypeId => $composableBuilder(
+    column: $table.feedTypeId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get quantityKg => $composableBuilder(
+    column: $table.quantityKg,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get cost => $composableBuilder(
+    column: $table.cost,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get recordedAt => $composableBuilder(
+    column: $table.recordedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get recordedBy => $composableBuilder(
+    column: $table.recordedBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$FeedRecordsTableTableAnnotationComposer
+    extends Composer<_$AppDatabase, $FeedRecordsTableTable> {
+  $$FeedRecordsTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get farmId =>
+      $composableBuilder(column: $table.farmId, builder: (column) => column);
+
+  GeneratedColumn<String> get animalId =>
+      $composableBuilder(column: $table.animalId, builder: (column) => column);
+
+  GeneratedColumn<String> get feedTypeId => $composableBuilder(
+    column: $table.feedTypeId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<double> get quantityKg => $composableBuilder(
+    column: $table.quantityKg,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<double> get cost =>
+      $composableBuilder(column: $table.cost, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get recordedAt => $composableBuilder(
+    column: $table.recordedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get recordedBy => $composableBuilder(
+    column: $table.recordedBy,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+}
+
+class $$FeedRecordsTableTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $FeedRecordsTableTable,
+          LocalFeedRecord,
+          $$FeedRecordsTableTableFilterComposer,
+          $$FeedRecordsTableTableOrderingComposer,
+          $$FeedRecordsTableTableAnnotationComposer,
+          $$FeedRecordsTableTableCreateCompanionBuilder,
+          $$FeedRecordsTableTableUpdateCompanionBuilder,
+          (
+            LocalFeedRecord,
+            BaseReferences<
+              _$AppDatabase,
+              $FeedRecordsTableTable,
+              LocalFeedRecord
+            >,
+          ),
+          LocalFeedRecord,
+          PrefetchHooks Function()
+        > {
+  $$FeedRecordsTableTableTableManager(
+    _$AppDatabase db,
+    $FeedRecordsTableTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$FeedRecordsTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$FeedRecordsTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$FeedRecordsTableTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> farmId = const Value.absent(),
+                Value<String?> animalId = const Value.absent(),
+                Value<String> feedTypeId = const Value.absent(),
+                Value<double> quantityKg = const Value.absent(),
+                Value<double> cost = const Value.absent(),
+                Value<DateTime> recordedAt = const Value.absent(),
+                Value<String?> recordedBy = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => FeedRecordsTableCompanion(
+                id: id,
+                farmId: farmId,
+                animalId: animalId,
+                feedTypeId: feedTypeId,
+                quantityKg: quantityKg,
+                cost: cost,
+                recordedAt: recordedAt,
+                recordedBy: recordedBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String farmId,
+                Value<String?> animalId = const Value.absent(),
+                required String feedTypeId,
+                required double quantityKg,
+                required double cost,
+                required DateTime recordedAt,
+                Value<String?> recordedBy = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => FeedRecordsTableCompanion.insert(
+                id: id,
+                farmId: farmId,
+                animalId: animalId,
+                feedTypeId: feedTypeId,
+                quantityKg: quantityKg,
+                cost: cost,
+                recordedAt: recordedAt,
+                recordedBy: recordedBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$FeedRecordsTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $FeedRecordsTableTable,
+      LocalFeedRecord,
+      $$FeedRecordsTableTableFilterComposer,
+      $$FeedRecordsTableTableOrderingComposer,
+      $$FeedRecordsTableTableAnnotationComposer,
+      $$FeedRecordsTableTableCreateCompanionBuilder,
+      $$FeedRecordsTableTableUpdateCompanionBuilder,
+      (
+        LocalFeedRecord,
+        BaseReferences<_$AppDatabase, $FeedRecordsTableTable, LocalFeedRecord>,
+      ),
+      LocalFeedRecord,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -2465,4 +4015,8 @@ class $AppDatabaseManager {
       $$MilkRecordsTableTableTableManager(_db, _db.milkRecordsTable);
   $$SyncOutboxTableTableTableManager get syncOutboxTable =>
       $$SyncOutboxTableTableTableManager(_db, _db.syncOutboxTable);
+  $$FeedTypesTableTableTableManager get feedTypesTable =>
+      $$FeedTypesTableTableTableManager(_db, _db.feedTypesTable);
+  $$FeedRecordsTableTableTableManager get feedRecordsTable =>
+      $$FeedRecordsTableTableTableManager(_db, _db.feedRecordsTable);
 }
