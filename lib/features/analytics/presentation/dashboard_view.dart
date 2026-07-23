@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import '../../../core/auth/permission.dart';
 import '../../../core/theme/waanofi_colors.dart';
 import '../../../shared/widgets/role_guard.dart';
+import '../../../shared/widgets/skeleton_loader.dart';
 import 'controllers/dashboard_controller.dart';
 
 class DashboardView extends ConsumerWidget {
@@ -187,8 +188,34 @@ class DashboardView extends ConsumerWidget {
             ),
           ),
         ),
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => _buildDashboardSkeleton(),
         error: (e, _) => Center(child: Text('Failed to load dashboard: $e')),
+      ),
+    );
+  }
+
+  Widget _buildDashboardSkeleton() {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Row(
+            children: [
+              Expanded(child: SkeletonLoader(height: 120, borderRadius: 16)),
+              SizedBox(width: 16),
+              Expanded(child: SkeletonLoader(height: 120, borderRadius: 16)),
+            ],
+          ),
+          const SizedBox(height: 24),
+          const SkeletonLoader(width: 200, height: 24),
+          const SizedBox(height: 16),
+          const SkeletonLoader(height: 250, borderRadius: 16),
+          const SizedBox(height: 32),
+          const SkeletonLoader(width: 200, height: 24),
+          const SizedBox(height: 16),
+          const SkeletonLoader(height: 80, borderRadius: 12),
+        ],
       ),
     );
   }

@@ -5,6 +5,8 @@ import 'package:go_router/go_router.dart';
 import '../../../core/auth/permission.dart';
 import '../../../core/theme/waanofi_colors.dart';
 import '../../../shared/widgets/role_guard.dart';
+import '../../../shared/widgets/empty_state_widget.dart';
+import '../../../shared/widgets/skeleton_loader.dart';
 import '../domain/animal_model.dart';
 import 'controllers/animals_controller.dart';
 
@@ -94,15 +96,20 @@ class AnimalsListPage extends ConsumerWidget {
                   ],
                 ),
               ],
-            ),
-          ),
-          
           // Animal List
           Expanded(
             child: animalsAsync.when(
+              loading: () => const ListSkeleton(itemCount: 8),
+              error: (err, stack) => Center(child: Text('Error: $err')),
               data: (animals) {
                 if (animals.isEmpty) {
-                  return const Center(child: Text('No animals found.'));
+                  return EmptyStateWidget(
+                    icon: Icons.pets,
+                    title: 'No animals found',
+                    description: 'Your herd is currently empty or no animals match your filter.',
+                    actionLabel: 'Add Animal',
+                    onActionPressed: () => context.go('/animals/new'),
+                  );
                 }
                 return ListView.builder(
                   itemCount: animals.length,
@@ -112,8 +119,6 @@ class AnimalsListPage extends ConsumerWidget {
                   },
                 );
               },
-              loading: () => const Center(child: CircularProgressIndicator()),
-              error: (err, stack) => Center(child: Text('Error: $err')),
             ),
           ),
         ],

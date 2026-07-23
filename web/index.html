@@ -31,8 +31,46 @@
 
   <title>Waanofi Dairy</title>
   <link rel="manifest" href="manifest.json">
+  <style>
+    body { background-color: #f5f5f5; }
+    .loader-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #2B5B84;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+  </style>
 </head>
 <body>
+  <div id="loading" class="loader-container">
+    <div class="spinner"></div>
+    <div style="margin-top: 20px; font-family: sans-serif; color: #2B5B84; font-weight: bold;">Loading Waanofi Dairy...</div>
+  </div>
+  <script>
+    window.addEventListener('load', function() {
+      // Remove loading indicator once flutter boots
+      var loading = document.querySelector('#loading');
+      _flutter.buildConfig = {
+        onEntrypointLoaded: async function(engineInitializer) {
+          const appRunner = await engineInitializer.initializeEngine();
+          if (loading) {
+            loading.remove();
+          }
+          await appRunner.runApp();
+        }
+      };
+    });
+  </script>
   <script src="sql-wasm.js"></script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
