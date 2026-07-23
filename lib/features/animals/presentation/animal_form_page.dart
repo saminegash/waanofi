@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../../core/auth/app_user.dart';
 import '../../../core/auth/app_user.dart';
@@ -75,7 +76,7 @@ class _AnimalFormPageState extends ConsumerState<AnimalFormPage> {
       final repo = ref.read(animalsRepositoryProvider);
       
       final animal = AnimalModel(
-        id: _existing?.id ?? '', // Empty ID means insert in repo
+        id: _existing?.id ?? const Uuid().v4(), // Generate local UUID
         farmId: _existing?.farmId ?? user!.farmId!,
         tagNumber: _tagController.text.trim(),
         name: _nameController.text.trim().isEmpty ? null : _nameController.text.trim(),

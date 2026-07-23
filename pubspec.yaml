@@ -47,6 +47,7 @@ dependencies:
   sentry_flutter: ^9.25.0
   shared_preferences: ^2.5.5
   shimmer: ^3.0.0
+  uuid: ^4.6.0
 
 dev_dependencies:
   flutter_test:

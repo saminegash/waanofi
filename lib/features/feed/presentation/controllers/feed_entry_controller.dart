@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../../../core/auth/auth_providers.dart';
 import '../../../animals/data/animals_repository.dart';
@@ -111,7 +112,7 @@ class FeedEntryController extends StateNotifier<FeedEntryState> {
 
     if (state.isFarmWide) {
       records.add(FeedRecordModel(
-        id: '',
+        id: const Uuid().v4(),
         farmId: _farmId!,
         animalId: null,
         feedTypeId: state.selectedFeedType!.id,
@@ -125,7 +126,7 @@ class FeedEntryController extends StateNotifier<FeedEntryState> {
       for (final entry in state.animalQuantities.entries) {
         if (entry.value > 0) {
           records.add(FeedRecordModel(
-            id: '',
+            id: const Uuid().v4(),
             farmId: _farmId!,
             animalId: entry.key,
             feedTypeId: state.selectedFeedType!.id,

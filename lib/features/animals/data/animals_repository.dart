@@ -1,23 +1,28 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 import '../../../core/auth/auth_providers.dart';
 import '../../../core/providers/database_provider.dart';
 import '../../../data/local/app_database.dart';
 import '../../../data/local/daos/animals_dao.dart';
+import '../../../data/local/daos/outbox_dao.dart';
 import '../domain/animal_model.dart';
 
 final animalsRepositoryProvider = Provider<AnimalsRepository>((ref) {
   final db = ref.watch(appDatabaseProvider);
   final dao = AnimalsDao(db);
+  final outboxDao = db.outboxDao;
   final user = ref.watch(currentUserProvider);
 
   final repo = AnimalsRepository(
     client: Supabase.instance.client,
     dao: dao,
+    outboxDao: outboxDao,
     farmId: user?.farmId,
   );
 
@@ -30,9 +35,11 @@ class AnimalsRepository {
   AnimalsRepository({
     required SupabaseClient client,
     required AnimalsDao dao,
+    required OutboxDao outboxDao,
     required String? farmId,
   })  : _client = client,
         _dao = dao,
+        _outboxDao = outboxDao,
         _farmId = farmId {
     if (_farmId != null) {
       _init();
@@ -41,8 +48,11 @@ class AnimalsRepository {
 
   final SupabaseClient _client;
   final AnimalsDao _dao;
+  final OutboxDao _outboxDao;
   final String? _farmId;
   RealtimeChannel? _subscription;
+  StreamSubscription<List<ConnectivityResult>>? _connSub;
+  bool _isSyncing = false;
 
   Future<void> _init() async {
     // 1. Initial fetch from remote to populate local cache
@@ -62,6 +72,14 @@ class AnimalsRepository {
             ),
             callback: _onRealtimeChange)
         .subscribe();
+
+    syncOutbox();
+
+    _connSub = Connectivity().onConnectivityChanged.listen((results) {
+      if (!results.contains(ConnectivityResult.none)) {
+        syncOutbox();
+      }
+    });
   }
 
   /// Manually sync all animals from remote to local cache.
@@ -97,27 +115,63 @@ class AnimalsRepository {
     return _dao.watchAnimalsByFarm(_farmId).map((list) => list.map(_fromLocal).toList());
   }
 
-  /// Create or Update an animal remotely.
-  /// Realtime will pick up the change and update local cache automatically.
+  /// Create or Update an animal offline-first.
   Future<void> saveAnimal(AnimalModel animal) async {
-    final json = animal.toJson();
-    
-    // Remove auto-generated fields if it's an insert (empty ID usually means insert)
-    if (animal.id.isEmpty) {
-      json.remove('id');
-      json.remove('created_at');
-      json.remove('updated_at');
-    }
+    // 1. Insert locally
+    await _dao.insertOrUpdate(_toLocal(animal));
 
-    await _client.from('animals').upsert(json);
+    // 2. Queue to outbox
+    final json = animal.toJson();
+    await _outboxDao.enqueueAll('animal', 'upsert', [jsonEncode(json)]);
+
+    // 3. Trigger sync
+    syncOutbox();
   }
   
   Future<void> deleteAnimal(String id) async {
-    await _client.from('animals').delete().eq('id', id);
+    // 1. Delete locally
+    await _dao.deleteAnimal(id);
+
+    // 2. Queue to outbox
+    await _outboxDao.enqueueAll('animal', 'delete', [jsonEncode({'id': id})]);
+
+    // 3. Trigger sync
+    syncOutbox();
+  }
+
+  Future<void> syncOutbox() async {
+    if (_isSyncing) return;
+    _isSyncing = true;
+
+    try {
+      final pending = await _outboxDao.getPending();
+      if (pending.isEmpty) return;
+
+      for (final item in pending) {
+        try {
+          final payload = jsonDecode(item.payload) as Map<String, dynamic>;
+          
+          if (item.entityType == 'animal') {
+            if (item.operation == 'upsert') {
+              await _client.from('animals').upsert(payload);
+            } else if (item.operation == 'delete') {
+              await _client.from('animals').delete().eq('id', payload['id']);
+            }
+          }
+          await _outboxDao.markProcessed(item.id);
+        } catch (e) {
+          debugPrint('Failed to sync animal outbox item ${item.id}: $e');
+          await _outboxDao.markFailed(item.id, e.toString());
+        }
+      }
+    } finally {
+      _isSyncing = false;
+    }
   }
 
   void dispose() {
     _subscription?.unsubscribe();
+    _connSub?.cancel();
   }
 
   // Mappers
