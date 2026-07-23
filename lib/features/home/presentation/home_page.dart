@@ -53,6 +53,16 @@ class HomePage extends StatelessWidget {
               ),
               onPressed: () => context.go('/animals'),
             ),
+            const SizedBox(height: 16),
+            ElevatedButton.icon(
+              icon: const Icon(Icons.water_drop),
+              label: const Text('Record Milk'),
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                textStyle: const TextStyle(fontSize: 18),
+              ),
+              onPressed: () => context.go('/record/milk'),
+            ),
           ],
         ),
       ),

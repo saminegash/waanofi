@@ -10,6 +10,7 @@ import '../../features/home/presentation/home_page.dart';
 import '../../features/animals/presentation/animals_list_page.dart';
 import '../../features/animals/presentation/animal_detail_page.dart';
 import '../../features/animals/presentation/animal_form_page.dart';
+import '../../features/milk/presentation/daily_milk_entry_page.dart';
 
 /// Routes that require admin privileges.
 const _adminRoutes = {'/admin', '/admin/users', '/admin/finance'};
@@ -99,6 +100,11 @@ GoRouter appRouter(Ref ref) {
             builder: (context, state) => AnimalFormPage(animalId: state.pathParameters['id']),
           ),
         ],
+      ),
+      GoRoute(
+        path: '/record/milk',
+        name: 'record_milk',
+        builder: (context, state) => const DailyMilkEntryPage(),
       ),
     ],
   );
