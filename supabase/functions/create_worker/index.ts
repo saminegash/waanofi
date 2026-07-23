@@ -55,10 +55,12 @@ serve(async (req) => {
     }
 
     // 3. Parse the request body for the new worker's details
-    const { email, password, full_name } = await req.json();
+    const { email, password, full_name, role } = await req.json();
     if (!email || !password || !full_name) {
       throw new Error("Missing required fields: email, password, full_name");
     }
+
+    const assignedRole = (role === 'admin') ? 'admin' : 'user';
 
     // 4. Create the user using the Admin Auth API (bypassing email confirmation by setting email_confirm to true)
     const { data: authData, error: createError } = await supabaseAdmin.auth.admin.createUser({
@@ -79,7 +81,7 @@ serve(async (req) => {
       .from('profiles')
       .update({
         full_name: full_name,
-        role: 'user',
+        role: assignedRole,
         farm_id: adminProfile.farm_id
       })
       .eq('id', authData.user.id);

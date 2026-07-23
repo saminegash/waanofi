@@ -71,6 +71,7 @@ class AuthRepository {
     required String email,
     required String password,
     required String fullName,
+    String role = 'user',
   }) async {
     final session = currentSession;
     if (session == null) throw const AuthException('Not authenticated');
@@ -81,6 +82,7 @@ class AuthRepository {
         'email': email,
         'password': password,
         'full_name': fullName,
+        'role': role,
       },
     );
 
