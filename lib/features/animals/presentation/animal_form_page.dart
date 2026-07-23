@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/auth/app_user.dart';
+import '../../../core/auth/app_user.dart';
 import '../../../core/auth/auth_providers.dart';
 import '../../../core/theme/waanofi_colors.dart';
-import '../../data/animals_repository.dart';
-import '../../domain/animal_model.dart';
+import '../data/animals_repository.dart';
+import '../domain/animal_model.dart';
 import 'controllers/animals_controller.dart';
 
 class AnimalFormPage extends ConsumerStatefulWidget {

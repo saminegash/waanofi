@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/auth/permission.dart';
 import '../../../core/theme/waanofi_colors.dart';
 import '../../../shared/widgets/role_guard.dart';
-import '../../domain/animal_model.dart';
+import '../domain/animal_model.dart';
 import 'controllers/animals_controller.dart';
 
 class AnimalsListPage extends ConsumerWidget {
