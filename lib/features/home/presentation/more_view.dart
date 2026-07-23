@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:waanofi/l10n/app_localizations.dart';
 
 import '../../../core/auth/permission.dart';
 import '../../../core/providers/locale_provider.dart';

@@ -9,22 +9,10 @@ class AppLocalizationsAm extends AppLocalizations {
   AppLocalizationsAm([String locale = 'am']) : super(locale);
 
   @override
-  String get appTitle => 'Waanofi የወተት ማለቢያ';
-
-  @override
-  String get login => 'ግቡ';
-
-  @override
-  String get email => 'ኢሜይል';
-
-  @override
-  String get password => 'የይለፍ ቃል';
-
-  @override
   String get dashboard => 'ዳሽቦርድ';
 
   @override
-  String get herd => 'መንጋ';
+  String get herd => 'ከብቶች';
 
   @override
   String get reports => 'ሪፖርቶች';
@@ -39,48 +27,37 @@ class AppLocalizationsAm extends AppLocalizations {
   String get recordFeed => 'መኖ መዝግብ';
 
   @override
-  String get animals => 'እንስሳት';
-
-  @override
   String get settings => 'ቅንብሮች';
 
   @override
   String get logout => 'ውጣ';
 
   @override
-  String get welcome => 'እንኳን ወደ Waanofi በደህና መጡ';
-
-  @override
-  String get onboardingTitle1 => 'መንጋዎን ይከታተሉ';
+  String get onboardingTitle1 => 'ከብቶችዎን ይከታተሉ';
 
   @override
   String get onboardingDesc1 =>
-      'በወተት ማለቢያዎ ውስጥ እያንዳንዱን እንስሳ በቀላሉ ያስተዳድሩ እና ይከታተሉ።';
+      'የወተት ላሞችዎን፣ የጤና ሁኔታቸውን እና የምርት መዝገቦቻቸውን በቀላሉ ያስተዳድሩ።';
 
   @override
-  String get onboardingTitle2 => 'ምርት ይቆጣጠሩ';
+  String get onboardingTitle2 => 'ዕለታዊ ወተት መዝግብ';
 
   @override
-  String get onboardingDesc2 => 'የእለታዊ ወተት ምርት ይመዝግቡ እና አዝማሚያዎችን ይቆጣጠሩ።';
+  String get onboardingDesc2 => 'የወተት ምርትን በእያንዳንዱ ላም ወይም በእርሻ ደረጃ ይመዝግቡ።';
 
   @override
-  String get onboardingTitle3 => 'ትርፍ ይተንትኑ';
+  String get onboardingTitle3 => 'አፈጻጸምን ይተንትኑ';
 
   @override
-  String get onboardingDesc3 => 'ትርፍዎን ከፍ ለማድረግ የመኖ ወጪዎችን ከወተት ገቢ ጋር ያነፃፅሩ።';
+  String get onboardingDesc3 =>
+      'ገበታዎችን፣ የትርፍ/ኪሳራ መለኪያዎችን ይመልከቱ እና ከፍተኛ አምራቾችዎን ይለዩ።';
 
   @override
-  String get getStarted => 'ይጀምሩ';
+  String get getStarted => 'ጀምር';
 
   @override
   String get next => 'ቀጣይ';
 
   @override
   String get skip => 'ዝለል';
-
-  @override
-  String get emptyAnimals => 'ምንም እንስሳት አልተገኙም።';
-
-  @override
-  String get addAnimal => 'እንስሳ አክል';
 }

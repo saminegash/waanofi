@@ -9,18 +9,6 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get appTitle => 'Waanofi Dairy';
-
-  @override
-  String get login => 'Login';
-
-  @override
-  String get email => 'Email';
-
-  @override
-  String get password => 'Password';
-
-  @override
   String get dashboard => 'Dashboard';
 
   @override
@@ -39,37 +27,31 @@ class AppLocalizationsEn extends AppLocalizations {
   String get recordFeed => 'Record Feed';
 
   @override
-  String get animals => 'Animals';
+  String get settings => 'Settings & More';
 
   @override
-  String get settings => 'Settings';
+  String get logout => 'Sign Out';
 
   @override
-  String get logout => 'Logout';
-
-  @override
-  String get welcome => 'Welcome to Waanofi Dairy';
-
-  @override
-  String get onboardingTitle1 => 'Track Herd';
+  String get onboardingTitle1 => 'Track Your Herd';
 
   @override
   String get onboardingDesc1 =>
-      'Easily manage and track every animal in your dairy farm.';
+      'Easily manage your dairy cows, their health status, and production records.';
 
   @override
-  String get onboardingTitle2 => 'Monitor Production';
+  String get onboardingTitle2 => 'Record Daily Milk';
 
   @override
   String get onboardingDesc2 =>
-      'Log daily milk yields per session and monitor trends.';
+      'Log milk production per cow or at the farm level with intuitive forms.';
 
   @override
-  String get onboardingTitle3 => 'Analyze Profit';
+  String get onboardingTitle3 => 'Analyze Performance';
 
   @override
   String get onboardingDesc3 =>
-      'Track feed costs against milk revenue to maximize your profits.';
+      'View dynamic charts, profit/loss metrics, and identify your top producers.';
 
   @override
   String get getStarted => 'Get Started';
@@ -79,10 +61,4 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get skip => 'Skip';
-
-  @override
-  String get emptyAnimals => 'No animals found.';
-
-  @override
-  String get addAnimal => 'Add Animal';
 }

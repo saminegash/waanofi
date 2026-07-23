@@ -98,30 +98,6 @@ abstract class AppLocalizations {
     Locale('en'),
   ];
 
-  /// The title of the application
-  ///
-  /// In en, this message translates to:
-  /// **'Waanofi Dairy'**
-  String get appTitle;
-
-  /// No description provided for @login.
-  ///
-  /// In en, this message translates to:
-  /// **'Login'**
-  String get login;
-
-  /// No description provided for @email.
-  ///
-  /// In en, this message translates to:
-  /// **'Email'**
-  String get email;
-
-  /// No description provided for @password.
-  ///
-  /// In en, this message translates to:
-  /// **'Password'**
-  String get password;
-
   /// No description provided for @dashboard.
   ///
   /// In en, this message translates to:
@@ -158,64 +134,52 @@ abstract class AppLocalizations {
   /// **'Record Feed'**
   String get recordFeed;
 
-  /// No description provided for @animals.
-  ///
-  /// In en, this message translates to:
-  /// **'Animals'**
-  String get animals;
-
   /// No description provided for @settings.
   ///
   /// In en, this message translates to:
-  /// **'Settings'**
+  /// **'Settings & More'**
   String get settings;
 
   /// No description provided for @logout.
   ///
   /// In en, this message translates to:
-  /// **'Logout'**
+  /// **'Sign Out'**
   String get logout;
-
-  /// No description provided for @welcome.
-  ///
-  /// In en, this message translates to:
-  /// **'Welcome to Waanofi Dairy'**
-  String get welcome;
 
   /// No description provided for @onboardingTitle1.
   ///
   /// In en, this message translates to:
-  /// **'Track Herd'**
+  /// **'Track Your Herd'**
   String get onboardingTitle1;
 
   /// No description provided for @onboardingDesc1.
   ///
   /// In en, this message translates to:
-  /// **'Easily manage and track every animal in your dairy farm.'**
+  /// **'Easily manage your dairy cows, their health status, and production records.'**
   String get onboardingDesc1;
 
   /// No description provided for @onboardingTitle2.
   ///
   /// In en, this message translates to:
-  /// **'Monitor Production'**
+  /// **'Record Daily Milk'**
   String get onboardingTitle2;
 
   /// No description provided for @onboardingDesc2.
   ///
   /// In en, this message translates to:
-  /// **'Log daily milk yields per session and monitor trends.'**
+  /// **'Log milk production per cow or at the farm level with intuitive forms.'**
   String get onboardingDesc2;
 
   /// No description provided for @onboardingTitle3.
   ///
   /// In en, this message translates to:
-  /// **'Analyze Profit'**
+  /// **'Analyze Performance'**
   String get onboardingTitle3;
 
   /// No description provided for @onboardingDesc3.
   ///
   /// In en, this message translates to:
-  /// **'Track feed costs against milk revenue to maximize your profits.'**
+  /// **'View dynamic charts, profit/loss metrics, and identify your top producers.'**
   String get onboardingDesc3;
 
   /// No description provided for @getStarted.
@@ -235,18 +199,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Skip'**
   String get skip;
-
-  /// No description provided for @emptyAnimals.
-  ///
-  /// In en, this message translates to:
-  /// **'No animals found.'**
-  String get emptyAnimals;
-
-  /// No description provided for @addAnimal.
-  ///
-  /// In en, this message translates to:
-  /// **'Add Animal'**
-  String get addAnimal;
 }
 
 class _AppLocalizationsDelegate

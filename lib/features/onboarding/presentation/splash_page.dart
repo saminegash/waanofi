@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../core/auth/auth_providers.dart';
-import '../../core/theme/waanofi_colors.dart';
+import '../../../core/auth/auth_providers.dart';
+import '../../../core/theme/waanofi_colors.dart';
 
 class SplashPage extends ConsumerStatefulWidget {
   const SplashPage({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:waanofi/l10n/app_localizations.dart';
 
 class ResponsiveScaffold extends ConsumerStatefulWidget {
   final Widget child;
@@ -85,6 +85,7 @@ class _ResponsiveScaffoldState extends ConsumerState<ResponsiveScaffold> {
               leading: Padding(
                 padding: const EdgeInsets.only(bottom: 24.0, top: 8.0),
                 child: FloatingActionButton(
+                  heroTag: null,
                   elevation: 0,
                   onPressed: () => _onRecordAction(context),
                   child: const Icon(Icons.add),
@@ -124,6 +125,7 @@ class _ResponsiveScaffoldState extends ConsumerState<ResponsiveScaffold> {
     return Scaffold(
       body: widget.child,
       floatingActionButton: FloatingActionButton(
+        heroTag: null,
         onPressed: () => _onRecordAction(context),
         child: const Icon(Icons.add),
       ),

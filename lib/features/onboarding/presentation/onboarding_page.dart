@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:waanofi/l10n/app_localizations.dart';
 
-import '../../core/theme/waanofi_colors.dart';
+import '../../../core/theme/waanofi_colors.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});

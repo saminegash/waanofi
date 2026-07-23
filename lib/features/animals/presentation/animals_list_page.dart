@@ -96,6 +96,9 @@ class AnimalsListPage extends ConsumerWidget {
                   ],
                 ),
               ],
+            ),
+          ),
+          
           // Animal List
           Expanded(
             child: animalsAsync.when(
@@ -127,6 +130,7 @@ class AnimalsListPage extends ConsumerWidget {
         permission: Permission.manageAnimals,
         fallback: const SizedBox.shrink(), // hide FAB if not admin
         child: FloatingActionButton(
+          heroTag: null,
           onPressed: () => context.go('/animals/new'),
           child: const Icon(Icons.add),
         ),

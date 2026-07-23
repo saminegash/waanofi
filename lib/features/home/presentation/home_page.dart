@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:waanofi/l10n/app_localizations.dart';
 
 import '../../analytics/presentation/dashboard_view.dart';
 import '../../animals/presentation/animals_list_page.dart';
@@ -77,6 +77,7 @@ class _HomePageState extends ConsumerState<HomePage> {
               leading: Padding(
                 padding: const EdgeInsets.only(bottom: 24.0, top: 8.0),
                 child: FloatingActionButton(
+                  heroTag: null,
                   elevation: 0,
                   onPressed: () => _onRecordAction(context),
                   child: const Icon(Icons.add),
@@ -99,6 +100,7 @@ class _HomePageState extends ConsumerState<HomePage> {
     return Scaffold(
       body: body,
       floatingActionButton: FloatingActionButton(
+        heroTag: null,
         onPressed: () => _onRecordAction(context),
         child: const Icon(Icons.add),
       ),
