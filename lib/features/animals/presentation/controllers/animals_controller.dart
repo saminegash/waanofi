@@ -105,6 +105,13 @@ class AnimalsController extends StreamNotifier<List<AnimalModel>> {
         .cast<String>()
         .toSet()
         .toList();
+        
+    // Ensure the currently selected filter is always in the list to prevent Dropdown assertion errors
+    final currentFilter = ref.read(animalsStateProvider).breedFilter;
+    if (currentFilter != null && !breeds.contains(currentFilter)) {
+      breeds.add(currentFilter);
+    }
+    
     breeds.sort();
     return breeds;
   }
