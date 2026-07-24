@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/auth/auth_providers.dart';
 import '../../../core/theme/waanofi_colors.dart';
+import '../../../shared/widgets/glass_card.dart';
 import 'package:waanofi/l10n/app_localizations.dart';
 
 /// Login page with email/password and magic-link fallback.
@@ -92,15 +93,28 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
 
+    final isDark = theme.brightness == Brightness.dark;
+
     return Scaffold(
-      body: Center(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 32),
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 400),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: isDark
+                ? [const Color(0xFF1E293B), const Color(0xFF0F172A)]
+                : [WaanofiColors.primary.withValues(alpha: 0.1), WaanofiColors.primary.withValues(alpha: 0.02)],
+          ),
+        ),
+        child: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 400),
+              child: GlassCard(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
                 Icon(
                   Icons.agriculture_rounded,
                   size: 72,
@@ -176,6 +190,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       label: Text(l10n.sendMagicLink),
                     ),
                   ),
+                  ),
                   const SizedBox(height: 24),
 
                   // Sign up link
@@ -185,6 +200,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   ),
                 ],
               ],
+            ),
             ),
           ),
         ),

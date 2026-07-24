@@ -8,6 +8,7 @@ import '../../../core/theme/waanofi_colors.dart';
 import 'package:waanofi/l10n/app_localizations.dart';
 import '../data/animals_repository.dart';
 import '../domain/animal_model.dart';
+import '../../../shared/widgets/glass_card.dart';
 import '../../analytics/presentation/controllers/dashboard_controller.dart';
 import 'controllers/animals_controller.dart';
 
@@ -107,17 +108,34 @@ class _AnimalFormPageState extends ConsumerState<AnimalFormPage> {
     final isEditing = widget.animalId != null;
     final l10n = AppLocalizations.of(context)!;
 
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: Text(isEditing ? l10n.editAnimal : l10n.newAnimal),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+      body: Container(
+        height: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: isDark
+                ? [const Color(0xFF1E293B), const Color(0xFF0F172A)]
+                : [WaanofiColors.primary.withValues(alpha: 0.1), WaanofiColors.primary.withValues(alpha: 0.02)],
+          ),
+        ),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 100, bottom: 32),
+          child: GlassCard(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
               TextFormField(
                 controller: _tagController,
                 decoration: InputDecoration(labelText: l10n.tagNumber),
@@ -178,14 +196,16 @@ class _AnimalFormPageState extends ConsumerState<AnimalFormPage> {
               const SizedBox(height: 32),
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: _loading ? null : _save,
-                  child: _loading
-                      ? const CircularProgressIndicator()
-                      : Text(l10n.save),
-                ),
+                    child: ElevatedButton(
+                      onPressed: _loading ? null : _save,
+                      child: _loading
+                          ? const CircularProgressIndicator()
+                          : Text(l10n.save),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),
