@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/auth/auth_providers.dart';
 import '../../../core/theme/waanofi_colors.dart';
+import 'package:waanofi/l10n/app_localizations.dart';
 
 class SplashPage extends ConsumerStatefulWidget {
   const SplashPage({super.key});

@@ -9,6 +9,7 @@ import '../../../shared/widgets/role_guard.dart';
 import 'controllers/feed_entry_controller.dart';
 import 'controllers/feed_types_controller.dart';
 import '../../analytics/presentation/controllers/dashboard_controller.dart';
+import 'package:waanofi/l10n/app_localizations.dart';
 
 class DailyFeedEntryPage extends ConsumerWidget {
   const DailyFeedEntryPage({super.key});
@@ -18,10 +19,10 @@ class DailyFeedEntryPage extends ConsumerWidget {
     final state = ref.watch(feedEntryControllerProvider);
     final controller = ref.read(feedEntryControllerProvider.notifier);
     final feedTypesState = ref.watch(feedTypesControllerProvider);
-
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Record Feed'),
+        title: Text(l10n.recordFeed),
       ),
       body: Column(
         children: [
@@ -41,7 +42,7 @@ class DailyFeedEntryPage extends ConsumerWidget {
                     ref.invalidate(dashboardControllerProvider);
                     if (context.mounted) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Feed recorded securely!')),
+                        SnackBar(content: Text(l10n.feedRecordedSecurely)),
                       );
                       if (context.canPop()) context.pop();
                     }
@@ -49,7 +50,7 @@ class DailyFeedEntryPage extends ConsumerWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 12.0),
               child: Text(
-                'Save Feed (${state.totalQuantity.toStringAsFixed(1)} ${state.selectedFeedType?.unit ?? ""})',
+                '${l10n.saveFeed} (${state.totalQuantity.toStringAsFixed(1)} ${state.selectedFeedType?.unit ?? ""})',
                 style: const TextStyle(fontSize: 16),
               ),
             ),
@@ -61,6 +62,7 @@ class DailyFeedEntryPage extends ConsumerWidget {
 
   Widget _buildHeader(BuildContext context, FeedEntryState state,
       FeedEntryController controller, AsyncValue feedTypesState) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       padding: const EdgeInsets.all(16),
       color: WaanofiColors.surface,
@@ -81,8 +83,8 @@ class DailyFeedEntryPage extends ConsumerWidget {
                     if (date != null) controller.updateDate(date);
                   },
                   child: InputDecorator(
-                    decoration: const InputDecoration(
-                      labelText: 'Date',
+                    decoration: InputDecoration(
+                      labelText: l10n.date,
                       border: OutlineInputBorder(),
                       contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                     ),
@@ -101,11 +103,11 @@ class DailyFeedEntryPage extends ConsumerWidget {
                 child: feedTypesState.when(
                   data: (feedTypes) {
                     if (feedTypes.isEmpty) {
-                      return const Text('No Feed Types (Ask Admin)', style: TextStyle(color: WaanofiColors.error));
+                      return Text(l10n.noActiveFeedTypes, style: const TextStyle(color: WaanofiColors.error));
                     }
                     return DropdownButtonFormField(
-                      decoration: const InputDecoration(
-                        labelText: 'Feed Type',
+                      decoration: InputDecoration(
+                        labelText: l10n.feedType,
                         border: OutlineInputBorder(),
                         contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                       ),
@@ -130,9 +132,9 @@ class DailyFeedEntryPage extends ConsumerWidget {
           const SizedBox(height: 16),
           // Toggle between Farm-wide and Per-Animal
           SegmentedButton<bool>(
-            segments: const [
-              ButtonSegment(value: true, label: Text('Farm-wide Entry')),
-              ButtonSegment(value: false, label: Text('Per Animal Entry')),
+            segments: [
+              ButtonSegment(value: true, label: Text(l10n.farmWideEntry)),
+              ButtonSegment(value: false, label: Text(l10n.perAnimalEntry)),
             ],
             selected: {state.isFarmWide},
             onSelectionChanged: (set) {
@@ -157,7 +159,7 @@ class DailyFeedEntryPage extends ConsumerWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Estimated Cost (Hidden from Workers):', style: TextStyle(color: WaanofiColors.textSecondary)),
+                  Text(l10n.estimatedCost, style: const TextStyle(color: WaanofiColors.textSecondary)),
                   Text('\$${state.totalCost.toStringAsFixed(2)}', 
                     style: const TextStyle(fontWeight: FontWeight.bold, color: WaanofiColors.primary)),
                 ],
@@ -171,9 +173,10 @@ class DailyFeedEntryPage extends ConsumerWidget {
 
   Widget _buildBody(
       BuildContext context, FeedEntryState state, FeedEntryController controller) {
+    final l10n = AppLocalizations.of(context)!;
     if (state.selectedFeedType == null) {
-      return const Center(
-        child: Text('Please select a Feed Type first.', style: TextStyle(fontSize: 16, color: WaanofiColors.textSecondary)),
+      return Center(
+        child: Text(l10n.selectFeedTypeFirst, style: const TextStyle(fontSize: 16, color: WaanofiColors.textSecondary)),
       );
     }
 
@@ -186,8 +189,8 @@ class DailyFeedEntryPage extends ConsumerWidget {
             children: [
               const Icon(Icons.agriculture, size: 64, color: WaanofiColors.textSecondary),
               const SizedBox(height: 24),
-              const Text('Enter total quantity distributed to the herd:',
-                  textAlign: TextAlign.center, style: TextStyle(fontSize: 16)),
+              Text(l10n.enterTotalQuantity,
+                  textAlign: TextAlign.center, style: const TextStyle(fontSize: 16)),
               const SizedBox(height: 16),
               SizedBox(
                 width: 200,
@@ -214,7 +217,7 @@ class DailyFeedEntryPage extends ConsumerWidget {
 
     // Per Animal List
     if (state.activeAnimals.isEmpty) {
-      return const Center(child: Text('No active animals found.'));
+      return Center(child: Text(l10n.noActiveAnimals));
     }
 
     return ListView.builder(

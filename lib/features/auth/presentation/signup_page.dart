@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/auth/auth_providers.dart';
 import '../../../core/theme/waanofi_colors.dart';
+import 'package:waanofi/l10n/app_localizations.dart';
 
 /// Sign-up page: creates a new user, farm, and admin profile.
 class SignUpPage extends ConsumerStatefulWidget {
@@ -64,10 +65,11 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create Account'),
+        title: Text(l10n.createAccount),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => context.go('/login'),
@@ -89,40 +91,40 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                     color: theme.colorScheme.primary,
                   ),
                   const SizedBox(height: 16),
-                  Text('Set up your dairy', style: theme.textTheme.headlineMedium),
+                  Text(l10n.setUpYourDairy, style: theme.textTheme.headlineMedium),
                   const SizedBox(height: 32),
                   TextFormField(
                     controller: _fullNameController,
                     textCapitalization: TextCapitalization.words,
-                    decoration: const InputDecoration(
-                      labelText: 'Full Name',
-                      prefixIcon: Icon(Icons.person_outline),
+                    decoration: InputDecoration(
+                      labelText: l10n.fullName,
+                      prefixIcon: const Icon(Icons.person_outline),
                     ),
                     validator: (v) =>
-                        (v == null || v.trim().isEmpty) ? 'Name is required' : null,
+                        (v == null || v.trim().isEmpty) ? l10n.nameRequired : null,
                   ),
                   const SizedBox(height: 16),
                   TextFormField(
                     controller: _farmNameController,
                     textCapitalization: TextCapitalization.words,
-                    decoration: const InputDecoration(
-                      labelText: 'Farm Name',
-                      prefixIcon: Icon(Icons.home_work_outlined),
+                    decoration: InputDecoration(
+                      labelText: l10n.farmName,
+                      prefixIcon: const Icon(Icons.home_work_outlined),
                     ),
                     validator: (v) =>
-                        (v == null || v.trim().isEmpty) ? 'Farm name is required' : null,
+                        (v == null || v.trim().isEmpty) ? l10n.farmNameRequired : null,
                   ),
                   const SizedBox(height: 16),
                   TextFormField(
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
-                      labelText: 'Email',
-                      prefixIcon: Icon(Icons.email_outlined),
+                    decoration: InputDecoration(
+                      labelText: l10n.email,
+                      prefixIcon: const Icon(Icons.email_outlined),
                     ),
                     validator: (v) {
-                      if (v == null || v.trim().isEmpty) return 'Email is required';
-                      if (!v.contains('@')) return 'Enter a valid email';
+                      if (v == null || v.trim().isEmpty) return l10n.emailRequired;
+                      if (!v.contains('@')) return l10n.validEmailRequired;
                       return null;
                     },
                   ),
@@ -130,13 +132,13 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                   TextFormField(
                     controller: _passwordController,
                     obscureText: true,
-                    decoration: const InputDecoration(
-                      labelText: 'Password',
-                      prefixIcon: Icon(Icons.lock_outline),
+                    decoration: InputDecoration(
+                      labelText: l10n.password,
+                      prefixIcon: const Icon(Icons.lock_outline),
                     ),
                     validator: (v) {
                       if (v == null || v.length < 6) {
-                        return 'Password must be at least 6 characters';
+                        return l10n.passwordMinLength;
                       }
                       return null;
                     },
@@ -152,13 +154,13 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                               width: 20,
                               child: CircularProgressIndicator(strokeWidth: 2),
                             )
-                          : const Text('Create Account & Farm'),
+                          : Text(l10n.createAccountAndFarm),
                     ),
                   ),
                   const SizedBox(height: 16),
                   TextButton(
                     onPressed: () => context.go('/login'),
-                    child: const Text('Already have an account? Sign in'),
+                    child: Text(l10n.hasAccountSignIn),
                   ),
                 ],
               ),

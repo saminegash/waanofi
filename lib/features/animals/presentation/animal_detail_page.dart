@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/auth/permission.dart';
 import '../../../shared/widgets/role_guard.dart';
+import 'package:waanofi/l10n/app_localizations.dart';
 import '../domain/animal_model.dart';
 import 'controllers/animals_controller.dart';
 
@@ -16,6 +17,7 @@ class AnimalDetailPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final animalsAsync = ref.watch(animalsControllerProvider);
+    final l10n = AppLocalizations.of(context)!;
     
     // Find the animal in the cached list
     final animal = animalsAsync.valueOrNull?.where((a) => a.id == animalId).firstOrNull;
@@ -26,8 +28,8 @@ class AnimalDetailPage extends ConsumerWidget {
 
     if (animal == null) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Not Found')),
-        body: const Center(child: Text('Animal not found.')),
+        appBar: AppBar(title: Text(l10n.notFound)),
+        body: Center(child: Text(l10n.animalNotFound)),
       );
     }
 
@@ -46,11 +48,11 @@ class AnimalDetailPage extends ConsumerWidget {
               ),
             ),
           ],
-          bottom: const TabBar(
+          bottom: TabBar(
             tabs: [
-              Tab(text: 'Info'),
-              Tab(text: 'Milk'),
-              Tab(text: 'Feed'),
+              Tab(text: l10n.info),
+              Tab(text: l10n.milk),
+              Tab(text: l10n.feed),
             ],
           ),
         ),
@@ -60,19 +62,19 @@ class AnimalDetailPage extends ConsumerWidget {
             ListView(
               padding: const EdgeInsets.all(16),
               children: [
-                _InfoTile('Tag Number', animal.tagNumber),
-                _InfoTile('Name', animal.name ?? '-'),
-                _InfoTile('Breed', animal.breed ?? '-'),
-                _InfoTile('Sex', animal.sex),
-                _InfoTile('Status', animal.status),
+                _InfoTile(l10n.tagNumber.replaceAll(' *', ''), animal.tagNumber),
+                _InfoTile(l10n.nameOptional.replaceAll(' (Optional)', '').replaceAll(' (Dirqama miti)', '').replaceAll(' (አማራጭ)', ''), animal.name ?? '-'),
+                _InfoTile(l10n.breed, animal.breed ?? '-'),
+                _InfoTile(l10n.sex, animal.sex),
+                _InfoTile(l10n.status, animal.status),
                 if (animal.dob != null)
-                  _InfoTile('Date of Birth', animal.dob.toString().split(' ')[0]),
+                  _InfoTile(l10n.dateOfBirth, animal.dob.toString().split(' ')[0]),
               ],
             ),
             // Tab 2: Milk History (Placeholder)
-            const Center(child: Text('Milk history coming soon')),
+            Center(child: Text(l10n.milkHistoryComingSoon)),
             // Tab 3: Feed History (Placeholder)
-            const Center(child: Text('Feed history coming soon')),
+            Center(child: Text(l10n.feedHistoryComingSoon)),
           ],
         ),
       ),

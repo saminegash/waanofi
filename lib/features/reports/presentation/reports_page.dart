@@ -10,6 +10,7 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
 import '../../../core/theme/waanofi_colors.dart';
+import 'package:waanofi/l10n/app_localizations.dart';
 import 'controllers/reports_controller.dart';
 
 class ReportsPage extends ConsumerWidget {
@@ -32,7 +33,8 @@ class ReportsPage extends ConsumerWidget {
     await file.writeAsString(csv);
 
     if (context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Saved to $path')));
+      final l10n = AppLocalizations.of(context)!;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l10n.savedToPath(path))));
     }
   }
 
@@ -70,20 +72,21 @@ class ReportsPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(reportsControllerProvider);
     final controller = ref.read(reportsControllerProvider.notifier);
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Reports'),
+        title: Text(l10n.reports),
         actions: [
           IconButton(
             icon: const Icon(Icons.picture_as_pdf),
             onPressed: state.reportData.hasValue ? () => _exportPdf(context, state) : null,
-            tooltip: 'Export PDF',
+            tooltip: l10n.exportPdf,
           ),
           IconButton(
             icon: const Icon(Icons.table_chart),
             onPressed: state.reportData.hasValue ? () => _exportCsv(context, state) : null,
-            tooltip: 'Export CSV',
+            tooltip: l10n.exportCsv,
           ),
         ],
       ),
@@ -119,11 +122,11 @@ class ReportsPage extends ConsumerWidget {
                 const SizedBox(height: 16),
                 DropdownButtonFormField<String>(
                   value: state.groupBy,
-                  decoration: const InputDecoration(labelText: 'Group By', border: OutlineInputBorder()),
-                  items: const [
-                    DropdownMenuItem(value: 'day', child: Text('By Day')),
-                    DropdownMenuItem(value: 'month', child: Text('By Month')),
-                    DropdownMenuItem(value: 'animal', child: Text('By Animal')),
+                  decoration: InputDecoration(labelText: l10n.groupBy, border: const OutlineInputBorder()),
+                  items: [
+                    DropdownMenuItem(value: 'day', child: Text(l10n.byDay)),
+                    DropdownMenuItem(value: 'month', child: Text(l10n.byMonth)),
+                    DropdownMenuItem(value: 'animal', child: Text(l10n.byAnimal)),
                   ],
                   onChanged: (v) {
                     if (v != null) controller.updateGroupBy(v);
@@ -137,7 +140,7 @@ class ReportsPage extends ConsumerWidget {
           Expanded(
             child: state.reportData.when(
               data: (rows) {
-                if (rows.isEmpty) return const Center(child: Text('No data for this period.'));
+                if (rows.isEmpty) return Center(child: Text(l10n.noDataForPeriod));
                 return ListView.separated(
                   itemCount: rows.length,
                   separatorBuilder: (_, __) => const Divider(height: 1),
@@ -145,7 +148,7 @@ class ReportsPage extends ConsumerWidget {
                     final row = rows[index];
                     return ListTile(
                       title: Text(row.groupLabel, style: const TextStyle(fontWeight: FontWeight.bold)),
-                      subtitle: Text('${row.sessionCount} sessions'),
+                      subtitle: Text('${row.sessionCount} ${l10n.sessions}'),
                       trailing: Text('${row.totalLitres.toStringAsFixed(1)} L', 
                         style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: WaanofiColors.primary)),
                     );
@@ -153,7 +156,7 @@ class ReportsPage extends ConsumerWidget {
                 );
               },
               loading: () => const Center(child: CircularProgressIndicator()),
-              error: (e, _) => Center(child: Text('Error: $e')),
+              error: (e, _) => Center(child: Text('${l10n.error}: $e')),
             ),
           ),
         ],

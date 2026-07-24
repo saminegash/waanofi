@@ -9,6 +9,7 @@ import '../../../shared/widgets/role_guard.dart';
 import '../../animals/domain/animal_model.dart';
 import '../domain/milk_record_model.dart';
 import '../../analytics/presentation/controllers/dashboard_controller.dart';
+import 'package:waanofi/l10n/app_localizations.dart';
 import 'controllers/milk_entry_controller.dart';
 
 class DailyMilkEntryPage extends ConsumerWidget {
@@ -19,9 +20,11 @@ class DailyMilkEntryPage extends ConsumerWidget {
     final state = ref.watch(milkEntryControllerProvider);
     final controller = ref.read(milkEntryControllerProvider.notifier);
 
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Daily Milk Entry'),
+        title: Text(l10n.recordMilk),
         actions: [
           Center(
             child: Padding(
@@ -53,7 +56,7 @@ class DailyMilkEntryPage extends ConsumerWidget {
                       if (date != null) controller.setDate(date);
                     },
                     child: InputDecorator(
-                      decoration: const InputDecoration(labelText: 'Date'),
+                      decoration: InputDecoration(labelText: l10n.date),
                       child: Text(state.date.toString().split(' ')[0]),
                     ),
                   ),
@@ -62,7 +65,7 @@ class DailyMilkEntryPage extends ConsumerWidget {
                 Expanded(
                   child: DropdownButtonFormField<MilkSession>(
                     value: state.session,
-                    decoration: const InputDecoration(labelText: 'Session'),
+                    decoration: InputDecoration(labelText: l10n.session),
                     items: MilkSession.values.map((s) {
                       return DropdownMenuItem(
                         value: s,
@@ -83,7 +86,7 @@ class DailyMilkEntryPage extends ConsumerWidget {
             child: state.isLoading
                 ? const Center(child: CircularProgressIndicator())
                 : state.animals.isEmpty
-                    ? const Center(child: Text('No active lactating animals found.'))
+                    ? Center(child: Text(l10n.noActiveAnimals))
                     : ListView.builder(
                         itemCount: state.animals.length,
                         itemBuilder: (context, index) {
@@ -111,8 +114,8 @@ class DailyMilkEntryPage extends ConsumerWidget {
               ref.invalidate(dashboardControllerProvider);
               if (context.mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Saved locally. Will sync when online.'),
+                  SnackBar(
+                    content: Text(l10n.savedLocally),
                     backgroundColor: WaanofiColors.success,
                   ),
                 );
@@ -134,7 +137,7 @@ class DailyMilkEntryPage extends ConsumerWidget {
             }
           },
           icon: const Icon(Icons.save),
-          label: const Text('Save Batch'),
+          label: Text(l10n.saveBatch),
         ),
       ),
     );

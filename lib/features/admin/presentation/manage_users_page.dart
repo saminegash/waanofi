@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 
 import '../../../core/auth/auth_providers.dart';
 import '../../../core/theme/waanofi_colors.dart';
+import 'package:waanofi/l10n/app_localizations.dart';
 import 'controllers/admin_controller.dart';
 
 class ManageUsersPage extends ConsumerStatefulWidget {
@@ -44,18 +45,17 @@ class _ManageUsersPageState extends ConsumerState<ManageUsersPage> with SingleTi
     setState(() => _loading = true);
     try {
       final repo = ref.read(authRepositoryProvider);
-      // Wait, we need to pass role to createWorker. We'll need to update AuthRepository as well.
-      // We will do that in another step if we haven't already.
       await repo.createWorker(
         email: _emailController.text.trim(),
         password: _passwordController.text,
         fullName: _fullNameController.text.trim(),
-        role: _selectedRole, // Assuming we will update AuthRepository
+        role: _selectedRole,
       );
 
       if (mounted) {
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Worker created successfully!'), backgroundColor: WaanofiColors.success),
+          SnackBar(content: Text(l10n.workerCreatedSuccess), backgroundColor: WaanofiColors.success),
         );
         _fullNameController.clear();
         _emailController.clear();
@@ -73,14 +73,15 @@ class _ManageUsersPageState extends ConsumerState<ManageUsersPage> with SingleTi
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Admin Console'),
+        title: Text(l10n.adminConsole),
         bottom: TabBar(
           controller: _tabController,
-          tabs: const [
-            Tab(icon: Icon(Icons.people), text: 'Workers'),
-            Tab(icon: Icon(Icons.history), text: 'Audit Log'),
+          tabs: [
+            Tab(icon: const Icon(Icons.people), text: l10n.workers),
+            Tab(icon: const Icon(Icons.history), text: l10n.auditLog),
           ],
         ),
       ),
@@ -97,13 +98,14 @@ class _ManageUsersPageState extends ConsumerState<ManageUsersPage> with SingleTi
   Widget _buildWorkersTab() {
     final state = ref.watch(adminControllerProvider);
     final controller = ref.read(adminControllerProvider.notifier);
+    final l10n = AppLocalizations.of(context)!;
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Add New Worker', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          Text(l10n.addNewWorker, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           const SizedBox(height: 16),
           Form(
             key: _formKey,
@@ -114,18 +116,18 @@ class _ManageUsersPageState extends ConsumerState<ManageUsersPage> with SingleTi
                     Expanded(
                       child: TextFormField(
                         controller: _fullNameController,
-                        decoration: const InputDecoration(labelText: 'Full Name', prefixIcon: Icon(Icons.person_outline)),
-                        validator: (v) => (v == null || v.trim().isEmpty) ? 'Required' : null,
+                        decoration: InputDecoration(labelText: l10n.fullName, prefixIcon: const Icon(Icons.person_outline)),
+                        validator: (v) => (v == null || v.trim().isEmpty) ? l10n.required : null,
                       ),
                     ),
                     const SizedBox(width: 16),
                     Expanded(
                       child: DropdownButtonFormField<String>(
                         value: _selectedRole,
-                        decoration: const InputDecoration(labelText: 'Role'),
-                        items: const [
-                          DropdownMenuItem(value: 'user', child: Text('Worker (User)')),
-                          DropdownMenuItem(value: 'admin', child: Text('Admin')),
+                        decoration: InputDecoration(labelText: l10n.role),
+                        items: [
+                          DropdownMenuItem(value: 'user', child: Text(l10n.workerUser)),
+                          DropdownMenuItem(value: 'admin', child: Text(l10n.admin)),
                         ],
                         onChanged: (v) => setState(() => _selectedRole = v!),
                       ),
@@ -138,8 +140,8 @@ class _ManageUsersPageState extends ConsumerState<ManageUsersPage> with SingleTi
                     Expanded(
                       child: TextFormField(
                         controller: _emailController,
-                        decoration: const InputDecoration(labelText: 'Email', prefixIcon: Icon(Icons.email_outlined)),
-                        validator: (v) => (v == null || !v.contains('@')) ? 'Valid email required' : null,
+                        decoration: InputDecoration(labelText: l10n.email, prefixIcon: const Icon(Icons.email_outlined)),
+                        validator: (v) => (v == null || !v.contains('@')) ? l10n.validEmailRequired : null,
                       ),
                     ),
                     const SizedBox(width: 16),
@@ -147,8 +149,8 @@ class _ManageUsersPageState extends ConsumerState<ManageUsersPage> with SingleTi
                       child: TextFormField(
                         controller: _passwordController,
                         obscureText: true,
-                        decoration: const InputDecoration(labelText: 'Password', prefixIcon: Icon(Icons.lock_outline)),
-                        validator: (v) => (v == null || v.length < 6) ? 'Min 6 chars' : null,
+                        decoration: InputDecoration(labelText: l10n.password, prefixIcon: const Icon(Icons.lock_outline)),
+                        validator: (v) => (v == null || v.length < 6) ? l10n.passwordMinLength : null,
                       ),
                     ),
                   ],
@@ -158,14 +160,14 @@ class _ManageUsersPageState extends ConsumerState<ManageUsersPage> with SingleTi
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: _loading ? null : _createWorker,
-                    child: _loading ? const CircularProgressIndicator() : const Text('Create Account'),
+                    child: _loading ? const CircularProgressIndicator() : Text(l10n.createAccountBtn),
                   ),
                 ),
               ],
             ),
           ),
           const Divider(height: 48),
-          const Text('Current Team', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          Text(l10n.currentTeam, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           const SizedBox(height: 16),
           state.workers.when(
             data: (workers) => ListView.builder(
@@ -181,15 +183,15 @@ class _ManageUsersPageState extends ConsumerState<ManageUsersPage> with SingleTi
                       child: Icon(Icons.person, color: w.active ? WaanofiColors.primary : WaanofiColors.error),
                     ),
                     title: Text('${w.fullName} (${w.role})', style: TextStyle(decoration: w.active ? null : TextDecoration.lineThrough)),
-                    subtitle: Text('Status: ${w.active ? 'Active' : 'Deactivated'}'),
+                    subtitle: Text('${l10n.status}: ${w.active ? l10n.active : l10n.deactivated}'),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         DropdownButton<String>(
                           value: w.role,
-                          items: const [
-                            DropdownMenuItem(value: 'user', child: Text('User')),
-                            DropdownMenuItem(value: 'admin', child: Text('Admin')),
+                          items: [
+                            DropdownMenuItem(value: 'user', child: Text(l10n.workerUser)),
+                            DropdownMenuItem(value: 'admin', child: Text(l10n.admin)),
                           ],
                           onChanged: (newRole) {
                             if (newRole != null && newRole != w.role) {
@@ -210,7 +212,7 @@ class _ManageUsersPageState extends ConsumerState<ManageUsersPage> with SingleTi
               },
             ),
             loading: () => const Center(child: CircularProgressIndicator()),
-            error: (e, _) => Text('Error: $e'),
+            error: (e, _) => Text('${l10n.error}: $e'),
           ),
         ],
       ),
@@ -219,9 +221,10 @@ class _ManageUsersPageState extends ConsumerState<ManageUsersPage> with SingleTi
 
   Widget _buildAuditTab() {
     final state = ref.watch(adminControllerProvider);
+    final l10n = AppLocalizations.of(context)!;
     return state.auditLogs.when(
       data: (logs) {
-        if (logs.isEmpty) return const Center(child: Text('No audit logs available.'));
+        if (logs.isEmpty) return Center(child: Text(l10n.noAuditLogs));
         return ListView.separated(
           padding: const EdgeInsets.all(16),
           itemCount: logs.length,
@@ -229,7 +232,7 @@ class _ManageUsersPageState extends ConsumerState<ManageUsersPage> with SingleTi
           itemBuilder: (context, index) {
             final log = logs[index];
             final color = log.action == 'DELETE' ? WaanofiColors.error : (log.action == 'INSERT' ? WaanofiColors.success : WaanofiColors.primary);
-            final changedFields = _getChangedFields(log.oldData, log.newData);
+            final changedFields = _getChangedFields(log.oldData, log.newData, l10n);
 
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -246,7 +249,7 @@ class _ManageUsersPageState extends ConsumerState<ManageUsersPage> with SingleTi
                   ],
                 ),
                 const SizedBox(height: 4),
-                Text('${log.changedByFullName} modified ${log.tableName}', style: const TextStyle(fontWeight: FontWeight.bold)),
+                Text('${log.changedByFullName} ${l10n.modified} ${log.tableName}', style: const TextStyle(fontWeight: FontWeight.bold)),
                 if (changedFields.isNotEmpty) ...[
                   const SizedBox(height: 4),
                   Text(changedFields, style: const TextStyle(fontFamily: 'monospace', fontSize: 12)),
@@ -257,13 +260,13 @@ class _ManageUsersPageState extends ConsumerState<ManageUsersPage> with SingleTi
         );
       },
       loading: () => const Center(child: CircularProgressIndicator()),
-      error: (e, _) => Center(child: Text('Error: $e')),
+      error: (e, _) => Center(child: Text('${l10n.error}: $e')),
     );
   }
 
-  String _getChangedFields(Map<String, dynamic>? oldData, Map<String, dynamic>? newData) {
-    if (oldData == null && newData != null) return 'Created: ${jsonEncode(newData)}';
-    if (oldData != null && newData == null) return 'Deleted: ${jsonEncode(oldData)}';
+  String _getChangedFields(Map<String, dynamic>? oldData, Map<String, dynamic>? newData, AppLocalizations l10n) {
+    if (oldData == null && newData != null) return '${l10n.created}: ${jsonEncode(newData)}';
+    if (oldData != null && newData == null) return '${l10n.deleted}: ${jsonEncode(oldData)}';
     
     if (oldData != null && newData != null) {
       List<String> changes = [];

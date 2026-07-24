@@ -7,6 +7,7 @@ import '../../../core/auth/permission.dart';
 import '../../../core/theme/waanofi_colors.dart';
 import '../../../shared/widgets/role_guard.dart';
 import '../../../shared/widgets/skeleton_loader.dart';
+import 'package:waanofi/l10n/app_localizations.dart';
 import 'controllers/dashboard_controller.dart';
 
 class DashboardView extends ConsumerWidget {
@@ -15,10 +16,11 @@ class DashboardView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(dashboardControllerProvider);
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dashboard'),
+        title: Text(l10n.dashboard),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
@@ -40,7 +42,7 @@ class DashboardView extends ConsumerWidget {
                   children: [
                     Expanded(
                       child: _buildKpiCard(
-                        'Today\'s Milk',
+                        l10n.todaysMilk,
                         '${stats.todayMilkLitres.toStringAsFixed(1)} L',
                         Icons.water_drop,
                         WaanofiColors.primary,
@@ -51,13 +53,13 @@ class DashboardView extends ConsumerWidget {
                       child: RoleGuard(
                         permission: Permission.viewFinance,
                         fallback: _buildKpiCard(
-                          '30D Trend',
+                          l10n.thirtyDayTrend,
                           '${stats.trend.fold(0.0, (sum, t) => sum + t.litres).toStringAsFixed(0)} L',
                           Icons.trending_up,
                           WaanofiColors.primary,
                         ),
                         child: _buildKpiCard(
-                          '30D Profit',
+                          l10n.thirtyDayProfit,
                           '\$${(stats.milkRevenue30d - stats.feedCost30d).toStringAsFixed(2)}',
                           Icons.attach_money,
                           (stats.milkRevenue30d - stats.feedCost30d) >= 0 ? WaanofiColors.success : WaanofiColors.error,
@@ -69,12 +71,12 @@ class DashboardView extends ConsumerWidget {
                 const SizedBox(height: 24),
 
                 // Chart: 30 Day Milk Trend
-                const Text('30 Day Milk Trend', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text(l10n.thirtyDayMilkTrend, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 16),
                 SizedBox(
                   height: 250,
                   child: stats.trend.isEmpty
-                      ? const Center(child: Text('No data for the last 30 days'))
+                      ? Center(child: Text(l10n.noDataThirtyDays))
                       : LineChart(
                           LineChartData(
                             gridData: const FlGridData(show: false),
@@ -124,7 +126,7 @@ class DashboardView extends ConsumerWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text('Financial Overview (30 Days)', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                      Text(l10n.financialOverview, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                       const SizedBox(height: 16),
                       Container(
                         padding: const EdgeInsets.all(16),
@@ -138,14 +140,14 @@ class DashboardView extends ConsumerWidget {
                           children: [
                             Column(
                               children: [
-                                const Text('Revenue', style: TextStyle(color: WaanofiColors.textSecondary)),
+                                Text(l10n.revenue, style: const TextStyle(color: WaanofiColors.textSecondary)),
                                 Text('\$${stats.milkRevenue30d.toStringAsFixed(2)}', style: const TextStyle(fontSize: 20, color: WaanofiColors.success, fontWeight: FontWeight.bold)),
                               ],
                             ),
                             Container(width: 1, height: 40, color: WaanofiColors.outlineDark),
                             Column(
                               children: [
-                                const Text('Feed Cost', style: TextStyle(color: WaanofiColors.textSecondary)),
+                                Text(l10n.feedCost, style: const TextStyle(color: WaanofiColors.textSecondary)),
                                 Text('\$${stats.feedCost30d.toStringAsFixed(2)}', style: const TextStyle(fontSize: 20, color: WaanofiColors.error, fontWeight: FontWeight.bold)),
                               ],
                             ),
@@ -158,7 +160,7 @@ class DashboardView extends ConsumerWidget {
                 ),
 
                 // Status Counts
-                const Text('Herd Status', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text(l10n.herdStatus, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 8),
                 Wrap(
                   spacing: 16,
@@ -173,10 +175,10 @@ class DashboardView extends ConsumerWidget {
                 const SizedBox(height: 32),
 
                 // Top Producers
-                const Text('Top Producers (30 Days)', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text(l10n.topProducers, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 8),
                 if (stats.topProducers.isEmpty)
-                  const Text('No records')
+                  Text(l10n.noRecords)
                 else
                   ...stats.topProducers.map((p) => ListTile(
                     contentPadding: EdgeInsets.zero,
@@ -189,7 +191,7 @@ class DashboardView extends ConsumerWidget {
           ),
         ),
         loading: () => _buildDashboardSkeleton(),
-        error: (e, _) => Center(child: Text('Failed to load dashboard: $e')),
+        error: (e, _) => Center(child: Text('${l10n.failedToLoadDashboard}: $e')),
       ),
     );
   }

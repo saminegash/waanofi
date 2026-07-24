@@ -22,16 +22,16 @@ class MoreView extends ConsumerWidget {
       appBar: AppBar(title: Text(l10n.settings)),
       body: ListView(
         children: [
-          const ListTile(
-            title: Text('Admin Tools', style: TextStyle(fontWeight: FontWeight.bold, color: WaanofiColors.textSecondary)),
+          ListTile(
+            title: Text(l10n.adminTools, style: const TextStyle(fontWeight: FontWeight.bold, color: WaanofiColors.textSecondary)),
           ),
           RoleGuard(
             permission: Permission.manageUsers,
             fallback: const SizedBox.shrink(),
             child: ListTile(
               leading: const Icon(Icons.people),
-              title: const Text('Manage Workers'),
-              onTap: () => context.push('/admin/users'),
+              title: Text(l10n.manageWorkers),
+              onTap: () => context.push('/more/admin/users'),
             ),
           ),
           RoleGuard(
@@ -39,22 +39,23 @@ class MoreView extends ConsumerWidget {
             fallback: const SizedBox.shrink(),
             child: ListTile(
               leading: const Icon(Icons.grass),
-              title: const Text('Manage Feed Types'),
-              onTap: () => context.push('/admin/feed_types'),
+              title: Text(l10n.manageFeedTypes),
+              onTap: () => context.push('/more/admin/feed_types'),
             ),
           ),
           const Divider(),
-          const ListTile(
-            title: Text('Preferences', style: TextStyle(fontWeight: FontWeight.bold, color: WaanofiColors.textSecondary)),
+          ListTile(
+            title: Text(l10n.preferences, style: const TextStyle(fontWeight: FontWeight.bold, color: WaanofiColors.textSecondary)),
           ),
           ListTile(
             leading: const Icon(Icons.language),
-            title: const Text('Language'),
+            title: Text(l10n.language),
             trailing: DropdownButton<String>(
               value: locale.languageCode,
               items: const [
                 DropdownMenuItem(value: 'en', child: Text('English')),
                 DropdownMenuItem(value: 'am', child: Text('አማርኛ')),
+                DropdownMenuItem(value: 'om', child: Text('Afaan Oromoo')),
               ],
               onChanged: (val) {
                 if (val != null) {
@@ -64,8 +65,8 @@ class MoreView extends ConsumerWidget {
             ),
           ),
           const Divider(),
-          const ListTile(
-            title: Text('Account', style: TextStyle(fontWeight: FontWeight.bold, color: WaanofiColors.textSecondary)),
+          ListTile(
+            title: Text(l10n.account, style: const TextStyle(fontWeight: FontWeight.bold, color: WaanofiColors.textSecondary)),
           ),
           ListTile(
             leading: const Icon(Icons.logout, color: WaanofiColors.error),

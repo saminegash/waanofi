@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/theme/waanofi_colors.dart';
+import 'package:waanofi/l10n/app_localizations.dart';
 import '../domain/feed_type_model.dart';
 import 'controllers/feed_types_controller.dart';
 
@@ -23,10 +24,12 @@ class _ManageFeedTypesPageState extends ConsumerState<ManageFeedTypesPage> {
     _unitController.text = 'kg';
     _costController.clear();
 
+    final l10n = AppLocalizations.of(context)!;
+
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Add Feed Type'),
+        title: Text(l10n.addFeedType),
         content: Form(
           key: _formKey,
           child: Column(
@@ -34,23 +37,23 @@ class _ManageFeedTypesPageState extends ConsumerState<ManageFeedTypesPage> {
             children: [
               TextFormField(
                 controller: _nameController,
-                decoration: const InputDecoration(labelText: 'Feed Name (e.g. Alfalfa)'),
-                validator: (v) => v!.isEmpty ? 'Required' : null,
+                decoration: InputDecoration(labelText: l10n.feedName),
+                validator: (v) => v!.isEmpty ? l10n.required : null,
               ),
               const SizedBox(height: 16),
               TextFormField(
                 controller: _unitController,
-                decoration: const InputDecoration(labelText: 'Unit (e.g. kg, bales)'),
-                validator: (v) => v!.isEmpty ? 'Required' : null,
+                decoration: InputDecoration(labelText: l10n.unit),
+                validator: (v) => v!.isEmpty ? l10n.required : null,
               ),
               const SizedBox(height: 16),
               TextFormField(
                 controller: _costController,
-                decoration: const InputDecoration(labelText: 'Cost per Unit'),
+                decoration: InputDecoration(labelText: l10n.costPerUnit),
                 keyboardType: const TextInputType.numberWithOptions(decimal: true),
                 validator: (v) {
-                  if (v == null || v.isEmpty) return 'Required';
-                  if (double.tryParse(v) == null) return 'Must be a number';
+                  if (v == null || v.isEmpty) return l10n.required;
+                  if (double.tryParse(v) == null) return l10n.mustBeNumber;
                   return null;
                 },
               ),
@@ -60,14 +63,14 @@ class _ManageFeedTypesPageState extends ConsumerState<ManageFeedTypesPage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
+            child: Text(l10n.cancel),
           ),
           ElevatedButton(
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 final feedType = FeedTypeModel(
                   id: '',
-                  farmId: '', // Handled by backend or outbox logic usually, but we need it here.
+                  farmId: '',
                   name: _nameController.text.trim(),
                   unit: _unitController.text.trim(),
                   unitCost: double.parse(_costController.text),
@@ -78,7 +81,7 @@ class _ManageFeedTypesPageState extends ConsumerState<ManageFeedTypesPage> {
                 Navigator.pop(context);
               }
             },
-            child: const Text('Save'),
+            child: Text(l10n.save),
           ),
         ],
       ),
@@ -88,10 +91,11 @@ class _ManageFeedTypesPageState extends ConsumerState<ManageFeedTypesPage> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(feedTypesControllerProvider);
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Manage Feed Types'),
+        title: Text(l10n.manageFeedTypes),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _showAddDialog,
@@ -100,7 +104,7 @@ class _ManageFeedTypesPageState extends ConsumerState<ManageFeedTypesPage> {
       body: state.when(
         data: (feedTypes) {
           if (feedTypes.isEmpty) {
-            return const Center(child: Text('No feed types configured yet.'));
+            return Center(child: Text(l10n.noFeedTypesConfigured));
           }
           return ListView.builder(
             itemCount: feedTypes.length,
@@ -108,7 +112,7 @@ class _ManageFeedTypesPageState extends ConsumerState<ManageFeedTypesPage> {
               final type = feedTypes[index];
               return ListTile(
                 title: Text(type.name, style: const TextStyle(fontWeight: FontWeight.bold)),
-                subtitle: Text('Unit: ${type.unit}'),
+                subtitle: Text('${l10n.unit.split(' ')[0]}: ${type.unit}'),
                 trailing: Text('\$${type.unitCost.toStringAsFixed(2)} / ${type.unit}', 
                   style: const TextStyle(color: WaanofiColors.primary, fontWeight: FontWeight.w600)),
               );
@@ -116,7 +120,7 @@ class _ManageFeedTypesPageState extends ConsumerState<ManageFeedTypesPage> {
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Error: $e')),
+        error: (e, _) => Center(child: Text('${l10n.error}: $e')),
       ),
     );
   }

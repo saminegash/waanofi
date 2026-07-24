@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/auth/auth_providers.dart';
 import '../../../core/theme/waanofi_colors.dart';
+import 'package:waanofi/l10n/app_localizations.dart';
 
 /// Login page with email/password and magic-link fallback.
 class LoginPage extends ConsumerStatefulWidget {
@@ -49,10 +50,11 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   // ───────────── Magic Link ─────────────
 
   Future<void> _sendMagicLink() async {
+    final l10n = AppLocalizations.of(context)!;
     final email = _emailController.text.trim();
     if (email.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Enter your email first')),
+        SnackBar(content: Text(l10n.enterEmailFirst)),
       );
       return;
     }
@@ -88,6 +90,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       body: Center(
@@ -104,9 +107,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   color: theme.colorScheme.primary,
                 ),
                 const SizedBox(height: 16),
-                Text('Waanofi Dairy', style: theme.textTheme.headlineLarge),
+                Text(l10n.appName, style: theme.textTheme.headlineLarge),
                 const SizedBox(height: 8),
-                Text('Sign in to continue', style: theme.textTheme.bodyMedium),
+                Text(l10n.signInToContinue, style: theme.textTheme.bodyMedium),
                 const SizedBox(height: 40),
 
                 // Magic link success state
@@ -115,23 +118,23 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       size: 48, color: theme.colorScheme.primary),
                   const SizedBox(height: 16),
                   Text(
-                    'Check your email for a sign-in link!',
+                    l10n.checkEmailForLink,
                     style: theme.textTheme.bodyLarge,
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 24),
                   TextButton(
                     onPressed: () => setState(() => _magicLinkSent = false),
-                    child: const Text('Back to sign in'),
+                    child: Text(l10n.backToSignIn),
                   ),
                 ] else ...[
                   // Email field
                   TextField(
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
-                      labelText: 'Email',
-                      prefixIcon: Icon(Icons.email_outlined),
+                    decoration: InputDecoration(
+                      labelText: l10n.email,
+                      prefixIcon: const Icon(Icons.email_outlined),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -140,9 +143,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   TextField(
                     controller: _passwordController,
                     obscureText: true,
-                    decoration: const InputDecoration(
-                      labelText: 'Password',
-                      prefixIcon: Icon(Icons.lock_outline),
+                    decoration: InputDecoration(
+                      labelText: l10n.password,
+                      prefixIcon: const Icon(Icons.lock_outline),
                     ),
                     onSubmitted: (_) => _signIn(),
                   ),
@@ -159,7 +162,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                               width: 20,
                               child: CircularProgressIndicator(strokeWidth: 2),
                             )
-                          : const Text('Sign In'),
+                          : Text(l10n.signIn),
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -170,7 +173,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     child: OutlinedButton.icon(
                       onPressed: _loading ? null : _sendMagicLink,
                       icon: const Icon(Icons.link),
-                      label: const Text('Send Magic Link'),
+                      label: Text(l10n.sendMagicLink),
                     ),
                   ),
                   const SizedBox(height: 24),
@@ -178,7 +181,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   // Sign up link
                   TextButton(
                     onPressed: () => context.go('/signup'),
-                    child: const Text('Don\'t have an account? Create one'),
+                    child: Text(l10n.noAccountSignUp),
                   ),
                 ],
               ],

@@ -79,6 +79,7 @@ class WaanofiApp extends ConsumerWidget {
       supportedLocales: const [
         Locale('en'),
         Locale('am'),
+        Locale('om'),
       ],
     );
   }

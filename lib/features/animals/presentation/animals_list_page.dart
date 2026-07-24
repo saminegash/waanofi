@@ -7,6 +7,7 @@ import '../../../core/theme/waanofi_colors.dart';
 import '../../../shared/widgets/role_guard.dart';
 import '../../../shared/widgets/empty_state_widget.dart';
 import '../../../shared/widgets/skeleton_loader.dart';
+import 'package:waanofi/l10n/app_localizations.dart';
 import '../domain/animal_model.dart';
 import 'controllers/animals_controller.dart';
 
@@ -20,10 +21,11 @@ class AnimalsListPage extends ConsumerWidget {
     final isOnline = ref.watch(networkStatusProvider).valueOrNull ?? true;
     final filterState = ref.watch(animalsStateProvider);
     final controller = ref.watch(animalsControllerProvider.notifier);
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Herd Management'),
+        title: Text(l10n.herdManagement),
         bottom: !isOnline
             ? PreferredSize(
                 preferredSize: const Size.fromHeight(30),
@@ -31,10 +33,10 @@ class AnimalsListPage extends ConsumerWidget {
                   width: double.infinity,
                   color: WaanofiColors.warning,
                   padding: const EdgeInsets.symmetric(vertical: 4),
-                  child: const Text(
-                    'Offline mode - showing cached data',
+                  child: Text(
+                    l10n.offlineMode,
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: WaanofiColors.textPrimary, fontWeight: FontWeight.bold),
+                    style: const TextStyle(color: WaanofiColors.textPrimary, fontWeight: FontWeight.bold),
                   ),
                 ),
               )
@@ -48,9 +50,9 @@ class AnimalsListPage extends ConsumerWidget {
             child: Column(
               children: [
                 TextField(
-                  decoration: const InputDecoration(
-                    labelText: 'Search tag or name...',
-                    prefixIcon: Icon(Icons.search),
+                  decoration: InputDecoration(
+                    labelText: l10n.searchTagOrName,
+                    prefixIcon: const Icon(Icons.search),
                   ),
                   onChanged: controller.setSearchQuery,
                 ),
@@ -60,18 +62,18 @@ class AnimalsListPage extends ConsumerWidget {
                     Expanded(
                       child: DropdownButtonFormField<String?>(
                         value: filterState.statusFilter,
-                        decoration: const InputDecoration(
-                          labelText: 'Status',
-                          contentPadding: EdgeInsets.symmetric(horizontal: 12),
+                        decoration: InputDecoration(
+                          labelText: l10n.status,
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 12),
                         ),
-                        items: const [
-                          DropdownMenuItem(value: null, child: Text('All Statuses')),
-                          DropdownMenuItem(value: 'active', child: Text('Active')),
-                          DropdownMenuItem(value: 'dry', child: Text('Dry')),
-                          DropdownMenuItem(value: 'pregnant', child: Text('Pregnant')),
-                          DropdownMenuItem(value: 'sick', child: Text('Sick')),
-                          DropdownMenuItem(value: 'sold', child: Text('Sold')),
-                          DropdownMenuItem(value: 'deceased', child: Text('Deceased')),
+                        items: [
+                          DropdownMenuItem(value: null, child: Text(l10n.allStatuses)),
+                          DropdownMenuItem(value: 'active', child: Text(l10n.active)),
+                          DropdownMenuItem(value: 'dry', child: Text(l10n.dry)),
+                          DropdownMenuItem(value: 'pregnant', child: Text(l10n.pregnant)),
+                          DropdownMenuItem(value: 'sick', child: Text(l10n.sick)),
+                          DropdownMenuItem(value: 'sold', child: Text(l10n.sold)),
+                          DropdownMenuItem(value: 'deceased', child: Text(l10n.deceased)),
                         ],
                         onChanged: controller.setStatusFilter,
                       ),
@@ -80,12 +82,12 @@ class AnimalsListPage extends ConsumerWidget {
                     Expanded(
                       child: DropdownButtonFormField<String?>(
                         value: filterState.breedFilter,
-                        decoration: const InputDecoration(
-                          labelText: 'Breed',
-                          contentPadding: EdgeInsets.symmetric(horizontal: 12),
+                        decoration: InputDecoration(
+                          labelText: l10n.breed,
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 12),
                         ),
                         items: [
-                          const DropdownMenuItem(value: null, child: Text('All Breeds')),
+                          DropdownMenuItem(value: null, child: Text(l10n.allBreeds)),
                           ...controller.getAvailableBreeds().map(
                                 (b) => DropdownMenuItem(value: b, child: Text(b)),
                               ),
@@ -103,14 +105,14 @@ class AnimalsListPage extends ConsumerWidget {
           Expanded(
             child: animalsAsync.when(
               loading: () => const ListSkeleton(itemCount: 8),
-              error: (err, stack) => Center(child: Text('Error: $err')),
+              error: (err, stack) => Center(child: Text('${l10n.error}: $err')),
               data: (animals) {
                 if (animals.isEmpty) {
                   return EmptyStateWidget(
                     icon: Icons.pets,
-                    title: 'No animals found',
-                    description: 'Your herd is currently empty or no animals match your filter.',
-                    actionLabel: 'Add Animal',
+                    title: l10n.noAnimalsFound,
+                    description: l10n.emptyHerdDesc,
+                    actionLabel: l10n.addAnimal,
                     onActionPressed: () => context.go('/animals/new'),
                   );
                 }
@@ -160,6 +162,7 @@ class _AnimalListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: ListTile(
@@ -170,8 +173,8 @@ class _AnimalListItem extends StatelessWidget {
             style: const TextStyle(color: WaanofiColors.primaryDark),
           ),
         ),
-        title: Text('${animal.tagNumber} - ${animal.name ?? 'Unnamed'}'),
-        subtitle: Text('${animal.breed ?? 'Unknown breed'} • ${animal.sex}'),
+        title: Text('${animal.tagNumber} - ${animal.name ?? l10n.unnamed}'),
+        subtitle: Text('${animal.breed ?? l10n.unknownBreed} • ${animal.sex}'),
         trailing: Chip(
           label: Text(
             animal.status.toUpperCase(),
