@@ -177,33 +177,76 @@ class _ManageUsersPageState extends ConsumerState<ManageUsersPage> with SingleTi
               itemBuilder: (context, index) {
                 final w = workers[index];
                 return Card(
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      backgroundColor: w.active ? WaanofiColors.primary.withOpacity(0.1) : WaanofiColors.error.withOpacity(0.1),
-                      child: Icon(Icons.person, color: w.active ? WaanofiColors.primary : WaanofiColors.error),
-                    ),
-                    title: Text('${w.fullName} (${w.role})', style: TextStyle(decoration: w.active ? null : TextDecoration.lineThrough)),
-                    subtitle: Text('${l10n.status}: ${w.active ? l10n.active : l10n.deactivated}'),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
+                  margin: const EdgeInsets.only(bottom: 12),
+                  child: Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        DropdownButton<String>(
-                          value: w.role,
-                          items: [
-                            DropdownMenuItem(value: 'user', child: Text(l10n.workerUser)),
-                            DropdownMenuItem(value: 'admin', child: Text(l10n.admin)),
+                        Row(
+                          children: [
+                            CircleAvatar(
+                              backgroundColor: w.active ? WaanofiColors.primary.withValues(alpha: 0.1) : WaanofiColors.error.withValues(alpha: 0.1),
+                              child: Icon(Icons.person, color: w.active ? WaanofiColors.primary : WaanofiColors.error),
+                            ),
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    w.fullName, 
+                                    style: TextStyle(
+                                      fontSize: 16, 
+                                      fontWeight: FontWeight.bold, 
+                                      decoration: w.active ? null : TextDecoration.lineThrough
+                                    )
+                                  ),
+                                  Text(
+                                    '${l10n.status}: ${w.active ? l10n.active : l10n.deactivated}', 
+                                    style: const TextStyle(color: WaanofiColors.textSecondary)
+                                  ),
+                                ],
+                              ),
+                            ),
                           ],
-                          onChanged: (newRole) {
-                            if (newRole != null && newRole != w.role) {
-                              controller.updateWorkerRole(w.id, newRole);
-                            }
-                          },
                         ),
-                        const SizedBox(width: 8),
-                        Switch(
-                          value: w.active,
-                          onChanged: (val) => controller.toggleWorkerStatus(w.id, val),
-                          activeColor: WaanofiColors.primary,
+                        const SizedBox(height: 16),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: DropdownButtonFormField<String>(
+                                decoration: const InputDecoration(
+                                  isDense: true,
+                                  border: OutlineInputBorder(),
+                                  contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                ),
+                                value: w.role,
+                                items: [
+                                  DropdownMenuItem(value: 'user', child: Text(l10n.workerUser)),
+                                  DropdownMenuItem(value: 'admin', child: Text(l10n.admin)),
+                                ],
+                                onChanged: (newRole) {
+                                  if (newRole != null && newRole != w.role) {
+                                    controller.updateWorkerRole(w.id, newRole);
+                                  }
+                                },
+                              ),
+                            ),
+                            const SizedBox(width: 16),
+                            Row(
+                              children: [
+                                Text(l10n.active, style: const TextStyle(fontWeight: FontWeight.bold)),
+                                Switch(
+                                  value: w.active,
+                                  onChanged: (val) => controller.toggleWorkerStatus(w.id, val),
+                                  activeColor: WaanofiColors.primary,
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ],
                     ),
