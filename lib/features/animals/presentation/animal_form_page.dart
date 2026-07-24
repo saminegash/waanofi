@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../../core/auth/app_user.dart';
 import '../../../core/auth/auth_providers.dart';
 import '../../../core/theme/waanofi_colors.dart';
 import 'package:waanofi/l10n/app_localizations.dart';
