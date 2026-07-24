@@ -15,6 +15,7 @@ import '../../features/milk/presentation/daily_milk_entry_page.dart';
 import '../../features/admin/presentation/manage_users_page.dart';
 import '../../features/feed/presentation/daily_feed_entry_page.dart';
 import '../../features/feed/presentation/manage_feed_types_page.dart';
+import '../../features/admin/presentation/farm_settings_page.dart';
 import '../../features/reports/presentation/reports_page.dart';
 import '../../features/home/presentation/more_view.dart';
 
@@ -29,7 +30,7 @@ final _reportsKey = GlobalKey<NavigatorState>(debugLabel: 'reports');
 final _moreKey = GlobalKey<NavigatorState>(debugLabel: 'more');
 
 /// Routes that require admin privileges.
-const _adminRoutes = {'/admin', '/more/admin/users', '/admin/finance', '/more/admin/feed_types'};
+const _adminRoutes = {'/admin', '/more/admin/users', '/admin/finance', '/more/admin/feed_types', '/more/admin/farm_settings'};
 
 /// Routes that guests are NOT allowed to access (everything except read-only).
 const _guestBlockedRoutes = {'/record', '/admin', '/more/admin/users', '/admin/finance', '/animals/new'};
@@ -195,6 +196,11 @@ GoRouter appRouter(Ref ref) {
                     path: 'admin/feed_types',
                     name: 'manage_feed_types',
                     builder: (context, state) => const ManageFeedTypesPage(),
+                  ),
+                  GoRoute(
+                    path: 'admin/farm_settings',
+                    name: 'farm_settings',
+                    builder: (context, state) => const FarmSettingsPage(),
                   ),
                 ],
               ),

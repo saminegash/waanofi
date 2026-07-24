@@ -19,6 +19,8 @@
   "adminTools": "የአስተዳዳሪ መሳሪያዎች",
   "manageWorkers": "ሰራተኞችን ያስተዳድሩ",
   "manageFeedTypes": "የመኖ ዓይነቶችን ያስተዳድሩ",
+  "farmSettings": "የእርሻ ቅንብሮች",
+  "milkPricePerLitre": "የወተት ዋጋ በሊትር (ETB)",
 
   "onboardingTitle1": "ከብቶችዎን ይከታተሉ",
   "onboardingDesc1": "የወተት ላሞችዎን፣ የጤና ሁኔታቸውን እና የምርት መዝገቦቻቸውን በቀላሉ ያስተዳድሩ።",

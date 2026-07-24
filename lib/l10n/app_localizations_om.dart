@@ -54,6 +54,12 @@ class AppLocalizationsOm extends AppLocalizations {
   String get manageFeedTypes => 'Gosa Nyaataa Bulchi';
 
   @override
+  String get farmSettings => 'Qindaa\'ina Faarmii';
+
+  @override
+  String get milkPricePerLitre => 'Gatii Aannanii Liitira tokkoon (ETB)';
+
+  @override
   String get onboardingTitle1 => 'Horsiisaa Kee Hordofi';
 
   @override

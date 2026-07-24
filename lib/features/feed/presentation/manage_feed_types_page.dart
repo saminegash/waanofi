@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/auth/auth_providers.dart';
 import '../../../core/theme/waanofi_colors.dart';
 import 'package:waanofi/l10n/app_localizations.dart';
 import '../domain/feed_type_model.dart';
@@ -25,6 +26,7 @@ class _ManageFeedTypesPageState extends ConsumerState<ManageFeedTypesPage> {
     _costController.clear();
 
     final l10n = AppLocalizations.of(context)!;
+    final currentUser = ref.read(currentUserProvider);
 
     showDialog(
       context: context,
@@ -70,7 +72,7 @@ class _ManageFeedTypesPageState extends ConsumerState<ManageFeedTypesPage> {
               if (_formKey.currentState!.validate()) {
                 final feedType = FeedTypeModel(
                   id: '',
-                  farmId: '',
+                  farmId: currentUser?.farmId ?? '',
                   name: _nameController.text.trim(),
                   unit: _unitController.text.trim(),
                   unitCost: double.parse(_costController.text),

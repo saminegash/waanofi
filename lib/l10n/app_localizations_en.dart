@@ -54,6 +54,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get manageFeedTypes => 'Manage Feed Types';
 
   @override
+  String get farmSettings => 'Farm Settings';
+
+  @override
+  String get milkPricePerLitre => 'Milk Price per Litre (ETB)';
+
+  @override
   String get onboardingTitle1 => 'Track Your Herd';
 
   @override

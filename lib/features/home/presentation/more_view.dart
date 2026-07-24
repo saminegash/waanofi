@@ -43,6 +43,15 @@ class MoreView extends ConsumerWidget {
               onTap: () => context.push('/more/admin/feed_types'),
             ),
           ),
+          RoleGuard(
+            permission: Permission.viewFinance,
+            fallback: const SizedBox.shrink(),
+            child: ListTile(
+              leading: const Icon(Icons.monetization_on),
+              title: Text(l10n.farmSettings),
+              onTap: () => context.push('/more/admin/farm_settings'),
+            ),
+          ),
           const Divider(),
           ListTile(
             title: Text(l10n.preferences, style: const TextStyle(fontWeight: FontWeight.bold, color: WaanofiColors.textSecondary)),

@@ -69,4 +69,22 @@ class AdminRepository {
       return AuditLogModel.fromJson(json).copyWith(changedByFullName: fullName);
     }).toList();
   }
+
+  Future<double> getMilkPrice() async {
+    if (_farmId == null) return 0.0;
+    final response = await _client
+        .from('farms')
+        .select('milk_price_per_litre')
+        .eq('id', _farmId!)
+        .single();
+    return (response['milk_price_per_litre'] as num).toDouble();
+  }
+
+  Future<void> updateMilkPrice(double newPrice) async {
+    if (_farmId == null) return;
+    await _client
+        .from('farms')
+        .update({'milk_price_per_litre': newPrice})
+        .eq('id', _farmId!);
+  }
 }

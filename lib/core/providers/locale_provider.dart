@@ -8,7 +8,7 @@ final localeControllerProvider =
 });
 
 class LocaleController extends StateNotifier<Locale> {
-  LocaleController() : super(const Locale('en')) {
+  LocaleController() : super(const Locale('am')) {
     _loadLocale();
   }
 

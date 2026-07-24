@@ -19,6 +19,8 @@
   "adminTools": "Admin Tools",
   "manageWorkers": "Manage Workers",
   "manageFeedTypes": "Manage Feed Types",
+  "farmSettings": "Farm Settings",
+  "milkPricePerLitre": "Milk Price per Litre (ETB)",
 
   "onboardingTitle1": "Track Your Herd",
   "onboardingDesc1": "Easily manage your dairy cows, their health status, and production records.",

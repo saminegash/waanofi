@@ -60,7 +60,7 @@ class DashboardView extends ConsumerWidget {
                         ),
                         child: _buildKpiCard(
                           l10n.thirtyDayProfit,
-                          '\$${(stats.milkRevenue30d - stats.feedCost30d).toStringAsFixed(2)}',
+                          'ETB ${(stats.milkRevenue30d - stats.feedCost30d).toStringAsFixed(2)}',
                           Icons.attach_money,
                           (stats.milkRevenue30d - stats.feedCost30d) >= 0 ? WaanofiColors.success : WaanofiColors.error,
                         ),
@@ -141,14 +141,14 @@ class DashboardView extends ConsumerWidget {
                             Column(
                               children: [
                                 Text(l10n.revenue, style: const TextStyle(color: WaanofiColors.textSecondary)),
-                                Text('\$${stats.milkRevenue30d.toStringAsFixed(2)}', style: const TextStyle(fontSize: 20, color: WaanofiColors.success, fontWeight: FontWeight.bold)),
+                                Text('ETB ${stats.milkRevenue30d.toStringAsFixed(2)}', style: const TextStyle(fontSize: 20, color: WaanofiColors.success, fontWeight: FontWeight.bold)),
                               ],
                             ),
                             Container(width: 1, height: 40, color: WaanofiColors.outlineDark),
                             Column(
                               children: [
                                 Text(l10n.feedCost, style: const TextStyle(color: WaanofiColors.textSecondary)),
-                                Text('\$${stats.feedCost30d.toStringAsFixed(2)}', style: const TextStyle(fontSize: 20, color: WaanofiColors.error, fontWeight: FontWeight.bold)),
+                                Text('ETB ${stats.feedCost30d.toStringAsFixed(2)}', style: const TextStyle(fontSize: 20, color: WaanofiColors.error, fontWeight: FontWeight.bold)),
                               ],
                             ),
                           ],

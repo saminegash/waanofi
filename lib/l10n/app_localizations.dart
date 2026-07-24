@@ -190,6 +190,18 @@ abstract class AppLocalizations {
   /// **'Manage Feed Types'**
   String get manageFeedTypes;
 
+  /// No description provided for @farmSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Farm Settings'**
+  String get farmSettings;
+
+  /// No description provided for @milkPricePerLitre.
+  ///
+  /// In en, this message translates to:
+  /// **'Milk Price per Litre (ETB)'**
+  String get milkPricePerLitre;
+
   /// No description provided for @onboardingTitle1.
   ///
   /// In en, this message translates to:

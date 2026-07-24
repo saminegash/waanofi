@@ -54,6 +54,12 @@ class AppLocalizationsAm extends AppLocalizations {
   String get manageFeedTypes => 'የመኖ ዓይነቶችን ያስተዳድሩ';
 
   @override
+  String get farmSettings => 'የእርሻ ቅንብሮች';
+
+  @override
+  String get milkPricePerLitre => 'የወተት ዋጋ በሊትር (ETB)';
+
+  @override
   String get onboardingTitle1 => 'ከብቶችዎን ይከታተሉ';
 
   @override
