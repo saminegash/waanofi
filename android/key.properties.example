@@ -1,4 +1,4 @@
-storePassword=your_store_password
-keyPassword=your_key_password
+storePassword=samisami
+keyPassword=saminegash 
 keyAlias=upload
-storeFile=../upload-keystore.jks
+storeFile=/home/sam/waanofi-upload.jks
