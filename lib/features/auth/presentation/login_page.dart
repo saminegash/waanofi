@@ -115,10 +115,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                Icon(
-                  Icons.agriculture_rounded,
-                  size: 72,
-                  color: theme.colorScheme.primary,
+                Image.asset(
+                  'assets/images/logo.webp',
+                  height: 72,
                 ),
                 const SizedBox(height: 16),
                 Text(l10n.appName, style: theme.textTheme.headlineLarge),
@@ -189,7 +188,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       icon: const Icon(Icons.link),
                       label: Text(l10n.sendMagicLink),
                     ),
-                  ),
                   ),
                   const SizedBox(height: 24),
 

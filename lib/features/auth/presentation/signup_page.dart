@@ -102,10 +102,9 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(
-                        Icons.agriculture_rounded,
-                        size: 64,
-                        color: theme.colorScheme.primary,
+                      Image.asset(
+                        'assets/images/logo.webp',
+                        height: 64,
                       ),
                       const SizedBox(height: 16),
                       Text(l10n.setUpYourDairy, style: theme.textTheme.headlineMedium),
