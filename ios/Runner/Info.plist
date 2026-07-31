@@ -50,5 +50,16 @@
 		<string>en</string>
 		<string>am</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>io.supabase.waanofi</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

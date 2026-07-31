@@ -34,7 +34,10 @@ class AuthRepository {
 
   /// Magic-link (passwordless) sign-in.
   Future<void> signInWithMagicLink({required String email}) async {
-    await _client.auth.signInWithOtp(email: email);
+    await _client.auth.signInWithOtp(
+      email: email,
+      emailRedirectTo: 'io.supabase.waanofi://login-callback/',
+    );
   }
 
   // ───────────────── Sign Up ─────────────────
@@ -54,6 +57,7 @@ class AuthRepository {
     final authResponse = await _client.auth.signUp(
       email: email,
       password: password,
+      emailRedirectTo: 'io.supabase.waanofi://login-callback/',
       data: {
         'full_name': fullName,
         'farm_name': farmName,
