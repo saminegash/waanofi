@@ -36,6 +36,14 @@ class MainShell extends ConsumerWidget {
                 context.push('/record/feed');
               },
             ),
+            ListTile(
+              leading: const Icon(Icons.egg, color: WaanofiColors.secondary),
+              title: Text(l10n.recordEggs),
+              onTap: () {
+                Navigator.pop(ctx);
+                context.push('/record/eggs');
+              },
+            ),
           ],
         ),
       ),
@@ -71,6 +79,7 @@ class MainShell extends ConsumerWidget {
               destinations: [
                 NavigationRailDestination(icon: const Icon(Icons.dashboard_outlined), selectedIcon: const Icon(Icons.dashboard), label: Text(l10n.dashboard)),
                 NavigationRailDestination(icon: const Icon(Icons.pets_outlined), selectedIcon: const Icon(Icons.pets), label: Text(l10n.herd)),
+                NavigationRailDestination(icon: const Icon(Icons.storefront_outlined), selectedIcon: const Icon(Icons.storefront), label: Text(l10n.marketplace)),
                 NavigationRailDestination(icon: const Icon(Icons.bar_chart_outlined), selectedIcon: const Icon(Icons.bar_chart), label: Text(l10n.reports)),
                 NavigationRailDestination(icon: const Icon(Icons.menu_outlined), selectedIcon: const Icon(Icons.menu), label: Text(l10n.more)),
               ],
@@ -99,6 +108,7 @@ class MainShell extends ConsumerWidget {
         destinations: [
           NavigationDestination(icon: const Icon(Icons.dashboard_outlined), selectedIcon: const Icon(Icons.dashboard), label: l10n.dashboard),
           NavigationDestination(icon: const Icon(Icons.pets_outlined), selectedIcon: const Icon(Icons.pets), label: l10n.herd),
+          NavigationDestination(icon: const Icon(Icons.storefront_outlined), selectedIcon: const Icon(Icons.storefront), label: l10n.marketplace),
           NavigationDestination(icon: const Icon(Icons.bar_chart_outlined), selectedIcon: const Icon(Icons.bar_chart), label: l10n.reports),
           NavigationDestination(icon: const Icon(Icons.menu_outlined), selectedIcon: const Icon(Icons.menu), label: l10n.more),
         ],

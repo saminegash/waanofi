@@ -12,6 +12,10 @@ enum Permission {
   viewFeed,
   recordFeed,
 
+  // Eggs
+  viewEggs,
+  recordEggs,
+
   // Animals
   manageAnimals,
 
@@ -23,4 +27,9 @@ enum Permission {
 
   // Data
   exportData,
+
+  // Marketplace
+  viewMarketplace,
+  manageListings,
+  placeOrders,
 }

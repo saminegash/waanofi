@@ -18,10 +18,15 @@ const Map<UserRole, Set<Permission>> rolePermissions = {
     Permission.editMilk,
     Permission.viewFeed,
     Permission.recordFeed,
+    Permission.viewEggs,
+    Permission.recordEggs,
     Permission.manageAnimals,
     Permission.manageUsers,
     Permission.viewFinance,
     Permission.exportData,
+    Permission.viewMarketplace,
+    Permission.manageListings,
+    Permission.placeOrders,
   },
   UserRole.user: {
     Permission.viewMilk,
@@ -29,10 +34,16 @@ const Map<UserRole, Set<Permission>> rolePermissions = {
     Permission.editMilk, // own records within 24 h (enforced by RLS)
     Permission.viewFeed,
     Permission.recordFeed,
-    // NO: manageAnimals, manageUsers, viewFinance, exportData
+    Permission.viewEggs,
+    Permission.recordEggs,
+    Permission.viewMarketplace,
+    Permission.placeOrders,
+    // NO: manageAnimals, manageUsers, viewFinance, exportData, manageListings
   },
   UserRole.guest: {
     Permission.viewMilk, // aggregates only (enforced by RLS view)
-    // NO writes at all
+    Permission.viewMarketplace,
+    Permission.placeOrders,
+    // NO writes at all for farm data
   },
 };

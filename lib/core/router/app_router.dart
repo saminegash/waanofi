@@ -22,15 +22,25 @@ import '../../features/home/presentation/more_view.dart';
 import '../../features/onboarding/presentation/splash_page.dart';
 import '../../features/onboarding/presentation/onboarding_page.dart';
 
+// Marketplace imports
+import '../../features/eggs/presentation/daily_egg_entry_page.dart';
+import '../../features/marketplace/presentation/marketplace_browse_page.dart';
+import '../../features/marketplace/presentation/listing_detail_page.dart';
+import '../../features/marketplace/presentation/checkout_page.dart';
+import '../../features/marketplace/presentation/my_orders_page.dart';
+import '../../features/marketplace/presentation/seller_orders_page.dart';
+import '../../features/marketplace/domain/marketplace_listing_model.dart';
+
 // Navigation keys for each tab branch
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _dashboardKey = GlobalKey<NavigatorState>(debugLabel: 'dashboard');
 final _herdKey = GlobalKey<NavigatorState>(debugLabel: 'herd');
+final _marketplaceKey = GlobalKey<NavigatorState>(debugLabel: 'marketplace');
 final _reportsKey = GlobalKey<NavigatorState>(debugLabel: 'reports');
 final _moreKey = GlobalKey<NavigatorState>(debugLabel: 'more');
 
 /// Routes that require admin privileges.
-const _adminRoutes = {'/admin', '/more/admin/users', '/admin/finance', '/more/admin/feed_types', '/more/admin/farm_settings'};
+const _adminRoutes = {'/admin', '/more/admin/users', '/admin/finance', '/more/admin/feed_types', '/more/admin/farm_settings', '/more/admin/seller_orders'};
 
 /// Routes that guests are NOT allowed to access (everything except read-only).
 const _guestBlockedRoutes = {'/record', '/admin', '/more/admin/users', '/admin/finance', '/animals/new'};
@@ -118,6 +128,23 @@ GoRouter appRouter(Ref ref) {
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const DailyFeedEntryPage(),
       ),
+      GoRoute(
+        path: '/record/eggs',
+        name: 'record_eggs',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const DailyEggEntryPage(),
+      ),
+
+      // ── Marketplace overlay pages ──
+      GoRoute(
+        path: '/marketplace/checkout',
+        name: 'marketplace_checkout',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) {
+          final listing = state.extra as MarketplaceListingModel;
+          return CheckoutPage(listing: listing);
+        },
+      ),
 
       // ── Main shell with bottom navigation ──
       StatefulShellRoute.indexedStack(
@@ -166,7 +193,31 @@ GoRouter appRouter(Ref ref) {
             ],
           ),
 
-          // Tab 2: Reports
+          // Tab 2: Marketplace
+          StatefulShellBranch(
+            navigatorKey: _marketplaceKey,
+            routes: [
+              GoRoute(
+                path: '/marketplace',
+                name: 'marketplace',
+                builder: (context, state) => const MarketplaceBrowsePage(),
+                routes: [
+                  GoRoute(
+                    path: 'orders',
+                    name: 'my_orders',
+                    builder: (context, state) => const MyOrdersPage(),
+                  ),
+                  GoRoute(
+                    path: ':id',
+                    name: 'listing_detail',
+                    builder: (context, state) => ListingDetailPage(listingId: state.pathParameters['id']!),
+                  ),
+                ],
+              ),
+            ],
+          ),
+
+          // Tab 3: Reports
           StatefulShellBranch(
             navigatorKey: _reportsKey,
             routes: [
@@ -178,7 +229,7 @@ GoRouter appRouter(Ref ref) {
             ],
           ),
 
-          // Tab 3: More / Settings
+          // Tab 4: More / Settings
           StatefulShellBranch(
             navigatorKey: _moreKey,
             routes: [
@@ -201,6 +252,11 @@ GoRouter appRouter(Ref ref) {
                     path: 'admin/farm_settings',
                     name: 'farm_settings',
                     builder: (context, state) => const FarmSettingsPage(),
+                  ),
+                  GoRoute(
+                    path: 'admin/seller_orders',
+                    name: 'seller_orders',
+                    builder: (context, state) => const SellerOrdersPage(),
                   ),
                 ],
               ),

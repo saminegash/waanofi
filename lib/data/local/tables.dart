@@ -63,6 +63,23 @@ class FeedRecordsTable extends Table {
   Set<Column> get primaryKey => {id};
 }
 
+@DataClassName('LocalEggRecord')
+class EggRecordsTable extends Table {
+  TextColumn get id => text()();
+  TextColumn get farmId => text()();
+  TextColumn get flockName => text()();
+  TextColumn get productionType => text().withDefault(const Constant('free_range'))();
+  DateTimeColumn get recordedAt => dateTime()();
+  IntColumn get quantity => integer()();
+  IntColumn get brokenCount => integer().withDefault(const Constant(0))();
+  TextColumn get notes => text().nullable()();
+  TextColumn get recordedBy => text().nullable()();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
 @DataClassName('SyncOutboxItem')
 class SyncOutboxTable extends Table {
   IntColumn get id => integer().autoIncrement()();
