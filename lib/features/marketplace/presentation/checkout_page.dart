@@ -44,7 +44,6 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final user = ref.watch(currentUserProvider);
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.checkout)),
@@ -236,7 +235,7 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
 
       if (mounted) {
         final l10n = AppLocalizations.of(context)!;
-        showDialog(
+        await showDialog(
           context: context,
           barrierDismissible: false,
           builder: (ctx) => AlertDialog(

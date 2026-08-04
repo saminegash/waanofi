@@ -447,4 +447,225 @@ class AppLocalizationsOm extends AppLocalizations {
 
   @override
   String get error => 'Dogoggora';
+
+  @override
+  String get recordEggs => 'Buupii Galmeessi';
+
+  @override
+  String get marketplace => 'Gabaa';
+
+  @override
+  String get flockName => 'Maqaa Garee';
+
+  @override
+  String get flockNameHint => 'fkn. Mana A';
+
+  @override
+  String get productionType => 'Gosa Oomishaa';
+
+  @override
+  String get eggQuantity => 'Baay\'ina Buupii';
+
+  @override
+  String get brokenCount => 'Cabilee Baay\'ina';
+
+  @override
+  String get totalEggs => 'Buupii Waliigala';
+
+  @override
+  String get goodEggs => 'Buupii Gaarii';
+
+  @override
+  String get broken => 'Cabiidha';
+
+  @override
+  String get notesOptional => 'Yaada (Dirqama miti)';
+
+  @override
+  String get freeRange => 'Gadi-lakkisa';
+
+  @override
+  String get caged => 'Mana Kessatti';
+
+  @override
+  String get organic => 'Oorgaanikii';
+
+  @override
+  String get myOrders => 'Ajajoota Koo';
+
+  @override
+  String get allCategories => 'Hunda';
+
+  @override
+  String get freshMilk => 'Aannan Haaraa';
+
+  @override
+  String get eggs => 'Buupii';
+
+  @override
+  String get retry => 'Irra deebi\'i yaadi';
+
+  @override
+  String get noListings => 'Gabaa irra oomishni hin jiru.';
+
+  @override
+  String get productDetails => 'Bal\'ina Oomishaa';
+
+  @override
+  String get pricePerUnit => 'Gatii';
+
+  @override
+  String get available => 'Kan Jiru';
+
+  @override
+  String get description => 'Ibsa';
+
+  @override
+  String get orderNow => 'Amma Ajaji';
+
+  @override
+  String get outOfStock => 'Dhumateera';
+
+  @override
+  String get checkout => 'Kaffaltii';
+
+  @override
+  String get orderSummary => 'Cuunfaa Ajajaa';
+
+  @override
+  String get quantity => 'Baay\'ina';
+
+  @override
+  String get maxAvailable => 'Ol-aanaa kan jiru';
+
+  @override
+  String get phoneNumber => 'Lakk. Bilbilaa';
+
+  @override
+  String get deliveryAddress => 'Teessoo Geessituu';
+
+  @override
+  String get deliveryNotesOptional => 'Yaada Geessituu (Dirqama miti)';
+
+  @override
+  String get paymentMethod => 'Haala Kaffaltii';
+
+  @override
+  String get totalAmount => 'Maallaqa Waliigalaa';
+
+  @override
+  String get processing => 'Qopheessuutti jira...';
+
+  @override
+  String get placeOrder => 'Ajaji';
+
+  @override
+  String get checkoutRequiresInternet =>
+      'Kaffaltiif toora interneetii barbaada.';
+
+  @override
+  String get orderPlaced => 'Ajajni kee milkaa\'inaan dabaleera!';
+
+  @override
+  String get orderNumber => 'Lakk. Ajajaa';
+
+  @override
+  String get continueShopping => 'Gabaa itti fufi';
+
+  @override
+  String get viewOrders => 'Ajajoota Koo Ilaali';
+
+  @override
+  String get cashOnDelivery => 'Yeroo Bajuu Kaffalatu';
+
+  @override
+  String get payOnDeliveryDesc =>
+      'Oomishni yeroo sidhiheenyu maallaqa kaffali.';
+
+  @override
+  String get comingSoon => 'Dhiheenyatti Ni Dhufa';
+
+  @override
+  String get bankTransfer => 'Dabarsaa Baankii';
+
+  @override
+  String get bankTransferDesc => 'Baankiidhaan yookiin Telebirr dabarsi.';
+
+  @override
+  String get noOrders => 'Ajajnı hin argamne.';
+
+  @override
+  String get statusPending => 'Eegaa jira';
+
+  @override
+  String get statusConfirmed => 'Mirkanaa\'eera';
+
+  @override
+  String get statusProcessing => 'Qopheessuutti jira';
+
+  @override
+  String get statusReady => 'Geejjibameef qophaaye';
+
+  @override
+  String get statusOutForDelivery => 'Karaa irra jira';
+
+  @override
+  String get statusDelivered => 'Gaheera';
+
+  @override
+  String get statusCompleted => 'Xumurameera';
+
+  @override
+  String get statusCancelled => 'Haqameera';
+
+  @override
+  String get deliveryPending => 'Geessisaa Eegaa jira';
+
+  @override
+  String get deliveryAssigned => 'Oofa rammadame';
+
+  @override
+  String get deliveryPickedUp => 'Fudhadheera';
+
+  @override
+  String get deliveryInTransit => 'Karaa irra';
+
+  @override
+  String get deliveryDelivered => 'Gaheera';
+
+  @override
+  String get deliveryFailed => 'Hin geenye';
+
+  @override
+  String get incomingOrders => 'Ajajoota Dhufan';
+
+  @override
+  String get noIncomingOrders => 'Ammaaf ajajtni hin jiru.';
+
+  @override
+  String get cancelOrder => 'Ajajii Haqi';
+
+  @override
+  String get cancelOrderConfirm => 'Ajajii kana haqamuu barbaadda?';
+
+  @override
+  String get yes => 'Eeyee';
+
+  @override
+  String get no => 'Lakki';
+
+  @override
+  String get confirmOrder => 'Mirkaneessi';
+
+  @override
+  String get startProcessing => 'Qopheessi';
+
+  @override
+  String get markReady => 'Qophaaye Bodi';
+
+  @override
+  String get sendForDelivery => 'Bobbaasi';
+
+  @override
+  String get markDelivered => 'Gaheera';
 }

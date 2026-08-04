@@ -35,3 +35,8 @@ class EggRecordModel with _$EggRecordModel {
   factory EggRecordModel.fromJson(Map<String, dynamic> json) =>
       _$EggRecordModelFromJson(json);
 }
+
+extension EggRecordHelpers on EggRecordModel {
+  int get goodEggs => quantity - brokenCount;
+}
+

@@ -443,4 +443,223 @@ class AppLocalizationsAm extends AppLocalizations {
 
   @override
   String get error => 'ስህተት';
+
+  @override
+  String get recordEggs => 'እንቁላል መዝግብ';
+
+  @override
+  String get marketplace => 'ገበያ';
+
+  @override
+  String get flockName => 'የዶሮ መንጋ ስም';
+
+  @override
+  String get flockNameHint => 'ለምሳሌ ቤት ሀ';
+
+  @override
+  String get productionType => 'የምርት ዓይነት';
+
+  @override
+  String get eggQuantity => 'የእንቁላል ብዛት';
+
+  @override
+  String get brokenCount => 'የተሰበረ ብዛት';
+
+  @override
+  String get totalEggs => 'ጠቅላላ እንቁላል';
+
+  @override
+  String get goodEggs => 'ደህና እንቁላል';
+
+  @override
+  String get broken => 'የተሰበረ';
+
+  @override
+  String get notesOptional => 'ማስታወሻ (አማራጭ)';
+
+  @override
+  String get freeRange => 'ነጻ የሚላስ';
+
+  @override
+  String get caged => 'በቤት (ጎጆ)';
+
+  @override
+  String get organic => 'ኦርጋኒክ';
+
+  @override
+  String get myOrders => 'የእኔ ትእዛዞች';
+
+  @override
+  String get allCategories => 'ሁሉም';
+
+  @override
+  String get freshMilk => 'ትኩስ ወተት';
+
+  @override
+  String get eggs => 'እንቁላል';
+
+  @override
+  String get retry => 'ደግመው ይሞክሩ';
+
+  @override
+  String get noListings => 'ምንም የገበያ ዝርዝር አልተገኘም።';
+
+  @override
+  String get productDetails => 'የምርት ዝርዝሮች';
+
+  @override
+  String get pricePerUnit => 'ዋጋ';
+
+  @override
+  String get available => 'ያለው';
+
+  @override
+  String get description => 'መግለጫ';
+
+  @override
+  String get orderNow => 'አሁን ይዘዙ';
+
+  @override
+  String get outOfStock => 'አልቋል';
+
+  @override
+  String get checkout => 'ክፍያ መፈጸሚያ';
+
+  @override
+  String get orderSummary => 'የትእዛዝ ማጠቃለያ';
+
+  @override
+  String get quantity => 'ብዛት';
+
+  @override
+  String get maxAvailable => 'ከፍተኛው ያለ';
+
+  @override
+  String get phoneNumber => 'ስልክ ቁጥር';
+
+  @override
+  String get deliveryAddress => 'የማድረሻ አድራሻ';
+
+  @override
+  String get deliveryNotesOptional => 'የማድረሻ ማስታወሻ (አማራጭ)';
+
+  @override
+  String get paymentMethod => 'የክፍያ ዘዴ';
+
+  @override
+  String get totalAmount => 'ጠቅላላ መጠን';
+
+  @override
+  String get processing => 'በማሰናዳት ላይ...';
+
+  @override
+  String get placeOrder => 'ትእዛዝ ያስገቡ';
+
+  @override
+  String get checkoutRequiresInternet => 'ክፍያ ለመፈጸም ኢንተርኔት ግንኙነት ያስፈልጋል።';
+
+  @override
+  String get orderPlaced => 'ትእዛዝዎ በተሳካ ሁኔታ ተላልፏል!';
+
+  @override
+  String get orderNumber => 'የትእዛዝ ቁጥር';
+
+  @override
+  String get continueShopping => 'ግብይትዎን ይቀጥሉ';
+
+  @override
+  String get viewOrders => 'ትእዛዞችን ይመልከቱ';
+
+  @override
+  String get cashOnDelivery => 'ሲደርስ የሚከፈል';
+
+  @override
+  String get payOnDeliveryDesc => 'ትእዛዝዎ ሲደርስዎት ጥሬ ገንዘብ ይክፈሉ።';
+
+  @override
+  String get comingSoon => 'በቅርብ ቀን';
+
+  @override
+  String get bankTransfer => 'የባንክ ዝውውር';
+
+  @override
+  String get bankTransferDesc => 'የቀጥታ ባንክ ገቢ ወይም ቴሌብር ዝውውር።';
+
+  @override
+  String get noOrders => 'ምንም ትእዛዞች አልተገኙም።';
+
+  @override
+  String get statusPending => 'በመጠባበቅ ላይ';
+
+  @override
+  String get statusConfirmed => 'ተረጋግጧል';
+
+  @override
+  String get statusProcessing => 'በማሰናዳት ላይ';
+
+  @override
+  String get statusReady => 'ለማድረስ ዝግጁ';
+
+  @override
+  String get statusOutForDelivery => 'በመንገድ ላይ (እየደረሰ ነው)';
+
+  @override
+  String get statusDelivered => 'ደርሷል';
+
+  @override
+  String get statusCompleted => 'ተጠናቅቋል';
+
+  @override
+  String get statusCancelled => 'ተሰርዟል';
+
+  @override
+  String get deliveryPending => 'ማድረስ በመጠባበቅ ላይ';
+
+  @override
+  String get deliveryAssigned => 'አ드ራሽ ተመድቧል';
+
+  @override
+  String get deliveryPickedUp => 'ተረክቧል';
+
+  @override
+  String get deliveryInTransit => 'በመንገድ ላይ';
+
+  @override
+  String get deliveryDelivered => 'ደርሷል';
+
+  @override
+  String get deliveryFailed => 'ማድረስ አልተሳካም';
+
+  @override
+  String get incomingOrders => 'የመጡ ትእዛዞች';
+
+  @override
+  String get noIncomingOrders => 'እስከአሁን የመጡ ትእዛዞች የሉም።';
+
+  @override
+  String get cancelOrder => 'ትእዛዝ ሰርዝ';
+
+  @override
+  String get cancelOrderConfirm => 'ይህን ትእዛዝ በእርግጥ መሰረዝ ይፈልጋሉ?';
+
+  @override
+  String get yes => 'አዎ';
+
+  @override
+  String get no => 'አይ';
+
+  @override
+  String get confirmOrder => 'አረጋገጥ';
+
+  @override
+  String get startProcessing => 'አዘጋጅ';
+
+  @override
+  String get markReady => 'ዝግጁ በል';
+
+  @override
+  String get sendForDelivery => 'አሰማራ';
+
+  @override
+  String get markDelivered => 'ደረሰ';
 }

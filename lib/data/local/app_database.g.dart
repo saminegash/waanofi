@@ -2618,6 +2618,620 @@ class FeedRecordsTableCompanion extends UpdateCompanion<LocalFeedRecord> {
   }
 }
 
+class $EggRecordsTableTable extends EggRecordsTable
+    with TableInfo<$EggRecordsTableTable, LocalEggRecord> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $EggRecordsTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _farmIdMeta = const VerificationMeta('farmId');
+  @override
+  late final GeneratedColumn<String> farmId = GeneratedColumn<String>(
+    'farm_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _flockNameMeta = const VerificationMeta(
+    'flockName',
+  );
+  @override
+  late final GeneratedColumn<String> flockName = GeneratedColumn<String>(
+    'flock_name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _productionTypeMeta = const VerificationMeta(
+    'productionType',
+  );
+  @override
+  late final GeneratedColumn<String> productionType = GeneratedColumn<String>(
+    'production_type',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('free_range'),
+  );
+  static const VerificationMeta _recordedAtMeta = const VerificationMeta(
+    'recordedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> recordedAt = GeneratedColumn<DateTime>(
+    'recorded_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _quantityMeta = const VerificationMeta(
+    'quantity',
+  );
+  @override
+  late final GeneratedColumn<int> quantity = GeneratedColumn<int>(
+    'quantity',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _brokenCountMeta = const VerificationMeta(
+    'brokenCount',
+  );
+  @override
+  late final GeneratedColumn<int> brokenCount = GeneratedColumn<int>(
+    'broken_count',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _notesMeta = const VerificationMeta('notes');
+  @override
+  late final GeneratedColumn<String> notes = GeneratedColumn<String>(
+    'notes',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _recordedByMeta = const VerificationMeta(
+    'recordedBy',
+  );
+  @override
+  late final GeneratedColumn<String> recordedBy = GeneratedColumn<String>(
+    'recorded_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    farmId,
+    flockName,
+    productionType,
+    recordedAt,
+    quantity,
+    brokenCount,
+    notes,
+    recordedBy,
+    createdAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'egg_records_table';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<LocalEggRecord> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('farm_id')) {
+      context.handle(
+        _farmIdMeta,
+        farmId.isAcceptableOrUnknown(data['farm_id']!, _farmIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_farmIdMeta);
+    }
+    if (data.containsKey('flock_name')) {
+      context.handle(
+        _flockNameMeta,
+        flockName.isAcceptableOrUnknown(data['flock_name']!, _flockNameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_flockNameMeta);
+    }
+    if (data.containsKey('production_type')) {
+      context.handle(
+        _productionTypeMeta,
+        productionType.isAcceptableOrUnknown(
+          data['production_type']!,
+          _productionTypeMeta,
+        ),
+      );
+    }
+    if (data.containsKey('recorded_at')) {
+      context.handle(
+        _recordedAtMeta,
+        recordedAt.isAcceptableOrUnknown(data['recorded_at']!, _recordedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_recordedAtMeta);
+    }
+    if (data.containsKey('quantity')) {
+      context.handle(
+        _quantityMeta,
+        quantity.isAcceptableOrUnknown(data['quantity']!, _quantityMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_quantityMeta);
+    }
+    if (data.containsKey('broken_count')) {
+      context.handle(
+        _brokenCountMeta,
+        brokenCount.isAcceptableOrUnknown(
+          data['broken_count']!,
+          _brokenCountMeta,
+        ),
+      );
+    }
+    if (data.containsKey('notes')) {
+      context.handle(
+        _notesMeta,
+        notes.isAcceptableOrUnknown(data['notes']!, _notesMeta),
+      );
+    }
+    if (data.containsKey('recorded_by')) {
+      context.handle(
+        _recordedByMeta,
+        recordedBy.isAcceptableOrUnknown(data['recorded_by']!, _recordedByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  LocalEggRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return LocalEggRecord(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      farmId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}farm_id'],
+      )!,
+      flockName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}flock_name'],
+      )!,
+      productionType: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}production_type'],
+      )!,
+      recordedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}recorded_at'],
+      )!,
+      quantity: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}quantity'],
+      )!,
+      brokenCount: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}broken_count'],
+      )!,
+      notes: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}notes'],
+      ),
+      recordedBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}recorded_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+    );
+  }
+
+  @override
+  $EggRecordsTableTable createAlias(String alias) {
+    return $EggRecordsTableTable(attachedDatabase, alias);
+  }
+}
+
+class LocalEggRecord extends DataClass implements Insertable<LocalEggRecord> {
+  final String id;
+  final String farmId;
+  final String flockName;
+  final String productionType;
+  final DateTime recordedAt;
+  final int quantity;
+  final int brokenCount;
+  final String? notes;
+  final String? recordedBy;
+  final DateTime createdAt;
+  const LocalEggRecord({
+    required this.id,
+    required this.farmId,
+    required this.flockName,
+    required this.productionType,
+    required this.recordedAt,
+    required this.quantity,
+    required this.brokenCount,
+    this.notes,
+    this.recordedBy,
+    required this.createdAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['farm_id'] = Variable<String>(farmId);
+    map['flock_name'] = Variable<String>(flockName);
+    map['production_type'] = Variable<String>(productionType);
+    map['recorded_at'] = Variable<DateTime>(recordedAt);
+    map['quantity'] = Variable<int>(quantity);
+    map['broken_count'] = Variable<int>(brokenCount);
+    if (!nullToAbsent || notes != null) {
+      map['notes'] = Variable<String>(notes);
+    }
+    if (!nullToAbsent || recordedBy != null) {
+      map['recorded_by'] = Variable<String>(recordedBy);
+    }
+    map['created_at'] = Variable<DateTime>(createdAt);
+    return map;
+  }
+
+  EggRecordsTableCompanion toCompanion(bool nullToAbsent) {
+    return EggRecordsTableCompanion(
+      id: Value(id),
+      farmId: Value(farmId),
+      flockName: Value(flockName),
+      productionType: Value(productionType),
+      recordedAt: Value(recordedAt),
+      quantity: Value(quantity),
+      brokenCount: Value(brokenCount),
+      notes: notes == null && nullToAbsent
+          ? const Value.absent()
+          : Value(notes),
+      recordedBy: recordedBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(recordedBy),
+      createdAt: Value(createdAt),
+    );
+  }
+
+  factory LocalEggRecord.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return LocalEggRecord(
+      id: serializer.fromJson<String>(json['id']),
+      farmId: serializer.fromJson<String>(json['farmId']),
+      flockName: serializer.fromJson<String>(json['flockName']),
+      productionType: serializer.fromJson<String>(json['productionType']),
+      recordedAt: serializer.fromJson<DateTime>(json['recordedAt']),
+      quantity: serializer.fromJson<int>(json['quantity']),
+      brokenCount: serializer.fromJson<int>(json['brokenCount']),
+      notes: serializer.fromJson<String?>(json['notes']),
+      recordedBy: serializer.fromJson<String?>(json['recordedBy']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'farmId': serializer.toJson<String>(farmId),
+      'flockName': serializer.toJson<String>(flockName),
+      'productionType': serializer.toJson<String>(productionType),
+      'recordedAt': serializer.toJson<DateTime>(recordedAt),
+      'quantity': serializer.toJson<int>(quantity),
+      'brokenCount': serializer.toJson<int>(brokenCount),
+      'notes': serializer.toJson<String?>(notes),
+      'recordedBy': serializer.toJson<String?>(recordedBy),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+    };
+  }
+
+  LocalEggRecord copyWith({
+    String? id,
+    String? farmId,
+    String? flockName,
+    String? productionType,
+    DateTime? recordedAt,
+    int? quantity,
+    int? brokenCount,
+    Value<String?> notes = const Value.absent(),
+    Value<String?> recordedBy = const Value.absent(),
+    DateTime? createdAt,
+  }) => LocalEggRecord(
+    id: id ?? this.id,
+    farmId: farmId ?? this.farmId,
+    flockName: flockName ?? this.flockName,
+    productionType: productionType ?? this.productionType,
+    recordedAt: recordedAt ?? this.recordedAt,
+    quantity: quantity ?? this.quantity,
+    brokenCount: brokenCount ?? this.brokenCount,
+    notes: notes.present ? notes.value : this.notes,
+    recordedBy: recordedBy.present ? recordedBy.value : this.recordedBy,
+    createdAt: createdAt ?? this.createdAt,
+  );
+  LocalEggRecord copyWithCompanion(EggRecordsTableCompanion data) {
+    return LocalEggRecord(
+      id: data.id.present ? data.id.value : this.id,
+      farmId: data.farmId.present ? data.farmId.value : this.farmId,
+      flockName: data.flockName.present ? data.flockName.value : this.flockName,
+      productionType: data.productionType.present
+          ? data.productionType.value
+          : this.productionType,
+      recordedAt: data.recordedAt.present
+          ? data.recordedAt.value
+          : this.recordedAt,
+      quantity: data.quantity.present ? data.quantity.value : this.quantity,
+      brokenCount: data.brokenCount.present
+          ? data.brokenCount.value
+          : this.brokenCount,
+      notes: data.notes.present ? data.notes.value : this.notes,
+      recordedBy: data.recordedBy.present
+          ? data.recordedBy.value
+          : this.recordedBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LocalEggRecord(')
+          ..write('id: $id, ')
+          ..write('farmId: $farmId, ')
+          ..write('flockName: $flockName, ')
+          ..write('productionType: $productionType, ')
+          ..write('recordedAt: $recordedAt, ')
+          ..write('quantity: $quantity, ')
+          ..write('brokenCount: $brokenCount, ')
+          ..write('notes: $notes, ')
+          ..write('recordedBy: $recordedBy, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    farmId,
+    flockName,
+    productionType,
+    recordedAt,
+    quantity,
+    brokenCount,
+    notes,
+    recordedBy,
+    createdAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is LocalEggRecord &&
+          other.id == this.id &&
+          other.farmId == this.farmId &&
+          other.flockName == this.flockName &&
+          other.productionType == this.productionType &&
+          other.recordedAt == this.recordedAt &&
+          other.quantity == this.quantity &&
+          other.brokenCount == this.brokenCount &&
+          other.notes == this.notes &&
+          other.recordedBy == this.recordedBy &&
+          other.createdAt == this.createdAt);
+}
+
+class EggRecordsTableCompanion extends UpdateCompanion<LocalEggRecord> {
+  final Value<String> id;
+  final Value<String> farmId;
+  final Value<String> flockName;
+  final Value<String> productionType;
+  final Value<DateTime> recordedAt;
+  final Value<int> quantity;
+  final Value<int> brokenCount;
+  final Value<String?> notes;
+  final Value<String?> recordedBy;
+  final Value<DateTime> createdAt;
+  final Value<int> rowid;
+  const EggRecordsTableCompanion({
+    this.id = const Value.absent(),
+    this.farmId = const Value.absent(),
+    this.flockName = const Value.absent(),
+    this.productionType = const Value.absent(),
+    this.recordedAt = const Value.absent(),
+    this.quantity = const Value.absent(),
+    this.brokenCount = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.recordedBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  EggRecordsTableCompanion.insert({
+    required String id,
+    required String farmId,
+    required String flockName,
+    this.productionType = const Value.absent(),
+    required DateTime recordedAt,
+    required int quantity,
+    this.brokenCount = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.recordedBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       farmId = Value(farmId),
+       flockName = Value(flockName),
+       recordedAt = Value(recordedAt),
+       quantity = Value(quantity);
+  static Insertable<LocalEggRecord> custom({
+    Expression<String>? id,
+    Expression<String>? farmId,
+    Expression<String>? flockName,
+    Expression<String>? productionType,
+    Expression<DateTime>? recordedAt,
+    Expression<int>? quantity,
+    Expression<int>? brokenCount,
+    Expression<String>? notes,
+    Expression<String>? recordedBy,
+    Expression<DateTime>? createdAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (farmId != null) 'farm_id': farmId,
+      if (flockName != null) 'flock_name': flockName,
+      if (productionType != null) 'production_type': productionType,
+      if (recordedAt != null) 'recorded_at': recordedAt,
+      if (quantity != null) 'quantity': quantity,
+      if (brokenCount != null) 'broken_count': brokenCount,
+      if (notes != null) 'notes': notes,
+      if (recordedBy != null) 'recorded_by': recordedBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  EggRecordsTableCompanion copyWith({
+    Value<String>? id,
+    Value<String>? farmId,
+    Value<String>? flockName,
+    Value<String>? productionType,
+    Value<DateTime>? recordedAt,
+    Value<int>? quantity,
+    Value<int>? brokenCount,
+    Value<String?>? notes,
+    Value<String?>? recordedBy,
+    Value<DateTime>? createdAt,
+    Value<int>? rowid,
+  }) {
+    return EggRecordsTableCompanion(
+      id: id ?? this.id,
+      farmId: farmId ?? this.farmId,
+      flockName: flockName ?? this.flockName,
+      productionType: productionType ?? this.productionType,
+      recordedAt: recordedAt ?? this.recordedAt,
+      quantity: quantity ?? this.quantity,
+      brokenCount: brokenCount ?? this.brokenCount,
+      notes: notes ?? this.notes,
+      recordedBy: recordedBy ?? this.recordedBy,
+      createdAt: createdAt ?? this.createdAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (farmId.present) {
+      map['farm_id'] = Variable<String>(farmId.value);
+    }
+    if (flockName.present) {
+      map['flock_name'] = Variable<String>(flockName.value);
+    }
+    if (productionType.present) {
+      map['production_type'] = Variable<String>(productionType.value);
+    }
+    if (recordedAt.present) {
+      map['recorded_at'] = Variable<DateTime>(recordedAt.value);
+    }
+    if (quantity.present) {
+      map['quantity'] = Variable<int>(quantity.value);
+    }
+    if (brokenCount.present) {
+      map['broken_count'] = Variable<int>(brokenCount.value);
+    }
+    if (notes.present) {
+      map['notes'] = Variable<String>(notes.value);
+    }
+    if (recordedBy.present) {
+      map['recorded_by'] = Variable<String>(recordedBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('EggRecordsTableCompanion(')
+          ..write('id: $id, ')
+          ..write('farmId: $farmId, ')
+          ..write('flockName: $flockName, ')
+          ..write('productionType: $productionType, ')
+          ..write('recordedAt: $recordedAt, ')
+          ..write('quantity: $quantity, ')
+          ..write('brokenCount: $brokenCount, ')
+          ..write('notes: $notes, ')
+          ..write('recordedBy: $recordedBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -2632,7 +3246,11 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $FeedRecordsTableTable feedRecordsTable = $FeedRecordsTableTable(
     this,
   );
+  late final $EggRecordsTableTable eggRecordsTable = $EggRecordsTableTable(
+    this,
+  );
   late final AnimalsDao animalsDao = AnimalsDao(this as AppDatabase);
+  late final EggRecordsDao eggRecordsDao = EggRecordsDao(this as AppDatabase);
   late final MilkDao milkDao = MilkDao(this as AppDatabase);
   late final OutboxDao outboxDao = OutboxDao(this as AppDatabase);
   late final FeedTypesDao feedTypesDao = FeedTypesDao(this as AppDatabase);
@@ -2649,6 +3267,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     syncOutboxTable,
     feedTypesTable,
     feedRecordsTable,
+    eggRecordsTable,
   ];
 }
 
@@ -4005,6 +4624,315 @@ typedef $$FeedRecordsTableTableProcessedTableManager =
       LocalFeedRecord,
       PrefetchHooks Function()
     >;
+typedef $$EggRecordsTableTableCreateCompanionBuilder =
+    EggRecordsTableCompanion Function({
+      required String id,
+      required String farmId,
+      required String flockName,
+      Value<String> productionType,
+      required DateTime recordedAt,
+      required int quantity,
+      Value<int> brokenCount,
+      Value<String?> notes,
+      Value<String?> recordedBy,
+      Value<DateTime> createdAt,
+      Value<int> rowid,
+    });
+typedef $$EggRecordsTableTableUpdateCompanionBuilder =
+    EggRecordsTableCompanion Function({
+      Value<String> id,
+      Value<String> farmId,
+      Value<String> flockName,
+      Value<String> productionType,
+      Value<DateTime> recordedAt,
+      Value<int> quantity,
+      Value<int> brokenCount,
+      Value<String?> notes,
+      Value<String?> recordedBy,
+      Value<DateTime> createdAt,
+      Value<int> rowid,
+    });
+
+class $$EggRecordsTableTableFilterComposer
+    extends Composer<_$AppDatabase, $EggRecordsTableTable> {
+  $$EggRecordsTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get farmId => $composableBuilder(
+    column: $table.farmId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get flockName => $composableBuilder(
+    column: $table.flockName,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get productionType => $composableBuilder(
+    column: $table.productionType,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get recordedAt => $composableBuilder(
+    column: $table.recordedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get quantity => $composableBuilder(
+    column: $table.quantity,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get brokenCount => $composableBuilder(
+    column: $table.brokenCount,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get recordedBy => $composableBuilder(
+    column: $table.recordedBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$EggRecordsTableTableOrderingComposer
+    extends Composer<_$AppDatabase, $EggRecordsTableTable> {
+  $$EggRecordsTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get farmId => $composableBuilder(
+    column: $table.farmId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get flockName => $composableBuilder(
+    column: $table.flockName,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get productionType => $composableBuilder(
+    column: $table.productionType,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get recordedAt => $composableBuilder(
+    column: $table.recordedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get quantity => $composableBuilder(
+    column: $table.quantity,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get brokenCount => $composableBuilder(
+    column: $table.brokenCount,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get recordedBy => $composableBuilder(
+    column: $table.recordedBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$EggRecordsTableTableAnnotationComposer
+    extends Composer<_$AppDatabase, $EggRecordsTableTable> {
+  $$EggRecordsTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get farmId =>
+      $composableBuilder(column: $table.farmId, builder: (column) => column);
+
+  GeneratedColumn<String> get flockName =>
+      $composableBuilder(column: $table.flockName, builder: (column) => column);
+
+  GeneratedColumn<String> get productionType => $composableBuilder(
+    column: $table.productionType,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get recordedAt => $composableBuilder(
+    column: $table.recordedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get quantity =>
+      $composableBuilder(column: $table.quantity, builder: (column) => column);
+
+  GeneratedColumn<int> get brokenCount => $composableBuilder(
+    column: $table.brokenCount,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get notes =>
+      $composableBuilder(column: $table.notes, builder: (column) => column);
+
+  GeneratedColumn<String> get recordedBy => $composableBuilder(
+    column: $table.recordedBy,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+}
+
+class $$EggRecordsTableTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $EggRecordsTableTable,
+          LocalEggRecord,
+          $$EggRecordsTableTableFilterComposer,
+          $$EggRecordsTableTableOrderingComposer,
+          $$EggRecordsTableTableAnnotationComposer,
+          $$EggRecordsTableTableCreateCompanionBuilder,
+          $$EggRecordsTableTableUpdateCompanionBuilder,
+          (
+            LocalEggRecord,
+            BaseReferences<
+              _$AppDatabase,
+              $EggRecordsTableTable,
+              LocalEggRecord
+            >,
+          ),
+          LocalEggRecord,
+          PrefetchHooks Function()
+        > {
+  $$EggRecordsTableTableTableManager(
+    _$AppDatabase db,
+    $EggRecordsTableTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$EggRecordsTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$EggRecordsTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$EggRecordsTableTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> farmId = const Value.absent(),
+                Value<String> flockName = const Value.absent(),
+                Value<String> productionType = const Value.absent(),
+                Value<DateTime> recordedAt = const Value.absent(),
+                Value<int> quantity = const Value.absent(),
+                Value<int> brokenCount = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<String?> recordedBy = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => EggRecordsTableCompanion(
+                id: id,
+                farmId: farmId,
+                flockName: flockName,
+                productionType: productionType,
+                recordedAt: recordedAt,
+                quantity: quantity,
+                brokenCount: brokenCount,
+                notes: notes,
+                recordedBy: recordedBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String farmId,
+                required String flockName,
+                Value<String> productionType = const Value.absent(),
+                required DateTime recordedAt,
+                required int quantity,
+                Value<int> brokenCount = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<String?> recordedBy = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => EggRecordsTableCompanion.insert(
+                id: id,
+                farmId: farmId,
+                flockName: flockName,
+                productionType: productionType,
+                recordedAt: recordedAt,
+                quantity: quantity,
+                brokenCount: brokenCount,
+                notes: notes,
+                recordedBy: recordedBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$EggRecordsTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $EggRecordsTableTable,
+      LocalEggRecord,
+      $$EggRecordsTableTableFilterComposer,
+      $$EggRecordsTableTableOrderingComposer,
+      $$EggRecordsTableTableAnnotationComposer,
+      $$EggRecordsTableTableCreateCompanionBuilder,
+      $$EggRecordsTableTableUpdateCompanionBuilder,
+      (
+        LocalEggRecord,
+        BaseReferences<_$AppDatabase, $EggRecordsTableTable, LocalEggRecord>,
+      ),
+      LocalEggRecord,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -4019,4 +4947,6 @@ class $AppDatabaseManager {
       $$FeedTypesTableTableTableManager(_db, _db.feedTypesTable);
   $$FeedRecordsTableTableTableManager get feedRecordsTable =>
       $$FeedRecordsTableTableTableManager(_db, _db.feedRecordsTable);
+  $$EggRecordsTableTableTableManager get eggRecordsTable =>
+      $$EggRecordsTableTableTableManager(_db, _db.eggRecordsTable);
 }

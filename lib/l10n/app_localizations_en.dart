@@ -446,4 +446,225 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get error => 'Error';
+
+  @override
+  String get recordEggs => 'Record Eggs';
+
+  @override
+  String get marketplace => 'Marketplace';
+
+  @override
+  String get flockName => 'Flock Name';
+
+  @override
+  String get flockNameHint => 'e.g. House A, Pasture 1';
+
+  @override
+  String get productionType => 'Production Type';
+
+  @override
+  String get eggQuantity => 'Egg Quantity';
+
+  @override
+  String get brokenCount => 'Broken Count';
+
+  @override
+  String get totalEggs => 'Total Eggs';
+
+  @override
+  String get goodEggs => 'Good Eggs';
+
+  @override
+  String get broken => 'Broken';
+
+  @override
+  String get notesOptional => 'Notes (Optional)';
+
+  @override
+  String get freeRange => 'Free Range';
+
+  @override
+  String get caged => 'Caged';
+
+  @override
+  String get organic => 'Organic';
+
+  @override
+  String get myOrders => 'My Orders';
+
+  @override
+  String get allCategories => 'All';
+
+  @override
+  String get freshMilk => 'Fresh Milk';
+
+  @override
+  String get eggs => 'Eggs';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get noListings => 'No marketplace listings found.';
+
+  @override
+  String get productDetails => 'Product Details';
+
+  @override
+  String get pricePerUnit => 'Price';
+
+  @override
+  String get available => 'Available';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get orderNow => 'Order Now';
+
+  @override
+  String get outOfStock => 'Out of Stock';
+
+  @override
+  String get checkout => 'Checkout';
+
+  @override
+  String get orderSummary => 'Order Summary';
+
+  @override
+  String get quantity => 'Quantity';
+
+  @override
+  String get maxAvailable => 'Max available';
+
+  @override
+  String get phoneNumber => 'Phone Number';
+
+  @override
+  String get deliveryAddress => 'Delivery Address';
+
+  @override
+  String get deliveryNotesOptional => 'Delivery Notes (Optional)';
+
+  @override
+  String get paymentMethod => 'Payment Method';
+
+  @override
+  String get totalAmount => 'Total Amount';
+
+  @override
+  String get processing => 'Processing...';
+
+  @override
+  String get placeOrder => 'Place Order';
+
+  @override
+  String get checkoutRequiresInternet =>
+      'Checkout requires internet connection.';
+
+  @override
+  String get orderPlaced => 'Order Placed Successfully!';
+
+  @override
+  String get orderNumber => 'Order Number';
+
+  @override
+  String get continueShopping => 'Continue Shopping';
+
+  @override
+  String get viewOrders => 'View Orders';
+
+  @override
+  String get cashOnDelivery => 'Cash on Delivery';
+
+  @override
+  String get payOnDeliveryDesc => 'Pay cash when your order is delivered.';
+
+  @override
+  String get comingSoon => 'Coming Soon';
+
+  @override
+  String get bankTransfer => 'Bank Transfer';
+
+  @override
+  String get bankTransferDesc => 'Direct bank deposit or Telebirr transfer.';
+
+  @override
+  String get noOrders => 'No orders found.';
+
+  @override
+  String get statusPending => 'Pending';
+
+  @override
+  String get statusConfirmed => 'Confirmed';
+
+  @override
+  String get statusProcessing => 'Processing';
+
+  @override
+  String get statusReady => 'Ready for Delivery';
+
+  @override
+  String get statusOutForDelivery => 'Out for Delivery';
+
+  @override
+  String get statusDelivered => 'Delivered';
+
+  @override
+  String get statusCompleted => 'Completed';
+
+  @override
+  String get statusCancelled => 'Cancelled';
+
+  @override
+  String get deliveryPending => 'Delivery Pending';
+
+  @override
+  String get deliveryAssigned => 'Driver Assigned';
+
+  @override
+  String get deliveryPickedUp => 'Picked Up';
+
+  @override
+  String get deliveryInTransit => 'In Transit';
+
+  @override
+  String get deliveryDelivered => 'Delivered';
+
+  @override
+  String get deliveryFailed => 'Delivery Failed';
+
+  @override
+  String get incomingOrders => 'Incoming Orders';
+
+  @override
+  String get noIncomingOrders => 'No incoming orders yet.';
+
+  @override
+  String get cancelOrder => 'Cancel Order';
+
+  @override
+  String get cancelOrderConfirm =>
+      'Are you sure you want to cancel this order?';
+
+  @override
+  String get yes => 'Yes';
+
+  @override
+  String get no => 'No';
+
+  @override
+  String get confirmOrder => 'Confirm';
+
+  @override
+  String get startProcessing => 'Process';
+
+  @override
+  String get markReady => 'Mark Ready';
+
+  @override
+  String get sendForDelivery => 'Dispatch';
+
+  @override
+  String get markDelivered => 'Delivered';
 }
