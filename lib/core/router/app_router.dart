@@ -21,6 +21,8 @@ import '../../features/home/presentation/more_view.dart';
 
 import '../../features/onboarding/presentation/splash_page.dart';
 import '../../features/onboarding/presentation/onboarding_page.dart';
+import '../../features/sync/presentation/sync_status_page.dart';
+
 
 // Marketplace imports
 import '../../features/eggs/presentation/daily_egg_entry_page.dart';
@@ -258,6 +260,11 @@ GoRouter appRouter(Ref ref) {
                     name: 'seller_orders',
                     builder: (context, state) => const SellerOrdersPage(),
                   ),
+                  GoRoute(
+                    path: 'sync_status',
+                    name: 'sync_status',
+                    builder: (context, state) => const SyncStatusPage(),
+                  ),
                 ],
               ),
             ],
@@ -267,6 +274,7 @@ GoRouter appRouter(Ref ref) {
     ],
   );
 }
+
 
 /// Provider for the GoRouter instance.
 ///

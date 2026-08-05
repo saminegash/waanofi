@@ -2,13 +2,23 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../core/auth/app_user.dart';
 import '../../core/auth/role_permissions.dart';
+import '../../core/sync/sync_coordinator.dart';
+import '../local/app_database.dart';
 
 /// Handles all Supabase auth operations and profile resolution.
 class AuthRepository {
-  AuthRepository({SupabaseClient? client})
-      : _client = client ?? Supabase.instance.client;
+  AuthRepository({
+    SupabaseClient? client,
+    AppDatabase? database,
+    SyncCoordinator? syncCoordinator,
+  })  : _client = client ?? Supabase.instance.client,
+        _database = database,
+        _syncCoordinator = syncCoordinator;
 
   final SupabaseClient _client;
+  final AppDatabase? _database;
+  final SyncCoordinator? _syncCoordinator;
+
 
   // ───────────────── Session helpers ─────────────────
 
@@ -99,6 +109,8 @@ class AuthRepository {
   // ───────────────── Sign Out ─────────────────
 
   Future<void> signOut() async {
+    _syncCoordinator?.stop();
+    await _database?.clearSensitiveData();
     await _client.auth.signOut();
   }
 

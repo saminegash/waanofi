@@ -84,9 +84,14 @@ class EggRecordsTable extends Table {
 class SyncOutboxTable extends Table {
   IntColumn get id => integer().autoIncrement()();
   TextColumn get entityType => text()(); // e.g. 'milk_record'
-  TextColumn get operation => text()(); // e.g. 'upsert'
+  TextColumn get operation => text()(); // e.g. 'upsert', 'delete'
   TextColumn get payload => text()(); // JSON string of the record
   DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
-  TextColumn get status => text().withDefault(const Constant('pending'))(); // pending, processing, failed
+  TextColumn get status => text().withDefault(const Constant('pending'))(); // pending, processing, retrying, permanently_failed
   TextColumn get errorMessage => text().nullable()();
+  TextColumn get idempotencyKey => text().nullable()();
+  IntColumn get attemptCount => integer().withDefault(const Constant(0))();
+  DateTimeColumn get nextRetryAt => dateTime().nullable()();
+  TextColumn get lastErrorCode => text().nullable()();
 }
+

@@ -31,9 +31,11 @@ part 'app_database.g.dart';
 )
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(impl.openConnection());
+  AppDatabase.forTesting(super.executor);
 
   @override
-  int get schemaVersion => 4;
+
+  int get schemaVersion => 5;
 
   @override
   MigrationStrategy get migration {
@@ -53,7 +55,26 @@ class AppDatabase extends _$AppDatabase {
         if (from < 4) {
           await m.createTable(eggRecordsTable);
         }
+        if (from < 5) {
+          await m.addColumn(syncOutboxTable, syncOutboxTable.idempotencyKey);
+          await m.addColumn(syncOutboxTable, syncOutboxTable.attemptCount);
+          await m.addColumn(syncOutboxTable, syncOutboxTable.nextRetryAt);
+          await m.addColumn(syncOutboxTable, syncOutboxTable.lastErrorCode);
+        }
       },
     );
   }
+
+  /// Wipes all locally cached sensitive tenant data upon logout or farm switch.
+  Future<void> clearSensitiveData() async {
+    await transaction(() async {
+      await delete(animalsTable).go();
+      await delete(milkRecordsTable).go();
+      await delete(eggRecordsTable).go();
+      await delete(feedTypesTable).go();
+      await delete(feedRecordsTable).go();
+      await delete(syncOutboxTable).go();
+    });
+  }
 }
+

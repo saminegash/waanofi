@@ -6,9 +6,11 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:waanofi/l10n/app_localizations.dart';
 
+import '../../../core/auth/auth_providers.dart';
 import '../../../core/auth/permission.dart';
 import '../../../core/providers/locale_provider.dart';
 import '../../../shared/widgets/role_guard.dart';
+
 
 class MoreView extends ConsumerWidget {
   const MoreView({super.key});
@@ -82,6 +84,12 @@ class MoreView extends ConsumerWidget {
               },
             ),
           ),
+          ListTile(
+            leading: const Icon(Icons.sync_problem_outlined),
+            title: const Text('Offline Synchronization'),
+            subtitle: const Text('View queue, errors & retry failed records'),
+            onTap: () => context.push('/more/sync_status'),
+          ),
           const Divider(),
           ListTile(
             title: Text(l10n.account, style: const TextStyle(fontWeight: FontWeight.bold, color: WaanofiColors.textSecondary)),
@@ -90,7 +98,7 @@ class MoreView extends ConsumerWidget {
             leading: const Icon(Icons.logout, color: WaanofiColors.error),
             title: Text(l10n.logout, style: const TextStyle(color: WaanofiColors.error)),
             onTap: () async {
-              await Supabase.instance.client.auth.signOut();
+              await ref.read(authRepositoryProvider).signOut();
             },
           ),
         ],
@@ -98,3 +106,4 @@ class MoreView extends ConsumerWidget {
     );
   }
 }
+

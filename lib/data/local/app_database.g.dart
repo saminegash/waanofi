@@ -1237,6 +1237,51 @@ class $SyncOutboxTableTable extends SyncOutboxTable
     type: DriftSqlType.string,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _idempotencyKeyMeta = const VerificationMeta(
+    'idempotencyKey',
+  );
+  @override
+  late final GeneratedColumn<String> idempotencyKey = GeneratedColumn<String>(
+    'idempotency_key',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _attemptCountMeta = const VerificationMeta(
+    'attemptCount',
+  );
+  @override
+  late final GeneratedColumn<int> attemptCount = GeneratedColumn<int>(
+    'attempt_count',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _nextRetryAtMeta = const VerificationMeta(
+    'nextRetryAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> nextRetryAt = GeneratedColumn<DateTime>(
+    'next_retry_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _lastErrorCodeMeta = const VerificationMeta(
+    'lastErrorCode',
+  );
+  @override
+  late final GeneratedColumn<String> lastErrorCode = GeneratedColumn<String>(
+    'last_error_code',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
     id,
@@ -1246,6 +1291,10 @@ class $SyncOutboxTableTable extends SyncOutboxTable
     createdAt,
     status,
     errorMessage,
+    idempotencyKey,
+    attemptCount,
+    nextRetryAt,
+    lastErrorCode,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -1307,6 +1356,42 @@ class $SyncOutboxTableTable extends SyncOutboxTable
         ),
       );
     }
+    if (data.containsKey('idempotency_key')) {
+      context.handle(
+        _idempotencyKeyMeta,
+        idempotencyKey.isAcceptableOrUnknown(
+          data['idempotency_key']!,
+          _idempotencyKeyMeta,
+        ),
+      );
+    }
+    if (data.containsKey('attempt_count')) {
+      context.handle(
+        _attemptCountMeta,
+        attemptCount.isAcceptableOrUnknown(
+          data['attempt_count']!,
+          _attemptCountMeta,
+        ),
+      );
+    }
+    if (data.containsKey('next_retry_at')) {
+      context.handle(
+        _nextRetryAtMeta,
+        nextRetryAt.isAcceptableOrUnknown(
+          data['next_retry_at']!,
+          _nextRetryAtMeta,
+        ),
+      );
+    }
+    if (data.containsKey('last_error_code')) {
+      context.handle(
+        _lastErrorCodeMeta,
+        lastErrorCode.isAcceptableOrUnknown(
+          data['last_error_code']!,
+          _lastErrorCodeMeta,
+        ),
+      );
+    }
     return context;
   }
 
@@ -1344,6 +1429,22 @@ class $SyncOutboxTableTable extends SyncOutboxTable
         DriftSqlType.string,
         data['${effectivePrefix}error_message'],
       ),
+      idempotencyKey: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}idempotency_key'],
+      ),
+      attemptCount: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}attempt_count'],
+      )!,
+      nextRetryAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}next_retry_at'],
+      ),
+      lastErrorCode: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}last_error_code'],
+      ),
     );
   }
 
@@ -1361,6 +1462,10 @@ class SyncOutboxItem extends DataClass implements Insertable<SyncOutboxItem> {
   final DateTime createdAt;
   final String status;
   final String? errorMessage;
+  final String? idempotencyKey;
+  final int attemptCount;
+  final DateTime? nextRetryAt;
+  final String? lastErrorCode;
   const SyncOutboxItem({
     required this.id,
     required this.entityType,
@@ -1369,6 +1474,10 @@ class SyncOutboxItem extends DataClass implements Insertable<SyncOutboxItem> {
     required this.createdAt,
     required this.status,
     this.errorMessage,
+    this.idempotencyKey,
+    required this.attemptCount,
+    this.nextRetryAt,
+    this.lastErrorCode,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -1381,6 +1490,16 @@ class SyncOutboxItem extends DataClass implements Insertable<SyncOutboxItem> {
     map['status'] = Variable<String>(status);
     if (!nullToAbsent || errorMessage != null) {
       map['error_message'] = Variable<String>(errorMessage);
+    }
+    if (!nullToAbsent || idempotencyKey != null) {
+      map['idempotency_key'] = Variable<String>(idempotencyKey);
+    }
+    map['attempt_count'] = Variable<int>(attemptCount);
+    if (!nullToAbsent || nextRetryAt != null) {
+      map['next_retry_at'] = Variable<DateTime>(nextRetryAt);
+    }
+    if (!nullToAbsent || lastErrorCode != null) {
+      map['last_error_code'] = Variable<String>(lastErrorCode);
     }
     return map;
   }
@@ -1396,6 +1515,16 @@ class SyncOutboxItem extends DataClass implements Insertable<SyncOutboxItem> {
       errorMessage: errorMessage == null && nullToAbsent
           ? const Value.absent()
           : Value(errorMessage),
+      idempotencyKey: idempotencyKey == null && nullToAbsent
+          ? const Value.absent()
+          : Value(idempotencyKey),
+      attemptCount: Value(attemptCount),
+      nextRetryAt: nextRetryAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(nextRetryAt),
+      lastErrorCode: lastErrorCode == null && nullToAbsent
+          ? const Value.absent()
+          : Value(lastErrorCode),
     );
   }
 
@@ -1412,6 +1541,10 @@ class SyncOutboxItem extends DataClass implements Insertable<SyncOutboxItem> {
       createdAt: serializer.fromJson<DateTime>(json['createdAt']),
       status: serializer.fromJson<String>(json['status']),
       errorMessage: serializer.fromJson<String?>(json['errorMessage']),
+      idempotencyKey: serializer.fromJson<String?>(json['idempotencyKey']),
+      attemptCount: serializer.fromJson<int>(json['attemptCount']),
+      nextRetryAt: serializer.fromJson<DateTime?>(json['nextRetryAt']),
+      lastErrorCode: serializer.fromJson<String?>(json['lastErrorCode']),
     );
   }
   @override
@@ -1425,6 +1558,10 @@ class SyncOutboxItem extends DataClass implements Insertable<SyncOutboxItem> {
       'createdAt': serializer.toJson<DateTime>(createdAt),
       'status': serializer.toJson<String>(status),
       'errorMessage': serializer.toJson<String?>(errorMessage),
+      'idempotencyKey': serializer.toJson<String?>(idempotencyKey),
+      'attemptCount': serializer.toJson<int>(attemptCount),
+      'nextRetryAt': serializer.toJson<DateTime?>(nextRetryAt),
+      'lastErrorCode': serializer.toJson<String?>(lastErrorCode),
     };
   }
 
@@ -1436,6 +1573,10 @@ class SyncOutboxItem extends DataClass implements Insertable<SyncOutboxItem> {
     DateTime? createdAt,
     String? status,
     Value<String?> errorMessage = const Value.absent(),
+    Value<String?> idempotencyKey = const Value.absent(),
+    int? attemptCount,
+    Value<DateTime?> nextRetryAt = const Value.absent(),
+    Value<String?> lastErrorCode = const Value.absent(),
   }) => SyncOutboxItem(
     id: id ?? this.id,
     entityType: entityType ?? this.entityType,
@@ -1444,6 +1585,14 @@ class SyncOutboxItem extends DataClass implements Insertable<SyncOutboxItem> {
     createdAt: createdAt ?? this.createdAt,
     status: status ?? this.status,
     errorMessage: errorMessage.present ? errorMessage.value : this.errorMessage,
+    idempotencyKey: idempotencyKey.present
+        ? idempotencyKey.value
+        : this.idempotencyKey,
+    attemptCount: attemptCount ?? this.attemptCount,
+    nextRetryAt: nextRetryAt.present ? nextRetryAt.value : this.nextRetryAt,
+    lastErrorCode: lastErrorCode.present
+        ? lastErrorCode.value
+        : this.lastErrorCode,
   );
   SyncOutboxItem copyWithCompanion(SyncOutboxTableCompanion data) {
     return SyncOutboxItem(
@@ -1458,6 +1607,18 @@ class SyncOutboxItem extends DataClass implements Insertable<SyncOutboxItem> {
       errorMessage: data.errorMessage.present
           ? data.errorMessage.value
           : this.errorMessage,
+      idempotencyKey: data.idempotencyKey.present
+          ? data.idempotencyKey.value
+          : this.idempotencyKey,
+      attemptCount: data.attemptCount.present
+          ? data.attemptCount.value
+          : this.attemptCount,
+      nextRetryAt: data.nextRetryAt.present
+          ? data.nextRetryAt.value
+          : this.nextRetryAt,
+      lastErrorCode: data.lastErrorCode.present
+          ? data.lastErrorCode.value
+          : this.lastErrorCode,
     );
   }
 
@@ -1470,7 +1631,11 @@ class SyncOutboxItem extends DataClass implements Insertable<SyncOutboxItem> {
           ..write('payload: $payload, ')
           ..write('createdAt: $createdAt, ')
           ..write('status: $status, ')
-          ..write('errorMessage: $errorMessage')
+          ..write('errorMessage: $errorMessage, ')
+          ..write('idempotencyKey: $idempotencyKey, ')
+          ..write('attemptCount: $attemptCount, ')
+          ..write('nextRetryAt: $nextRetryAt, ')
+          ..write('lastErrorCode: $lastErrorCode')
           ..write(')'))
         .toString();
   }
@@ -1484,6 +1649,10 @@ class SyncOutboxItem extends DataClass implements Insertable<SyncOutboxItem> {
     createdAt,
     status,
     errorMessage,
+    idempotencyKey,
+    attemptCount,
+    nextRetryAt,
+    lastErrorCode,
   );
   @override
   bool operator ==(Object other) =>
@@ -1495,7 +1664,11 @@ class SyncOutboxItem extends DataClass implements Insertable<SyncOutboxItem> {
           other.payload == this.payload &&
           other.createdAt == this.createdAt &&
           other.status == this.status &&
-          other.errorMessage == this.errorMessage);
+          other.errorMessage == this.errorMessage &&
+          other.idempotencyKey == this.idempotencyKey &&
+          other.attemptCount == this.attemptCount &&
+          other.nextRetryAt == this.nextRetryAt &&
+          other.lastErrorCode == this.lastErrorCode);
 }
 
 class SyncOutboxTableCompanion extends UpdateCompanion<SyncOutboxItem> {
@@ -1506,6 +1679,10 @@ class SyncOutboxTableCompanion extends UpdateCompanion<SyncOutboxItem> {
   final Value<DateTime> createdAt;
   final Value<String> status;
   final Value<String?> errorMessage;
+  final Value<String?> idempotencyKey;
+  final Value<int> attemptCount;
+  final Value<DateTime?> nextRetryAt;
+  final Value<String?> lastErrorCode;
   const SyncOutboxTableCompanion({
     this.id = const Value.absent(),
     this.entityType = const Value.absent(),
@@ -1514,6 +1691,10 @@ class SyncOutboxTableCompanion extends UpdateCompanion<SyncOutboxItem> {
     this.createdAt = const Value.absent(),
     this.status = const Value.absent(),
     this.errorMessage = const Value.absent(),
+    this.idempotencyKey = const Value.absent(),
+    this.attemptCount = const Value.absent(),
+    this.nextRetryAt = const Value.absent(),
+    this.lastErrorCode = const Value.absent(),
   });
   SyncOutboxTableCompanion.insert({
     this.id = const Value.absent(),
@@ -1523,6 +1704,10 @@ class SyncOutboxTableCompanion extends UpdateCompanion<SyncOutboxItem> {
     this.createdAt = const Value.absent(),
     this.status = const Value.absent(),
     this.errorMessage = const Value.absent(),
+    this.idempotencyKey = const Value.absent(),
+    this.attemptCount = const Value.absent(),
+    this.nextRetryAt = const Value.absent(),
+    this.lastErrorCode = const Value.absent(),
   }) : entityType = Value(entityType),
        operation = Value(operation),
        payload = Value(payload);
@@ -1534,6 +1719,10 @@ class SyncOutboxTableCompanion extends UpdateCompanion<SyncOutboxItem> {
     Expression<DateTime>? createdAt,
     Expression<String>? status,
     Expression<String>? errorMessage,
+    Expression<String>? idempotencyKey,
+    Expression<int>? attemptCount,
+    Expression<DateTime>? nextRetryAt,
+    Expression<String>? lastErrorCode,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -1543,6 +1732,10 @@ class SyncOutboxTableCompanion extends UpdateCompanion<SyncOutboxItem> {
       if (createdAt != null) 'created_at': createdAt,
       if (status != null) 'status': status,
       if (errorMessage != null) 'error_message': errorMessage,
+      if (idempotencyKey != null) 'idempotency_key': idempotencyKey,
+      if (attemptCount != null) 'attempt_count': attemptCount,
+      if (nextRetryAt != null) 'next_retry_at': nextRetryAt,
+      if (lastErrorCode != null) 'last_error_code': lastErrorCode,
     });
   }
 
@@ -1554,6 +1747,10 @@ class SyncOutboxTableCompanion extends UpdateCompanion<SyncOutboxItem> {
     Value<DateTime>? createdAt,
     Value<String>? status,
     Value<String?>? errorMessage,
+    Value<String?>? idempotencyKey,
+    Value<int>? attemptCount,
+    Value<DateTime?>? nextRetryAt,
+    Value<String?>? lastErrorCode,
   }) {
     return SyncOutboxTableCompanion(
       id: id ?? this.id,
@@ -1563,6 +1760,10 @@ class SyncOutboxTableCompanion extends UpdateCompanion<SyncOutboxItem> {
       createdAt: createdAt ?? this.createdAt,
       status: status ?? this.status,
       errorMessage: errorMessage ?? this.errorMessage,
+      idempotencyKey: idempotencyKey ?? this.idempotencyKey,
+      attemptCount: attemptCount ?? this.attemptCount,
+      nextRetryAt: nextRetryAt ?? this.nextRetryAt,
+      lastErrorCode: lastErrorCode ?? this.lastErrorCode,
     );
   }
 
@@ -1590,6 +1791,18 @@ class SyncOutboxTableCompanion extends UpdateCompanion<SyncOutboxItem> {
     if (errorMessage.present) {
       map['error_message'] = Variable<String>(errorMessage.value);
     }
+    if (idempotencyKey.present) {
+      map['idempotency_key'] = Variable<String>(idempotencyKey.value);
+    }
+    if (attemptCount.present) {
+      map['attempt_count'] = Variable<int>(attemptCount.value);
+    }
+    if (nextRetryAt.present) {
+      map['next_retry_at'] = Variable<DateTime>(nextRetryAt.value);
+    }
+    if (lastErrorCode.present) {
+      map['last_error_code'] = Variable<String>(lastErrorCode.value);
+    }
     return map;
   }
 
@@ -1602,7 +1815,11 @@ class SyncOutboxTableCompanion extends UpdateCompanion<SyncOutboxItem> {
           ..write('payload: $payload, ')
           ..write('createdAt: $createdAt, ')
           ..write('status: $status, ')
-          ..write('errorMessage: $errorMessage')
+          ..write('errorMessage: $errorMessage, ')
+          ..write('idempotencyKey: $idempotencyKey, ')
+          ..write('attemptCount: $attemptCount, ')
+          ..write('nextRetryAt: $nextRetryAt, ')
+          ..write('lastErrorCode: $lastErrorCode')
           ..write(')'))
         .toString();
   }
@@ -3861,6 +4078,10 @@ typedef $$SyncOutboxTableTableCreateCompanionBuilder =
       Value<DateTime> createdAt,
       Value<String> status,
       Value<String?> errorMessage,
+      Value<String?> idempotencyKey,
+      Value<int> attemptCount,
+      Value<DateTime?> nextRetryAt,
+      Value<String?> lastErrorCode,
     });
 typedef $$SyncOutboxTableTableUpdateCompanionBuilder =
     SyncOutboxTableCompanion Function({
@@ -3871,6 +4092,10 @@ typedef $$SyncOutboxTableTableUpdateCompanionBuilder =
       Value<DateTime> createdAt,
       Value<String> status,
       Value<String?> errorMessage,
+      Value<String?> idempotencyKey,
+      Value<int> attemptCount,
+      Value<DateTime?> nextRetryAt,
+      Value<String?> lastErrorCode,
     });
 
 class $$SyncOutboxTableTableFilterComposer
@@ -3914,6 +4139,26 @@ class $$SyncOutboxTableTableFilterComposer
 
   ColumnFilters<String> get errorMessage => $composableBuilder(
     column: $table.errorMessage,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get idempotencyKey => $composableBuilder(
+    column: $table.idempotencyKey,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get attemptCount => $composableBuilder(
+    column: $table.attemptCount,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get nextRetryAt => $composableBuilder(
+    column: $table.nextRetryAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get lastErrorCode => $composableBuilder(
+    column: $table.lastErrorCode,
     builder: (column) => ColumnFilters(column),
   );
 }
@@ -3961,6 +4206,26 @@ class $$SyncOutboxTableTableOrderingComposer
     column: $table.errorMessage,
     builder: (column) => ColumnOrderings(column),
   );
+
+  ColumnOrderings<String> get idempotencyKey => $composableBuilder(
+    column: $table.idempotencyKey,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get attemptCount => $composableBuilder(
+    column: $table.attemptCount,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get nextRetryAt => $composableBuilder(
+    column: $table.nextRetryAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get lastErrorCode => $composableBuilder(
+    column: $table.lastErrorCode,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$SyncOutboxTableTableAnnotationComposer
@@ -3994,6 +4259,26 @@ class $$SyncOutboxTableTableAnnotationComposer
 
   GeneratedColumn<String> get errorMessage => $composableBuilder(
     column: $table.errorMessage,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get idempotencyKey => $composableBuilder(
+    column: $table.idempotencyKey,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get attemptCount => $composableBuilder(
+    column: $table.attemptCount,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get nextRetryAt => $composableBuilder(
+    column: $table.nextRetryAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get lastErrorCode => $composableBuilder(
+    column: $table.lastErrorCode,
     builder: (column) => column,
   );
 }
@@ -4042,6 +4327,10 @@ class $$SyncOutboxTableTableTableManager
                 Value<DateTime> createdAt = const Value.absent(),
                 Value<String> status = const Value.absent(),
                 Value<String?> errorMessage = const Value.absent(),
+                Value<String?> idempotencyKey = const Value.absent(),
+                Value<int> attemptCount = const Value.absent(),
+                Value<DateTime?> nextRetryAt = const Value.absent(),
+                Value<String?> lastErrorCode = const Value.absent(),
               }) => SyncOutboxTableCompanion(
                 id: id,
                 entityType: entityType,
@@ -4050,6 +4339,10 @@ class $$SyncOutboxTableTableTableManager
                 createdAt: createdAt,
                 status: status,
                 errorMessage: errorMessage,
+                idempotencyKey: idempotencyKey,
+                attemptCount: attemptCount,
+                nextRetryAt: nextRetryAt,
+                lastErrorCode: lastErrorCode,
               ),
           createCompanionCallback:
               ({
@@ -4060,6 +4353,10 @@ class $$SyncOutboxTableTableTableManager
                 Value<DateTime> createdAt = const Value.absent(),
                 Value<String> status = const Value.absent(),
                 Value<String?> errorMessage = const Value.absent(),
+                Value<String?> idempotencyKey = const Value.absent(),
+                Value<int> attemptCount = const Value.absent(),
+                Value<DateTime?> nextRetryAt = const Value.absent(),
+                Value<String?> lastErrorCode = const Value.absent(),
               }) => SyncOutboxTableCompanion.insert(
                 id: id,
                 entityType: entityType,
@@ -4068,6 +4365,10 @@ class $$SyncOutboxTableTableTableManager
                 createdAt: createdAt,
                 status: status,
                 errorMessage: errorMessage,
+                idempotencyKey: idempotencyKey,
+                attemptCount: attemptCount,
+                nextRetryAt: nextRetryAt,
+                lastErrorCode: lastErrorCode,
               ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))

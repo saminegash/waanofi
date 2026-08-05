@@ -1,28 +1,26 @@
 import 'dart:async';
-import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../core/auth/auth_providers.dart';
 import '../../../core/providers/database_provider.dart';
+import '../../../core/sync/sync_coordinator.dart';
 import '../../../data/local/app_database.dart';
 import '../../../data/local/daos/feed_types_dao.dart';
-import '../../../data/local/daos/outbox_dao.dart';
 import '../domain/feed_type_model.dart';
 
 final feedTypesRepositoryProvider = Provider<FeedTypesRepository>((ref) {
   final db = ref.watch(appDatabaseProvider);
   final feedTypesDao = db.feedTypesDao;
-  final outboxDao = db.outboxDao;
+  final syncCoordinator = ref.watch(syncCoordinatorProvider);
   final user = ref.watch(currentUserProvider);
 
   final repo = FeedTypesRepository(
     client: Supabase.instance.client,
     feedTypesDao: feedTypesDao,
-    outboxDao: outboxDao,
+    syncCoordinator: syncCoordinator,
     farmId: user?.farmId,
   );
 
@@ -35,11 +33,11 @@ class FeedTypesRepository {
   FeedTypesRepository({
     required SupabaseClient client,
     required FeedTypesDao feedTypesDao,
-    required OutboxDao outboxDao,
+    required SyncCoordinator syncCoordinator,
     required String? farmId,
   })  : _client = client,
         _feedTypesDao = feedTypesDao,
-        _outboxDao = outboxDao,
+        _syncCoordinator = syncCoordinator,
         _farmId = farmId {
     if (_farmId != null) {
       _init();
@@ -48,13 +46,14 @@ class FeedTypesRepository {
 
   final SupabaseClient _client;
   final FeedTypesDao _feedTypesDao;
-  final OutboxDao _outboxDao;
+  final SyncCoordinator _syncCoordinator;
   final String? _farmId;
   RealtimeChannel? _subscription;
-  StreamSubscription<List<ConnectivityResult>>? _connSub;
-  bool _isSyncing = false;
 
   Future<void> _init() async {
+    _syncCoordinator.registerHandler('feed_type', _handleSync);
+    _syncCoordinator.start();
+
     await _syncFromRemote();
 
     _subscription = _client
@@ -70,14 +69,12 @@ class FeedTypesRepository {
             ),
             callback: _onRealtimeChange)
         .subscribe();
+  }
 
-    syncOutbox();
-
-    _connSub = Connectivity().onConnectivityChanged.listen((results) {
-      if (!results.contains(ConnectivityResult.none)) {
-        syncOutbox();
-      }
-    });
+  Future<void> _handleSync(String operation, Map<String, dynamic> payload) async {
+    if (operation == 'upsert') {
+      await _client.from('feed_types').upsert(payload);
+    }
   }
 
   Future<void> _syncFromRemote() async {
@@ -113,49 +110,21 @@ class FeedTypesRepository {
     // 1. Insert locally
     await _feedTypesDao.upsertFeedType(_toLocal(feedType));
 
-    // 2. Queue to Outbox
+    // 2. Queue to Outbox via Centralized Coordinator
     final json = feedType.toJson();
     if (feedType.id.isEmpty) {
       json.remove('id');
       json.remove('created_at');
       json.remove('updated_at');
     }
-    
-    await _outboxDao.enqueueAll('feed_type', 'upsert', [jsonEncode(json)]);
-    
-    // 3. Sync
-    syncOutbox();
-  }
 
-  Future<void> syncOutbox() async {
-    if (_isSyncing) return;
-    _isSyncing = true;
-
-    try {
-      final pending = await _outboxDao.getPending();
-      if (pending.isEmpty) return;
-
-      for (final item in pending) {
-        try {
-          if (item.entityType == 'feed_type' && item.operation == 'upsert') {
-            final payload = jsonDecode(item.payload) as Map<String, dynamic>;
-            await _client.from('feed_types').upsert(payload);
-          }
-          await _outboxDao.markProcessed(item.id);
-        } catch (e) {
-          debugPrint('Failed to sync feed type outbox item ${item.id}: $e');
-          await _outboxDao.markFailed(item.id, e.toString());
-        }
-      }
-    } finally {
-      _isSyncing = false;
-    }
+    await _syncCoordinator.enqueue('feed_type', 'upsert', json);
   }
 
   void dispose() {
     _subscription?.unsubscribe();
-    _connSub?.cancel();
   }
+
 
   LocalFeedType _toLocal(FeedTypeModel model) {
     return LocalFeedType(

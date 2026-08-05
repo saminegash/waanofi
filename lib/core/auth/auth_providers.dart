@@ -5,11 +5,19 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../auth/app_user.dart';
 import '../../data/repositories/auth_repository.dart';
+import '../providers/database_provider.dart';
+import '../sync/sync_coordinator.dart';
 
 /// Singleton [AuthRepository] provider.
 final authRepositoryProvider = Provider<AuthRepository>((ref) {
-  return AuthRepository();
+  final db = ref.watch(appDatabaseProvider);
+  final sync = ref.watch(syncCoordinatorProvider);
+  return AuthRepository(
+    database: db,
+    syncCoordinator: sync,
+  );
 });
+
 
 /// Exposes the current [AppUser] (or null) reactively.
 ///

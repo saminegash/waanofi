@@ -1,28 +1,26 @@
 import 'dart:async';
-import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../core/auth/auth_providers.dart';
 import '../../../core/providers/database_provider.dart';
+import '../../../core/sync/sync_coordinator.dart';
 import '../../../data/local/app_database.dart';
 import '../../../data/local/daos/milk_dao.dart';
-import '../../../data/local/daos/outbox_dao.dart';
 import '../domain/milk_record_model.dart';
 
 final milkRepositoryProvider = Provider<MilkRepository>((ref) {
   final db = ref.watch(appDatabaseProvider);
   final milkDao = MilkDao(db);
-  final outboxDao = OutboxDao(db);
+  final syncCoordinator = ref.watch(syncCoordinatorProvider);
   final user = ref.watch(currentUserProvider);
 
   final repo = MilkRepository(
     client: Supabase.instance.client,
     milkDao: milkDao,
-    outboxDao: outboxDao,
+    syncCoordinator: syncCoordinator,
     farmId: user?.farmId,
     userId: user?.id,
   );
@@ -36,12 +34,12 @@ class MilkRepository {
   MilkRepository({
     required SupabaseClient client,
     required MilkDao milkDao,
-    required OutboxDao outboxDao,
+    required SyncCoordinator syncCoordinator,
     required String? farmId,
     required String? userId,
   })  : _client = client,
         _milkDao = milkDao,
-        _outboxDao = outboxDao,
+        _syncCoordinator = syncCoordinator,
         _farmId = farmId,
         _userId = userId {
     if (_farmId != null) {
@@ -51,18 +49,20 @@ class MilkRepository {
 
   final SupabaseClient _client;
   final MilkDao _milkDao;
-  final OutboxDao _outboxDao;
+  final SyncCoordinator _syncCoordinator;
   final String? _farmId;
   final String? _userId;
   RealtimeChannel? _subscription;
-  StreamSubscription<List<ConnectivityResult>>? _connSub;
-  bool _isSyncing = false;
 
   Future<void> _init() async {
-    // 1. Fetch remote baseline
+    // 1. Register sync handler with Centralized Coordinator
+    _syncCoordinator.registerHandler('milk_record', _handleSync);
+    _syncCoordinator.start();
+
+    // 2. Fetch remote baseline
     await _syncFromRemote();
 
-    // 2. Realtime updates (only read, writes go through outbox)
+    // 3. Realtime updates (only read, writes go through outbox)
     _subscription = _client
         .channel('public:milk_records')
         .onPostgresChanges(
@@ -76,16 +76,12 @@ class MilkRepository {
             ),
             callback: _onRealtimeChange)
         .subscribe();
+  }
 
-    // 3. Sync outbox on startup
-    syncOutbox();
-
-    // 4. Sync outbox on network reconnect
-    _connSub = Connectivity().onConnectivityChanged.listen((results) {
-      if (!results.contains(ConnectivityResult.none)) {
-        syncOutbox();
-      }
-    });
+  Future<void> _handleSync(String operation, Map<String, dynamic> payload) async {
+    if (operation == 'upsert') {
+      await _client.from('milk_records').upsert(payload);
+    }
   }
 
   Future<void> _syncFromRemote() async {
@@ -113,7 +109,7 @@ class MilkRepository {
     }
   }
 
-  /// Batch upsert milk records (Local + Queue to Outbox)
+  /// Batch upsert milk records (Local + Queue to Centralized SyncCoordinator)
   Future<void> batchUpsertMilkRecords(List<MilkRecordModel> records) async {
     if (records.isEmpty) return;
 
@@ -121,54 +117,17 @@ class MilkRepository {
     final localRecords = records.map(_toLocal).toList();
     await _milkDao.insertOrUpdateAll(localRecords);
 
-    // 2. Queue to Outbox
+    // 2. Queue to Centralized Coordinator
     final payloads = records.map((r) {
       final json = r.toJson();
       if (r.id.isEmpty) {
         json.remove('id');
         json.remove('created_at');
       }
-      return jsonEncode(json);
+      return json;
     }).toList();
 
-    await _outboxDao.enqueueAll('milk_record', 'upsert', payloads);
-
-    // 3. Trigger a sync attempt
-    await syncOutbox();
-  }
-
-  /// Process the outbox
-  Future<void> syncOutbox() async {
-    if (_isSyncing) return;
-    _isSyncing = true;
-
-    try {
-      final pending = await _outboxDao.getPending();
-      if (pending.isEmpty) return;
-
-      for (final item in pending) {
-        try {
-          if (item.entityType == 'milk_record' && item.operation == 'upsert') {
-            final payload = jsonDecode(item.payload) as Map<String, dynamic>;
-            await _client.from('milk_records').upsert(payload);
-          }
-          // Mark as processed (delete)
-          await _outboxDao.markProcessed(item.id);
-        } on PostgrestException catch (e) {
-          if (e.code == '23505') {
-            await _outboxDao.markProcessed(item.id);
-          } else {
-            debugPrint('Failed to sync outbox item ${item.id}: $e');
-            await _outboxDao.markFailed(item.id, e.message);
-          }
-        } catch (e) {
-          debugPrint('Failed to sync outbox item ${item.id}: $e');
-          await _outboxDao.markFailed(item.id, e.toString());
-        }
-      }
-    } finally {
-      _isSyncing = false;
-    }
+    await _syncCoordinator.enqueueAll('milk_record', 'upsert', payloads);
   }
 
   /// Watch local records
@@ -185,8 +144,8 @@ class MilkRepository {
 
   void dispose() {
     _subscription?.unsubscribe();
-    _connSub?.cancel();
   }
+
 
   // Mappers
   LocalMilkRecord _toLocal(MilkRecordModel model) {
