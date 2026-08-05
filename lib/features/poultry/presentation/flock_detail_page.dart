@@ -7,7 +7,6 @@ import '../../../core/theme/waanofi_colors.dart';
 import '../../../core/auth/permission.dart';
 import '../../../shared/widgets/role_guard.dart';
 import '../data/egg_production_repository.dart';
-import '../data/flock_repository.dart';
 import '../data/flock_adjustment_repository.dart';
 import '../domain/flock_model.dart';
 import '../domain/egg_production_record_model.dart';

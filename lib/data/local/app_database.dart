@@ -25,6 +25,11 @@ part 'app_database.g.dart';
     FlocksTable,
     EggProductionRecordsTable,
     FlockAdjustmentsTable,
+    FarmMarketProfilesTable,
+    MarketProductsTable,
+    InventoryBatchesTable,
+    QualityChecksTable,
+    MarketListingsTable,
   ],
   daos: [
     AnimalsDao,
@@ -44,7 +49,7 @@ class AppDatabase extends _$AppDatabase {
 
   @override
 
-  int get schemaVersion => 6;
+  int get schemaVersion => 7;
 
   @override
   MigrationStrategy get migration {
@@ -75,6 +80,13 @@ class AppDatabase extends _$AppDatabase {
           await m.createTable(eggProductionRecordsTable);
           await m.createTable(flockAdjustmentsTable);
         }
+        if (from < 7) {
+          await m.createTable(farmMarketProfilesTable);
+          await m.createTable(marketProductsTable);
+          await m.createTable(inventoryBatchesTable);
+          await m.createTable(qualityChecksTable);
+          await m.createTable(marketListingsTable);
+        }
       },
     );
   }
@@ -88,6 +100,10 @@ class AppDatabase extends _$AppDatabase {
       await delete(flocksTable).go();
       await delete(eggProductionRecordsTable).go();
       await delete(flockAdjustmentsTable).go();
+      await delete(farmMarketProfilesTable).go();
+      await delete(inventoryBatchesTable).go();
+      await delete(qualityChecksTable).go();
+      await delete(marketListingsTable).go();
       await delete(feedTypesTable).go();
       await delete(feedRecordsTable).go();
       await delete(syncOutboxTable).go();

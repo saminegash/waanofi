@@ -43,6 +43,19 @@ import '../../features/poultry/presentation/daily_egg_production_form_page.dart'
 import '../../features/poultry/presentation/poultry_reports_page.dart';
 import '../../features/poultry/domain/flock_model.dart';
 
+// Marketplace Seller Experience imports
+import '../../features/marketplace/presentation/seller/seller_onboarding_page.dart';
+import '../../features/marketplace/presentation/seller/seller_profile_editor_page.dart';
+import '../../features/marketplace/presentation/seller/verification_submission_page.dart';
+import '../../features/marketplace/presentation/seller/inventory_dashboard_page.dart';
+import '../../features/marketplace/presentation/seller/batches_list_page.dart';
+import '../../features/marketplace/presentation/seller/create_milk_batch_page.dart';
+import '../../features/marketplace/presentation/seller/create_egg_batch_page.dart';
+import '../../features/marketplace/presentation/seller/quality_check_form_page.dart';
+import '../../features/marketplace/presentation/seller/seller_dashboard_page.dart';
+import '../../features/marketplace/presentation/seller/seller_listings_page.dart';
+import '../../features/marketplace/presentation/seller/listing_form_page.dart';
+
 
 // Navigation keys for each tab branch
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -324,6 +337,62 @@ GoRouter appRouter(Ref ref) {
         path: '/poultry/reports',
         name: 'poultry_reports',
         builder: (context, state) => const PoultryReportsPage(),
+      ),
+      // ── Marketplace Seller Experience Routes ──
+      GoRoute(
+        path: '/seller/onboarding',
+        name: 'seller_onboarding',
+        builder: (context, state) => const SellerOnboardingPage(),
+      ),
+      GoRoute(
+        path: '/seller/dashboard',
+        name: 'seller_dashboard',
+        builder: (context, state) => const SellerDashboardPage(),
+      ),
+      GoRoute(
+        path: '/seller/profile/edit',
+        name: 'seller_profile_edit',
+        builder: (context, state) => const SellerProfileEditorPage(),
+      ),
+      GoRoute(
+        path: '/seller/verification',
+        name: 'seller_verification',
+        builder: (context, state) => const VerificationSubmissionPage(),
+      ),
+      GoRoute(
+        path: '/seller/inventory',
+        name: 'seller_inventory',
+        builder: (context, state) => const InventoryDashboardPage(),
+      ),
+      GoRoute(
+        path: '/seller/batches/list',
+        name: 'seller_batches_list',
+        builder: (context, state) => const BatchesListPage(),
+      ),
+      GoRoute(
+        path: '/seller/batches/create-milk',
+        name: 'create_milk_batch',
+        builder: (context, state) => const CreateMilkBatchPage(),
+      ),
+      GoRoute(
+        path: '/seller/batches/create-egg',
+        name: 'create_egg_batch',
+        builder: (context, state) => const CreateEggBatchPage(),
+      ),
+      GoRoute(
+        path: '/seller/batches/check/:id',
+        name: 'quality_check_form',
+        builder: (context, state) => QualityCheckFormPage(batchId: state.pathParameters['id']!),
+      ),
+      GoRoute(
+        path: '/seller/listings',
+        name: 'seller_listings',
+        builder: (context, state) => const SellerListingsPage(),
+      ),
+      GoRoute(
+        path: '/seller/listings/create',
+        name: 'listing_form',
+        builder: (context, state) => const ListingFormPage(),
       ),
     ],
   );

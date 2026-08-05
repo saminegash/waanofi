@@ -664,6 +664,9 @@ class AppLocalizationsOm extends AppLocalizations {
   String get markReady => 'Qophaaye Bodi';
 
   @override
+  String get sendForDelivery => 'Bobbaasi';
+
+  @override
   String get markDelivered => 'Gaheera';
 
   @override
@@ -849,4 +852,58 @@ class AppLocalizationsOm extends AppLocalizations {
 
   @override
   String get mixedFarm => 'Qonnaa Walmakaa';
+
+  @override
+  String get sellerHub => 'Wiirtuu Gurgurtootaa';
+
+  @override
+  String get publicSellerProfile => 'Eenyummaa Gurguraa uummataa';
+
+  @override
+  String get verificationSubmission => 'Mirkaneessa Gaafachuu';
+
+  @override
+  String get inventoryBatches => 'Kuusaa Oomisha (Baachii)';
+
+  @override
+  String get createMilkBatch => 'Baachii Aannanii Uumi';
+
+  @override
+  String get createEggBatch => 'Baachii Buupii Uumi';
+
+  @override
+  String get qualityCheck => 'qorannoo qulqullinnaa';
+
+  @override
+  String get activeListings => 'Oomishoota Gabaa Jiran';
+
+  @override
+  String get availableMilk => 'Aannan Gurgurtaafi Jiru (L)';
+
+  @override
+  String get availableEggTrays => 'Loojii Buupii Jiru';
+
+  @override
+  String get batchesNearingExpiry => 'Yeroon Irraa Jala Gahee';
+
+  @override
+  String get rejectedBatches => 'Warra Fudhatama Dhabe';
+
+  @override
+  String get pendingApprovals => 'Mirkaneessuuf Eegamu';
+
+  @override
+  String get createListing => 'Oomisha Gabaatti Fidii';
+
+  @override
+  String get editListing => 'Sirreessi';
+
+  @override
+  String get pauseListing => 'Yeroof Dhaabi';
+
+  @override
+  String get resumeListing => 'Deebisii Jalqabisi';
+
+  @override
+  String get markOutOfStock => 'Dhumateera Bodi';
 }

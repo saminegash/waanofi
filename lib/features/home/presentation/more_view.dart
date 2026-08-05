@@ -67,6 +67,16 @@ class MoreView extends ConsumerWidget {
             permission: Permission.manageListings,
             fallback: const SizedBox.shrink(),
             child: ListTile(
+              leading: const Icon(Icons.storefront_rounded, color: WaanofiColors.primary),
+              title: Text(l10n.sellerHub, style: const TextStyle(fontWeight: FontWeight.bold, color: WaanofiColors.primary)),
+              subtitle: const Text('Manage profiles, inventory batches, and listings'),
+              onTap: () => context.push('/seller/onboarding'),
+            ),
+          ),
+          RoleGuard(
+            permission: Permission.manageListings,
+            fallback: const SizedBox.shrink(),
+            child: ListTile(
               leading: const Icon(Icons.inbox),
               title: Text(l10n.incomingOrders),
               onTap: () => context.push('/more/admin/seller_orders'),

@@ -663,6 +663,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get markReady => 'Mark Ready';
 
   @override
+  String get sendForDelivery => 'Dispatch';
+
+  @override
   String get markDelivered => 'Delivered';
 
   @override
@@ -847,4 +850,58 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get mixedFarm => 'Mixed Farm (Dairy & Poultry)';
+
+  @override
+  String get sellerHub => 'Marketplace Seller Hub';
+
+  @override
+  String get publicSellerProfile => 'Public Seller Profile';
+
+  @override
+  String get verificationSubmission => 'Verification Submission';
+
+  @override
+  String get inventoryBatches => 'Inventory Batches';
+
+  @override
+  String get createMilkBatch => 'Create Milk Batch';
+
+  @override
+  String get createEggBatch => 'Create Egg Batch';
+
+  @override
+  String get qualityCheck => 'Quality Inspection';
+
+  @override
+  String get activeListings => 'Active Listings';
+
+  @override
+  String get availableMilk => 'Available Milk (L)';
+
+  @override
+  String get availableEggTrays => 'Available Egg Trays';
+
+  @override
+  String get batchesNearingExpiry => 'Batches Nearing Expiry';
+
+  @override
+  String get rejectedBatches => 'Rejected Batches';
+
+  @override
+  String get pendingApprovals => 'Pending Approvals';
+
+  @override
+  String get createListing => 'Create Listing';
+
+  @override
+  String get editListing => 'Edit Listing';
+
+  @override
+  String get pauseListing => 'Pause Listing';
+
+  @override
+  String get resumeListing => 'Resume Listing';
+
+  @override
+  String get markOutOfStock => 'Mark Out of Stock';
 }

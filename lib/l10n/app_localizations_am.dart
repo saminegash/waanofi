@@ -658,6 +658,9 @@ class AppLocalizationsAm extends AppLocalizations {
   String get markReady => 'ዝግጁ በል';
 
   @override
+  String get sendForDelivery => 'አሰማራ';
+
+  @override
   String get markDelivered => 'ደረሰ';
 
   @override
@@ -840,4 +843,58 @@ class AppLocalizationsAm extends AppLocalizations {
 
   @override
   String get mixedFarm => 'ቅልቅል (የላምና የዶሮ እርባታ)';
+
+  @override
+  String get sellerHub => 'የሻጭ ማዕከል';
+
+  @override
+  String get publicSellerProfile => 'የአደባባይ መሸጫ መገለጫ';
+
+  @override
+  String get verificationSubmission => 'የማረጋገጫ ጥያቄ ማቅረቢያ';
+
+  @override
+  String get inventoryBatches => 'የምርት ስብስቦች (ባቾች)';
+
+  @override
+  String get createMilkBatch => 'የወተት ምርት ስብስብ መዝግብ';
+
+  @override
+  String get createEggBatch => 'የእንቁላል ምርት ስብስብ መዝግብ';
+
+  @override
+  String get qualityCheck => 'የጥራት ምርመራ';
+
+  @override
+  String get activeListings => 'ገበያ ላይ ያሉ ምርቶች';
+
+  @override
+  String get availableMilk => 'ለገበያ የተዘጋጀ ወተት (ሊትር)';
+
+  @override
+  String get availableEggTrays => 'ለገበያ የተዘጋጁ ትሬዮች';
+
+  @override
+  String get batchesNearingExpiry => 'የጊዜ ገደባቸው የተቃረቡ';
+
+  @override
+  String get rejectedBatches => 'የተሰረዙ/ውድቅ የሆኑ';
+
+  @override
+  String get pendingApprovals => 'ማረጋገጫ በመጠባበቅ ላይ ያሉ';
+
+  @override
+  String get createListing => 'ምርት አዘጋጅተህ አሳይ';
+
+  @override
+  String get editListing => 'አስተካክል';
+
+  @override
+  String get pauseListing => 'ለጊዜው አቁም';
+
+  @override
+  String get resumeListing => 'በድጋሚ አስጀምር';
+
+  @override
+  String get markOutOfStock => 'አልቅዋል በል';
 }

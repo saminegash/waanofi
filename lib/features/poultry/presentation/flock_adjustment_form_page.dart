@@ -6,7 +6,6 @@ import 'package:waanofi/l10n/app_localizations.dart';
 
 import '../../../core/theme/waanofi_colors.dart';
 import '../../../core/auth/auth_providers.dart';
-import '../data/flock_repository.dart';
 import '../data/flock_adjustment_repository.dart';
 import '../domain/flock_model.dart';
 import '../domain/flock_adjustment_model.dart';

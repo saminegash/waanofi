@@ -1390,6 +1390,12 @@ abstract class AppLocalizations {
   /// **'Mark Ready'**
   String get markReady;
 
+  /// No description provided for @sendForDelivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Dispatch'**
+  String get sendForDelivery;
+
   /// No description provided for @markDelivered.
   ///
   /// In en, this message translates to:
@@ -1755,6 +1761,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Mixed Farm (Dairy & Poultry)'**
   String get mixedFarm;
+
+  /// No description provided for @sellerHub.
+  ///
+  /// In en, this message translates to:
+  /// **'Marketplace Seller Hub'**
+  String get sellerHub;
+
+  /// No description provided for @publicSellerProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Public Seller Profile'**
+  String get publicSellerProfile;
+
+  /// No description provided for @verificationSubmission.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification Submission'**
+  String get verificationSubmission;
+
+  /// No description provided for @inventoryBatches.
+  ///
+  /// In en, this message translates to:
+  /// **'Inventory Batches'**
+  String get inventoryBatches;
+
+  /// No description provided for @createMilkBatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Milk Batch'**
+  String get createMilkBatch;
+
+  /// No description provided for @createEggBatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Egg Batch'**
+  String get createEggBatch;
+
+  /// No description provided for @qualityCheck.
+  ///
+  /// In en, this message translates to:
+  /// **'Quality Inspection'**
+  String get qualityCheck;
+
+  /// No description provided for @activeListings.
+  ///
+  /// In en, this message translates to:
+  /// **'Active Listings'**
+  String get activeListings;
+
+  /// No description provided for @availableMilk.
+  ///
+  /// In en, this message translates to:
+  /// **'Available Milk (L)'**
+  String get availableMilk;
+
+  /// No description provided for @availableEggTrays.
+  ///
+  /// In en, this message translates to:
+  /// **'Available Egg Trays'**
+  String get availableEggTrays;
+
+  /// No description provided for @batchesNearingExpiry.
+  ///
+  /// In en, this message translates to:
+  /// **'Batches Nearing Expiry'**
+  String get batchesNearingExpiry;
+
+  /// No description provided for @rejectedBatches.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected Batches'**
+  String get rejectedBatches;
+
+  /// No description provided for @pendingApprovals.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending Approvals'**
+  String get pendingApprovals;
+
+  /// No description provided for @createListing.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Listing'**
+  String get createListing;
+
+  /// No description provided for @editListing.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Listing'**
+  String get editListing;
+
+  /// No description provided for @pauseListing.
+  ///
+  /// In en, this message translates to:
+  /// **'Pause Listing'**
+  String get pauseListing;
+
+  /// No description provided for @resumeListing.
+  ///
+  /// In en, this message translates to:
+  /// **'Resume Listing'**
+  String get resumeListing;
+
+  /// No description provided for @markOutOfStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark Out of Stock'**
+  String get markOutOfStock;
 }
 
 class _AppLocalizationsDelegate

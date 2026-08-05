@@ -158,4 +158,91 @@ class FlockAdjustmentsTable extends Table {
   Set<Column> get primaryKey => {id};
 }
 
+@DataClassName('LocalFarmMarketProfile')
+class FarmMarketProfilesTable extends Table {
+  TextColumn get farmId => text()();
+  TextColumn get publicFarmName => text()();
+  TextColumn get publicDescription => text().nullable()();
+  TextColumn get publicPhone => text().nullable()();
+  TextColumn get publicEmail => text().nullable()();
+  TextColumn get generalLocation => text()();
+  TextColumn get marketplaceStatus => text().withDefault(const Constant('draft'))();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
+  DateTimeColumn get updatedAt => dateTime().withDefault(currentDateAndTime)();
+
+  @override
+  Set<Column> get primaryKey => {farmId};
+}
+
+@DataClassName('LocalMarketProduct')
+class MarketProductsTable extends Table {
+  TextColumn get id => text()();
+  TextColumn get productCode => text()();
+  TextColumn get category => text()();
+  TextColumn get nameEn => text()();
+  TextColumn get nameAm => text()();
+  TextColumn get nameOm => text()();
+  TextColumn get baseInventoryUnit => text()();
+  BoolColumn get active => boolean().withDefault(const Constant(true))();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+@DataClassName('LocalInventoryBatch')
+class InventoryBatchesTable extends Table {
+  TextColumn get id => text()();
+  TextColumn get farmId => text()();
+  TextColumn get productId => text().nullable()();
+  TextColumn get batchCode => text()();
+  TextColumn get sourceType => text()();
+  RealColumn get producedQuantity => real()();
+  RealColumn get approvedQuantity => real().withDefault(const Constant(0))();
+  RealColumn get availableQuantity => real().withDefault(const Constant(0))();
+  TextColumn get baseUnit => text()();
+  DateTimeColumn get producedAt => dateTime()();
+  DateTimeColumn get expiresAt => dateTime().nullable()();
+  TextColumn get qualityStatus => text().withDefault(const Constant('pending_inspection'))();
+  TextColumn get marketplaceStatus => text().withDefault(const Constant('unlisted'))();
+  IntColumn get version => integer().withDefault(const Constant(1))();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+@DataClassName('LocalQualityCheck')
+class QualityChecksTable extends Table {
+  TextColumn get id => text()();
+  TextColumn get batchId => text()();
+  TextColumn get checkType => text()();
+  TextColumn get result => text()();
+  TextColumn get notes => text().nullable()();
+  TextColumn get checkedBy => text().nullable()();
+  DateTimeColumn get checkedAt => dateTime().withDefault(currentDateAndTime)();
+  TextColumn get approvalStatus => text().withDefault(const Constant('pending'))();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+@DataClassName('LocalMarketListing')
+class MarketListingsTable extends Table {
+  TextColumn get id => text()();
+  TextColumn get farmId => text()();
+  TextColumn get productId => text().nullable()();
+  TextColumn get publicTitle => text()();
+  TextColumn get publicDescription => text().nullable()();
+  TextColumn get sellingUnit => text()();
+  IntColumn get unitConversion => integer().withDefault(const Constant(1))();
+  IntColumn get priceInMinorUnits => integer()();
+  TextColumn get currency => text().withDefault(const Constant('ETB'))();
+  IntColumn get minimumOrderQuantity => integer().withDefault(const Constant(1))();
+  TextColumn get status => text().withDefault(const Constant('draft'))();
+  TextColumn get approvalStatus => text().withDefault(const Constant('pending'))();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+
 

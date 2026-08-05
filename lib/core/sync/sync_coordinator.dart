@@ -119,6 +119,10 @@ class SyncCoordinator {
         'egg_production_record',
         'feed_record',
         'flock_adjustment',
+        'farm_market_profile',
+        'inventory_batch',
+        'quality_check',
+        'market_listing',
       ];
 
       final sortedEntities = _handlers.keys.toList()

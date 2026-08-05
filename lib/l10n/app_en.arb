@@ -237,6 +237,7 @@
   "confirmOrder": "Confirm",
   "startProcessing": "Process",
   "markReady": "Mark Ready",
+  "sendForDelivery": "Dispatch",
   "markDelivered": "Delivered",
   "poultryManagement": "Poultry & Eggs Management",
   "poultryReports": "Poultry Reports",
@@ -300,6 +301,24 @@
   "farmType": "Farm Type",
   "dairyFarm": "Dairy Farm",
   "poultryFarm": "Poultry Farm",
-  "mixedFarm": "Mixed Farm (Dairy & Poultry)"
+  "mixedFarm": "Mixed Farm (Dairy & Poultry)",
+  "sellerHub": "Marketplace Seller Hub",
+  "publicSellerProfile": "Public Seller Profile",
+  "verificationSubmission": "Verification Submission",
+  "inventoryBatches": "Inventory Batches",
+  "createMilkBatch": "Create Milk Batch",
+  "createEggBatch": "Create Egg Batch",
+  "qualityCheck": "Quality Inspection",
+  "activeListings": "Active Listings",
+  "availableMilk": "Available Milk (L)",
+  "availableEggTrays": "Available Egg Trays",
+  "batchesNearingExpiry": "Batches Nearing Expiry",
+  "rejectedBatches": "Rejected Batches",
+  "pendingApprovals": "Pending Approvals",
+  "createListing": "Create Listing",
+  "editListing": "Edit Listing",
+  "pauseListing": "Pause Listing",
+  "resumeListing": "Resume Listing",
+  "markOutOfStock": "Mark Out of Stock"
 }
 

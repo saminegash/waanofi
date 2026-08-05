@@ -237,6 +237,7 @@
   "confirmOrder": "አረጋገጥ",
   "startProcessing": "አዘጋጅ",
   "markReady": "ዝግጁ በል",
+  "sendForDelivery": "አሰማራ",
   "markDelivered": "ደረሰ",
   "poultryManagement": "የዶሮና እንቁላል አስተዳደር",
   "poultryReports": "የዶሮ እርባታ ሪፖርቶች",
@@ -300,6 +301,24 @@
   "farmType": "የእርሻ አይነት",
   "dairyFarm": "የወተት ላሞች እርሻ",
   "poultryFarm": "የዶሮ እርባታ",
-  "mixedFarm": "ቅልቅል (የላምና የዶሮ እርባታ)"
+  "mixedFarm": "ቅልቅል (የላምና የዶሮ እርባታ)",
+  "sellerHub": "የሻጭ ማዕከል",
+  "publicSellerProfile": "የአደባባይ መሸጫ መገለጫ",
+  "verificationSubmission": "የማረጋገጫ ጥያቄ ማቅረቢያ",
+  "inventoryBatches": "የምርት ስብስቦች (ባቾች)",
+  "createMilkBatch": "የወተት ምርት ስብስብ መዝግብ",
+  "createEggBatch": "የእንቁላል ምርት ስብስብ መዝግብ",
+  "qualityCheck": "የጥራት ምርመራ",
+  "activeListings": "ገበያ ላይ ያሉ ምርቶች",
+  "availableMilk": "ለገበያ የተዘጋጀ ወተት (ሊትር)",
+  "availableEggTrays": "ለገበያ የተዘጋጁ ትሬዮች",
+  "batchesNearingExpiry": "የጊዜ ገደባቸው የተቃረቡ",
+  "rejectedBatches": "የተሰረዙ/ውድቅ የሆኑ",
+  "pendingApprovals": "ማረጋገጫ በመጠባበቅ ላይ ያሉ",
+  "createListing": "ምርት አዘጋጅተህ አሳይ",
+  "editListing": "አስተካክል",
+  "pauseListing": "ለጊዜው አቁም",
+  "resumeListing": "በድጋሚ አስጀምር",
+  "markOutOfStock": "አልቅዋል በል"
 }
 

@@ -237,6 +237,7 @@
   "confirmOrder": "Mirkaneessi",
   "startProcessing": "Qopheessi",
   "markReady": "Qophaaye Bodi",
+  "sendForDelivery": "Bobbaasi",
   "markDelivered": "Gaheera",
   "poultryManagement": "Bulchiinsa Lukkuuf Buupii",
   "poultryReports": "Gabaasa Lukkuuf Buupii",
@@ -300,6 +301,24 @@
   "farmType": "Gosa Qonnaa",
   "dairyFarm": "Qonnaa Aannanii (Saawaa)",
   "poultryFarm": "Qonnaa Lukkuu & Buupii",
-  "mixedFarm": "Qonnaa Walmakaa"
+  "mixedFarm": "Qonnaa Walmakaa",
+  "sellerHub": "Wiirtuu Gurgurtootaa",
+  "publicSellerProfile": "Eenyummaa Gurguraa uummataa",
+  "verificationSubmission": "Mirkaneessa Gaafachuu",
+  "inventoryBatches": "Kuusaa Oomisha (Baachii)",
+  "createMilkBatch": "Baachii Aannanii Uumi",
+  "createEggBatch": "Baachii Buupii Uumi",
+  "qualityCheck": "qorannoo qulqullinnaa",
+  "activeListings": "Oomishoota Gabaa Jiran",
+  "availableMilk": "Aannan Gurgurtaafi Jiru (L)",
+  "availableEggTrays": "Loojii Buupii Jiru",
+  "batchesNearingExpiry": "Yeroon Irraa Jala Gahee",
+  "rejectedBatches": "Warra Fudhatama Dhabe",
+  "pendingApprovals": "Mirkaneessuuf Eegamu",
+  "createListing": "Oomisha Gabaatti Fidii",
+  "editListing": "Sirreessi",
+  "pauseListing": "Yeroof Dhaabi",
+  "resumeListing": "Deebisii Jalqabisi",
+  "markOutOfStock": "Dhumateera Bodi"
 }
 
