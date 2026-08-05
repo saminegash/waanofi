@@ -87,4 +87,23 @@ class AdminRepository {
         .update({'milk_price_per_litre': newPrice})
         .eq('id', _farmId!);
   }
+
+  Future<String> getFarmType() async {
+    if (_farmId == null) return 'dairy';
+    final response = await _client
+        .from('farms')
+        .select('farm_type')
+        .eq('id', _farmId!)
+        .single();
+    return (response['farm_type'] as String?) ?? 'dairy';
+  }
+
+  Future<void> updateFarmType(String newType) async {
+    if (_farmId == null) return;
+    await _client
+        .from('farms')
+        .update({'farm_type': newType})
+        .eq('id', _farmId!);
+  }
 }
+

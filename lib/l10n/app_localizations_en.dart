@@ -663,8 +663,188 @@ class AppLocalizationsEn extends AppLocalizations {
   String get markReady => 'Mark Ready';
 
   @override
-  String get sendForDelivery => 'Dispatch';
+  String get markDelivered => 'Delivered';
 
   @override
-  String get markDelivered => 'Delivered';
+  String get poultryManagement => 'Poultry & Eggs Management';
+
+  @override
+  String get poultryReports => 'Poultry Reports';
+
+  @override
+  String get recordDailyEggs => 'Record Daily Eggs';
+
+  @override
+  String get addFlock => 'Add Flock';
+
+  @override
+  String get activeFlocks => 'Active Flocks';
+
+  @override
+  String get layingHens => 'Laying Hens';
+
+  @override
+  String get todayGoodEggs => 'Today\'s Good Eggs';
+
+  @override
+  String get trays => 'trays';
+
+  @override
+  String get loose => 'loose';
+
+  @override
+  String get flocks => 'Flocks';
+
+  @override
+  String get viewAll => 'View All';
+
+  @override
+  String get noFlocksRecorded => 'No flocks recorded yet.';
+
+  @override
+  String get birds => 'birds';
+
+  @override
+  String get layingRate => 'laying rate';
+
+  @override
+  String get pleaseSelectFlock => 'Please select a flock.';
+
+  @override
+  String get allocationExceedsCollectedError =>
+      'Allocated eggs cannot exceed good eggs collected.';
+
+  @override
+  String get eggRecordSaved => 'Egg production record saved successfully!';
+
+  @override
+  String get selectFlock => 'Select Flock';
+
+  @override
+  String get productionDate => 'Production Date';
+
+  @override
+  String get collectedEggs => 'Collected Eggs';
+
+  @override
+  String get crackedEggs => 'Cracked Eggs';
+
+  @override
+  String get rejectedEggs => 'Rejected Eggs';
+
+  @override
+  String get eggAllocations => 'Egg Allocations';
+
+  @override
+  String get farmUseEggs => 'Farm Use Eggs';
+
+  @override
+  String get soldDirectlyEggs => 'Sold Directly Eggs';
+
+  @override
+  String get availableForSale => 'Available for Sale';
+
+  @override
+  String get fullTrays => 'full trays';
+
+  @override
+  String get eggsPerTray => 'eggs/tray';
+
+  @override
+  String get looseEggs => 'loose eggs';
+
+  @override
+  String get saveRecord => 'Save Record';
+
+  @override
+  String get editFlock => 'Edit Flock';
+
+  @override
+  String get flockCode => 'Flock Code';
+
+  @override
+  String get flockPurpose => 'Purpose';
+
+  @override
+  String get totalBirds => 'Total Birds';
+
+  @override
+  String get hensCannotExceedBirds => 'Laying hens cannot exceed total birds.';
+
+  @override
+  String get flockSaved => 'Flock saved successfully!';
+
+  @override
+  String get fieldRequired => 'This field is required.';
+
+  @override
+  String get flockDetails => 'Flock Details';
+
+  @override
+  String get recordAdjustment => 'Record Adjustment';
+
+  @override
+  String get recentProduction => 'Recent Egg Production';
+
+  @override
+  String get populationAdjustments => 'Population Adjustments';
+
+  @override
+  String get noEggRecordsFound => 'No recent egg records found.';
+
+  @override
+  String get noAdjustmentsRecorded => 'No adjustments recorded yet.';
+
+  @override
+  String get adjustmentExceedsCurrentBirds =>
+      'Adjustment exceeds currently available birds.';
+
+  @override
+  String get adjustmentRecorded =>
+      'Population adjustment recorded successfully!';
+
+  @override
+  String get adjustmentType => 'Adjustment Type';
+
+  @override
+  String get birdQuantity => 'Number of Birds';
+
+  @override
+  String get layingHensInvolved => 'Laying Hens Involved';
+
+  @override
+  String get reasonOptional => 'Reason (Optional)';
+
+  @override
+  String get productionSummary => 'Production Summary';
+
+  @override
+  String get sevenDayOutput => '7-Day Good Eggs';
+
+  @override
+  String get thirtyDayOutput => '30-Day Good Eggs';
+
+  @override
+  String get productionPerHen => 'Laying Rate (Per Hen)';
+
+  @override
+  String get thirtyDayAverage => '30-Day Average';
+
+  @override
+  String get rejectedOrCracked => 'Cracked & Rejected';
+
+  @override
+  String get lastThirtyDays => 'Last 30 Days';
+
+  @override
+  String get farmType => 'Farm Type';
+
+  @override
+  String get dairyFarm => 'Dairy Farm';
+
+  @override
+  String get poultryFarm => 'Poultry Farm';
+
+  @override
+  String get mixedFarm => 'Mixed Farm (Dairy & Poultry)';
 }

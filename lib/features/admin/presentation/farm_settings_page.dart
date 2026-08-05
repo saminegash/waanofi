@@ -15,6 +15,7 @@ class FarmSettingsPage extends ConsumerStatefulWidget {
 class _FarmSettingsPageState extends ConsumerState<FarmSettingsPage> {
   final _formKey = GlobalKey<FormState>();
   final _priceController = TextEditingController();
+  String _farmType = 'dairy';
   bool _isLoading = true;
   bool _isSaving = false;
 
@@ -28,9 +29,11 @@ class _FarmSettingsPageState extends ConsumerState<FarmSettingsPage> {
     try {
       final repo = ref.read(adminRepositoryProvider);
       final price = await repo.getMilkPrice();
+      final type = await repo.getFarmType();
       if (mounted) {
         setState(() {
           _priceController.text = price.toString();
+          _farmType = type;
           _isLoading = false;
         });
       }
@@ -56,6 +59,7 @@ class _FarmSettingsPageState extends ConsumerState<FarmSettingsPage> {
     try {
       final repo = ref.read(adminRepositoryProvider);
       await repo.updateMilkPrice(double.parse(_priceController.text));
+      await repo.updateFarmType(_farmType);
       
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -101,6 +105,21 @@ class _FarmSettingsPageState extends ConsumerState<FarmSettingsPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    DropdownButtonFormField<String>(
+                      value: _farmType,
+                      decoration: InputDecoration(
+                        labelText: l10n.farmType,
+                        prefixIcon: const Icon(Icons.category),
+                        border: const OutlineInputBorder(),
+                      ),
+                      items: [
+                        DropdownMenuItem(value: 'dairy', child: Text(l10n.dairyFarm)),
+                        DropdownMenuItem(value: 'poultry', child: Text(l10n.poultryFarm)),
+                        DropdownMenuItem(value: 'mixed', child: Text(l10n.mixedFarm)),
+                      ],
+                      onChanged: (val) => setState(() => _farmType = val ?? 'dairy'),
+                    ),
+                    const SizedBox(height: 20),
                     TextFormField(
                       controller: _priceController,
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
@@ -137,3 +156,4 @@ class _FarmSettingsPageState extends ConsumerState<FarmSettingsPage> {
     );
   }
 }
+

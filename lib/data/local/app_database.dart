@@ -3,6 +3,9 @@ import 'package:drift/drift.dart';
 import 'connection/connection.dart' as impl;
 import 'daos/animals_dao.dart';
 import 'daos/egg_records_dao.dart';
+import 'daos/egg_production_records_dao.dart';
+import 'daos/flocks_dao.dart';
+import 'daos/flock_adjustments_dao.dart';
 import 'daos/milk_dao.dart';
 import 'daos/outbox_dao.dart';
 import 'daos/feed_types_dao.dart';
@@ -19,10 +22,16 @@ part 'app_database.g.dart';
     FeedTypesTable,
     FeedRecordsTable,
     EggRecordsTable,
+    FlocksTable,
+    EggProductionRecordsTable,
+    FlockAdjustmentsTable,
   ],
   daos: [
     AnimalsDao,
     EggRecordsDao,
+    EggProductionRecordsDao,
+    FlocksDao,
+    FlockAdjustmentsDao,
     MilkDao,
     OutboxDao,
     FeedTypesDao,
@@ -35,7 +44,7 @@ class AppDatabase extends _$AppDatabase {
 
   @override
 
-  int get schemaVersion => 5;
+  int get schemaVersion => 6;
 
   @override
   MigrationStrategy get migration {
@@ -61,6 +70,11 @@ class AppDatabase extends _$AppDatabase {
           await m.addColumn(syncOutboxTable, syncOutboxTable.nextRetryAt);
           await m.addColumn(syncOutboxTable, syncOutboxTable.lastErrorCode);
         }
+        if (from < 6) {
+          await m.createTable(flocksTable);
+          await m.createTable(eggProductionRecordsTable);
+          await m.createTable(flockAdjustmentsTable);
+        }
       },
     );
   }
@@ -71,6 +85,9 @@ class AppDatabase extends _$AppDatabase {
       await delete(animalsTable).go();
       await delete(milkRecordsTable).go();
       await delete(eggRecordsTable).go();
+      await delete(flocksTable).go();
+      await delete(eggProductionRecordsTable).go();
+      await delete(flockAdjustmentsTable).go();
       await delete(feedTypesTable).go();
       await delete(feedRecordsTable).go();
       await delete(syncOutboxTable).go();

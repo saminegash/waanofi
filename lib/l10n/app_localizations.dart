@@ -1390,17 +1390,371 @@ abstract class AppLocalizations {
   /// **'Mark Ready'**
   String get markReady;
 
-  /// No description provided for @sendForDelivery.
-  ///
-  /// In en, this message translates to:
-  /// **'Dispatch'**
-  String get sendForDelivery;
-
   /// No description provided for @markDelivered.
   ///
   /// In en, this message translates to:
   /// **'Delivered'**
   String get markDelivered;
+
+  /// No description provided for @poultryManagement.
+  ///
+  /// In en, this message translates to:
+  /// **'Poultry & Eggs Management'**
+  String get poultryManagement;
+
+  /// No description provided for @poultryReports.
+  ///
+  /// In en, this message translates to:
+  /// **'Poultry Reports'**
+  String get poultryReports;
+
+  /// No description provided for @recordDailyEggs.
+  ///
+  /// In en, this message translates to:
+  /// **'Record Daily Eggs'**
+  String get recordDailyEggs;
+
+  /// No description provided for @addFlock.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Flock'**
+  String get addFlock;
+
+  /// No description provided for @activeFlocks.
+  ///
+  /// In en, this message translates to:
+  /// **'Active Flocks'**
+  String get activeFlocks;
+
+  /// No description provided for @layingHens.
+  ///
+  /// In en, this message translates to:
+  /// **'Laying Hens'**
+  String get layingHens;
+
+  /// No description provided for @todayGoodEggs.
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s Good Eggs'**
+  String get todayGoodEggs;
+
+  /// No description provided for @trays.
+  ///
+  /// In en, this message translates to:
+  /// **'trays'**
+  String get trays;
+
+  /// No description provided for @loose.
+  ///
+  /// In en, this message translates to:
+  /// **'loose'**
+  String get loose;
+
+  /// No description provided for @flocks.
+  ///
+  /// In en, this message translates to:
+  /// **'Flocks'**
+  String get flocks;
+
+  /// No description provided for @viewAll.
+  ///
+  /// In en, this message translates to:
+  /// **'View All'**
+  String get viewAll;
+
+  /// No description provided for @noFlocksRecorded.
+  ///
+  /// In en, this message translates to:
+  /// **'No flocks recorded yet.'**
+  String get noFlocksRecorded;
+
+  /// No description provided for @birds.
+  ///
+  /// In en, this message translates to:
+  /// **'birds'**
+  String get birds;
+
+  /// No description provided for @layingRate.
+  ///
+  /// In en, this message translates to:
+  /// **'laying rate'**
+  String get layingRate;
+
+  /// No description provided for @pleaseSelectFlock.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a flock.'**
+  String get pleaseSelectFlock;
+
+  /// No description provided for @allocationExceedsCollectedError.
+  ///
+  /// In en, this message translates to:
+  /// **'Allocated eggs cannot exceed good eggs collected.'**
+  String get allocationExceedsCollectedError;
+
+  /// No description provided for @eggRecordSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Egg production record saved successfully!'**
+  String get eggRecordSaved;
+
+  /// No description provided for @selectFlock.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Flock'**
+  String get selectFlock;
+
+  /// No description provided for @productionDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Production Date'**
+  String get productionDate;
+
+  /// No description provided for @collectedEggs.
+  ///
+  /// In en, this message translates to:
+  /// **'Collected Eggs'**
+  String get collectedEggs;
+
+  /// No description provided for @crackedEggs.
+  ///
+  /// In en, this message translates to:
+  /// **'Cracked Eggs'**
+  String get crackedEggs;
+
+  /// No description provided for @rejectedEggs.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected Eggs'**
+  String get rejectedEggs;
+
+  /// No description provided for @eggAllocations.
+  ///
+  /// In en, this message translates to:
+  /// **'Egg Allocations'**
+  String get eggAllocations;
+
+  /// No description provided for @farmUseEggs.
+  ///
+  /// In en, this message translates to:
+  /// **'Farm Use Eggs'**
+  String get farmUseEggs;
+
+  /// No description provided for @soldDirectlyEggs.
+  ///
+  /// In en, this message translates to:
+  /// **'Sold Directly Eggs'**
+  String get soldDirectlyEggs;
+
+  /// No description provided for @availableForSale.
+  ///
+  /// In en, this message translates to:
+  /// **'Available for Sale'**
+  String get availableForSale;
+
+  /// No description provided for @fullTrays.
+  ///
+  /// In en, this message translates to:
+  /// **'full trays'**
+  String get fullTrays;
+
+  /// No description provided for @eggsPerTray.
+  ///
+  /// In en, this message translates to:
+  /// **'eggs/tray'**
+  String get eggsPerTray;
+
+  /// No description provided for @looseEggs.
+  ///
+  /// In en, this message translates to:
+  /// **'loose eggs'**
+  String get looseEggs;
+
+  /// No description provided for @saveRecord.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Record'**
+  String get saveRecord;
+
+  /// No description provided for @editFlock.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Flock'**
+  String get editFlock;
+
+  /// No description provided for @flockCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Flock Code'**
+  String get flockCode;
+
+  /// No description provided for @flockPurpose.
+  ///
+  /// In en, this message translates to:
+  /// **'Purpose'**
+  String get flockPurpose;
+
+  /// No description provided for @totalBirds.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Birds'**
+  String get totalBirds;
+
+  /// No description provided for @hensCannotExceedBirds.
+  ///
+  /// In en, this message translates to:
+  /// **'Laying hens cannot exceed total birds.'**
+  String get hensCannotExceedBirds;
+
+  /// No description provided for @flockSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Flock saved successfully!'**
+  String get flockSaved;
+
+  /// No description provided for @fieldRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'This field is required.'**
+  String get fieldRequired;
+
+  /// No description provided for @flockDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Flock Details'**
+  String get flockDetails;
+
+  /// No description provided for @recordAdjustment.
+  ///
+  /// In en, this message translates to:
+  /// **'Record Adjustment'**
+  String get recordAdjustment;
+
+  /// No description provided for @recentProduction.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent Egg Production'**
+  String get recentProduction;
+
+  /// No description provided for @populationAdjustments.
+  ///
+  /// In en, this message translates to:
+  /// **'Population Adjustments'**
+  String get populationAdjustments;
+
+  /// No description provided for @noEggRecordsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No recent egg records found.'**
+  String get noEggRecordsFound;
+
+  /// No description provided for @noAdjustmentsRecorded.
+  ///
+  /// In en, this message translates to:
+  /// **'No adjustments recorded yet.'**
+  String get noAdjustmentsRecorded;
+
+  /// No description provided for @adjustmentExceedsCurrentBirds.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjustment exceeds currently available birds.'**
+  String get adjustmentExceedsCurrentBirds;
+
+  /// No description provided for @adjustmentRecorded.
+  ///
+  /// In en, this message translates to:
+  /// **'Population adjustment recorded successfully!'**
+  String get adjustmentRecorded;
+
+  /// No description provided for @adjustmentType.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjustment Type'**
+  String get adjustmentType;
+
+  /// No description provided for @birdQuantity.
+  ///
+  /// In en, this message translates to:
+  /// **'Number of Birds'**
+  String get birdQuantity;
+
+  /// No description provided for @layingHensInvolved.
+  ///
+  /// In en, this message translates to:
+  /// **'Laying Hens Involved'**
+  String get layingHensInvolved;
+
+  /// No description provided for @reasonOptional.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason (Optional)'**
+  String get reasonOptional;
+
+  /// No description provided for @productionSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Production Summary'**
+  String get productionSummary;
+
+  /// No description provided for @sevenDayOutput.
+  ///
+  /// In en, this message translates to:
+  /// **'7-Day Good Eggs'**
+  String get sevenDayOutput;
+
+  /// No description provided for @thirtyDayOutput.
+  ///
+  /// In en, this message translates to:
+  /// **'30-Day Good Eggs'**
+  String get thirtyDayOutput;
+
+  /// No description provided for @productionPerHen.
+  ///
+  /// In en, this message translates to:
+  /// **'Laying Rate (Per Hen)'**
+  String get productionPerHen;
+
+  /// No description provided for @thirtyDayAverage.
+  ///
+  /// In en, this message translates to:
+  /// **'30-Day Average'**
+  String get thirtyDayAverage;
+
+  /// No description provided for @rejectedOrCracked.
+  ///
+  /// In en, this message translates to:
+  /// **'Cracked & Rejected'**
+  String get rejectedOrCracked;
+
+  /// No description provided for @lastThirtyDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Last 30 Days'**
+  String get lastThirtyDays;
+
+  /// No description provided for @farmType.
+  ///
+  /// In en, this message translates to:
+  /// **'Farm Type'**
+  String get farmType;
+
+  /// No description provided for @dairyFarm.
+  ///
+  /// In en, this message translates to:
+  /// **'Dairy Farm'**
+  String get dairyFarm;
+
+  /// No description provided for @poultryFarm.
+  ///
+  /// In en, this message translates to:
+  /// **'Poultry Farm'**
+  String get poultryFarm;
+
+  /// No description provided for @mixedFarm.
+  ///
+  /// In en, this message translates to:
+  /// **'Mixed Farm (Dairy & Poultry)'**
+  String get mixedFarm;
 }
 
 class _AppLocalizationsDelegate

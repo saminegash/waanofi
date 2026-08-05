@@ -20,6 +20,12 @@ const Map<UserRole, Set<Permission>> rolePermissions = {
     Permission.recordFeed,
     Permission.viewEggs,
     Permission.recordEggs,
+    Permission.viewPoultry,
+    Permission.manageFlocks,
+    Permission.recordEggProduction,
+    Permission.editEggProduction,
+    Permission.deleteEggProduction,
+    Permission.viewPoultryReports,
     Permission.manageAnimals,
     Permission.manageUsers,
     Permission.viewFinance,
@@ -36,14 +42,20 @@ const Map<UserRole, Set<Permission>> rolePermissions = {
     Permission.recordFeed,
     Permission.viewEggs,
     Permission.recordEggs,
+    Permission.viewPoultry,
+    Permission.recordEggProduction,
+    Permission.editEggProduction,
+    Permission.viewPoultryReports,
     Permission.viewMarketplace,
     Permission.placeOrders,
-    // NO: manageAnimals, manageUsers, viewFinance, exportData, manageListings
+    // NO: manageFlocks, deleteEggProduction, manageAnimals, manageUsers, viewFinance, exportData, manageListings
   },
   UserRole.guest: {
     Permission.viewMilk, // aggregates only (enforced by RLS view)
+    Permission.viewPoultry, // read-only aggregates
     Permission.viewMarketplace,
     Permission.placeOrders,
     // NO writes at all for farm data
   },
 };
+

@@ -200,7 +200,7 @@ class AppLocalizationsAm extends AppLocalizations {
   String get status => 'ሁኔታ';
 
   @override
-  String get breed => 'ዝርያ';
+  String get breed => 'ዘር (ዝርያ)';
 
   @override
   String get allStatuses => 'ሁሉም ሁኔታዎች';
@@ -451,7 +451,7 @@ class AppLocalizationsAm extends AppLocalizations {
   String get marketplace => 'ገበያ';
 
   @override
-  String get flockName => 'የዶሮ መንጋ ስም';
+  String get flockName => 'የመንጋ ስም';
 
   @override
   String get flockNameHint => 'ለምሳሌ ቤት ሀ';
@@ -469,7 +469,7 @@ class AppLocalizationsAm extends AppLocalizations {
   String get totalEggs => 'ጠቅላላ እንቁላል';
 
   @override
-  String get goodEggs => 'ደህና እንቁላል';
+  String get goodEggs => 'ጥሩ እንቁላሎች';
 
   @override
   String get broken => 'የተሰበረ';
@@ -658,8 +658,186 @@ class AppLocalizationsAm extends AppLocalizations {
   String get markReady => 'ዝግጁ በል';
 
   @override
-  String get sendForDelivery => 'አሰማራ';
+  String get markDelivered => 'ደረሰ';
 
   @override
-  String get markDelivered => 'ደረሰ';
+  String get poultryManagement => 'የዶሮና እንቁላል አስተዳደር';
+
+  @override
+  String get poultryReports => 'የዶሮ እርባታ ሪፖርቶች';
+
+  @override
+  String get recordDailyEggs => 'የዕለቱን እንቁላል መዝገብ';
+
+  @override
+  String get addFlock => 'አዲስ መንጋ ጨምር';
+
+  @override
+  String get activeFlocks => 'ነባር መንጋዎች';
+
+  @override
+  String get layingHens => 'ጣይ ዶሮዎች';
+
+  @override
+  String get todayGoodEggs => 'የዛሬ ጥሩ እንቁላሎች';
+
+  @override
+  String get trays => 'ካርቶኖች';
+
+  @override
+  String get loose => 'ነጠላ';
+
+  @override
+  String get flocks => 'መንጋዎች';
+
+  @override
+  String get viewAll => 'ሁሉንም አሳይ';
+
+  @override
+  String get noFlocksRecorded => 'እስካሁን ምንም መንጋ አልተመዘገበም።';
+
+  @override
+  String get birds => 'ዶሮዎች';
+
+  @override
+  String get layingRate => 'የእንቁላል ምርት መጠን';
+
+  @override
+  String get pleaseSelectFlock => 'እባክዎን መንጋ ይምረጡ።';
+
+  @override
+  String get allocationExceedsCollectedError =>
+      'የተመደበው መጠን ከተሰበሰበው ጥሩ እንቁላል መብለጥ አይችልም።';
+
+  @override
+  String get eggRecordSaved => 'የእንቁላል ምርት መረጃው በተሳካ ሁኔታ ተመዝግቧል!';
+
+  @override
+  String get selectFlock => 'መንጋ ይምረጡ';
+
+  @override
+  String get productionDate => 'የተሰበሰበበት ቀን';
+
+  @override
+  String get collectedEggs => 'የተሰበሰቡ እንቁላሎች';
+
+  @override
+  String get crackedEggs => 'የተሰበሩ እንቁላሎች';
+
+  @override
+  String get rejectedEggs => 'የተወገዱ እንቁላሎች';
+
+  @override
+  String get eggAllocations => 'የእንቁላል ክፍፍል';
+
+  @override
+  String get farmUseEggs => 'ለእርሻው አገልግሎት የተዋሉ';
+
+  @override
+  String get soldDirectlyEggs => 'በቀጥታ የተሸጡ';
+
+  @override
+  String get availableForSale => 'ለሽያጭ የሚቀርቡ';
+
+  @override
+  String get fullTrays => 'ሙሉ ካርቶኖች';
+
+  @override
+  String get eggsPerTray => 'እንቁላል/ካርቶን';
+
+  @override
+  String get looseEggs => 'ነጠላ እንቁላሎች';
+
+  @override
+  String get saveRecord => 'መዝገቡን አስቀምጥ';
+
+  @override
+  String get editFlock => 'መንጋ አስተካክል';
+
+  @override
+  String get flockCode => 'የመንጋ ኮድ';
+
+  @override
+  String get flockPurpose => 'ዓላማ';
+
+  @override
+  String get totalBirds => 'ጠቅላላ ዶሮዎች';
+
+  @override
+  String get hensCannotExceedBirds => 'ጣይ ዶሮዎች ከጠቅላላው የዶሮ ብዛት ሊበልጡ አይችሉም።';
+
+  @override
+  String get flockSaved => 'መንጋው በተሳካ ሁኔታ ተመዝግቧል!';
+
+  @override
+  String get fieldRequired => 'ይህ መስክ ያስፈልጋል።';
+
+  @override
+  String get flockDetails => 'የመንጋው ዝርዝር';
+
+  @override
+  String get recordAdjustment => 'የብዛት ማስተካከያ መዝግብ';
+
+  @override
+  String get recentProduction => 'የቅርብ ጊዜ የእንቁላል ምርት';
+
+  @override
+  String get populationAdjustments => 'የዶሮ ብዛት ማስተካከያዎች';
+
+  @override
+  String get noEggRecordsFound => 'ምንም የእንቁላል ምርት መረጃ አልተገኘም።';
+
+  @override
+  String get noAdjustmentsRecorded => 'እስካሁን ምንም ማስተካከያ አልተመዘገበም።';
+
+  @override
+  String get adjustmentExceedsCurrentBirds => 'ማስተካከያው ካለው የዶሮ ብዛት በላይ ነው።';
+
+  @override
+  String get adjustmentRecorded => 'ማስተካከያው በተሳካ ሁኔታ ተመዝግቧል!';
+
+  @override
+  String get adjustmentType => 'የማስተካከያ አይነት';
+
+  @override
+  String get birdQuantity => 'የዶሮ ብዛት';
+
+  @override
+  String get layingHensInvolved => 'የተካተቱ ጣይ ዶሮዎች';
+
+  @override
+  String get reasonOptional => 'ምክንያት (አማራጭ)';
+
+  @override
+  String get productionSummary => 'የምርት ማጠቃለያ';
+
+  @override
+  String get sevenDayOutput => 'የ 7 ቀናት ጥሩ እንቁላሎች';
+
+  @override
+  String get thirtyDayOutput => 'የ 30 ቀናት ጥሩ እንቁላሎች';
+
+  @override
+  String get productionPerHen => 'የአንዲት ዶሮ ምርታማነት';
+
+  @override
+  String get thirtyDayAverage => 'የ 30 ቀናት አማካኝ';
+
+  @override
+  String get rejectedOrCracked => 'የተሰበረና የተወገደ';
+
+  @override
+  String get lastThirtyDays => 'ባለፉት 30 ቀናት';
+
+  @override
+  String get farmType => 'የእርሻ አይነት';
+
+  @override
+  String get dairyFarm => 'የወተት ላሞች እርሻ';
+
+  @override
+  String get poultryFarm => 'የዶሮ እርባታ';
+
+  @override
+  String get mixedFarm => 'ቅልቅል (የላምና የዶሮ እርባታ)';
 }

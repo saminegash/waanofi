@@ -3449,6 +3449,2445 @@ class EggRecordsTableCompanion extends UpdateCompanion<LocalEggRecord> {
   }
 }
 
+class $FlocksTableTable extends FlocksTable
+    with TableInfo<$FlocksTableTable, LocalFlock> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $FlocksTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _farmIdMeta = const VerificationMeta('farmId');
+  @override
+  late final GeneratedColumn<String> farmId = GeneratedColumn<String>(
+    'farm_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _flockCodeMeta = const VerificationMeta(
+    'flockCode',
+  );
+  @override
+  late final GeneratedColumn<String> flockCode = GeneratedColumn<String>(
+    'flock_code',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _breedMeta = const VerificationMeta('breed');
+  @override
+  late final GeneratedColumn<String> breed = GeneratedColumn<String>(
+    'breed',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _purposeMeta = const VerificationMeta(
+    'purpose',
+  );
+  @override
+  late final GeneratedColumn<String> purpose = GeneratedColumn<String>(
+    'purpose',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('layers'),
+  );
+  static const VerificationMeta _numberOfBirdsMeta = const VerificationMeta(
+    'numberOfBirds',
+  );
+  @override
+  late final GeneratedColumn<int> numberOfBirds = GeneratedColumn<int>(
+    'number_of_birds',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _numberOfLayingHensMeta =
+      const VerificationMeta('numberOfLayingHens');
+  @override
+  late final GeneratedColumn<int> numberOfLayingHens = GeneratedColumn<int>(
+    'number_of_laying_hens',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _arrivalDateMeta = const VerificationMeta(
+    'arrivalDate',
+  );
+  @override
+  late final GeneratedColumn<DateTime> arrivalDate = GeneratedColumn<DateTime>(
+    'arrival_date',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _hatchDateMeta = const VerificationMeta(
+    'hatchDate',
+  );
+  @override
+  late final GeneratedColumn<DateTime> hatchDate = GeneratedColumn<DateTime>(
+    'hatch_date',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _housingTypeMeta = const VerificationMeta(
+    'housingType',
+  );
+  @override
+  late final GeneratedColumn<String> housingType = GeneratedColumn<String>(
+    'housing_type',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _sourceMeta = const VerificationMeta('source');
+  @override
+  late final GeneratedColumn<String> source = GeneratedColumn<String>(
+    'source',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<String> status = GeneratedColumn<String>(
+    'status',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('active'),
+  );
+  static const VerificationMeta _notesMeta = const VerificationMeta('notes');
+  @override
+  late final GeneratedColumn<String> notes = GeneratedColumn<String>(
+    'notes',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> deletedAt = GeneratedColumn<DateTime>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    farmId,
+    flockCode,
+    name,
+    breed,
+    purpose,
+    numberOfBirds,
+    numberOfLayingHens,
+    arrivalDate,
+    hatchDate,
+    housingType,
+    source,
+    status,
+    notes,
+    createdBy,
+    createdAt,
+    updatedAt,
+    deletedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'flocks_table';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<LocalFlock> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('farm_id')) {
+      context.handle(
+        _farmIdMeta,
+        farmId.isAcceptableOrUnknown(data['farm_id']!, _farmIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_farmIdMeta);
+    }
+    if (data.containsKey('flock_code')) {
+      context.handle(
+        _flockCodeMeta,
+        flockCode.isAcceptableOrUnknown(data['flock_code']!, _flockCodeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_flockCodeMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('breed')) {
+      context.handle(
+        _breedMeta,
+        breed.isAcceptableOrUnknown(data['breed']!, _breedMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_breedMeta);
+    }
+    if (data.containsKey('purpose')) {
+      context.handle(
+        _purposeMeta,
+        purpose.isAcceptableOrUnknown(data['purpose']!, _purposeMeta),
+      );
+    }
+    if (data.containsKey('number_of_birds')) {
+      context.handle(
+        _numberOfBirdsMeta,
+        numberOfBirds.isAcceptableOrUnknown(
+          data['number_of_birds']!,
+          _numberOfBirdsMeta,
+        ),
+      );
+    }
+    if (data.containsKey('number_of_laying_hens')) {
+      context.handle(
+        _numberOfLayingHensMeta,
+        numberOfLayingHens.isAcceptableOrUnknown(
+          data['number_of_laying_hens']!,
+          _numberOfLayingHensMeta,
+        ),
+      );
+    }
+    if (data.containsKey('arrival_date')) {
+      context.handle(
+        _arrivalDateMeta,
+        arrivalDate.isAcceptableOrUnknown(
+          data['arrival_date']!,
+          _arrivalDateMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_arrivalDateMeta);
+    }
+    if (data.containsKey('hatch_date')) {
+      context.handle(
+        _hatchDateMeta,
+        hatchDate.isAcceptableOrUnknown(data['hatch_date']!, _hatchDateMeta),
+      );
+    }
+    if (data.containsKey('housing_type')) {
+      context.handle(
+        _housingTypeMeta,
+        housingType.isAcceptableOrUnknown(
+          data['housing_type']!,
+          _housingTypeMeta,
+        ),
+      );
+    }
+    if (data.containsKey('source')) {
+      context.handle(
+        _sourceMeta,
+        source.isAcceptableOrUnknown(data['source']!, _sourceMeta),
+      );
+    }
+    if (data.containsKey('status')) {
+      context.handle(
+        _statusMeta,
+        status.isAcceptableOrUnknown(data['status']!, _statusMeta),
+      );
+    }
+    if (data.containsKey('notes')) {
+      context.handle(
+        _notesMeta,
+        notes.isAcceptableOrUnknown(data['notes']!, _notesMeta),
+      );
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  LocalFlock map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return LocalFlock(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      farmId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}farm_id'],
+      )!,
+      flockCode: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}flock_code'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      breed: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}breed'],
+      )!,
+      purpose: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}purpose'],
+      )!,
+      numberOfBirds: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}number_of_birds'],
+      )!,
+      numberOfLayingHens: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}number_of_laying_hens'],
+      )!,
+      arrivalDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}arrival_date'],
+      )!,
+      hatchDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}hatch_date'],
+      ),
+      housingType: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}housing_type'],
+      ),
+      source: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}source'],
+      ),
+      status: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}status'],
+      )!,
+      notes: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}notes'],
+      ),
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}deleted_at'],
+      ),
+    );
+  }
+
+  @override
+  $FlocksTableTable createAlias(String alias) {
+    return $FlocksTableTable(attachedDatabase, alias);
+  }
+}
+
+class LocalFlock extends DataClass implements Insertable<LocalFlock> {
+  final String id;
+  final String farmId;
+  final String flockCode;
+  final String name;
+  final String breed;
+  final String purpose;
+  final int numberOfBirds;
+  final int numberOfLayingHens;
+  final DateTime arrivalDate;
+  final DateTime? hatchDate;
+  final String? housingType;
+  final String? source;
+  final String status;
+  final String? notes;
+  final String? createdBy;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final DateTime? deletedAt;
+  const LocalFlock({
+    required this.id,
+    required this.farmId,
+    required this.flockCode,
+    required this.name,
+    required this.breed,
+    required this.purpose,
+    required this.numberOfBirds,
+    required this.numberOfLayingHens,
+    required this.arrivalDate,
+    this.hatchDate,
+    this.housingType,
+    this.source,
+    required this.status,
+    this.notes,
+    this.createdBy,
+    required this.createdAt,
+    required this.updatedAt,
+    this.deletedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['farm_id'] = Variable<String>(farmId);
+    map['flock_code'] = Variable<String>(flockCode);
+    map['name'] = Variable<String>(name);
+    map['breed'] = Variable<String>(breed);
+    map['purpose'] = Variable<String>(purpose);
+    map['number_of_birds'] = Variable<int>(numberOfBirds);
+    map['number_of_laying_hens'] = Variable<int>(numberOfLayingHens);
+    map['arrival_date'] = Variable<DateTime>(arrivalDate);
+    if (!nullToAbsent || hatchDate != null) {
+      map['hatch_date'] = Variable<DateTime>(hatchDate);
+    }
+    if (!nullToAbsent || housingType != null) {
+      map['housing_type'] = Variable<String>(housingType);
+    }
+    if (!nullToAbsent || source != null) {
+      map['source'] = Variable<String>(source);
+    }
+    map['status'] = Variable<String>(status);
+    if (!nullToAbsent || notes != null) {
+      map['notes'] = Variable<String>(notes);
+    }
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt);
+    }
+    return map;
+  }
+
+  FlocksTableCompanion toCompanion(bool nullToAbsent) {
+    return FlocksTableCompanion(
+      id: Value(id),
+      farmId: Value(farmId),
+      flockCode: Value(flockCode),
+      name: Value(name),
+      breed: Value(breed),
+      purpose: Value(purpose),
+      numberOfBirds: Value(numberOfBirds),
+      numberOfLayingHens: Value(numberOfLayingHens),
+      arrivalDate: Value(arrivalDate),
+      hatchDate: hatchDate == null && nullToAbsent
+          ? const Value.absent()
+          : Value(hatchDate),
+      housingType: housingType == null && nullToAbsent
+          ? const Value.absent()
+          : Value(housingType),
+      source: source == null && nullToAbsent
+          ? const Value.absent()
+          : Value(source),
+      status: Value(status),
+      notes: notes == null && nullToAbsent
+          ? const Value.absent()
+          : Value(notes),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+    );
+  }
+
+  factory LocalFlock.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return LocalFlock(
+      id: serializer.fromJson<String>(json['id']),
+      farmId: serializer.fromJson<String>(json['farmId']),
+      flockCode: serializer.fromJson<String>(json['flockCode']),
+      name: serializer.fromJson<String>(json['name']),
+      breed: serializer.fromJson<String>(json['breed']),
+      purpose: serializer.fromJson<String>(json['purpose']),
+      numberOfBirds: serializer.fromJson<int>(json['numberOfBirds']),
+      numberOfLayingHens: serializer.fromJson<int>(json['numberOfLayingHens']),
+      arrivalDate: serializer.fromJson<DateTime>(json['arrivalDate']),
+      hatchDate: serializer.fromJson<DateTime?>(json['hatchDate']),
+      housingType: serializer.fromJson<String?>(json['housingType']),
+      source: serializer.fromJson<String?>(json['source']),
+      status: serializer.fromJson<String>(json['status']),
+      notes: serializer.fromJson<String?>(json['notes']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      deletedAt: serializer.fromJson<DateTime?>(json['deletedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'farmId': serializer.toJson<String>(farmId),
+      'flockCode': serializer.toJson<String>(flockCode),
+      'name': serializer.toJson<String>(name),
+      'breed': serializer.toJson<String>(breed),
+      'purpose': serializer.toJson<String>(purpose),
+      'numberOfBirds': serializer.toJson<int>(numberOfBirds),
+      'numberOfLayingHens': serializer.toJson<int>(numberOfLayingHens),
+      'arrivalDate': serializer.toJson<DateTime>(arrivalDate),
+      'hatchDate': serializer.toJson<DateTime?>(hatchDate),
+      'housingType': serializer.toJson<String?>(housingType),
+      'source': serializer.toJson<String?>(source),
+      'status': serializer.toJson<String>(status),
+      'notes': serializer.toJson<String?>(notes),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'deletedAt': serializer.toJson<DateTime?>(deletedAt),
+    };
+  }
+
+  LocalFlock copyWith({
+    String? id,
+    String? farmId,
+    String? flockCode,
+    String? name,
+    String? breed,
+    String? purpose,
+    int? numberOfBirds,
+    int? numberOfLayingHens,
+    DateTime? arrivalDate,
+    Value<DateTime?> hatchDate = const Value.absent(),
+    Value<String?> housingType = const Value.absent(),
+    Value<String?> source = const Value.absent(),
+    String? status,
+    Value<String?> notes = const Value.absent(),
+    Value<String?> createdBy = const Value.absent(),
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    Value<DateTime?> deletedAt = const Value.absent(),
+  }) => LocalFlock(
+    id: id ?? this.id,
+    farmId: farmId ?? this.farmId,
+    flockCode: flockCode ?? this.flockCode,
+    name: name ?? this.name,
+    breed: breed ?? this.breed,
+    purpose: purpose ?? this.purpose,
+    numberOfBirds: numberOfBirds ?? this.numberOfBirds,
+    numberOfLayingHens: numberOfLayingHens ?? this.numberOfLayingHens,
+    arrivalDate: arrivalDate ?? this.arrivalDate,
+    hatchDate: hatchDate.present ? hatchDate.value : this.hatchDate,
+    housingType: housingType.present ? housingType.value : this.housingType,
+    source: source.present ? source.value : this.source,
+    status: status ?? this.status,
+    notes: notes.present ? notes.value : this.notes,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+  );
+  LocalFlock copyWithCompanion(FlocksTableCompanion data) {
+    return LocalFlock(
+      id: data.id.present ? data.id.value : this.id,
+      farmId: data.farmId.present ? data.farmId.value : this.farmId,
+      flockCode: data.flockCode.present ? data.flockCode.value : this.flockCode,
+      name: data.name.present ? data.name.value : this.name,
+      breed: data.breed.present ? data.breed.value : this.breed,
+      purpose: data.purpose.present ? data.purpose.value : this.purpose,
+      numberOfBirds: data.numberOfBirds.present
+          ? data.numberOfBirds.value
+          : this.numberOfBirds,
+      numberOfLayingHens: data.numberOfLayingHens.present
+          ? data.numberOfLayingHens.value
+          : this.numberOfLayingHens,
+      arrivalDate: data.arrivalDate.present
+          ? data.arrivalDate.value
+          : this.arrivalDate,
+      hatchDate: data.hatchDate.present ? data.hatchDate.value : this.hatchDate,
+      housingType: data.housingType.present
+          ? data.housingType.value
+          : this.housingType,
+      source: data.source.present ? data.source.value : this.source,
+      status: data.status.present ? data.status.value : this.status,
+      notes: data.notes.present ? data.notes.value : this.notes,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LocalFlock(')
+          ..write('id: $id, ')
+          ..write('farmId: $farmId, ')
+          ..write('flockCode: $flockCode, ')
+          ..write('name: $name, ')
+          ..write('breed: $breed, ')
+          ..write('purpose: $purpose, ')
+          ..write('numberOfBirds: $numberOfBirds, ')
+          ..write('numberOfLayingHens: $numberOfLayingHens, ')
+          ..write('arrivalDate: $arrivalDate, ')
+          ..write('hatchDate: $hatchDate, ')
+          ..write('housingType: $housingType, ')
+          ..write('source: $source, ')
+          ..write('status: $status, ')
+          ..write('notes: $notes, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    farmId,
+    flockCode,
+    name,
+    breed,
+    purpose,
+    numberOfBirds,
+    numberOfLayingHens,
+    arrivalDate,
+    hatchDate,
+    housingType,
+    source,
+    status,
+    notes,
+    createdBy,
+    createdAt,
+    updatedAt,
+    deletedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is LocalFlock &&
+          other.id == this.id &&
+          other.farmId == this.farmId &&
+          other.flockCode == this.flockCode &&
+          other.name == this.name &&
+          other.breed == this.breed &&
+          other.purpose == this.purpose &&
+          other.numberOfBirds == this.numberOfBirds &&
+          other.numberOfLayingHens == this.numberOfLayingHens &&
+          other.arrivalDate == this.arrivalDate &&
+          other.hatchDate == this.hatchDate &&
+          other.housingType == this.housingType &&
+          other.source == this.source &&
+          other.status == this.status &&
+          other.notes == this.notes &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.deletedAt == this.deletedAt);
+}
+
+class FlocksTableCompanion extends UpdateCompanion<LocalFlock> {
+  final Value<String> id;
+  final Value<String> farmId;
+  final Value<String> flockCode;
+  final Value<String> name;
+  final Value<String> breed;
+  final Value<String> purpose;
+  final Value<int> numberOfBirds;
+  final Value<int> numberOfLayingHens;
+  final Value<DateTime> arrivalDate;
+  final Value<DateTime?> hatchDate;
+  final Value<String?> housingType;
+  final Value<String?> source;
+  final Value<String> status;
+  final Value<String?> notes;
+  final Value<String?> createdBy;
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<DateTime?> deletedAt;
+  final Value<int> rowid;
+  const FlocksTableCompanion({
+    this.id = const Value.absent(),
+    this.farmId = const Value.absent(),
+    this.flockCode = const Value.absent(),
+    this.name = const Value.absent(),
+    this.breed = const Value.absent(),
+    this.purpose = const Value.absent(),
+    this.numberOfBirds = const Value.absent(),
+    this.numberOfLayingHens = const Value.absent(),
+    this.arrivalDate = const Value.absent(),
+    this.hatchDate = const Value.absent(),
+    this.housingType = const Value.absent(),
+    this.source = const Value.absent(),
+    this.status = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  FlocksTableCompanion.insert({
+    required String id,
+    required String farmId,
+    required String flockCode,
+    required String name,
+    required String breed,
+    this.purpose = const Value.absent(),
+    this.numberOfBirds = const Value.absent(),
+    this.numberOfLayingHens = const Value.absent(),
+    required DateTime arrivalDate,
+    this.hatchDate = const Value.absent(),
+    this.housingType = const Value.absent(),
+    this.source = const Value.absent(),
+    this.status = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       farmId = Value(farmId),
+       flockCode = Value(flockCode),
+       name = Value(name),
+       breed = Value(breed),
+       arrivalDate = Value(arrivalDate);
+  static Insertable<LocalFlock> custom({
+    Expression<String>? id,
+    Expression<String>? farmId,
+    Expression<String>? flockCode,
+    Expression<String>? name,
+    Expression<String>? breed,
+    Expression<String>? purpose,
+    Expression<int>? numberOfBirds,
+    Expression<int>? numberOfLayingHens,
+    Expression<DateTime>? arrivalDate,
+    Expression<DateTime>? hatchDate,
+    Expression<String>? housingType,
+    Expression<String>? source,
+    Expression<String>? status,
+    Expression<String>? notes,
+    Expression<String>? createdBy,
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<DateTime>? deletedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (farmId != null) 'farm_id': farmId,
+      if (flockCode != null) 'flock_code': flockCode,
+      if (name != null) 'name': name,
+      if (breed != null) 'breed': breed,
+      if (purpose != null) 'purpose': purpose,
+      if (numberOfBirds != null) 'number_of_birds': numberOfBirds,
+      if (numberOfLayingHens != null)
+        'number_of_laying_hens': numberOfLayingHens,
+      if (arrivalDate != null) 'arrival_date': arrivalDate,
+      if (hatchDate != null) 'hatch_date': hatchDate,
+      if (housingType != null) 'housing_type': housingType,
+      if (source != null) 'source': source,
+      if (status != null) 'status': status,
+      if (notes != null) 'notes': notes,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  FlocksTableCompanion copyWith({
+    Value<String>? id,
+    Value<String>? farmId,
+    Value<String>? flockCode,
+    Value<String>? name,
+    Value<String>? breed,
+    Value<String>? purpose,
+    Value<int>? numberOfBirds,
+    Value<int>? numberOfLayingHens,
+    Value<DateTime>? arrivalDate,
+    Value<DateTime?>? hatchDate,
+    Value<String?>? housingType,
+    Value<String?>? source,
+    Value<String>? status,
+    Value<String?>? notes,
+    Value<String?>? createdBy,
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<DateTime?>? deletedAt,
+    Value<int>? rowid,
+  }) {
+    return FlocksTableCompanion(
+      id: id ?? this.id,
+      farmId: farmId ?? this.farmId,
+      flockCode: flockCode ?? this.flockCode,
+      name: name ?? this.name,
+      breed: breed ?? this.breed,
+      purpose: purpose ?? this.purpose,
+      numberOfBirds: numberOfBirds ?? this.numberOfBirds,
+      numberOfLayingHens: numberOfLayingHens ?? this.numberOfLayingHens,
+      arrivalDate: arrivalDate ?? this.arrivalDate,
+      hatchDate: hatchDate ?? this.hatchDate,
+      housingType: housingType ?? this.housingType,
+      source: source ?? this.source,
+      status: status ?? this.status,
+      notes: notes ?? this.notes,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      deletedAt: deletedAt ?? this.deletedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (farmId.present) {
+      map['farm_id'] = Variable<String>(farmId.value);
+    }
+    if (flockCode.present) {
+      map['flock_code'] = Variable<String>(flockCode.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (breed.present) {
+      map['breed'] = Variable<String>(breed.value);
+    }
+    if (purpose.present) {
+      map['purpose'] = Variable<String>(purpose.value);
+    }
+    if (numberOfBirds.present) {
+      map['number_of_birds'] = Variable<int>(numberOfBirds.value);
+    }
+    if (numberOfLayingHens.present) {
+      map['number_of_laying_hens'] = Variable<int>(numberOfLayingHens.value);
+    }
+    if (arrivalDate.present) {
+      map['arrival_date'] = Variable<DateTime>(arrivalDate.value);
+    }
+    if (hatchDate.present) {
+      map['hatch_date'] = Variable<DateTime>(hatchDate.value);
+    }
+    if (housingType.present) {
+      map['housing_type'] = Variable<String>(housingType.value);
+    }
+    if (source.present) {
+      map['source'] = Variable<String>(source.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(status.value);
+    }
+    if (notes.present) {
+      map['notes'] = Variable<String>(notes.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<DateTime>(deletedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('FlocksTableCompanion(')
+          ..write('id: $id, ')
+          ..write('farmId: $farmId, ')
+          ..write('flockCode: $flockCode, ')
+          ..write('name: $name, ')
+          ..write('breed: $breed, ')
+          ..write('purpose: $purpose, ')
+          ..write('numberOfBirds: $numberOfBirds, ')
+          ..write('numberOfLayingHens: $numberOfLayingHens, ')
+          ..write('arrivalDate: $arrivalDate, ')
+          ..write('hatchDate: $hatchDate, ')
+          ..write('housingType: $housingType, ')
+          ..write('source: $source, ')
+          ..write('status: $status, ')
+          ..write('notes: $notes, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $EggProductionRecordsTableTable extends EggProductionRecordsTable
+    with TableInfo<$EggProductionRecordsTableTable, LocalEggProductionRecord> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $EggProductionRecordsTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _farmIdMeta = const VerificationMeta('farmId');
+  @override
+  late final GeneratedColumn<String> farmId = GeneratedColumn<String>(
+    'farm_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _flockIdMeta = const VerificationMeta(
+    'flockId',
+  );
+  @override
+  late final GeneratedColumn<String> flockId = GeneratedColumn<String>(
+    'flock_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _productionDateMeta = const VerificationMeta(
+    'productionDate',
+  );
+  @override
+  late final GeneratedColumn<DateTime> productionDate =
+      GeneratedColumn<DateTime>(
+        'production_date',
+        aliasedName,
+        false,
+        type: DriftSqlType.dateTime,
+        requiredDuringInsert: true,
+      );
+  static const VerificationMeta _goodEggsMeta = const VerificationMeta(
+    'goodEggs',
+  );
+  @override
+  late final GeneratedColumn<int> goodEggs = GeneratedColumn<int>(
+    'good_eggs',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _crackedEggsMeta = const VerificationMeta(
+    'crackedEggs',
+  );
+  @override
+  late final GeneratedColumn<int> crackedEggs = GeneratedColumn<int>(
+    'cracked_eggs',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _rejectedEggsMeta = const VerificationMeta(
+    'rejectedEggs',
+  );
+  @override
+  late final GeneratedColumn<int> rejectedEggs = GeneratedColumn<int>(
+    'rejected_eggs',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _farmUseEggsMeta = const VerificationMeta(
+    'farmUseEggs',
+  );
+  @override
+  late final GeneratedColumn<int> farmUseEggs = GeneratedColumn<int>(
+    'farm_use_eggs',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _soldDirectlyEggsMeta = const VerificationMeta(
+    'soldDirectlyEggs',
+  );
+  @override
+  late final GeneratedColumn<int> soldDirectlyEggs = GeneratedColumn<int>(
+    'sold_directly_eggs',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _availableEggsMeta = const VerificationMeta(
+    'availableEggs',
+  );
+  @override
+  late final GeneratedColumn<int> availableEggs = GeneratedColumn<int>(
+    'available_eggs',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _recordedByMeta = const VerificationMeta(
+    'recordedBy',
+  );
+  @override
+  late final GeneratedColumn<String> recordedBy = GeneratedColumn<String>(
+    'recorded_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _notesMeta = const VerificationMeta('notes');
+  @override
+  late final GeneratedColumn<String> notes = GeneratedColumn<String>(
+    'notes',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    farmId,
+    flockId,
+    productionDate,
+    goodEggs,
+    crackedEggs,
+    rejectedEggs,
+    farmUseEggs,
+    soldDirectlyEggs,
+    availableEggs,
+    recordedBy,
+    notes,
+    createdAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'egg_production_records_table';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<LocalEggProductionRecord> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('farm_id')) {
+      context.handle(
+        _farmIdMeta,
+        farmId.isAcceptableOrUnknown(data['farm_id']!, _farmIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_farmIdMeta);
+    }
+    if (data.containsKey('flock_id')) {
+      context.handle(
+        _flockIdMeta,
+        flockId.isAcceptableOrUnknown(data['flock_id']!, _flockIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_flockIdMeta);
+    }
+    if (data.containsKey('production_date')) {
+      context.handle(
+        _productionDateMeta,
+        productionDate.isAcceptableOrUnknown(
+          data['production_date']!,
+          _productionDateMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_productionDateMeta);
+    }
+    if (data.containsKey('good_eggs')) {
+      context.handle(
+        _goodEggsMeta,
+        goodEggs.isAcceptableOrUnknown(data['good_eggs']!, _goodEggsMeta),
+      );
+    }
+    if (data.containsKey('cracked_eggs')) {
+      context.handle(
+        _crackedEggsMeta,
+        crackedEggs.isAcceptableOrUnknown(
+          data['cracked_eggs']!,
+          _crackedEggsMeta,
+        ),
+      );
+    }
+    if (data.containsKey('rejected_eggs')) {
+      context.handle(
+        _rejectedEggsMeta,
+        rejectedEggs.isAcceptableOrUnknown(
+          data['rejected_eggs']!,
+          _rejectedEggsMeta,
+        ),
+      );
+    }
+    if (data.containsKey('farm_use_eggs')) {
+      context.handle(
+        _farmUseEggsMeta,
+        farmUseEggs.isAcceptableOrUnknown(
+          data['farm_use_eggs']!,
+          _farmUseEggsMeta,
+        ),
+      );
+    }
+    if (data.containsKey('sold_directly_eggs')) {
+      context.handle(
+        _soldDirectlyEggsMeta,
+        soldDirectlyEggs.isAcceptableOrUnknown(
+          data['sold_directly_eggs']!,
+          _soldDirectlyEggsMeta,
+        ),
+      );
+    }
+    if (data.containsKey('available_eggs')) {
+      context.handle(
+        _availableEggsMeta,
+        availableEggs.isAcceptableOrUnknown(
+          data['available_eggs']!,
+          _availableEggsMeta,
+        ),
+      );
+    }
+    if (data.containsKey('recorded_by')) {
+      context.handle(
+        _recordedByMeta,
+        recordedBy.isAcceptableOrUnknown(data['recorded_by']!, _recordedByMeta),
+      );
+    }
+    if (data.containsKey('notes')) {
+      context.handle(
+        _notesMeta,
+        notes.isAcceptableOrUnknown(data['notes']!, _notesMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  LocalEggProductionRecord map(
+    Map<String, dynamic> data, {
+    String? tablePrefix,
+  }) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return LocalEggProductionRecord(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      farmId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}farm_id'],
+      )!,
+      flockId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}flock_id'],
+      )!,
+      productionDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}production_date'],
+      )!,
+      goodEggs: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}good_eggs'],
+      )!,
+      crackedEggs: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}cracked_eggs'],
+      )!,
+      rejectedEggs: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}rejected_eggs'],
+      )!,
+      farmUseEggs: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}farm_use_eggs'],
+      )!,
+      soldDirectlyEggs: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}sold_directly_eggs'],
+      )!,
+      availableEggs: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}available_eggs'],
+      )!,
+      recordedBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}recorded_by'],
+      ),
+      notes: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}notes'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+    );
+  }
+
+  @override
+  $EggProductionRecordsTableTable createAlias(String alias) {
+    return $EggProductionRecordsTableTable(attachedDatabase, alias);
+  }
+}
+
+class LocalEggProductionRecord extends DataClass
+    implements Insertable<LocalEggProductionRecord> {
+  final String id;
+  final String farmId;
+  final String flockId;
+  final DateTime productionDate;
+  final int goodEggs;
+  final int crackedEggs;
+  final int rejectedEggs;
+  final int farmUseEggs;
+  final int soldDirectlyEggs;
+  final int availableEggs;
+  final String? recordedBy;
+  final String? notes;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  const LocalEggProductionRecord({
+    required this.id,
+    required this.farmId,
+    required this.flockId,
+    required this.productionDate,
+    required this.goodEggs,
+    required this.crackedEggs,
+    required this.rejectedEggs,
+    required this.farmUseEggs,
+    required this.soldDirectlyEggs,
+    required this.availableEggs,
+    this.recordedBy,
+    this.notes,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['farm_id'] = Variable<String>(farmId);
+    map['flock_id'] = Variable<String>(flockId);
+    map['production_date'] = Variable<DateTime>(productionDate);
+    map['good_eggs'] = Variable<int>(goodEggs);
+    map['cracked_eggs'] = Variable<int>(crackedEggs);
+    map['rejected_eggs'] = Variable<int>(rejectedEggs);
+    map['farm_use_eggs'] = Variable<int>(farmUseEggs);
+    map['sold_directly_eggs'] = Variable<int>(soldDirectlyEggs);
+    map['available_eggs'] = Variable<int>(availableEggs);
+    if (!nullToAbsent || recordedBy != null) {
+      map['recorded_by'] = Variable<String>(recordedBy);
+    }
+    if (!nullToAbsent || notes != null) {
+      map['notes'] = Variable<String>(notes);
+    }
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    return map;
+  }
+
+  EggProductionRecordsTableCompanion toCompanion(bool nullToAbsent) {
+    return EggProductionRecordsTableCompanion(
+      id: Value(id),
+      farmId: Value(farmId),
+      flockId: Value(flockId),
+      productionDate: Value(productionDate),
+      goodEggs: Value(goodEggs),
+      crackedEggs: Value(crackedEggs),
+      rejectedEggs: Value(rejectedEggs),
+      farmUseEggs: Value(farmUseEggs),
+      soldDirectlyEggs: Value(soldDirectlyEggs),
+      availableEggs: Value(availableEggs),
+      recordedBy: recordedBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(recordedBy),
+      notes: notes == null && nullToAbsent
+          ? const Value.absent()
+          : Value(notes),
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+    );
+  }
+
+  factory LocalEggProductionRecord.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return LocalEggProductionRecord(
+      id: serializer.fromJson<String>(json['id']),
+      farmId: serializer.fromJson<String>(json['farmId']),
+      flockId: serializer.fromJson<String>(json['flockId']),
+      productionDate: serializer.fromJson<DateTime>(json['productionDate']),
+      goodEggs: serializer.fromJson<int>(json['goodEggs']),
+      crackedEggs: serializer.fromJson<int>(json['crackedEggs']),
+      rejectedEggs: serializer.fromJson<int>(json['rejectedEggs']),
+      farmUseEggs: serializer.fromJson<int>(json['farmUseEggs']),
+      soldDirectlyEggs: serializer.fromJson<int>(json['soldDirectlyEggs']),
+      availableEggs: serializer.fromJson<int>(json['availableEggs']),
+      recordedBy: serializer.fromJson<String?>(json['recordedBy']),
+      notes: serializer.fromJson<String?>(json['notes']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'farmId': serializer.toJson<String>(farmId),
+      'flockId': serializer.toJson<String>(flockId),
+      'productionDate': serializer.toJson<DateTime>(productionDate),
+      'goodEggs': serializer.toJson<int>(goodEggs),
+      'crackedEggs': serializer.toJson<int>(crackedEggs),
+      'rejectedEggs': serializer.toJson<int>(rejectedEggs),
+      'farmUseEggs': serializer.toJson<int>(farmUseEggs),
+      'soldDirectlyEggs': serializer.toJson<int>(soldDirectlyEggs),
+      'availableEggs': serializer.toJson<int>(availableEggs),
+      'recordedBy': serializer.toJson<String?>(recordedBy),
+      'notes': serializer.toJson<String?>(notes),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+    };
+  }
+
+  LocalEggProductionRecord copyWith({
+    String? id,
+    String? farmId,
+    String? flockId,
+    DateTime? productionDate,
+    int? goodEggs,
+    int? crackedEggs,
+    int? rejectedEggs,
+    int? farmUseEggs,
+    int? soldDirectlyEggs,
+    int? availableEggs,
+    Value<String?> recordedBy = const Value.absent(),
+    Value<String?> notes = const Value.absent(),
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) => LocalEggProductionRecord(
+    id: id ?? this.id,
+    farmId: farmId ?? this.farmId,
+    flockId: flockId ?? this.flockId,
+    productionDate: productionDate ?? this.productionDate,
+    goodEggs: goodEggs ?? this.goodEggs,
+    crackedEggs: crackedEggs ?? this.crackedEggs,
+    rejectedEggs: rejectedEggs ?? this.rejectedEggs,
+    farmUseEggs: farmUseEggs ?? this.farmUseEggs,
+    soldDirectlyEggs: soldDirectlyEggs ?? this.soldDirectlyEggs,
+    availableEggs: availableEggs ?? this.availableEggs,
+    recordedBy: recordedBy.present ? recordedBy.value : this.recordedBy,
+    notes: notes.present ? notes.value : this.notes,
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+  );
+  LocalEggProductionRecord copyWithCompanion(
+    EggProductionRecordsTableCompanion data,
+  ) {
+    return LocalEggProductionRecord(
+      id: data.id.present ? data.id.value : this.id,
+      farmId: data.farmId.present ? data.farmId.value : this.farmId,
+      flockId: data.flockId.present ? data.flockId.value : this.flockId,
+      productionDate: data.productionDate.present
+          ? data.productionDate.value
+          : this.productionDate,
+      goodEggs: data.goodEggs.present ? data.goodEggs.value : this.goodEggs,
+      crackedEggs: data.crackedEggs.present
+          ? data.crackedEggs.value
+          : this.crackedEggs,
+      rejectedEggs: data.rejectedEggs.present
+          ? data.rejectedEggs.value
+          : this.rejectedEggs,
+      farmUseEggs: data.farmUseEggs.present
+          ? data.farmUseEggs.value
+          : this.farmUseEggs,
+      soldDirectlyEggs: data.soldDirectlyEggs.present
+          ? data.soldDirectlyEggs.value
+          : this.soldDirectlyEggs,
+      availableEggs: data.availableEggs.present
+          ? data.availableEggs.value
+          : this.availableEggs,
+      recordedBy: data.recordedBy.present
+          ? data.recordedBy.value
+          : this.recordedBy,
+      notes: data.notes.present ? data.notes.value : this.notes,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LocalEggProductionRecord(')
+          ..write('id: $id, ')
+          ..write('farmId: $farmId, ')
+          ..write('flockId: $flockId, ')
+          ..write('productionDate: $productionDate, ')
+          ..write('goodEggs: $goodEggs, ')
+          ..write('crackedEggs: $crackedEggs, ')
+          ..write('rejectedEggs: $rejectedEggs, ')
+          ..write('farmUseEggs: $farmUseEggs, ')
+          ..write('soldDirectlyEggs: $soldDirectlyEggs, ')
+          ..write('availableEggs: $availableEggs, ')
+          ..write('recordedBy: $recordedBy, ')
+          ..write('notes: $notes, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    farmId,
+    flockId,
+    productionDate,
+    goodEggs,
+    crackedEggs,
+    rejectedEggs,
+    farmUseEggs,
+    soldDirectlyEggs,
+    availableEggs,
+    recordedBy,
+    notes,
+    createdAt,
+    updatedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is LocalEggProductionRecord &&
+          other.id == this.id &&
+          other.farmId == this.farmId &&
+          other.flockId == this.flockId &&
+          other.productionDate == this.productionDate &&
+          other.goodEggs == this.goodEggs &&
+          other.crackedEggs == this.crackedEggs &&
+          other.rejectedEggs == this.rejectedEggs &&
+          other.farmUseEggs == this.farmUseEggs &&
+          other.soldDirectlyEggs == this.soldDirectlyEggs &&
+          other.availableEggs == this.availableEggs &&
+          other.recordedBy == this.recordedBy &&
+          other.notes == this.notes &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class EggProductionRecordsTableCompanion
+    extends UpdateCompanion<LocalEggProductionRecord> {
+  final Value<String> id;
+  final Value<String> farmId;
+  final Value<String> flockId;
+  final Value<DateTime> productionDate;
+  final Value<int> goodEggs;
+  final Value<int> crackedEggs;
+  final Value<int> rejectedEggs;
+  final Value<int> farmUseEggs;
+  final Value<int> soldDirectlyEggs;
+  final Value<int> availableEggs;
+  final Value<String?> recordedBy;
+  final Value<String?> notes;
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<int> rowid;
+  const EggProductionRecordsTableCompanion({
+    this.id = const Value.absent(),
+    this.farmId = const Value.absent(),
+    this.flockId = const Value.absent(),
+    this.productionDate = const Value.absent(),
+    this.goodEggs = const Value.absent(),
+    this.crackedEggs = const Value.absent(),
+    this.rejectedEggs = const Value.absent(),
+    this.farmUseEggs = const Value.absent(),
+    this.soldDirectlyEggs = const Value.absent(),
+    this.availableEggs = const Value.absent(),
+    this.recordedBy = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  EggProductionRecordsTableCompanion.insert({
+    required String id,
+    required String farmId,
+    required String flockId,
+    required DateTime productionDate,
+    this.goodEggs = const Value.absent(),
+    this.crackedEggs = const Value.absent(),
+    this.rejectedEggs = const Value.absent(),
+    this.farmUseEggs = const Value.absent(),
+    this.soldDirectlyEggs = const Value.absent(),
+    this.availableEggs = const Value.absent(),
+    this.recordedBy = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       farmId = Value(farmId),
+       flockId = Value(flockId),
+       productionDate = Value(productionDate);
+  static Insertable<LocalEggProductionRecord> custom({
+    Expression<String>? id,
+    Expression<String>? farmId,
+    Expression<String>? flockId,
+    Expression<DateTime>? productionDate,
+    Expression<int>? goodEggs,
+    Expression<int>? crackedEggs,
+    Expression<int>? rejectedEggs,
+    Expression<int>? farmUseEggs,
+    Expression<int>? soldDirectlyEggs,
+    Expression<int>? availableEggs,
+    Expression<String>? recordedBy,
+    Expression<String>? notes,
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (farmId != null) 'farm_id': farmId,
+      if (flockId != null) 'flock_id': flockId,
+      if (productionDate != null) 'production_date': productionDate,
+      if (goodEggs != null) 'good_eggs': goodEggs,
+      if (crackedEggs != null) 'cracked_eggs': crackedEggs,
+      if (rejectedEggs != null) 'rejected_eggs': rejectedEggs,
+      if (farmUseEggs != null) 'farm_use_eggs': farmUseEggs,
+      if (soldDirectlyEggs != null) 'sold_directly_eggs': soldDirectlyEggs,
+      if (availableEggs != null) 'available_eggs': availableEggs,
+      if (recordedBy != null) 'recorded_by': recordedBy,
+      if (notes != null) 'notes': notes,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  EggProductionRecordsTableCompanion copyWith({
+    Value<String>? id,
+    Value<String>? farmId,
+    Value<String>? flockId,
+    Value<DateTime>? productionDate,
+    Value<int>? goodEggs,
+    Value<int>? crackedEggs,
+    Value<int>? rejectedEggs,
+    Value<int>? farmUseEggs,
+    Value<int>? soldDirectlyEggs,
+    Value<int>? availableEggs,
+    Value<String?>? recordedBy,
+    Value<String?>? notes,
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return EggProductionRecordsTableCompanion(
+      id: id ?? this.id,
+      farmId: farmId ?? this.farmId,
+      flockId: flockId ?? this.flockId,
+      productionDate: productionDate ?? this.productionDate,
+      goodEggs: goodEggs ?? this.goodEggs,
+      crackedEggs: crackedEggs ?? this.crackedEggs,
+      rejectedEggs: rejectedEggs ?? this.rejectedEggs,
+      farmUseEggs: farmUseEggs ?? this.farmUseEggs,
+      soldDirectlyEggs: soldDirectlyEggs ?? this.soldDirectlyEggs,
+      availableEggs: availableEggs ?? this.availableEggs,
+      recordedBy: recordedBy ?? this.recordedBy,
+      notes: notes ?? this.notes,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (farmId.present) {
+      map['farm_id'] = Variable<String>(farmId.value);
+    }
+    if (flockId.present) {
+      map['flock_id'] = Variable<String>(flockId.value);
+    }
+    if (productionDate.present) {
+      map['production_date'] = Variable<DateTime>(productionDate.value);
+    }
+    if (goodEggs.present) {
+      map['good_eggs'] = Variable<int>(goodEggs.value);
+    }
+    if (crackedEggs.present) {
+      map['cracked_eggs'] = Variable<int>(crackedEggs.value);
+    }
+    if (rejectedEggs.present) {
+      map['rejected_eggs'] = Variable<int>(rejectedEggs.value);
+    }
+    if (farmUseEggs.present) {
+      map['farm_use_eggs'] = Variable<int>(farmUseEggs.value);
+    }
+    if (soldDirectlyEggs.present) {
+      map['sold_directly_eggs'] = Variable<int>(soldDirectlyEggs.value);
+    }
+    if (availableEggs.present) {
+      map['available_eggs'] = Variable<int>(availableEggs.value);
+    }
+    if (recordedBy.present) {
+      map['recorded_by'] = Variable<String>(recordedBy.value);
+    }
+    if (notes.present) {
+      map['notes'] = Variable<String>(notes.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('EggProductionRecordsTableCompanion(')
+          ..write('id: $id, ')
+          ..write('farmId: $farmId, ')
+          ..write('flockId: $flockId, ')
+          ..write('productionDate: $productionDate, ')
+          ..write('goodEggs: $goodEggs, ')
+          ..write('crackedEggs: $crackedEggs, ')
+          ..write('rejectedEggs: $rejectedEggs, ')
+          ..write('farmUseEggs: $farmUseEggs, ')
+          ..write('soldDirectlyEggs: $soldDirectlyEggs, ')
+          ..write('availableEggs: $availableEggs, ')
+          ..write('recordedBy: $recordedBy, ')
+          ..write('notes: $notes, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $FlockAdjustmentsTableTable extends FlockAdjustmentsTable
+    with TableInfo<$FlockAdjustmentsTableTable, LocalFlockAdjustment> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $FlockAdjustmentsTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _farmIdMeta = const VerificationMeta('farmId');
+  @override
+  late final GeneratedColumn<String> farmId = GeneratedColumn<String>(
+    'farm_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _flockIdMeta = const VerificationMeta(
+    'flockId',
+  );
+  @override
+  late final GeneratedColumn<String> flockId = GeneratedColumn<String>(
+    'flock_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _adjustmentTypeMeta = const VerificationMeta(
+    'adjustmentType',
+  );
+  @override
+  late final GeneratedColumn<String> adjustmentType = GeneratedColumn<String>(
+    'adjustment_type',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _birdsChangedMeta = const VerificationMeta(
+    'birdsChanged',
+  );
+  @override
+  late final GeneratedColumn<int> birdsChanged = GeneratedColumn<int>(
+    'birds_changed',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _hensChangedMeta = const VerificationMeta(
+    'hensChanged',
+  );
+  @override
+  late final GeneratedColumn<int> hensChanged = GeneratedColumn<int>(
+    'hens_changed',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _reasonMeta = const VerificationMeta('reason');
+  @override
+  late final GeneratedColumn<String> reason = GeneratedColumn<String>(
+    'reason',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _recordedAtMeta = const VerificationMeta(
+    'recordedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> recordedAt = GeneratedColumn<DateTime>(
+    'recorded_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _recordedByMeta = const VerificationMeta(
+    'recordedBy',
+  );
+  @override
+  late final GeneratedColumn<String> recordedBy = GeneratedColumn<String>(
+    'recorded_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    farmId,
+    flockId,
+    adjustmentType,
+    birdsChanged,
+    hensChanged,
+    reason,
+    recordedAt,
+    recordedBy,
+    createdAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'flock_adjustments_table';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<LocalFlockAdjustment> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('farm_id')) {
+      context.handle(
+        _farmIdMeta,
+        farmId.isAcceptableOrUnknown(data['farm_id']!, _farmIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_farmIdMeta);
+    }
+    if (data.containsKey('flock_id')) {
+      context.handle(
+        _flockIdMeta,
+        flockId.isAcceptableOrUnknown(data['flock_id']!, _flockIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_flockIdMeta);
+    }
+    if (data.containsKey('adjustment_type')) {
+      context.handle(
+        _adjustmentTypeMeta,
+        adjustmentType.isAcceptableOrUnknown(
+          data['adjustment_type']!,
+          _adjustmentTypeMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_adjustmentTypeMeta);
+    }
+    if (data.containsKey('birds_changed')) {
+      context.handle(
+        _birdsChangedMeta,
+        birdsChanged.isAcceptableOrUnknown(
+          data['birds_changed']!,
+          _birdsChangedMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_birdsChangedMeta);
+    }
+    if (data.containsKey('hens_changed')) {
+      context.handle(
+        _hensChangedMeta,
+        hensChanged.isAcceptableOrUnknown(
+          data['hens_changed']!,
+          _hensChangedMeta,
+        ),
+      );
+    }
+    if (data.containsKey('reason')) {
+      context.handle(
+        _reasonMeta,
+        reason.isAcceptableOrUnknown(data['reason']!, _reasonMeta),
+      );
+    }
+    if (data.containsKey('recorded_at')) {
+      context.handle(
+        _recordedAtMeta,
+        recordedAt.isAcceptableOrUnknown(data['recorded_at']!, _recordedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_recordedAtMeta);
+    }
+    if (data.containsKey('recorded_by')) {
+      context.handle(
+        _recordedByMeta,
+        recordedBy.isAcceptableOrUnknown(data['recorded_by']!, _recordedByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  LocalFlockAdjustment map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return LocalFlockAdjustment(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      farmId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}farm_id'],
+      )!,
+      flockId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}flock_id'],
+      )!,
+      adjustmentType: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}adjustment_type'],
+      )!,
+      birdsChanged: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}birds_changed'],
+      )!,
+      hensChanged: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}hens_changed'],
+      )!,
+      reason: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}reason'],
+      ),
+      recordedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}recorded_at'],
+      )!,
+      recordedBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}recorded_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+    );
+  }
+
+  @override
+  $FlockAdjustmentsTableTable createAlias(String alias) {
+    return $FlockAdjustmentsTableTable(attachedDatabase, alias);
+  }
+}
+
+class LocalFlockAdjustment extends DataClass
+    implements Insertable<LocalFlockAdjustment> {
+  final String id;
+  final String farmId;
+  final String flockId;
+  final String adjustmentType;
+  final int birdsChanged;
+  final int hensChanged;
+  final String? reason;
+  final DateTime recordedAt;
+  final String? recordedBy;
+  final DateTime createdAt;
+  const LocalFlockAdjustment({
+    required this.id,
+    required this.farmId,
+    required this.flockId,
+    required this.adjustmentType,
+    required this.birdsChanged,
+    required this.hensChanged,
+    this.reason,
+    required this.recordedAt,
+    this.recordedBy,
+    required this.createdAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['farm_id'] = Variable<String>(farmId);
+    map['flock_id'] = Variable<String>(flockId);
+    map['adjustment_type'] = Variable<String>(adjustmentType);
+    map['birds_changed'] = Variable<int>(birdsChanged);
+    map['hens_changed'] = Variable<int>(hensChanged);
+    if (!nullToAbsent || reason != null) {
+      map['reason'] = Variable<String>(reason);
+    }
+    map['recorded_at'] = Variable<DateTime>(recordedAt);
+    if (!nullToAbsent || recordedBy != null) {
+      map['recorded_by'] = Variable<String>(recordedBy);
+    }
+    map['created_at'] = Variable<DateTime>(createdAt);
+    return map;
+  }
+
+  FlockAdjustmentsTableCompanion toCompanion(bool nullToAbsent) {
+    return FlockAdjustmentsTableCompanion(
+      id: Value(id),
+      farmId: Value(farmId),
+      flockId: Value(flockId),
+      adjustmentType: Value(adjustmentType),
+      birdsChanged: Value(birdsChanged),
+      hensChanged: Value(hensChanged),
+      reason: reason == null && nullToAbsent
+          ? const Value.absent()
+          : Value(reason),
+      recordedAt: Value(recordedAt),
+      recordedBy: recordedBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(recordedBy),
+      createdAt: Value(createdAt),
+    );
+  }
+
+  factory LocalFlockAdjustment.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return LocalFlockAdjustment(
+      id: serializer.fromJson<String>(json['id']),
+      farmId: serializer.fromJson<String>(json['farmId']),
+      flockId: serializer.fromJson<String>(json['flockId']),
+      adjustmentType: serializer.fromJson<String>(json['adjustmentType']),
+      birdsChanged: serializer.fromJson<int>(json['birdsChanged']),
+      hensChanged: serializer.fromJson<int>(json['hensChanged']),
+      reason: serializer.fromJson<String?>(json['reason']),
+      recordedAt: serializer.fromJson<DateTime>(json['recordedAt']),
+      recordedBy: serializer.fromJson<String?>(json['recordedBy']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'farmId': serializer.toJson<String>(farmId),
+      'flockId': serializer.toJson<String>(flockId),
+      'adjustmentType': serializer.toJson<String>(adjustmentType),
+      'birdsChanged': serializer.toJson<int>(birdsChanged),
+      'hensChanged': serializer.toJson<int>(hensChanged),
+      'reason': serializer.toJson<String?>(reason),
+      'recordedAt': serializer.toJson<DateTime>(recordedAt),
+      'recordedBy': serializer.toJson<String?>(recordedBy),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+    };
+  }
+
+  LocalFlockAdjustment copyWith({
+    String? id,
+    String? farmId,
+    String? flockId,
+    String? adjustmentType,
+    int? birdsChanged,
+    int? hensChanged,
+    Value<String?> reason = const Value.absent(),
+    DateTime? recordedAt,
+    Value<String?> recordedBy = const Value.absent(),
+    DateTime? createdAt,
+  }) => LocalFlockAdjustment(
+    id: id ?? this.id,
+    farmId: farmId ?? this.farmId,
+    flockId: flockId ?? this.flockId,
+    adjustmentType: adjustmentType ?? this.adjustmentType,
+    birdsChanged: birdsChanged ?? this.birdsChanged,
+    hensChanged: hensChanged ?? this.hensChanged,
+    reason: reason.present ? reason.value : this.reason,
+    recordedAt: recordedAt ?? this.recordedAt,
+    recordedBy: recordedBy.present ? recordedBy.value : this.recordedBy,
+    createdAt: createdAt ?? this.createdAt,
+  );
+  LocalFlockAdjustment copyWithCompanion(FlockAdjustmentsTableCompanion data) {
+    return LocalFlockAdjustment(
+      id: data.id.present ? data.id.value : this.id,
+      farmId: data.farmId.present ? data.farmId.value : this.farmId,
+      flockId: data.flockId.present ? data.flockId.value : this.flockId,
+      adjustmentType: data.adjustmentType.present
+          ? data.adjustmentType.value
+          : this.adjustmentType,
+      birdsChanged: data.birdsChanged.present
+          ? data.birdsChanged.value
+          : this.birdsChanged,
+      hensChanged: data.hensChanged.present
+          ? data.hensChanged.value
+          : this.hensChanged,
+      reason: data.reason.present ? data.reason.value : this.reason,
+      recordedAt: data.recordedAt.present
+          ? data.recordedAt.value
+          : this.recordedAt,
+      recordedBy: data.recordedBy.present
+          ? data.recordedBy.value
+          : this.recordedBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LocalFlockAdjustment(')
+          ..write('id: $id, ')
+          ..write('farmId: $farmId, ')
+          ..write('flockId: $flockId, ')
+          ..write('adjustmentType: $adjustmentType, ')
+          ..write('birdsChanged: $birdsChanged, ')
+          ..write('hensChanged: $hensChanged, ')
+          ..write('reason: $reason, ')
+          ..write('recordedAt: $recordedAt, ')
+          ..write('recordedBy: $recordedBy, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    farmId,
+    flockId,
+    adjustmentType,
+    birdsChanged,
+    hensChanged,
+    reason,
+    recordedAt,
+    recordedBy,
+    createdAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is LocalFlockAdjustment &&
+          other.id == this.id &&
+          other.farmId == this.farmId &&
+          other.flockId == this.flockId &&
+          other.adjustmentType == this.adjustmentType &&
+          other.birdsChanged == this.birdsChanged &&
+          other.hensChanged == this.hensChanged &&
+          other.reason == this.reason &&
+          other.recordedAt == this.recordedAt &&
+          other.recordedBy == this.recordedBy &&
+          other.createdAt == this.createdAt);
+}
+
+class FlockAdjustmentsTableCompanion
+    extends UpdateCompanion<LocalFlockAdjustment> {
+  final Value<String> id;
+  final Value<String> farmId;
+  final Value<String> flockId;
+  final Value<String> adjustmentType;
+  final Value<int> birdsChanged;
+  final Value<int> hensChanged;
+  final Value<String?> reason;
+  final Value<DateTime> recordedAt;
+  final Value<String?> recordedBy;
+  final Value<DateTime> createdAt;
+  final Value<int> rowid;
+  const FlockAdjustmentsTableCompanion({
+    this.id = const Value.absent(),
+    this.farmId = const Value.absent(),
+    this.flockId = const Value.absent(),
+    this.adjustmentType = const Value.absent(),
+    this.birdsChanged = const Value.absent(),
+    this.hensChanged = const Value.absent(),
+    this.reason = const Value.absent(),
+    this.recordedAt = const Value.absent(),
+    this.recordedBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  FlockAdjustmentsTableCompanion.insert({
+    required String id,
+    required String farmId,
+    required String flockId,
+    required String adjustmentType,
+    required int birdsChanged,
+    this.hensChanged = const Value.absent(),
+    this.reason = const Value.absent(),
+    required DateTime recordedAt,
+    this.recordedBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       farmId = Value(farmId),
+       flockId = Value(flockId),
+       adjustmentType = Value(adjustmentType),
+       birdsChanged = Value(birdsChanged),
+       recordedAt = Value(recordedAt);
+  static Insertable<LocalFlockAdjustment> custom({
+    Expression<String>? id,
+    Expression<String>? farmId,
+    Expression<String>? flockId,
+    Expression<String>? adjustmentType,
+    Expression<int>? birdsChanged,
+    Expression<int>? hensChanged,
+    Expression<String>? reason,
+    Expression<DateTime>? recordedAt,
+    Expression<String>? recordedBy,
+    Expression<DateTime>? createdAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (farmId != null) 'farm_id': farmId,
+      if (flockId != null) 'flock_id': flockId,
+      if (adjustmentType != null) 'adjustment_type': adjustmentType,
+      if (birdsChanged != null) 'birds_changed': birdsChanged,
+      if (hensChanged != null) 'hens_changed': hensChanged,
+      if (reason != null) 'reason': reason,
+      if (recordedAt != null) 'recorded_at': recordedAt,
+      if (recordedBy != null) 'recorded_by': recordedBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  FlockAdjustmentsTableCompanion copyWith({
+    Value<String>? id,
+    Value<String>? farmId,
+    Value<String>? flockId,
+    Value<String>? adjustmentType,
+    Value<int>? birdsChanged,
+    Value<int>? hensChanged,
+    Value<String?>? reason,
+    Value<DateTime>? recordedAt,
+    Value<String?>? recordedBy,
+    Value<DateTime>? createdAt,
+    Value<int>? rowid,
+  }) {
+    return FlockAdjustmentsTableCompanion(
+      id: id ?? this.id,
+      farmId: farmId ?? this.farmId,
+      flockId: flockId ?? this.flockId,
+      adjustmentType: adjustmentType ?? this.adjustmentType,
+      birdsChanged: birdsChanged ?? this.birdsChanged,
+      hensChanged: hensChanged ?? this.hensChanged,
+      reason: reason ?? this.reason,
+      recordedAt: recordedAt ?? this.recordedAt,
+      recordedBy: recordedBy ?? this.recordedBy,
+      createdAt: createdAt ?? this.createdAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (farmId.present) {
+      map['farm_id'] = Variable<String>(farmId.value);
+    }
+    if (flockId.present) {
+      map['flock_id'] = Variable<String>(flockId.value);
+    }
+    if (adjustmentType.present) {
+      map['adjustment_type'] = Variable<String>(adjustmentType.value);
+    }
+    if (birdsChanged.present) {
+      map['birds_changed'] = Variable<int>(birdsChanged.value);
+    }
+    if (hensChanged.present) {
+      map['hens_changed'] = Variable<int>(hensChanged.value);
+    }
+    if (reason.present) {
+      map['reason'] = Variable<String>(reason.value);
+    }
+    if (recordedAt.present) {
+      map['recorded_at'] = Variable<DateTime>(recordedAt.value);
+    }
+    if (recordedBy.present) {
+      map['recorded_by'] = Variable<String>(recordedBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('FlockAdjustmentsTableCompanion(')
+          ..write('id: $id, ')
+          ..write('farmId: $farmId, ')
+          ..write('flockId: $flockId, ')
+          ..write('adjustmentType: $adjustmentType, ')
+          ..write('birdsChanged: $birdsChanged, ')
+          ..write('hensChanged: $hensChanged, ')
+          ..write('reason: $reason, ')
+          ..write('recordedAt: $recordedAt, ')
+          ..write('recordedBy: $recordedBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -3466,8 +5905,19 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $EggRecordsTableTable eggRecordsTable = $EggRecordsTableTable(
     this,
   );
+  late final $FlocksTableTable flocksTable = $FlocksTableTable(this);
+  late final $EggProductionRecordsTableTable eggProductionRecordsTable =
+      $EggProductionRecordsTableTable(this);
+  late final $FlockAdjustmentsTableTable flockAdjustmentsTable =
+      $FlockAdjustmentsTableTable(this);
   late final AnimalsDao animalsDao = AnimalsDao(this as AppDatabase);
   late final EggRecordsDao eggRecordsDao = EggRecordsDao(this as AppDatabase);
+  late final EggProductionRecordsDao eggProductionRecordsDao =
+      EggProductionRecordsDao(this as AppDatabase);
+  late final FlocksDao flocksDao = FlocksDao(this as AppDatabase);
+  late final FlockAdjustmentsDao flockAdjustmentsDao = FlockAdjustmentsDao(
+    this as AppDatabase,
+  );
   late final MilkDao milkDao = MilkDao(this as AppDatabase);
   late final OutboxDao outboxDao = OutboxDao(this as AppDatabase);
   late final FeedTypesDao feedTypesDao = FeedTypesDao(this as AppDatabase);
@@ -3485,6 +5935,9 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     feedTypesTable,
     feedRecordsTable,
     eggRecordsTable,
+    flocksTable,
+    eggProductionRecordsTable,
+    flockAdjustmentsTable,
   ];
 }
 
@@ -5234,6 +7687,1189 @@ typedef $$EggRecordsTableTableProcessedTableManager =
       LocalEggRecord,
       PrefetchHooks Function()
     >;
+typedef $$FlocksTableTableCreateCompanionBuilder =
+    FlocksTableCompanion Function({
+      required String id,
+      required String farmId,
+      required String flockCode,
+      required String name,
+      required String breed,
+      Value<String> purpose,
+      Value<int> numberOfBirds,
+      Value<int> numberOfLayingHens,
+      required DateTime arrivalDate,
+      Value<DateTime?> hatchDate,
+      Value<String?> housingType,
+      Value<String?> source,
+      Value<String> status,
+      Value<String?> notes,
+      Value<String?> createdBy,
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<DateTime?> deletedAt,
+      Value<int> rowid,
+    });
+typedef $$FlocksTableTableUpdateCompanionBuilder =
+    FlocksTableCompanion Function({
+      Value<String> id,
+      Value<String> farmId,
+      Value<String> flockCode,
+      Value<String> name,
+      Value<String> breed,
+      Value<String> purpose,
+      Value<int> numberOfBirds,
+      Value<int> numberOfLayingHens,
+      Value<DateTime> arrivalDate,
+      Value<DateTime?> hatchDate,
+      Value<String?> housingType,
+      Value<String?> source,
+      Value<String> status,
+      Value<String?> notes,
+      Value<String?> createdBy,
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<DateTime?> deletedAt,
+      Value<int> rowid,
+    });
+
+class $$FlocksTableTableFilterComposer
+    extends Composer<_$AppDatabase, $FlocksTableTable> {
+  $$FlocksTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get farmId => $composableBuilder(
+    column: $table.farmId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get flockCode => $composableBuilder(
+    column: $table.flockCode,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get breed => $composableBuilder(
+    column: $table.breed,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get purpose => $composableBuilder(
+    column: $table.purpose,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get numberOfBirds => $composableBuilder(
+    column: $table.numberOfBirds,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get numberOfLayingHens => $composableBuilder(
+    column: $table.numberOfLayingHens,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get arrivalDate => $composableBuilder(
+    column: $table.arrivalDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get hatchDate => $composableBuilder(
+    column: $table.hatchDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get housingType => $composableBuilder(
+    column: $table.housingType,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get source => $composableBuilder(
+    column: $table.source,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$FlocksTableTableOrderingComposer
+    extends Composer<_$AppDatabase, $FlocksTableTable> {
+  $$FlocksTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get farmId => $composableBuilder(
+    column: $table.farmId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get flockCode => $composableBuilder(
+    column: $table.flockCode,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get breed => $composableBuilder(
+    column: $table.breed,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get purpose => $composableBuilder(
+    column: $table.purpose,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get numberOfBirds => $composableBuilder(
+    column: $table.numberOfBirds,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get numberOfLayingHens => $composableBuilder(
+    column: $table.numberOfLayingHens,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get arrivalDate => $composableBuilder(
+    column: $table.arrivalDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get hatchDate => $composableBuilder(
+    column: $table.hatchDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get housingType => $composableBuilder(
+    column: $table.housingType,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get source => $composableBuilder(
+    column: $table.source,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$FlocksTableTableAnnotationComposer
+    extends Composer<_$AppDatabase, $FlocksTableTable> {
+  $$FlocksTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get farmId =>
+      $composableBuilder(column: $table.farmId, builder: (column) => column);
+
+  GeneratedColumn<String> get flockCode =>
+      $composableBuilder(column: $table.flockCode, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get breed =>
+      $composableBuilder(column: $table.breed, builder: (column) => column);
+
+  GeneratedColumn<String> get purpose =>
+      $composableBuilder(column: $table.purpose, builder: (column) => column);
+
+  GeneratedColumn<int> get numberOfBirds => $composableBuilder(
+    column: $table.numberOfBirds,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get numberOfLayingHens => $composableBuilder(
+    column: $table.numberOfLayingHens,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get arrivalDate => $composableBuilder(
+    column: $table.arrivalDate,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get hatchDate =>
+      $composableBuilder(column: $table.hatchDate, builder: (column) => column);
+
+  GeneratedColumn<String> get housingType => $composableBuilder(
+    column: $table.housingType,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get source =>
+      $composableBuilder(column: $table.source, builder: (column) => column);
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<String> get notes =>
+      $composableBuilder(column: $table.notes, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+}
+
+class $$FlocksTableTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $FlocksTableTable,
+          LocalFlock,
+          $$FlocksTableTableFilterComposer,
+          $$FlocksTableTableOrderingComposer,
+          $$FlocksTableTableAnnotationComposer,
+          $$FlocksTableTableCreateCompanionBuilder,
+          $$FlocksTableTableUpdateCompanionBuilder,
+          (
+            LocalFlock,
+            BaseReferences<_$AppDatabase, $FlocksTableTable, LocalFlock>,
+          ),
+          LocalFlock,
+          PrefetchHooks Function()
+        > {
+  $$FlocksTableTableTableManager(_$AppDatabase db, $FlocksTableTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$FlocksTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$FlocksTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$FlocksTableTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> farmId = const Value.absent(),
+                Value<String> flockCode = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<String> breed = const Value.absent(),
+                Value<String> purpose = const Value.absent(),
+                Value<int> numberOfBirds = const Value.absent(),
+                Value<int> numberOfLayingHens = const Value.absent(),
+                Value<DateTime> arrivalDate = const Value.absent(),
+                Value<DateTime?> hatchDate = const Value.absent(),
+                Value<String?> housingType = const Value.absent(),
+                Value<String?> source = const Value.absent(),
+                Value<String> status = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => FlocksTableCompanion(
+                id: id,
+                farmId: farmId,
+                flockCode: flockCode,
+                name: name,
+                breed: breed,
+                purpose: purpose,
+                numberOfBirds: numberOfBirds,
+                numberOfLayingHens: numberOfLayingHens,
+                arrivalDate: arrivalDate,
+                hatchDate: hatchDate,
+                housingType: housingType,
+                source: source,
+                status: status,
+                notes: notes,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String farmId,
+                required String flockCode,
+                required String name,
+                required String breed,
+                Value<String> purpose = const Value.absent(),
+                Value<int> numberOfBirds = const Value.absent(),
+                Value<int> numberOfLayingHens = const Value.absent(),
+                required DateTime arrivalDate,
+                Value<DateTime?> hatchDate = const Value.absent(),
+                Value<String?> housingType = const Value.absent(),
+                Value<String?> source = const Value.absent(),
+                Value<String> status = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<DateTime?> deletedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => FlocksTableCompanion.insert(
+                id: id,
+                farmId: farmId,
+                flockCode: flockCode,
+                name: name,
+                breed: breed,
+                purpose: purpose,
+                numberOfBirds: numberOfBirds,
+                numberOfLayingHens: numberOfLayingHens,
+                arrivalDate: arrivalDate,
+                hatchDate: hatchDate,
+                housingType: housingType,
+                source: source,
+                status: status,
+                notes: notes,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$FlocksTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $FlocksTableTable,
+      LocalFlock,
+      $$FlocksTableTableFilterComposer,
+      $$FlocksTableTableOrderingComposer,
+      $$FlocksTableTableAnnotationComposer,
+      $$FlocksTableTableCreateCompanionBuilder,
+      $$FlocksTableTableUpdateCompanionBuilder,
+      (
+        LocalFlock,
+        BaseReferences<_$AppDatabase, $FlocksTableTable, LocalFlock>,
+      ),
+      LocalFlock,
+      PrefetchHooks Function()
+    >;
+typedef $$EggProductionRecordsTableTableCreateCompanionBuilder =
+    EggProductionRecordsTableCompanion Function({
+      required String id,
+      required String farmId,
+      required String flockId,
+      required DateTime productionDate,
+      Value<int> goodEggs,
+      Value<int> crackedEggs,
+      Value<int> rejectedEggs,
+      Value<int> farmUseEggs,
+      Value<int> soldDirectlyEggs,
+      Value<int> availableEggs,
+      Value<String?> recordedBy,
+      Value<String?> notes,
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<int> rowid,
+    });
+typedef $$EggProductionRecordsTableTableUpdateCompanionBuilder =
+    EggProductionRecordsTableCompanion Function({
+      Value<String> id,
+      Value<String> farmId,
+      Value<String> flockId,
+      Value<DateTime> productionDate,
+      Value<int> goodEggs,
+      Value<int> crackedEggs,
+      Value<int> rejectedEggs,
+      Value<int> farmUseEggs,
+      Value<int> soldDirectlyEggs,
+      Value<int> availableEggs,
+      Value<String?> recordedBy,
+      Value<String?> notes,
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$EggProductionRecordsTableTableFilterComposer
+    extends Composer<_$AppDatabase, $EggProductionRecordsTableTable> {
+  $$EggProductionRecordsTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get farmId => $composableBuilder(
+    column: $table.farmId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get flockId => $composableBuilder(
+    column: $table.flockId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get productionDate => $composableBuilder(
+    column: $table.productionDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get goodEggs => $composableBuilder(
+    column: $table.goodEggs,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get crackedEggs => $composableBuilder(
+    column: $table.crackedEggs,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get rejectedEggs => $composableBuilder(
+    column: $table.rejectedEggs,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get farmUseEggs => $composableBuilder(
+    column: $table.farmUseEggs,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get soldDirectlyEggs => $composableBuilder(
+    column: $table.soldDirectlyEggs,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get availableEggs => $composableBuilder(
+    column: $table.availableEggs,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get recordedBy => $composableBuilder(
+    column: $table.recordedBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$EggProductionRecordsTableTableOrderingComposer
+    extends Composer<_$AppDatabase, $EggProductionRecordsTableTable> {
+  $$EggProductionRecordsTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get farmId => $composableBuilder(
+    column: $table.farmId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get flockId => $composableBuilder(
+    column: $table.flockId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get productionDate => $composableBuilder(
+    column: $table.productionDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get goodEggs => $composableBuilder(
+    column: $table.goodEggs,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get crackedEggs => $composableBuilder(
+    column: $table.crackedEggs,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get rejectedEggs => $composableBuilder(
+    column: $table.rejectedEggs,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get farmUseEggs => $composableBuilder(
+    column: $table.farmUseEggs,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get soldDirectlyEggs => $composableBuilder(
+    column: $table.soldDirectlyEggs,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get availableEggs => $composableBuilder(
+    column: $table.availableEggs,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get recordedBy => $composableBuilder(
+    column: $table.recordedBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$EggProductionRecordsTableTableAnnotationComposer
+    extends Composer<_$AppDatabase, $EggProductionRecordsTableTable> {
+  $$EggProductionRecordsTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get farmId =>
+      $composableBuilder(column: $table.farmId, builder: (column) => column);
+
+  GeneratedColumn<String> get flockId =>
+      $composableBuilder(column: $table.flockId, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get productionDate => $composableBuilder(
+    column: $table.productionDate,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get goodEggs =>
+      $composableBuilder(column: $table.goodEggs, builder: (column) => column);
+
+  GeneratedColumn<int> get crackedEggs => $composableBuilder(
+    column: $table.crackedEggs,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get rejectedEggs => $composableBuilder(
+    column: $table.rejectedEggs,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get farmUseEggs => $composableBuilder(
+    column: $table.farmUseEggs,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get soldDirectlyEggs => $composableBuilder(
+    column: $table.soldDirectlyEggs,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get availableEggs => $composableBuilder(
+    column: $table.availableEggs,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get recordedBy => $composableBuilder(
+    column: $table.recordedBy,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get notes =>
+      $composableBuilder(column: $table.notes, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$EggProductionRecordsTableTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $EggProductionRecordsTableTable,
+          LocalEggProductionRecord,
+          $$EggProductionRecordsTableTableFilterComposer,
+          $$EggProductionRecordsTableTableOrderingComposer,
+          $$EggProductionRecordsTableTableAnnotationComposer,
+          $$EggProductionRecordsTableTableCreateCompanionBuilder,
+          $$EggProductionRecordsTableTableUpdateCompanionBuilder,
+          (
+            LocalEggProductionRecord,
+            BaseReferences<
+              _$AppDatabase,
+              $EggProductionRecordsTableTable,
+              LocalEggProductionRecord
+            >,
+          ),
+          LocalEggProductionRecord,
+          PrefetchHooks Function()
+        > {
+  $$EggProductionRecordsTableTableTableManager(
+    _$AppDatabase db,
+    $EggProductionRecordsTableTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$EggProductionRecordsTableTableFilterComposer(
+                $db: db,
+                $table: table,
+              ),
+          createOrderingComposer: () =>
+              $$EggProductionRecordsTableTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer: () =>
+              $$EggProductionRecordsTableTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> farmId = const Value.absent(),
+                Value<String> flockId = const Value.absent(),
+                Value<DateTime> productionDate = const Value.absent(),
+                Value<int> goodEggs = const Value.absent(),
+                Value<int> crackedEggs = const Value.absent(),
+                Value<int> rejectedEggs = const Value.absent(),
+                Value<int> farmUseEggs = const Value.absent(),
+                Value<int> soldDirectlyEggs = const Value.absent(),
+                Value<int> availableEggs = const Value.absent(),
+                Value<String?> recordedBy = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => EggProductionRecordsTableCompanion(
+                id: id,
+                farmId: farmId,
+                flockId: flockId,
+                productionDate: productionDate,
+                goodEggs: goodEggs,
+                crackedEggs: crackedEggs,
+                rejectedEggs: rejectedEggs,
+                farmUseEggs: farmUseEggs,
+                soldDirectlyEggs: soldDirectlyEggs,
+                availableEggs: availableEggs,
+                recordedBy: recordedBy,
+                notes: notes,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String farmId,
+                required String flockId,
+                required DateTime productionDate,
+                Value<int> goodEggs = const Value.absent(),
+                Value<int> crackedEggs = const Value.absent(),
+                Value<int> rejectedEggs = const Value.absent(),
+                Value<int> farmUseEggs = const Value.absent(),
+                Value<int> soldDirectlyEggs = const Value.absent(),
+                Value<int> availableEggs = const Value.absent(),
+                Value<String?> recordedBy = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => EggProductionRecordsTableCompanion.insert(
+                id: id,
+                farmId: farmId,
+                flockId: flockId,
+                productionDate: productionDate,
+                goodEggs: goodEggs,
+                crackedEggs: crackedEggs,
+                rejectedEggs: rejectedEggs,
+                farmUseEggs: farmUseEggs,
+                soldDirectlyEggs: soldDirectlyEggs,
+                availableEggs: availableEggs,
+                recordedBy: recordedBy,
+                notes: notes,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$EggProductionRecordsTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $EggProductionRecordsTableTable,
+      LocalEggProductionRecord,
+      $$EggProductionRecordsTableTableFilterComposer,
+      $$EggProductionRecordsTableTableOrderingComposer,
+      $$EggProductionRecordsTableTableAnnotationComposer,
+      $$EggProductionRecordsTableTableCreateCompanionBuilder,
+      $$EggProductionRecordsTableTableUpdateCompanionBuilder,
+      (
+        LocalEggProductionRecord,
+        BaseReferences<
+          _$AppDatabase,
+          $EggProductionRecordsTableTable,
+          LocalEggProductionRecord
+        >,
+      ),
+      LocalEggProductionRecord,
+      PrefetchHooks Function()
+    >;
+typedef $$FlockAdjustmentsTableTableCreateCompanionBuilder =
+    FlockAdjustmentsTableCompanion Function({
+      required String id,
+      required String farmId,
+      required String flockId,
+      required String adjustmentType,
+      required int birdsChanged,
+      Value<int> hensChanged,
+      Value<String?> reason,
+      required DateTime recordedAt,
+      Value<String?> recordedBy,
+      Value<DateTime> createdAt,
+      Value<int> rowid,
+    });
+typedef $$FlockAdjustmentsTableTableUpdateCompanionBuilder =
+    FlockAdjustmentsTableCompanion Function({
+      Value<String> id,
+      Value<String> farmId,
+      Value<String> flockId,
+      Value<String> adjustmentType,
+      Value<int> birdsChanged,
+      Value<int> hensChanged,
+      Value<String?> reason,
+      Value<DateTime> recordedAt,
+      Value<String?> recordedBy,
+      Value<DateTime> createdAt,
+      Value<int> rowid,
+    });
+
+class $$FlockAdjustmentsTableTableFilterComposer
+    extends Composer<_$AppDatabase, $FlockAdjustmentsTableTable> {
+  $$FlockAdjustmentsTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get farmId => $composableBuilder(
+    column: $table.farmId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get flockId => $composableBuilder(
+    column: $table.flockId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get adjustmentType => $composableBuilder(
+    column: $table.adjustmentType,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get birdsChanged => $composableBuilder(
+    column: $table.birdsChanged,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get hensChanged => $composableBuilder(
+    column: $table.hensChanged,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get reason => $composableBuilder(
+    column: $table.reason,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get recordedAt => $composableBuilder(
+    column: $table.recordedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get recordedBy => $composableBuilder(
+    column: $table.recordedBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$FlockAdjustmentsTableTableOrderingComposer
+    extends Composer<_$AppDatabase, $FlockAdjustmentsTableTable> {
+  $$FlockAdjustmentsTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get farmId => $composableBuilder(
+    column: $table.farmId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get flockId => $composableBuilder(
+    column: $table.flockId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get adjustmentType => $composableBuilder(
+    column: $table.adjustmentType,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get birdsChanged => $composableBuilder(
+    column: $table.birdsChanged,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get hensChanged => $composableBuilder(
+    column: $table.hensChanged,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get reason => $composableBuilder(
+    column: $table.reason,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get recordedAt => $composableBuilder(
+    column: $table.recordedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get recordedBy => $composableBuilder(
+    column: $table.recordedBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$FlockAdjustmentsTableTableAnnotationComposer
+    extends Composer<_$AppDatabase, $FlockAdjustmentsTableTable> {
+  $$FlockAdjustmentsTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get farmId =>
+      $composableBuilder(column: $table.farmId, builder: (column) => column);
+
+  GeneratedColumn<String> get flockId =>
+      $composableBuilder(column: $table.flockId, builder: (column) => column);
+
+  GeneratedColumn<String> get adjustmentType => $composableBuilder(
+    column: $table.adjustmentType,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get birdsChanged => $composableBuilder(
+    column: $table.birdsChanged,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get hensChanged => $composableBuilder(
+    column: $table.hensChanged,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get reason =>
+      $composableBuilder(column: $table.reason, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get recordedAt => $composableBuilder(
+    column: $table.recordedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get recordedBy => $composableBuilder(
+    column: $table.recordedBy,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+}
+
+class $$FlockAdjustmentsTableTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $FlockAdjustmentsTableTable,
+          LocalFlockAdjustment,
+          $$FlockAdjustmentsTableTableFilterComposer,
+          $$FlockAdjustmentsTableTableOrderingComposer,
+          $$FlockAdjustmentsTableTableAnnotationComposer,
+          $$FlockAdjustmentsTableTableCreateCompanionBuilder,
+          $$FlockAdjustmentsTableTableUpdateCompanionBuilder,
+          (
+            LocalFlockAdjustment,
+            BaseReferences<
+              _$AppDatabase,
+              $FlockAdjustmentsTableTable,
+              LocalFlockAdjustment
+            >,
+          ),
+          LocalFlockAdjustment,
+          PrefetchHooks Function()
+        > {
+  $$FlockAdjustmentsTableTableTableManager(
+    _$AppDatabase db,
+    $FlockAdjustmentsTableTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$FlockAdjustmentsTableTableFilterComposer(
+                $db: db,
+                $table: table,
+              ),
+          createOrderingComposer: () =>
+              $$FlockAdjustmentsTableTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer: () =>
+              $$FlockAdjustmentsTableTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> farmId = const Value.absent(),
+                Value<String> flockId = const Value.absent(),
+                Value<String> adjustmentType = const Value.absent(),
+                Value<int> birdsChanged = const Value.absent(),
+                Value<int> hensChanged = const Value.absent(),
+                Value<String?> reason = const Value.absent(),
+                Value<DateTime> recordedAt = const Value.absent(),
+                Value<String?> recordedBy = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => FlockAdjustmentsTableCompanion(
+                id: id,
+                farmId: farmId,
+                flockId: flockId,
+                adjustmentType: adjustmentType,
+                birdsChanged: birdsChanged,
+                hensChanged: hensChanged,
+                reason: reason,
+                recordedAt: recordedAt,
+                recordedBy: recordedBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String farmId,
+                required String flockId,
+                required String adjustmentType,
+                required int birdsChanged,
+                Value<int> hensChanged = const Value.absent(),
+                Value<String?> reason = const Value.absent(),
+                required DateTime recordedAt,
+                Value<String?> recordedBy = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => FlockAdjustmentsTableCompanion.insert(
+                id: id,
+                farmId: farmId,
+                flockId: flockId,
+                adjustmentType: adjustmentType,
+                birdsChanged: birdsChanged,
+                hensChanged: hensChanged,
+                reason: reason,
+                recordedAt: recordedAt,
+                recordedBy: recordedBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$FlockAdjustmentsTableTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $FlockAdjustmentsTableTable,
+      LocalFlockAdjustment,
+      $$FlockAdjustmentsTableTableFilterComposer,
+      $$FlockAdjustmentsTableTableOrderingComposer,
+      $$FlockAdjustmentsTableTableAnnotationComposer,
+      $$FlockAdjustmentsTableTableCreateCompanionBuilder,
+      $$FlockAdjustmentsTableTableUpdateCompanionBuilder,
+      (
+        LocalFlockAdjustment,
+        BaseReferences<
+          _$AppDatabase,
+          $FlockAdjustmentsTableTable,
+          LocalFlockAdjustment
+        >,
+      ),
+      LocalFlockAdjustment,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -5250,4 +8886,13 @@ class $AppDatabaseManager {
       $$FeedRecordsTableTableTableManager(_db, _db.feedRecordsTable);
   $$EggRecordsTableTableTableManager get eggRecordsTable =>
       $$EggRecordsTableTableTableManager(_db, _db.eggRecordsTable);
+  $$FlocksTableTableTableManager get flocksTable =>
+      $$FlocksTableTableTableManager(_db, _db.flocksTable);
+  $$EggProductionRecordsTableTableTableManager get eggProductionRecordsTable =>
+      $$EggProductionRecordsTableTableTableManager(
+        _db,
+        _db.eggProductionRecordsTable,
+      );
+  $$FlockAdjustmentsTableTableTableManager get flockAdjustmentsTable =>
+      $$FlockAdjustmentsTableTableTableManager(_db, _db.flockAdjustmentsTable);
 }

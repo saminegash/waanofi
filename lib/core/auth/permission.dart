@@ -12,9 +12,15 @@ enum Permission {
   viewFeed,
   recordFeed,
 
-  // Eggs
+  // Eggs & Poultry
   viewEggs,
   recordEggs,
+  viewPoultry,
+  manageFlocks,
+  recordEggProduction,
+  editEggProduction,
+  deleteEggProduction,
+  viewPoultryReports,
 
   // Animals
   manageAnimals,
@@ -33,3 +39,4 @@ enum Permission {
   manageListings,
   placeOrders,
 }
+

@@ -98,6 +98,7 @@ class SyncCoordinator {
   }
 
   /// Synchronize all pending items across all registered entity types.
+  /// Enforces explicit dependency sequencing (e.g., flocks prior to egg production records).
   Future<void> syncAll() async {
     if (!_isRunning || _isSyncing) return;
 
@@ -107,7 +108,30 @@ class SyncCoordinator {
     _isSyncing = true;
     try {
       await recoverStuckItems();
-      for (final entityType in _handlers.keys) {
+      
+      // Define dependency order: parent tables first, followed by child transactional records
+      const priorityOrder = [
+        'feed_type',
+        'animal',
+        'flock',
+        'milk_record',
+        'egg_record',
+        'egg_production_record',
+        'feed_record',
+        'flock_adjustment',
+      ];
+
+      final sortedEntities = _handlers.keys.toList()
+        ..sort((a, b) {
+          final idxA = priorityOrder.indexOf(a);
+          final idxB = priorityOrder.indexOf(b);
+          if (idxA == -1 && idxB == -1) return a.compareTo(b);
+          if (idxA == -1) return 1;
+          if (idxB == -1) return -1;
+          return idxA.compareTo(idxB);
+        });
+
+      for (final entityType in sortedEntities) {
         if (!_isRunning) break;
         await syncEntityType(entityType);
       }
@@ -115,6 +139,7 @@ class SyncCoordinator {
       _isSyncing = false;
     }
   }
+
 
   /// Process pending records for a single entity type.
   /// Prevents one repository from interfering with another repository's records.

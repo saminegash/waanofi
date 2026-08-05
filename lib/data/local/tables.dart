@@ -95,3 +95,67 @@ class SyncOutboxTable extends Table {
   TextColumn get lastErrorCode => text().nullable()();
 }
 
+@DataClassName('LocalFlock')
+class FlocksTable extends Table {
+  TextColumn get id => text()();
+  TextColumn get farmId => text()();
+  TextColumn get flockCode => text()();
+  TextColumn get name => text()();
+  TextColumn get breed => text()();
+  TextColumn get purpose => text().withDefault(const Constant('layers'))();
+  IntColumn get numberOfBirds => integer().withDefault(const Constant(0))();
+  IntColumn get numberOfLayingHens => integer().withDefault(const Constant(0))();
+  DateTimeColumn get arrivalDate => dateTime()();
+  DateTimeColumn get hatchDate => dateTime().nullable()();
+  TextColumn get housingType => text().nullable()();
+  TextColumn get source => text().nullable()();
+  TextColumn get status => text().withDefault(const Constant('active'))();
+  TextColumn get notes => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
+  DateTimeColumn get updatedAt => dateTime().withDefault(currentDateAndTime)();
+  DateTimeColumn get deletedAt => dateTime().nullable()();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+@DataClassName('LocalEggProductionRecord')
+class EggProductionRecordsTable extends Table {
+  TextColumn get id => text()();
+  TextColumn get farmId => text()();
+  TextColumn get flockId => text()();
+  DateTimeColumn get productionDate => dateTime()();
+  IntColumn get goodEggs => integer().withDefault(const Constant(0))();
+  IntColumn get crackedEggs => integer().withDefault(const Constant(0))();
+  IntColumn get rejectedEggs => integer().withDefault(const Constant(0))();
+  IntColumn get farmUseEggs => integer().withDefault(const Constant(0))();
+  IntColumn get soldDirectlyEggs => integer().withDefault(const Constant(0))();
+  IntColumn get availableEggs => integer().withDefault(const Constant(0))();
+  TextColumn get recordedBy => text().nullable()();
+  TextColumn get notes => text().nullable()();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
+  DateTimeColumn get updatedAt => dateTime().withDefault(currentDateAndTime)();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+@DataClassName('LocalFlockAdjustment')
+class FlockAdjustmentsTable extends Table {
+  TextColumn get id => text()();
+  TextColumn get farmId => text()();
+  TextColumn get flockId => text()();
+  TextColumn get adjustmentType => text()();
+  IntColumn get birdsChanged => integer()();
+  IntColumn get hensChanged => integer().withDefault(const Constant(0))();
+  TextColumn get reason => text().nullable()();
+  DateTimeColumn get recordedAt => dateTime()();
+  TextColumn get recordedBy => text().nullable()();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+

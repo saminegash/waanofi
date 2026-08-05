@@ -33,6 +33,17 @@ import '../../features/marketplace/presentation/my_orders_page.dart';
 import '../../features/marketplace/presentation/seller_orders_page.dart';
 import '../../features/marketplace/domain/marketplace_listing_model.dart';
 
+// Poultry & Egg Management imports
+import '../../features/poultry/presentation/poultry_dashboard_page.dart';
+import '../../features/poultry/presentation/flocks_list_page.dart';
+import '../../features/poultry/presentation/flock_form_page.dart';
+import '../../features/poultry/presentation/flock_detail_page.dart';
+import '../../features/poultry/presentation/flock_adjustment_form_page.dart';
+import '../../features/poultry/presentation/daily_egg_production_form_page.dart';
+import '../../features/poultry/presentation/poultry_reports_page.dart';
+import '../../features/poultry/domain/flock_model.dart';
+
+
 // Navigation keys for each tab branch
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _dashboardKey = GlobalKey<NavigatorState>(debugLabel: 'dashboard');
@@ -270,6 +281,49 @@ GoRouter appRouter(Ref ref) {
             ],
           ),
         ],
+      ),
+      GoRoute(
+        path: '/poultry',
+        name: 'poultry_dashboard',
+        builder: (context, state) => const PoultryDashboardPage(),
+      ),
+      GoRoute(
+        path: '/poultry/flocks',
+        name: 'flocks_list',
+        builder: (context, state) => const FlocksListPage(),
+      ),
+      GoRoute(
+        path: '/poultry/flocks/add',
+        name: 'add_flock',
+        builder: (context, state) => const FlockFormPage(),
+      ),
+      GoRoute(
+        path: '/poultry/flocks/detail/:id',
+        name: 'flock_detail',
+        builder: (context, state) {
+          final id = state.pathParameters['id']!;
+          final flock = state.extra as FlockModel?;
+          return FlockDetailPage(flockId: id, initialFlock: flock);
+        },
+      ),
+      GoRoute(
+        path: '/poultry/flocks/:id/adjust',
+        name: 'flock_adjust',
+        builder: (context, state) {
+          final id = state.pathParameters['id']!;
+          final flock = state.extra as FlockModel?;
+          return FlockAdjustmentFormPage(flockId: id, flock: flock);
+        },
+      ),
+      GoRoute(
+        path: '/poultry/record_egg',
+        name: 'record_egg',
+        builder: (context, state) => const DailyEggProductionFormPage(),
+      ),
+      GoRoute(
+        path: '/poultry/reports',
+        name: 'poultry_reports',
+        builder: (context, state) => const PoultryReportsPage(),
       ),
     ],
   );

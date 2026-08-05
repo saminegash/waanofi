@@ -46,6 +46,15 @@ class MoreView extends ConsumerWidget {
             ),
           ),
           RoleGuard(
+            permission: Permission.viewPoultry,
+            fallback: const SizedBox.shrink(),
+            child: ListTile(
+              leading: const Icon(Icons.egg_outlined),
+              title: Text(l10n.poultryManagement),
+              onTap: () => context.push('/poultry'),
+            ),
+          ),
+          RoleGuard(
             permission: Permission.viewFinance,
             fallback: const SizedBox.shrink(),
             child: ListTile(

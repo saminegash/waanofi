@@ -455,7 +455,7 @@ class AppLocalizationsOm extends AppLocalizations {
   String get marketplace => 'Gabaa';
 
   @override
-  String get flockName => 'Maqaa Garee';
+  String get flockName => 'Maqaa Tuutaa';
 
   @override
   String get flockNameHint => 'fkn. Mana A';
@@ -664,8 +664,189 @@ class AppLocalizationsOm extends AppLocalizations {
   String get markReady => 'Qophaaye Bodi';
 
   @override
-  String get sendForDelivery => 'Bobbaasi';
+  String get markDelivered => 'Gaheera';
 
   @override
-  String get markDelivered => 'Gaheera';
+  String get poultryManagement => 'Bulchiinsa Lukkuuf Buupii';
+
+  @override
+  String get poultryReports => 'Gabaasa Lukkuuf Buupii';
+
+  @override
+  String get recordDailyEggs => 'Oomisha Buupii Guyyaa Galmeessi';
+
+  @override
+  String get addFlock => 'Tuuta Lukkuu Dabalata';
+
+  @override
+  String get activeFlocks => 'Tuuta Ammaa Jiran';
+
+  @override
+  String get layingHens => 'Lukkuu Buesituu';
+
+  @override
+  String get todayGoodEggs => 'Buupii Gaarii Har\'aa';
+
+  @override
+  String get trays => 'saaphana';
+
+  @override
+  String get loose => 'qoofira';
+
+  @override
+  String get flocks => 'Tuutoota Lukkuu';
+
+  @override
+  String get viewAll => 'Hunda Ilaali';
+
+  @override
+  String get noFlocksRecorded => 'Hangamatti tuunni lukkuu hin galmoofne.';
+
+  @override
+  String get birds => 'lukkoota';
+
+  @override
+  String get layingRate => 'sadarkaa oomisha';
+
+  @override
+  String get pleaseSelectFlock => 'Mee tuuta lukkuu filadhu.';
+
+  @override
+  String get allocationExceedsCollectedError =>
+      'Qooddammi buupii gaarii waltti qabamee caaluu hin danda\'u.';
+
+  @override
+  String get eggRecordSaved => 'Oomishni buupii milkaa\'inaan galmaa\'eera!';
+
+  @override
+  String get selectFlock => 'Tuuta Filadhu';
+
+  @override
+  String get productionDate => 'Guyyaa Oomishaa';
+
+  @override
+  String get collectedEggs => 'Buupii Walitti Qabame';
+
+  @override
+  String get crackedEggs => 'Buupii Cabee';
+
+  @override
+  String get rejectedEggs => 'Buupii Gatame';
+
+  @override
+  String get eggAllocations => 'Qooddi Buupii';
+
+  @override
+  String get farmUseEggs => 'Kan Qonnaaf Oole';
+
+  @override
+  String get soldDirectlyEggs => 'Kan Kallattiin Gurgurame';
+
+  @override
+  String get availableForSale => 'Gurgurataaf Kan Jiru';
+
+  @override
+  String get fullTrays => 'saaphana guutuu';
+
+  @override
+  String get eggsPerTray => 'buupii/saaphana';
+
+  @override
+  String get looseEggs => 'buupii hafe';
+
+  @override
+  String get saveRecord => 'Galmeessi';
+
+  @override
+  String get editFlock => 'Tuuta Sirreessi';
+
+  @override
+  String get flockCode => 'Koodii Tuutaa';
+
+  @override
+  String get flockPurpose => 'Kaayyoo';
+
+  @override
+  String get totalBirds => 'Lakkoofsa Waliigalaa';
+
+  @override
+  String get hensCannotExceedBirds =>
+      'Lukkeen buesituu lakkoofsa waliigala lukkuu caaluu hin danda\'u.';
+
+  @override
+  String get flockSaved => 'Tuunni lukkuu milkaa\'inaan olkaayameera!';
+
+  @override
+  String get fieldRequired => 'Dirqama kan barbaadmu.';
+
+  @override
+  String get flockDetails => 'Bal\'ina Tuutaa';
+
+  @override
+  String get recordAdjustment => 'Sirreemmaa Lakkoofsaa Galmeessi';
+
+  @override
+  String get recentProduction => 'Oomisha Buupii Dhiyoo';
+
+  @override
+  String get populationAdjustments => 'Jijjiirrama Lakkoofsaa';
+
+  @override
+  String get noEggRecordsFound => 'Galmeen buupii hin argamne.';
+
+  @override
+  String get noAdjustmentsRecorded => 'Hangamatti jijjiirammi hin galmoofne.';
+
+  @override
+  String get adjustmentExceedsCurrentBirds =>
+      'Jijjiirammi lakkoofsa lukkuu jiru caalee jira.';
+
+  @override
+  String get adjustmentRecorded =>
+      'Sirreemmanni lakkoofsaa milkaa\'inaan galmee jirti!';
+
+  @override
+  String get adjustmentType => 'Gosa Sirreemmaa';
+
+  @override
+  String get birdQuantity => 'Baay\'ina Lukkuu';
+
+  @override
+  String get layingHensInvolved => 'Lukkuu Buesituu Dibalame';
+
+  @override
+  String get reasonOptional => 'Sababa (Dirqama miti)';
+
+  @override
+  String get productionSummary => 'Cuunfaa Oomishaa';
+
+  @override
+  String get sevenDayOutput => 'Buupii Gaarii Guyyaa 7';
+
+  @override
+  String get thirtyDayOutput => 'Buupii Gaarii Guyyaa 30';
+
+  @override
+  String get productionPerHen => 'Oomisha Lukkuu Tokkoo';
+
+  @override
+  String get thirtyDayAverage => 'Giddugaleesa Guyyoota 30';
+
+  @override
+  String get rejectedOrCracked => 'Cabee & Gatame';
+
+  @override
+  String get lastThirtyDays => 'Guyyoota 30 Darban';
+
+  @override
+  String get farmType => 'Gosa Qonnaa';
+
+  @override
+  String get dairyFarm => 'Qonnaa Aannanii (Saawaa)';
+
+  @override
+  String get poultryFarm => 'Qonnaa Lukkuu & Buupii';
+
+  @override
+  String get mixedFarm => 'Qonnaa Walmakaa';
 }
