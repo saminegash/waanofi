@@ -1869,6 +1869,246 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Mark Out of Stock'**
   String get markOutOfStock;
+
+  /// No description provided for @buyerAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Buyer Account'**
+  String get buyerAccount;
+
+  /// No description provided for @buyerType.
+  ///
+  /// In en, this message translates to:
+  /// **'Buyer Type'**
+  String get buyerType;
+
+  /// No description provided for @household.
+  ///
+  /// In en, this message translates to:
+  /// **'Household / Personal'**
+  String get household;
+
+  /// No description provided for @retailShop.
+  ///
+  /// In en, this message translates to:
+  /// **'Retail Shop'**
+  String get retailShop;
+
+  /// No description provided for @cafe.
+  ///
+  /// In en, this message translates to:
+  /// **'Café'**
+  String get cafe;
+
+  /// No description provided for @restaurant.
+  ///
+  /// In en, this message translates to:
+  /// **'Restaurant'**
+  String get restaurant;
+
+  /// No description provided for @hotel.
+  ///
+  /// In en, this message translates to:
+  /// **'Hotel'**
+  String get hotel;
+
+  /// No description provided for @bakery.
+  ///
+  /// In en, this message translates to:
+  /// **'Bakery'**
+  String get bakery;
+
+  /// No description provided for @school.
+  ///
+  /// In en, this message translates to:
+  /// **'School / University'**
+  String get school;
+
+  /// No description provided for @institution.
+  ///
+  /// In en, this message translates to:
+  /// **'Institution / Government'**
+  String get institution;
+
+  /// No description provided for @otherBusiness.
+  ///
+  /// In en, this message translates to:
+  /// **'Other Business'**
+  String get otherBusiness;
+
+  /// No description provided for @organizationName.
+  ///
+  /// In en, this message translates to:
+  /// **'Organization / Business Name'**
+  String get organizationName;
+
+  /// No description provided for @taxNumberOptional.
+  ///
+  /// In en, this message translates to:
+  /// **'Tax Identification Number (TIN - Optional)'**
+  String get taxNumberOptional;
+
+  /// No description provided for @deliveryAddresses.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery Addresses'**
+  String get deliveryAddresses;
+
+  /// No description provided for @addAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Address'**
+  String get addAddress;
+
+  /// No description provided for @editAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Address'**
+  String get editAddress;
+
+  /// No description provided for @addressLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Address Label (e.g., Home, Cafe Branch)'**
+  String get addressLabel;
+
+  /// No description provided for @recipientName.
+  ///
+  /// In en, this message translates to:
+  /// **'Recipient Name'**
+  String get recipientName;
+
+  /// No description provided for @region.
+  ///
+  /// In en, this message translates to:
+  /// **'Region'**
+  String get region;
+
+  /// No description provided for @city.
+  ///
+  /// In en, this message translates to:
+  /// **'City / Town'**
+  String get city;
+
+  /// No description provided for @subCity.
+  ///
+  /// In en, this message translates to:
+  /// **'Sub-City / Woreda'**
+  String get subCity;
+
+  /// No description provided for @neighborhood.
+  ///
+  /// In en, this message translates to:
+  /// **'Neighborhood / Kebele / Sefer'**
+  String get neighborhood;
+
+  /// No description provided for @landmark.
+  ///
+  /// In en, this message translates to:
+  /// **'Near Landmark'**
+  String get landmark;
+
+  /// No description provided for @setDefaultAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Set as default delivery address'**
+  String get setDefaultAddress;
+
+  /// No description provided for @farmCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Farm Cart'**
+  String get farmCart;
+
+  /// No description provided for @cartClearPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Your cart has items from another farm. Each farm requires a separate order. Clear cart and add this item?'**
+  String get cartClearPrompt;
+
+  /// No description provided for @clearAndAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear Cart and Add'**
+  String get clearAndAdd;
+
+  /// No description provided for @minimumOrderQuantity.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum Order Quantity'**
+  String get minimumOrderQuantity;
+
+  /// No description provided for @maximumOrderQuantity.
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum Order Quantity'**
+  String get maximumOrderQuantity;
+
+  /// No description provided for @fulfilmentMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Fulfilment Method'**
+  String get fulfilmentMethod;
+
+  /// No description provided for @pickupAtFarm.
+  ///
+  /// In en, this message translates to:
+  /// **'Pickup at Farm'**
+  String get pickupAtFarm;
+
+  /// No description provided for @deliveryToAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery to Address'**
+  String get deliveryToAddress;
+
+  /// No description provided for @deliverySlot.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery Time Slot'**
+  String get deliverySlot;
+
+  /// No description provided for @morningSlot.
+  ///
+  /// In en, this message translates to:
+  /// **'Morning (6:00 AM - 10:00 AM)'**
+  String get morningSlot;
+
+  /// No description provided for @afternoonSlot.
+  ///
+  /// In en, this message translates to:
+  /// **'Afternoon (2:00 PM - 6:00 PM)'**
+  String get afternoonSlot;
+
+  /// No description provided for @lastRefreshed.
+  ///
+  /// In en, this message translates to:
+  /// **'Cached data. Last refreshed'**
+  String get lastRefreshed;
+
+  /// No description provided for @sellerProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'Seller Products'**
+  String get sellerProducts;
+
+  /// No description provided for @addToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to Cart'**
+  String get addToCart;
+
+  /// No description provided for @itemAddedToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Item added to cart'**
+  String get itemAddedToCart;
+
+  /// No description provided for @proceedToReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Review Order Summary'**
+  String get proceedToReview;
 }
 
 class _AppLocalizationsDelegate

@@ -56,6 +56,15 @@ import '../../features/marketplace/presentation/seller/seller_dashboard_page.dar
 import '../../features/marketplace/presentation/seller/seller_listings_page.dart';
 import '../../features/marketplace/presentation/seller/listing_form_page.dart';
 
+// Marketplace Buyer Experience imports
+import '../../features/marketplace/presentation/buyer/public_seller_profile_page.dart';
+import '../../features/marketplace/presentation/buyer/buyer_onboarding_page.dart';
+import '../../features/marketplace/presentation/buyer/address_list_page.dart';
+import '../../features/marketplace/presentation/buyer/address_form_page.dart';
+import '../../features/marketplace/presentation/buyer/farm_cart_drawer.dart';
+import '../../features/marketplace/presentation/buyer/order_summary_page.dart';
+import '../../features/marketplace/domain/public_listing_model.dart';
+
 
 // Navigation keys for each tab branch
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -171,6 +180,24 @@ GoRouter appRouter(Ref ref) {
           return CheckoutPage(listing: listing);
         },
       ),
+      GoRoute(
+        path: '/buyer/onboarding',
+        name: 'buyer_onboarding',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const BuyerOnboardingPage(),
+      ),
+      GoRoute(
+        path: '/buyer/addresses',
+        name: 'buyer_addresses',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const AddressListPage(),
+      ),
+      GoRoute(
+        path: '/buyer/addresses/new',
+        name: 'buyer_address_new',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const AddressFormPage(),
+      ),
 
       // ── Main shell with bottom navigation ──
       StatefulShellRoute.indexedStack(
@@ -232,6 +259,26 @@ GoRouter appRouter(Ref ref) {
                     path: 'orders',
                     name: 'my_orders',
                     builder: (context, state) => const MyOrdersPage(),
+                  ),
+                  GoRoute(
+                    path: 'cart',
+                    name: 'marketplace_cart',
+                    builder: (context, state) => const FarmCartPage(),
+                  ),
+                  GoRoute(
+                    path: 'summary',
+                    name: 'order_summary',
+                    builder: (context, state) => const OrderSummaryPage(),
+                  ),
+                  GoRoute(
+                    path: 'seller/:id',
+                    name: 'public_seller_profile',
+                    builder: (context, state) => PublicSellerProfilePage(farmId: state.pathParameters['id']!, farmName: state.extra as String? ?? 'Seller Profile'),
+                  ),
+                  GoRoute(
+                    path: 'listing/:id',
+                    name: 'public_listing_detail',
+                    builder: (context, state) => ListingDetailPage(listingId: state.pathParameters['id']!, initialListing: state.extra as PublicListingModel?),
                   ),
                   GoRoute(
                     path: ':id',

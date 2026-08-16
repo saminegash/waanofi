@@ -904,4 +904,125 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get markOutOfStock => 'Mark Out of Stock';
+
+  @override
+  String get buyerAccount => 'Buyer Account';
+
+  @override
+  String get buyerType => 'Buyer Type';
+
+  @override
+  String get household => 'Household / Personal';
+
+  @override
+  String get retailShop => 'Retail Shop';
+
+  @override
+  String get cafe => 'Café';
+
+  @override
+  String get restaurant => 'Restaurant';
+
+  @override
+  String get hotel => 'Hotel';
+
+  @override
+  String get bakery => 'Bakery';
+
+  @override
+  String get school => 'School / University';
+
+  @override
+  String get institution => 'Institution / Government';
+
+  @override
+  String get otherBusiness => 'Other Business';
+
+  @override
+  String get organizationName => 'Organization / Business Name';
+
+  @override
+  String get taxNumberOptional => 'Tax Identification Number (TIN - Optional)';
+
+  @override
+  String get deliveryAddresses => 'Delivery Addresses';
+
+  @override
+  String get addAddress => 'Add Address';
+
+  @override
+  String get editAddress => 'Edit Address';
+
+  @override
+  String get addressLabel => 'Address Label (e.g., Home, Cafe Branch)';
+
+  @override
+  String get recipientName => 'Recipient Name';
+
+  @override
+  String get region => 'Region';
+
+  @override
+  String get city => 'City / Town';
+
+  @override
+  String get subCity => 'Sub-City / Woreda';
+
+  @override
+  String get neighborhood => 'Neighborhood / Kebele / Sefer';
+
+  @override
+  String get landmark => 'Near Landmark';
+
+  @override
+  String get setDefaultAddress => 'Set as default delivery address';
+
+  @override
+  String get farmCart => 'Farm Cart';
+
+  @override
+  String get cartClearPrompt =>
+      'Your cart has items from another farm. Each farm requires a separate order. Clear cart and add this item?';
+
+  @override
+  String get clearAndAdd => 'Clear Cart and Add';
+
+  @override
+  String get minimumOrderQuantity => 'Minimum Order Quantity';
+
+  @override
+  String get maximumOrderQuantity => 'Maximum Order Quantity';
+
+  @override
+  String get fulfilmentMethod => 'Fulfilment Method';
+
+  @override
+  String get pickupAtFarm => 'Pickup at Farm';
+
+  @override
+  String get deliveryToAddress => 'Delivery to Address';
+
+  @override
+  String get deliverySlot => 'Delivery Time Slot';
+
+  @override
+  String get morningSlot => 'Morning (6:00 AM - 10:00 AM)';
+
+  @override
+  String get afternoonSlot => 'Afternoon (2:00 PM - 6:00 PM)';
+
+  @override
+  String get lastRefreshed => 'Cached data. Last refreshed';
+
+  @override
+  String get sellerProducts => 'Seller Products';
+
+  @override
+  String get addToCart => 'Add to Cart';
+
+  @override
+  String get itemAddedToCart => 'Item added to cart';
+
+  @override
+  String get proceedToReview => 'Review Order Summary';
 }

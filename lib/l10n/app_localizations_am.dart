@@ -897,4 +897,125 @@ class AppLocalizationsAm extends AppLocalizations {
 
   @override
   String get markOutOfStock => 'አልቅዋል በል';
+
+  @override
+  String get buyerAccount => 'የገዢ መለያ';
+
+  @override
+  String get buyerType => 'የገዢ አይነት';
+
+  @override
+  String get household => 'ለቤት ውስጥ ፍጆታ';
+
+  @override
+  String get retailShop => 'የችርቻሮ ሱቅ';
+
+  @override
+  String get cafe => 'ካፌ';
+
+  @override
+  String get restaurant => 'ሬስቶራንት';
+
+  @override
+  String get hotel => 'ሆቴል';
+
+  @override
+  String get bakery => 'ዳቦ ቤት (ቤከሪ)';
+
+  @override
+  String get school => 'ትምህርት ቤት / ዩኒቨርሲቲ';
+
+  @override
+  String get institution => 'ተቋም';
+
+  @override
+  String get otherBusiness => 'ሌላ ድርጅት';
+
+  @override
+  String get organizationName => 'የድርጅት ወይም ንግድ ስም';
+
+  @override
+  String get taxNumberOptional => 'የታክስ ከፋይ መለያ ቁጥር (ቲን - እንደአስፈላጊነቱ)';
+
+  @override
+  String get deliveryAddresses => 'የማድረሻ አድራሻዎች';
+
+  @override
+  String get addAddress => 'አዲስ አድራሻ አስገባ';
+
+  @override
+  String get editAddress => 'አድራሻ አረም';
+
+  @override
+  String get addressLabel => 'የአድራሻ መጠሪያ (ለምሳሌ፡ ቤት፣ የሱቅ ቅርንጫፍ)';
+
+  @override
+  String get recipientName => 'ተቀባይ ስም';
+
+  @override
+  String get region => 'ክልል / ከተማ አስተዳደር';
+
+  @override
+  String get city => 'ከተማ / ዞን';
+
+  @override
+  String get subCity => 'ክፍለ ከተማ / ወረዳ';
+
+  @override
+  String get neighborhood => 'ሰፈር / ቀበሌ';
+
+  @override
+  String get landmark => 'ቅርብ የሚገኝ ታዋቂ ቦታ';
+
+  @override
+  String get setDefaultAddress => 'እንደ ዋና አድራሻ መደብ';
+
+  @override
+  String get farmCart => 'የእርሻ ጋሪ';
+
+  @override
+  String get cartClearPrompt =>
+      'ጋሪዎ ውስጥ የሌላ እርሻ ምርት አለ:: ከእያንዳንዱ እርሻ የሚደረግ ትዕዛዝ ለየብቻ መሆን አለበት:: የቀድሞውን አጥፍተው ይህን ማስገባት ይፈልጋሉ?';
+
+  @override
+  String get clearAndAdd => 'አጽዳና ጨምር';
+
+  @override
+  String get minimumOrderQuantity => 'አነስተኛ የትዕዛዝ መጠን (MOQ)';
+
+  @override
+  String get maximumOrderQuantity => 'ከፍተኛ የትዕዛዝ መጠን';
+
+  @override
+  String get fulfilmentMethod => 'የመውሰጃ ወይም መረከቢያ ዘዴ';
+
+  @override
+  String get pickupAtFarm => 'ከእርሻ ቦታ መውሰድ (ፒካፕ)';
+
+  @override
+  String get deliveryToAddress => 'እስከ አድራሻ ማድረስ (ዲሊቨሪ)';
+
+  @override
+  String get deliverySlot => 'የመረከቢያ ሰዓት';
+
+  @override
+  String get morningSlot => 'ጠዋት (ከ6:00 - 10:00)';
+
+  @override
+  String get afternoonSlot => 'ከሰዓት (ከ8:00 - 12:00)';
+
+  @override
+  String get lastRefreshed => 'ከመስመር ውጭ የተቀመጠ:: ለመጨረሻ ጊዜ ታደሰ';
+
+  @override
+  String get sellerProducts => 'የሻጩ ምርቶች';
+
+  @override
+  String get addToCart => 'ወደ ጋሪ ጨምር';
+
+  @override
+  String get itemAddedToCart => 'ምርቱ ወደ ጋሪ ገብቷል';
+
+  @override
+  String get proceedToReview => 'የትዕዛዝ ማጠቃለያ ገምግም';
 }

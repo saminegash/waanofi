@@ -906,4 +906,125 @@ class AppLocalizationsOm extends AppLocalizations {
 
   @override
   String get markOutOfStock => 'Dhumateera Bodi';
+
+  @override
+  String get buyerAccount => 'Herrega Bituu';
+
+  @override
+  String get buyerType => 'Gosa Bitaa';
+
+  @override
+  String get household => 'Manaaf / Dhuunfaaf';
+
+  @override
+  String get retailShop => 'Suuqii Gurgurtaa';
+
+  @override
+  String get cafe => 'Kaaffiyii';
+
+  @override
+  String get restaurant => 'Mana Nyaataa';
+
+  @override
+  String get hotel => 'Hoteela';
+
+  @override
+  String get bakery => 'Mana Daabboo';
+
+  @override
+  String get school => 'Mana Baruumsaa';
+
+  @override
+  String get institution => 'Dhaabbata';
+
+  @override
+  String get otherBusiness => 'Dhaabbata Biraa';
+
+  @override
+  String get organizationName => 'Maqaa Dhaabbataa / Dalaala';
+
+  @override
+  String get taxNumberOptional => 'Lakkoofsa Gibiraa (TIN - Fe\'iyyaa)';
+
+  @override
+  String get deliveryAddresses => 'Teessoo Geessu';
+
+  @override
+  String get addAddress => 'Teessoo Dabaladhu';
+
+  @override
+  String get editAddress => 'Teessoo Sirreessi';
+
+  @override
+  String get addressLabel => 'Maqaa Teessoo (Fkn, Mana, Suuqii)';
+
+  @override
+  String get recipientName => 'Maqaa Fudhatuu';
+
+  @override
+  String get region => 'Naanno / Magaalaa';
+
+  @override
+  String get city => 'Magaalaa / Godina';
+
+  @override
+  String get subCity => 'Kutta Magaalaa / Aanaa';
+
+  @override
+  String get neighborhood => 'Ganda / Seferi';
+
+  @override
+  String get landmark => 'Bakka Beekamaa Dhiyeenyatti';
+
+  @override
+  String get setDefaultAddress => 'Teessoo dura-bu\'aa godhi';
+
+  @override
+  String get farmCart => 'Gaaree Oomisha';
+
+  @override
+  String get cartClearPrompt =>
+      'Gaariin kee oomisha qonnaa biraa qaba. Qonnannii tokkoof gata gataa ajaja turu kanaan. Gaarii qulqullichi ida\'asuu?';
+
+  @override
+  String get clearAndAdd => 'Qulqulleessii Dabaladhu';
+
+  @override
+  String get minimumOrderQuantity => 'Hamma Ajaja Xinnaa (MOQ)';
+
+  @override
+  String get maximumOrderQuantity => 'Hamma Ajaja Guddaa';
+
+  @override
+  String get fulfilmentMethod => 'Akkaataa Fudhabaa';
+
+  @override
+  String get pickupAtFarm => 'Bakka Qonnaatti Fudhachuu (Pickup)';
+
+  @override
+  String get deliveryToAddress => 'Teessoo koo Geessi (Delivery)';
+
+  @override
+  String get deliverySlot => 'Saa-aa Geessuu';
+
+  @override
+  String get morningSlot => 'Ganama (Sa\'aa 12:00 - 4:00)';
+
+  @override
+  String get afternoonSlot => 'Waaree Booda (Sa\'aa 8:00 - 12:00)';
+
+  @override
+  String get lastRefreshed => 'Oolii Kuwaa. Yeroo Dhiyeessa Darbee';
+
+  @override
+  String get sellerProducts => 'Oomishoota Gurguraa';
+
+  @override
+  String get addToCart => 'Gaaree Keessa Kattaa';
+
+  @override
+  String get itemAddedToCart => 'Oomishni Gaaretti Ida\'ame';
+
+  @override
+  String get proceedToReview => 'Miliqi ajaja saami';
 }
