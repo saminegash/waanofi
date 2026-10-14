@@ -12,6 +12,7 @@ import '../domain/seller_listing_model.dart';
 import 'seller_profile_repository.dart';
 import 'inventory_batch_repository.dart';
 import '../domain/farm_market_profile_model.dart';
+import '../domain/inventory_batch_model.dart';
 
 final sellerListingRepositoryProvider = Provider<SellerListingRepository>((ref) {
   final db = ref.watch(appDatabaseProvider);

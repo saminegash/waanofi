@@ -8,6 +8,7 @@ import '../../../shared/widgets/role_guard.dart';
 import '../../../shared/widgets/empty_state_widget.dart';
 import '../../../shared/widgets/skeleton_loader.dart';
 import 'package:waanofi/l10n/app_localizations.dart';
+import '../domain/animal_enums.dart';
 import '../domain/animal_model.dart';
 import 'controllers/animals_controller.dart';
 
@@ -16,16 +17,32 @@ class AnimalsListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final theme = Theme.of(context);
     final animalsAsync = ref.watch(animalsControllerProvider);
     final isOnline = ref.watch(networkStatusProvider).valueOrNull ?? true;
     final filterState = ref.watch(animalsStateProvider);
     final controller = ref.watch(animalsControllerProvider.notifier);
     final l10n = AppLocalizations.of(context)!;
 
+    final hasActiveFilters = filterState.lifecycleFilter != null ||
+        filterState.reproductiveFilter != null ||
+        filterState.lactationFilter != null ||
+        filterState.healthFilter != null ||
+        filterState.cattleClassFilter != null ||
+        filterState.breedFilter != null;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.herdManagement),
+        actions: [
+          IconButton(
+            icon: Badge(
+              isLabelVisible: hasActiveFilters,
+              child: const Icon(Icons.filter_list),
+            ),
+            tooltip: l10n.filterHerd,
+            onPressed: () => _showFilterSheet(context, ref),
+          ),
+        ],
         bottom: !isOnline
             ? PreferredSize(
                 preferredSize: const Size.fromHeight(30),
@@ -44,62 +61,71 @@ class AnimalsListPage extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          // Search and Filters
+          // Search Box & Active Filter Chips
           Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: l10n.searchTagOrName,
-                    prefixIcon: const Icon(Icons.search),
-                  ),
-                  onChanged: controller.setSearchQuery,
-                ),
-                const SizedBox(height: 12),
-                Row(
-                  children: [
-                    Expanded(
-                      child: DropdownButtonFormField<String?>(
-                        value: filterState.statusFilter,
-                        decoration: InputDecoration(
-                          labelText: l10n.status,
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 12),
-                        ),
-                        items: [
-                          DropdownMenuItem(value: null, child: Text(l10n.allStatuses)),
-                          DropdownMenuItem(value: 'active', child: Text(l10n.active)),
-                          DropdownMenuItem(value: 'dry', child: Text(l10n.dry)),
-                          DropdownMenuItem(value: 'pregnant', child: Text(l10n.pregnant)),
-                          DropdownMenuItem(value: 'sick', child: Text(l10n.sick)),
-                          DropdownMenuItem(value: 'sold', child: Text(l10n.sold)),
-                          DropdownMenuItem(value: 'deceased', child: Text(l10n.deceased)),
-                        ],
-                        onChanged: controller.setStatusFilter,
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: DropdownButtonFormField<String?>(
-                        value: filterState.breedFilter,
-                        decoration: InputDecoration(
-                          labelText: l10n.breed,
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 12),
-                        ),
-                        items: [
-                          DropdownMenuItem(value: null, child: Text(l10n.allBreeds)),
-                          ...controller.getAvailableBreeds().map(
-                                (b) => DropdownMenuItem(value: b, child: Text(b)),
-                              ),
-                        ],
-                        onChanged: controller.setBreedFilter,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
+            child: TextField(
+              decoration: InputDecoration(
+                labelText: l10n.searchTagOrName,
+                prefixIcon: const Icon(Icons.search),
+                suffixIcon: filterState.searchQuery.isNotEmpty
+                    ? IconButton(
+                        icon: const Icon(Icons.clear),
+                        onPressed: () => controller.setSearchQuery(''),
+                      )
+                    : null,
+              ),
+              onChanged: controller.setSearchQuery,
             ),
           ),
+
+          // Active Filters Row
+          if (hasActiveFilters)
+            Container(
+              height: 40,
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  ActionChip(
+                    avatar: const Icon(Icons.clear_all, size: 16),
+                    label: Text(l10n.resetFilters),
+                    onPressed: controller.resetFilters,
+                  ),
+                  const SizedBox(width: 8),
+                  if (filterState.lifecycleFilter != null)
+                    Chip(
+                      label: Text(filterState.lifecycleFilter!.name),
+                      onDeleted: () => controller.setLifecycleFilter(null),
+                    ),
+                  if (filterState.reproductiveFilter != null)
+                    Chip(
+                      label: Text(filterState.reproductiveFilter!.name),
+                      onDeleted: () => controller.setReproductiveFilter(null),
+                    ),
+                  if (filterState.lactationFilter != null)
+                    Chip(
+                      label: Text(filterState.lactationFilter!.name),
+                      onDeleted: () => controller.setLactationFilter(null),
+                    ),
+                  if (filterState.healthFilter != null)
+                    Chip(
+                      label: Text(filterState.healthFilter!.name),
+                      onDeleted: () => controller.setHealthFilter(null),
+                    ),
+                  if (filterState.cattleClassFilter != null)
+                    Chip(
+                      label: Text(filterState.cattleClassFilter!.name),
+                      onDeleted: () => controller.setCattleClassFilter(null),
+                    ),
+                  if (filterState.breedFilter != null)
+                    Chip(
+                      label: Text(filterState.breedFilter!),
+                      onDeleted: () => controller.setBreedFilter(null),
+                    ),
+                ],
+              ),
+            ),
           
           // Animal List
           Expanded(
@@ -130,13 +156,22 @@ class AnimalsListPage extends ConsumerWidget {
       ),
       floatingActionButton: RoleGuard(
         permission: Permission.manageAnimals,
-        fallback: const SizedBox.shrink(), // hide FAB if not admin
+        fallback: const SizedBox.shrink(),
         child: FloatingActionButton(
           heroTag: null,
           onPressed: () => context.go('/animals/new'),
           child: const Icon(Icons.add),
         ),
       ),
+    );
+  }
+
+  void _showFilterSheet(BuildContext context, WidgetRef ref) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (ctx) => const _FilterBottomSheet(),
     );
   }
 }
@@ -146,44 +181,253 @@ class _AnimalListItem extends StatelessWidget {
 
   final AnimalModel animal;
 
-  Color _getStatusColor() {
-    switch (animal.status) {
-      case 'active':
+  Color _getLifecycleColor() {
+    switch (animal.lifecycleStatus) {
+      case AnimalLifecycleStatus.active:
         return WaanofiColors.success;
-      case 'sick':
+      case AnimalLifecycleStatus.sold:
+      case AnimalLifecycleStatus.transferredOut:
+        return WaanofiColors.primaryDark;
+      case AnimalLifecycleStatus.deceased:
+      case AnimalLifecycleStatus.culled:
         return WaanofiColors.error;
-      case 'pregnant':
-      case 'dry':
-        return WaanofiColors.warning;
       default:
-        return WaanofiColors.textSecondary;
+        return WaanofiColors.warning;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final isMale = animal.sex.toLowerCase() == 'male';
+
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: ListTile(
-        leading: CircleAvatar(
-          backgroundColor: WaanofiColors.primaryLight,
-          child: Text(
-            animal.tagNumber.substring(0, animal.tagNumber.length > 2 ? 2 : animal.tagNumber.length),
-            style: const TextStyle(color: WaanofiColors.primaryDark),
-          ),
-        ),
-        title: Text('${animal.tagNumber} - ${animal.name ?? l10n.unnamed}'),
-        subtitle: Text('${animal.breed ?? l10n.unknownBreed} • ${animal.sex}'),
-        trailing: Chip(
-          label: Text(
-            animal.status.toUpperCase(),
-            style: const TextStyle(fontSize: 10, color: WaanofiColors.surface, fontWeight: FontWeight.bold),
-          ),
-          backgroundColor: _getStatusColor(),
-          padding: EdgeInsets.zero,
-        ),
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(12),
         onTap: () => context.go('/animals/${animal.id}'),
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: WaanofiColors.primaryLight,
+                    child: Text(
+                      animal.tagNumber.substring(0, animal.tagNumber.length > 2 ? 2 : animal.tagNumber.length),
+                      style: const TextStyle(color: WaanofiColors.primaryDark, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '${animal.tagNumber} ${animal.name != null ? "• ${animal.name}" : ""}',
+                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                        ),
+                        Text(
+                          '${animal.cattleClass.name.toUpperCase()} • ${animal.breed ?? l10n.unknownBreed} • ${animal.sex.toUpperCase()}',
+                          style: const TextStyle(color: WaanofiColors.textSecondary, fontSize: 12),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Chip(
+                    label: Text(
+                      animal.lifecycleStatus.name.toUpperCase(),
+                      style: const TextStyle(fontSize: 10, color: WaanofiColors.surface, fontWeight: FontWeight.bold),
+                    ),
+                    backgroundColor: _getLifecycleColor(),
+                    padding: EdgeInsets.zero,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              Wrap(
+                spacing: 6,
+                runSpacing: 4,
+                children: [
+                  if (!isMale) ...[
+                    _StatusBadge(label: animal.reproductiveStatus.name, color: Colors.purple),
+                    _StatusBadge(label: animal.lactationStatus.name, color: Colors.teal),
+                  ],
+                  _StatusBadge(
+                    label: animal.healthStatus.name,
+                    color: animal.healthStatus == AnimalHealthStatus.healthy
+                        ? WaanofiColors.success
+                        : WaanofiColors.error,
+                  ),
+                  if (animal.location != null && animal.location!.isNotEmpty)
+                    _StatusBadge(label: animal.location!, color: Colors.blueGrey),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _StatusBadge extends StatelessWidget {
+  const _StatusBadge({required this.label, required this.color});
+
+  final String label;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(6),
+        border: Border.all(color: color.withValues(alpha: 0.4)),
+      ),
+      child: Text(
+        label,
+        style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: color),
+      ),
+    );
+  }
+}
+
+class _FilterBottomSheet extends ConsumerWidget {
+  const _FilterBottomSheet();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final filterState = ref.watch(animalsStateProvider);
+    final controller = ref.watch(animalsControllerProvider.notifier);
+    final l10n = AppLocalizations.of(context)!;
+
+    return Container(
+      decoration: const BoxDecoration(
+        color: WaanofiColors.surface,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      padding: const EdgeInsets.all(20),
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  l10n.filterHerd,
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: WaanofiColors.primary),
+                ),
+                TextButton(
+                  onPressed: () {
+                    controller.resetFilters();
+                    Navigator.pop(context);
+                  },
+                  child: Text(l10n.resetFilters),
+                ),
+              ],
+            ),
+            const Divider(),
+            const SizedBox(height: 8),
+
+            // Lifecycle
+            DropdownButtonFormField<AnimalLifecycleStatus?>(
+              value: filterState.lifecycleFilter,
+              decoration: InputDecoration(labelText: l10n.lifecycleStatus),
+              items: [
+                DropdownMenuItem(value: null, child: Text(l10n.allLifecycles)),
+                ...AnimalLifecycleStatus.values.map(
+                  (s) => DropdownMenuItem(value: s, child: Text(s.name)),
+                ),
+              ],
+              onChanged: (v) => controller.setLifecycleFilter(v),
+            ),
+            const SizedBox(height: 12),
+
+            // Reproductive
+            DropdownButtonFormField<AnimalReproductiveStatus?>(
+              value: filterState.reproductiveFilter,
+              decoration: InputDecoration(labelText: l10n.reproductiveStatus),
+              items: [
+                DropdownMenuItem(value: null, child: Text(l10n.allReproductive)),
+                ...AnimalReproductiveStatus.values.map(
+                  (s) => DropdownMenuItem(value: s, child: Text(s.name)),
+                ),
+              ],
+              onChanged: (v) => controller.setReproductiveFilter(v),
+            ),
+            const SizedBox(height: 12),
+
+            // Lactation
+            DropdownButtonFormField<AnimalLactationStatus?>(
+              value: filterState.lactationFilter,
+              decoration: InputDecoration(labelText: l10n.lactationStatus),
+              items: [
+                DropdownMenuItem(value: null, child: Text(l10n.allLactation)),
+                ...AnimalLactationStatus.values.map(
+                  (s) => DropdownMenuItem(value: s, child: Text(s.name)),
+                ),
+              ],
+              onChanged: (v) => controller.setLactationFilter(v),
+            ),
+            const SizedBox(height: 12),
+
+            // Health
+            DropdownButtonFormField<AnimalHealthStatus?>(
+              value: filterState.healthFilter,
+              decoration: InputDecoration(labelText: l10n.healthStatus),
+              items: [
+                DropdownMenuItem(value: null, child: Text(l10n.allHealth)),
+                ...AnimalHealthStatus.values.map(
+                  (s) => DropdownMenuItem(value: s, child: Text(s.name)),
+                ),
+              ],
+              onChanged: (v) => controller.setHealthFilter(v),
+            ),
+            const SizedBox(height: 12),
+
+            // Cattle Class
+            DropdownButtonFormField<CattleClass?>(
+              value: filterState.cattleClassFilter,
+              decoration: InputDecoration(labelText: l10n.cattleClass),
+              items: [
+                DropdownMenuItem(value: null, child: Text(l10n.allClasses)),
+                ...CattleClass.values.map(
+                  (s) => DropdownMenuItem(value: s, child: Text(s.name)),
+                ),
+              ],
+              onChanged: (v) => controller.setCattleClassFilter(v),
+            ),
+            const SizedBox(height: 12),
+
+            // Breed
+            DropdownButtonFormField<String?>(
+              value: filterState.breedFilter,
+              decoration: InputDecoration(labelText: l10n.breed),
+              items: [
+                DropdownMenuItem(value: null, child: Text(l10n.allBreeds)),
+                ...controller.getAvailableBreeds().map(
+                      (b) => DropdownMenuItem(value: b, child: Text(b)),
+                    ),
+              ],
+              onChanged: (v) => controller.setBreedFilter(v),
+            ),
+            const SizedBox(height: 20),
+
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text(l10n.save),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

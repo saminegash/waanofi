@@ -69,7 +69,7 @@ class MilkEntryController extends StateNotifier<MilkEntryState> {
     // Watch active female animals
     _ref.watch(animalsRepositoryProvider).watchAnimals().listen((allAnimals) async {
       final lactating = allAnimals
-          .where((a) => a.sex == 'female' && a.status == 'active')
+          .where((a) => a.isMilkingEligible)
           .toList();
 
       state = state.copyWith(animals: lactating);

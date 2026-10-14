@@ -77,7 +77,7 @@ class FeedEntryController extends StateNotifier<FeedEntryState> {
   void _loadAnimals() {
     _animalRepo.watchAnimals().listen((animals) {
       if (!mounted) return;
-      final active = animals.where((a) => a.status == 'active').toList();
+      final active = animals.where((a) => a.isLiveInventory).toList();
       state = state.copyWith(activeAnimals: active);
     });
   }

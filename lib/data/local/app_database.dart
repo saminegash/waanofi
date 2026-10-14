@@ -2,6 +2,7 @@ import 'package:drift/drift.dart';
 
 import 'connection/connection.dart' as impl;
 import 'daos/animals_dao.dart';
+import 'daos/animal_state_logs_dao.dart';
 import 'daos/egg_records_dao.dart';
 import 'daos/egg_production_records_dao.dart';
 import 'daos/flocks_dao.dart';
@@ -17,6 +18,7 @@ part 'app_database.g.dart';
 @DriftDatabase(
   tables: [
     AnimalsTable,
+    AnimalStateLogsTable,
     MilkRecordsTable,
     SyncOutboxTable,
     FeedTypesTable,
@@ -33,6 +35,7 @@ part 'app_database.g.dart';
   ],
   daos: [
     AnimalsDao,
+    AnimalStateLogsDao,
     EggRecordsDao,
     EggProductionRecordsDao,
     FlocksDao,
@@ -48,8 +51,7 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase.forTesting(super.executor);
 
   @override
-
-  int get schemaVersion => 7;
+  int get schemaVersion => 8;
 
   @override
   MigrationStrategy get migration {
@@ -87,6 +89,46 @@ class AppDatabase extends _$AppDatabase {
           await m.createTable(qualityChecksTable);
           await m.createTable(marketListingsTable);
         }
+        if (from < 8) {
+          await m.addColumn(animalsTable, animalsTable.lifecycleStatus);
+          await m.addColumn(animalsTable, animalsTable.reproductiveStatus);
+          await m.addColumn(animalsTable, animalsTable.lactationStatus);
+          await m.addColumn(animalsTable, animalsTable.healthStatus);
+          await m.addColumn(animalsTable, animalsTable.cattleClass);
+          await m.addColumn(animalsTable, animalsTable.location);
+          await m.addColumn(animalsTable, animalsTable.deletedAt);
+          await m.createTable(animalStateLogsTable);
+
+          await customStatement('''
+            UPDATE animals SET
+              lifecycle_status = CASE 
+                WHEN status = 'sold' THEN 'sold'
+                WHEN status = 'deceased' THEN 'deceased'
+                ELSE 'active'
+              END,
+              reproductive_status = CASE 
+                WHEN sex = 'male' THEN 'not_applicable'
+                WHEN status = 'pregnant' THEN 'pregnant'
+                WHEN status IN ('active', 'dry') THEN 'open'
+                ELSE 'unknown'
+              END,
+              lactation_status = CASE 
+                WHEN sex = 'male' THEN 'not_applicable'
+                WHEN status = 'dry' THEN 'dry'
+                WHEN status = 'pregnant' THEN 'dry'
+                WHEN status = 'active' THEN 'lactating'
+                ELSE 'unknown'
+              END,
+              health_status = CASE 
+                WHEN status = 'sick' THEN 'sick'
+                ELSE 'healthy'
+              END,
+              cattle_class = CASE 
+                WHEN sex = 'male' THEN 'bull'
+                ELSE 'cow'
+              END;
+          ''');
+        }
       },
     );
   }
@@ -95,6 +137,7 @@ class AppDatabase extends _$AppDatabase {
   Future<void> clearSensitiveData() async {
     await transaction(() async {
       await delete(animalsTable).go();
+      await delete(animalStateLogsTable).go();
       await delete(milkRecordsTable).go();
       await delete(eggRecordsTable).go();
       await delete(flocksTable).go();

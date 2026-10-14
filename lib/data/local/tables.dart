@@ -10,9 +10,35 @@ class AnimalsTable extends Table {
   TextColumn get sex => text()();
   DateTimeColumn get dob => dateTime().nullable()();
   TextColumn get status => text().withDefault(const Constant('active'))();
+  TextColumn get lifecycleStatus => text().withDefault(const Constant('active'))();
+  TextColumn get reproductiveStatus => text().withDefault(const Constant('unknown'))();
+  TextColumn get lactationStatus => text().withDefault(const Constant('unknown'))();
+  TextColumn get healthStatus => text().withDefault(const Constant('healthy'))();
+  TextColumn get cattleClass => text().withDefault(const Constant('cow'))();
+  TextColumn get location => text().nullable()();
   TextColumn get photoUrl => text().nullable()();
   DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
   DateTimeColumn get updatedAt => dateTime().withDefault(currentDateAndTime)();
+  DateTimeColumn get deletedAt => dateTime().nullable()();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+@DataClassName('LocalAnimalStateLog')
+class AnimalStateLogsTable extends Table {
+  TextColumn get id => text()();
+  TextColumn get farmId => text()();
+  TextColumn get animalId => text()();
+  TextColumn get dimension => text()();
+  TextColumn get previousValue => text().nullable()();
+  TextColumn get newValue => text()();
+  DateTimeColumn get effectiveTimestamp => dateTime().withDefault(currentDateAndTime)();
+  DateTimeColumn get recordedTimestamp => dateTime().withDefault(currentDateAndTime)();
+  TextColumn get recordedBy => text().nullable()();
+  TextColumn get reason => text().nullable()();
+  TextColumn get notes => text().nullable()();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
 
   @override
   Set<Column> get primaryKey => {id};

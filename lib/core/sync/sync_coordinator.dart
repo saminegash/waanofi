@@ -113,6 +113,7 @@ class SyncCoordinator {
       const priorityOrder = [
         'feed_type',
         'animal',
+        'animal_state_log',
         'flock',
         'milk_record',
         'egg_record',
